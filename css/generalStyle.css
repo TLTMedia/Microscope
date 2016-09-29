@@ -13,7 +13,7 @@ body {
     background-color: #abceed;
     position: absolute;
     margin: 0px;
-    z-index: 0;    
+    z-index: 0;
     height:95%;
 }
 
@@ -39,10 +39,10 @@ body {
 
 
 #tool {
-    top: 5%;
-    height:95%;
-    width: 55%;    
-    left: 15%;
+    top: 4%;
+    height: 95%;
+    width: 93%;
+    left: 3%;
     position: absolute;
 }
 
