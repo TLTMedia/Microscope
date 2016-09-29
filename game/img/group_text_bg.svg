@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#161616;}
+	.st1{fill:#2B2B2B;}
+	.st2{fill:#1C1C1C;}
+	.st3{fill:#0C0C0C;}
+	.st4{fill:#0E0E0E;}
+	.st5{fill:#1E1E1E;}
+	.st6{fill:none;stroke:#B2B2B2;stroke-width:6;stroke-miterlimit:10;}
+</style>
+<rect width="100" height="100"/>
+<rect y="12.5" class="st0" width="25" height="25"/>
+<rect x="25" y="12.5" class="st1" width="25" height="25"/>
+<rect y="37.5" class="st2" width="25" height="25"/>
+<rect x="25" y="37.5" class="st3" width="25" height="25"/>
+<rect y="62.5" class="st4" width="25" height="25"/>
+<rect x="25" y="62.5" class="st5" width="25" height="25"/>
+<rect x="50" y="12.5" class="st0" width="25" height="25"/>
+<rect x="75" y="12.5" class="st1" width="25" height="25"/>
+<rect x="50" y="37.5" class="st2" width="25" height="25"/>
+<rect x="75" y="37.5" class="st3" width="25" height="25"/>
+<rect x="50" y="62.5" class="st4" width="25" height="25"/>
+<rect x="75" y="62.5" class="st5" width="25" height="25"/>
+<line class="st6" x1="0" y1="10" x2="100" y2="10"/>
+<line class="st6" x1="0" y1="90" x2="100" y2="90"/>
+</svg>

@@ -1,0 +1,18 @@
+.draggable { width: 90px; height: 90px; float: left; margin: 0 10px 10px 0; }
+#draggable, #draggable2 { margin-bottom:20px; }
+#draggable { cursor: n-resize; }
+#draggable2 { cursor: e-resize; }
+
+
+
+h3 { clear: left; }
+
+#draggable5 { width: 16em; padding: 0 1em; }
+#draggable5 ul li { margin: 1em 0; padding: 0.5em 0; } * html #draggable ul li { height: 1%; }
+#draggable5 ul li span.ui-icon { float: left; }
+#draggable5 ul li span.count { font-weight: bold; }
+
+
+#containment-wrapper { width: 95%; height:150px; border:2px solid #ccc;}
+
+#shapetest{width:90%;}

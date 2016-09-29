@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>dragging test</title>
+  <link rel="stylesheet" href="jquery-ui.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="stylesheet.css">
+
+  <script src="https://code.jquery.com/jquery-2.2.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+  <script src= "script.js" ></script>
+
+</head>
+
+
+
+<body>
+<div><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div>
+
+    <svg width="1000" height="1000" >
+      <g id="ircle" cx="90" cy="90">
+       <circle cx="90" cy="90" r="10" stroke="green" stroke-width="4"  fill="yellow" id="circle" />
+    </g>
+    </svg>
+<script>
+$('#circle')
+  .draggable()
+  .bind('mousedown', function(event, ui){
+    // bring target to frontc
+    console.log("hit")
+    //$(event.target.parentElement).append( event.target );
+  })
+  .bind('drag', function(event, ui){
+        console.log(event.clientX,event.clientY,ui.position.left,ui.position.top)
+        $('#circle').attr('cx', ui.position.left);
+          $('#circle').attr('cy', ui.position.top);
+    // update coordinates manually, since top/left style props don't work on SVG
+
+  });
+</script>
+
+
+
+
+
+
+<!-- <div id="draggable5" class="ui-widget ui-widget-content">
+  <p>Drag me to trigger the chain of events.</p>
+  <ul class="ui-helper-reset">
+    <li id="event-start" class="ui-state-default ui-corner-all"><span class="ui-icon ui-icon-play"></span>"start" invoked <span class="count">0</span>x</li>
+    <li id="event-drag" class="ui-state-default ui-corner-all"><span class="ui-icon ui-icon-arrow-4"></span>"drag" invoked <span class="count">0</span>x</li>
+    <li id="event-stop" class="ui-state-default ui-corner-all"><span class="ui-icon ui-icon-stop"></span>"stop" invoked <span class="count">0</span>x</li>
+  </ul>
+</div> -->
+
+</body>
+</html>

@@ -1,0 +1,485 @@
+body {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#stage {
+    background-color: #abceed;
+    position: absolute;
+    margin: 0px;
+    z-index: 0;    
+    height:95%;
+}
+
+
+.cover {
+    background-image: url("stripes/stripeBG.png");
+    z-index: 10000;
+    position: absolute;
+}
+
+
+
+#header {
+    width: 100%;
+    height: 5%;
+    top: 0%;
+    left: 0%;
+    position: absolute;
+    text-align: center;
+    background-color: black;
+    z-index: 20;
+}
+
+
+#tool {
+    top: 5%;
+    height:95%;
+    width: 55%;    
+    left: 15%;
+    position: absolute;
+}
+
+
+#steps {
+    left: 83%;
+    top: 5%;
+    width: 18%;
+    height: 36%;
+    position: absolute;
+    z-index: 1000000;
+}
+
+
+.step {
+    width: 100%;
+    height: 10%;
+    left: 100%;
+    top: 0%;
+    position: absolute;
+    z-index: 0;
+}
+
+.group {
+    width: 100%;
+    height: 10%;
+    left: 100%;
+    top: 0%;
+    position: absolute;
+    z-index: 10000;
+}
+
+.icon {
+    height: 100%;
+    width: 15%;
+    top: 0%;
+    left: 0%;
+    position: absolute;
+    background-image: url("img/step_inactive.svg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    z-index: 10;
+}
+
+.stepPanel {
+    top: 15%;
+    left: 7%;
+    width: 93%;
+    height: 70%;
+    position: absolute;
+    background-image: url("img/step_text_bg.svg");
+}
+
+.groupPanel {
+    top: 15%;
+    left: 7%;
+    width: 93%;
+    height: 70%;
+    position: absolute;
+    background-image: url("img/group_text_bg.svg");
+}
+
+.stepText {
+    width: 100%;
+    height: 100%;
+    top: 8%;
+    left: 0%;
+    position: absolute;
+    text-align: center;
+    color: white;
+    font-family: "Helvetica", sans-serif;
+    z-index: 10;
+}
+
+.inactiveIcon {
+    background-image: url("img/step_inactive.svg");
+}
+
+.activeIcon {
+    background-image: url("img/step_active.svg");
+}
+
+.activeGroupIcon {
+    background-image: url("img/group_active.svg");
+}
+
+.completeIcon {
+    background-image: url("img/step_complete.svg");
+}
+
+.failIcon {
+    background-image: url("img/step_failed.svg");
+}
+
+.icon_bg {
+    height: 100%;
+    width: 15%;
+    top: 0%;
+    left: 0%;
+    position: absolute;
+    background-image: url("img/step_bg.svg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    z-index: 10;
+}
+
+@keyframes stepExit {
+    0% {
+        width: 15%;
+        height: 100%;
+        top: 0%;
+        z-index: 100;
+    }
+    100% {
+        width: 0%;
+        height: 0%;
+        top: 50%;
+        left: 7.5%;
+        z-index: 100;
+    }
+}
+
+.anim_stepExit {
+    animation: stepExit 0.125s cubic-bezier(.5, 0, 1, .5) 0s 1 forwards;
+}
+
+@keyframes stepEnter {
+    0% {
+        width: 0%;
+        height: 0%;
+        top: 50%;
+        left: 7.5%;
+        z-index: 100;
+    }
+    50% {
+        width: 22.5%;
+        height: 150%;
+        top: -25%;
+        left: -3.75%;
+        z-index: 100;
+    }
+    100% {
+        width: 15%;
+        height: 100%;
+        top: 0%;
+        z-index: 100;
+    }
+}
+
+.anim_stepEnter {
+    animation: stepEnter 0.375s cubic-bezier(.5, 0, 1, .5) 0s 1 forwards;
+}
+
+@keyframes stepEnterBig {
+    0% {
+        width: 0%;
+        height: 0%;
+        top: 50%;
+        left: 7.5%;
+        z-index: 150;
+    }
+    50% {
+        width: 30%;
+        height: 200%;
+        top: -50%;
+        left: -7.5%;
+        z-index: 150;
+    }
+    100% {
+        width: 15%;
+        height: 100%;
+        top: 0%;
+        z-index: 150;
+    }
+}
+
+.anim_stepEnterBig {
+    animation: stepEnterBig 0.375s cubic-bezier(.5, 0, 1, .5) 0s 1 forwards;
+}
+
+@keyframes enterStepObject {
+    from {
+        left: 100%;
+    }
+    to {
+        left: 0%;
+    }
+}
+
+.anim_enterStepObject {
+    animation: enterStepObject 0.5s cubic-bezier(0, .75, .25, 1) 0s 1 forwards;
+}
+
+@keyframes exitStepObject {
+    from {
+        left: 0%;
+    }
+    to {
+        left: 100%;
+    }
+}
+
+.anim_exitStepObject {
+    animation: exitStepObject 0.5s cubic-bezier(.75, 0, 1, .25) 0s 1 forwards;
+}
+
+
+#results {
+    width: 75%;
+    height: 55%;
+    left: 12.5%;
+    top: 22.5%;
+    background-color: #ffffff;
+    background-image: url("stripes/DarkStripeBG.png");
+    z-index: 20;
+    opacity: 1;
+    position: absolute;
+    box-shadow: .5% .5% .5% #000000;
+}
+
+#endText {
+    width: 100%;
+    height: 5%;
+    text-align: center;
+    color: #ffffff;
+    margin-top: 3%;
+    padding: 0;
+    z-index: 40;
+    text-shadow: 1% 1% #808080;
+    position: absolute;
+}
+
+#endSubText {
+    width: 100%;
+    height: 2.5%;
+    text-align: center;
+    color: #ffffff;
+    margin-top: 16.5%;
+    padding: 0;
+    z-index: 40;
+    position: absolute;
+    opacity: 1;
+}
+
+.endErrorText {
+    width: 100%;
+    height: 2.5%;
+    text-align: center;
+    color: #ffffff;
+    padding: 0;
+    z-index: 40;
+    position: absolute;
+    opacity: 0;
+}
+
+#endErrorText1 {
+    margin-top: 15%;
+}
+
+#endErrorText2 {
+    margin-top: 21%;
+    color: #909090;
+}
+
+#endErrorText3 {
+    margin-top: 25%;
+}
+
+.endOption {
+    width: 25%;
+    height: 20%;
+    position: absolute;
+    z-index: 50;
+    box-shadow: 5% 5% 5% #000000;
+    top: 70%;
+}
+
+.endOptionText {
+    width: 100%;
+    height: 20%;
+    text-align: center;
+    color: #ffffff;
+    margin-top: 12%;
+    padding: 0;
+    z-index: 40;
+    position: absolute;
+    font-family: "Helvetica";
+}
+
+.endOptionUnlocked {
+    background-image: url("stripes/GreenStripe2.png");
+}
+
+.endOptionLocked {
+    background-image: url("stripes/LockedStripe.png");
+}
+
+#endOption1 {
+    left: 5%;
+    position: absolute;
+}
+
+#endOption2 {
+    left: 37.5%;
+    position: absolute;
+}
+
+#endOption3 {
+    left: 70%;
+    position: absolute;
+}
+
+.endOptionDesc {
+    width: 25%;
+    height: 30%;
+    position: absolute;
+    z-index: 50;
+    box-shadow: 5% 5% 5% #000000;
+    top: 40%;
+    opacity: 0;
+    background-image: url("img/bubble.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#endOptionDesc1 {
+    left: 5%;
+}
+
+#endOptionDesc2 {
+    left: 37.5%;
+}
+
+#endOptionDesc3 {
+    left: 70%;
+}
+
+.darkText {
+    font-family: "Helvetica", sans-serif;
+    color: black;
+}
+
+.endOptionDescText {
+    width: 90%;
+    height: 60%;
+    left: 5%;
+    top: 10%;
+    position: absolute;
+    text-align: left;
+}
+
+.anim_enterEndOptionDesc {
+    animation: enterEndOptionDesc .05s 0s 1 linear normal forwards;
+}
+
+@keyframes enterEndOptionDesc {
+    from {
+        top: 37%;
+        opacity: 0;
+    }
+    to {
+        top: 40%;
+        opacity: 1;
+    }
+}
+
+.anim_exitEndOptionDesc {
+    animation: exitEndOptionDesc .05s 0s 1 linear normal forwards;
+}
+
+@keyframes exitEndOptionDesc {
+    from {
+        top: 40%;
+        opacity: 1;
+    }
+    to {
+        top: 37%;
+        opacity: 0;
+    }
+}
+
+
+.anim_enterResults {
+    animation: enterResults .5s 0s 1 cubic-bezier(0, 1, 0, 1) normal forwards;
+}
+
+@keyframes enterResults {
+    from {
+        top: 1000%;
+    }
+    to {
+        top: 22.5%;
+    }
+}
+
+.anim_exitResults {
+    animation: exitResults .5s 0s 1 cubic-bezier(1, 0, 1, 0) normal forwards;
+}
+
+@keyframes exitResults {
+    from {
+        top: 22.5%;
+    }
+    to {
+        top: 1000%;
+    }
+}
+
+
+.text {
+    font-family: "Helvetica", sans-serif;
+    color: white;
+}
+
+.anim_fadeInBG {
+    animation: fadeInBG .5s 0s 1 linear normal forwards;
+}
+
+@keyframes fadeInBG {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: .75;
+    }
+}
+
+.anim_fadeOutBG {
+    animation: fadeOutBG .5s 0s 1 linear normal forwards;
+}
+
+@keyframes fadeOutBG {
+    from {
+        opacity: .75;
+    }
+    to {
+        opacity: 0;
+    }
+}
