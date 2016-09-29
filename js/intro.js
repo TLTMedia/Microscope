@@ -21,12 +21,17 @@ var setupCaliper;
 // Used to skip steps when testing
 var debug=true;
 
+var intro=true;
+
 $(function () {
     $('#microscope').load('img/microscope.svg', function() {
 
+
         resizeWindow();
-        loadStartMenu();
-        loadSubMenu();
+
+
+            loadStartMenu();
+            loadSubMenu();
 
         $("#endOption1").click(function () {
             // Start Beginner Mode
@@ -49,6 +54,7 @@ $(function () {
         }
 
         //===============intro===============
+	if (intro){
         $("#switch").click(function () {
             console.log("hit")
             if (introLightSwitch.isActive()) {
@@ -88,96 +94,78 @@ $(function () {
                 showAllParts();
             }
         });
+	}
 
 
-
-        /*===============setup===============*/
+        //===============setup===============
 
         $("#switch").click(function () {
             if (setupLightSwitch.isActive()) {
                 setupLightSwitch.complete();}
         });
 
+/*
+	$("#ocularRight").click(function(){
+		alert("Ocular right clicked");
+	});	
+*/
 
 
 
-        $('#ocularRight')
-          .draggable()
+//==========ocular movement===============
+var isDown = false;
+var isDragging = false;
+var prevX;
+var ocularSpread = 0;
+var MAX_OCULAR=50;
 
-          // rint.bind('mousedown', function(event, ui){
-          .bind('mousedown', function(event, ui){
-            // bring target to front
-            console.log("hit");
-            //$(event.target.parentElement).append( event.target );
-          })
+$("#ocularRight")
+.mousedown(function() {
+    isDown = true;
+})
+.mousemove(function(event) {
+	if (isDown){
+		if (prevX < event.pageX){
+			console.log("Moved right");
+			if (ocularSpread < MAX_OCULAR){
+				ocularSpread++;
 
-          .bind('drag', function(event, ui){
-            // console.log(ui.position.left);
-            var ocularRight_PosLeft=$("#stage").width()/2.1;
-            var maxFreedom =ocularRight_PosLeft/30;
-            var ocularRight_PosLeft=
-            console.log(event.pageX, event.pageY, $("#ocularRight").width());
-            var offSet= Math.max(0,Math.min(maxFreedom,parseFloat(ui.position.left)-ocularRight_PosLeft));
-            console.log(  $('#ocularRight').position());
-            // var offSet= Math.max(0, Math.min(30,parseFloat(ui.position.left)) );
-            $('#ocularRight').attr("transform","translate("+ offSet +")");
-            $('#ocularLeft').attr("transform","translate("+ (-offSet) +")");
-            // update coordinates manually, since top/left style props don't work on SVG
-          });
+/*
+$('#ocularRight').css({
+    "-webkit-transform":"translate(100px,100px)",
+    "-ms-transform":"translate(100px,100px)",
+    "transform":"translate(100px,100px)"
+  });
+*/			}
 
 
+		}else if (prevX > event.pageX){
+			console.log("Moved left");
+			if (ocularSpread > 0){
+				ocularSpread--;
+			}
 
+		}
 
-
+		$("#ocularRight").css( "transform", "translate(" + ocularSpread  +"px," + 0  + "px)");
+		$("#ocularLeft").css( "transform", "translate(-" + ocularSpread  +"px," + 0  + "px)");
+		prevX = event.pageX;
+	}
+})
+.mouseup(function() {
+	isDown = false;
+})
+.mouseleave(function(){
+	isDown = false;
+});
+//==========ocular movement===============
         if (setupEyepiece.isActive()) {
           setupEyepiece.complete();
         }
 
-        // $("#eyepiece").click(function () {
-        //    if (setupEyepiece.isActive()) {
-        //        setupEyepiece.complete();}
-        // });
 
-        $("#knobsCoarse").click(function () {
-           if (setupCoarse.isActive()) {
-               setupCoarse.complete();}
-        });
-
-        $("#knobsFine").click(function () {
-           if (setupFine.isActive()) {
-               setupFine.complete();}
-        });
-
-        // wrong ID
-        $("#diaphragm").click(function () {
-           if (setupDiaphragmLight.isActive()) {
-               setupDiaphragmLight.complete();}
-        });
-
-        // wrong ID
-        $(".diaphragm").click(function () {
-           if (setupDiaphragmHeight.isActive()) {
-               setupDiaphragmHeight.complete();}
-        });
-
-        // add IDs
-        $("#caliper").click(function () {
-           if (setupCaliper.isActive()) {
-               setupCaliper.complete();}
-        });
-
-        // add IDs
-        $("#lenses").click(function () {
-           if (setupLenses.isActive()) {
-               setupLenses.complete();
-               // hide popup bubble
-           }
-        });
-
-//        mousemove jquery
+	//mousemove jquery
         $( "#target" ).mousemove(function( event ) {
-            var msg = "Handler for .mousemove() called at ";
-            msg += event.pageX + ", " + event.pageY;
             $( "#log" ).append( "<div>" + msg + "</div>" );
         });
 
@@ -212,5 +200,7 @@ $(function () {
         for (var i = 1; i <= 3; i++) {
             initEndOptionHover(i);
         }
-    })
+
+})
 });
+
