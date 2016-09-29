@@ -18,6 +18,8 @@ var setupLenses;
 var setupCaliper;
 
 
+// Used to skip steps when testing
+var debug=true;
 
 $(function () {
     $('#microscope').load('img/microscope.svg', function() {
@@ -32,7 +34,21 @@ $(function () {
         });
 
 
-        /*===============intro===============*/
+
+        if (debug){
+            introLightSwitch.complete();
+            introEyepiece.complete();
+            introCoarse.complete();
+            introFine.complete();
+            introDiaphragm.complete();
+            introCaliper.complete();
+            introLenses.complete();
+            $("#popup").removeClass("elementOn");
+            $("#popup").addClass("elementOff");
+            showAllParts();
+        }
+
+        //===============intro===============
         $("#switch").click(function () {
             console.log("hit")
             if (introLightSwitch.isActive()) {
@@ -159,26 +175,26 @@ $(function () {
         });
 
 //        mousemove jquery
-//        $( "#target" ).mousemove(function( event ) {
-//            var msg = "Handler for .mousemove() called at ";
-//            msg += event.pageX + ", " + event.pageY;
-//            $( "#log" ).append( "<div>" + msg + "</div>" );
-//        });
+        $( "#target" ).mousemove(function( event ) {
+            var msg = "Handler for .mousemove() called at ";
+            msg += event.pageX + ", " + event.pageY;
+            $( "#log" ).append( "<div>" + msg + "</div>" );
+        });
 
 
 
-        // $(window).keypress(function(event) {
-        //     if (event.which == 32) {
-        //        if (spaceBar.isActive()) {
-        //            spaceBar.complete();
-        //        }
-        //    }
-        //    if (event.which == 102) {
-        //        if (pressF.isActive()) {
-        //            pressF.complete();
-        //        }
-        //    }
-        // });
+         $(window).keypress(function(event) {
+             if (event.which == 32) {
+                if (spaceBar.isActive()) {
+                    spaceBar.complete();
+                }
+            }
+            if (event.which == 102) {
+                if (pressF.isActive()) {
+                pressF.complete();
+                }
+            }
+         });
 
 
 
