@@ -22,7 +22,7 @@ var debug=false;
 var intro=true;
 
 $(function () {
-        $('#microscope').load('img/microscope.svg', function() {
+        $('#microscope').load('img/microscope2.svg', function() {
             resizeWindow();
             loadStartMenu();
             loadSubMenu();
@@ -159,4 +159,3 @@ $(function () {
 
         })
 });
-
