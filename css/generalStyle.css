@@ -19,7 +19,7 @@ body {
 
 
 .cover {
-    background-image: url("stripes/stripeBG.png");
+    background-image: url("../stripes/stripeBG.png");
     z-index: 10000;
     position: absolute;
 }
@@ -81,7 +81,7 @@ body {
     top: 0%;
     left: 0%;
     position: absolute;
-    background-image: url("img/step_inactive.svg");
+    background-image: url("../img/step_inactive.svg");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     z-index: 10;
@@ -93,7 +93,7 @@ body {
     width: 93%;
     height: 70%;
     position: absolute;
-    background-image: url("img/step_text_bg.svg");
+    background-image: url("../img/step_text_bg.svg");
 }
 
 .groupPanel {
@@ -102,7 +102,7 @@ body {
     width: 93%;
     height: 70%;
     position: absolute;
-    background-image: url("img/group_text_bg.svg");
+    background-image: url("../img/group_text_bg.svg");
 }
 
 .stepText {
@@ -118,23 +118,23 @@ body {
 }
 
 .inactiveIcon {
-    background-image: url("img/step_inactive.svg");
+    background-image: url("../img/step_inactive.svg");
 }
 
 .activeIcon {
-    background-image: url("img/step_active.svg");
+    background-image: url("../img/step_active.svg");
 }
 
 .activeGroupIcon {
-    background-image: url("img/group_active.svg");
+    background-image: url("../img/group_active.svg");
 }
 
 .completeIcon {
-    background-image: url("img/step_complete.svg");
+    background-image: url("../img/step_complete.svg");
 }
 
 .failIcon {
-    background-image: url("img/step_failed.svg");
+    background-image: url("../img/step_failed.svg");
 }
 
 .icon_bg {
@@ -143,7 +143,7 @@ body {
     top: 0%;
     left: 0%;
     position: absolute;
-    background-image: url("img/step_bg.svg");
+    background-image: url("../img/step_bg.svg");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     z-index: 10;
@@ -256,7 +256,7 @@ body {
     left: 12.5%;
     top: 22.5%;
     background-color: #ffffff;
-    background-image: url("stripes/DarkStripeBG.png");
+    background-image: url("../stripes/DarkStripeBG.png");
     z-index: 20;
     opacity: 1;
     position: absolute;
@@ -333,11 +333,11 @@ body {
 }
 
 .endOptionUnlocked {
-    background-image: url("stripes/GreenStripe2.png");
+    background-image: url("../stripes/GreenStripe2.png");
 }
 
 .endOptionLocked {
-    background-image: url("stripes/LockedStripe.png");
+    background-image: url("../stripes/LockedStripe.png");
 }
 
 #endOption1 {
@@ -363,7 +363,7 @@ body {
     box-shadow: 5% 5% 5% #000000;
     top: 40%;
     opacity: 0;
-    background-image: url("img/bubble.svg");
+    background-image: url("../img/bubble.svg");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
