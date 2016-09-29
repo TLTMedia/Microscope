@@ -6,7 +6,6 @@ var introFine;
 var introCoarse;
 var introLenses;
 var introCaliper;
-
 var setupStart;
 var setupLightSwitch;
 var setupEyepiece;
@@ -19,28 +18,20 @@ var setupCaliper;
 
 
 // Used to skip steps when testing
-var debug=true;
-
+var debug=false;
 var intro=true;
 
 $(function () {
-    $('#microscope').load('img/microscope.svg', function() {
-
-
-        resizeWindow();
-
-
+        $('#microscope').load('img/microscope.svg', function() {
+            resizeWindow();
             loadStartMenu();
             loadSubMenu();
 
-        $("#endOption1").click(function () {
-            // Start Beginner Mode
-            newGame(true, false);
-        });
-
-
-
-        if (debug){
+            $("#endOption1").click(function () {
+                // Start Beginner Mode
+                newGame(true, false);
+                });
+            if (debug){
             introLightSwitch.complete();
             introEyepiece.complete();
             introCoarse.complete();
@@ -51,156 +42,121 @@ $(function () {
             $("#popup").removeClass("elementOn");
             $("#popup").addClass("elementOff");
             showAllParts();
-        }
-
-        //===============intro===============
-	if (intro){
-        $("#switch").click(function () {
-            console.log("hit")
-            if (introLightSwitch.isActive()) {
-                introLightSwitch.complete();}
-        });
-
-        $("#ocularLensBase, #ocularRight, #ocularLeft").click(function () {
-            if (introEyepiece.isActive()) {
-                introEyepiece.complete();}
-        });
-
-        $("#knobsCoarse").click(function () {
-            if (introCoarse.isActive()) {
-                introCoarse.complete();}
-        });
-
-        $("#knobsFine").click(function () {
-            if (introFine.isActive()) {
-                introFine.complete();}
-        });
-
-        $("#diaphragm").click(function () {
-            if (introDiaphragm.isActive()) {
-                introDiaphragm.complete();}
-        });
-
-        $("#caliperKnob, #caliper, #xcaliper, #ycaliper").click(function () {
-            if (introCaliper.isActive()) {
-                introCaliper.complete();}
-        });
-
-        $("#lenses, #lensesRed, #lensesBlue, #lensesYellow, #lensesWhite").click(function () {
-            if (introLenses.isActive()) {
-                introLenses.complete();
-                $("#popup").removeClass("elementOn");
-                $("#popup").addClass("elementOff");
-                showAllParts();
             }
-        });
-	}
 
+            //===============intro===============
+            if (intro){
+                $("#switch").click(function () {
+                        if (introLightSwitch.isActive()) {
+                        introLightSwitch.complete();}
+                        });
 
-        //===============setup===============
+                $("#ocularLensBase, #ocularRight, #ocularLeft").click(function () {
+                        if (introEyepiece.isActive()) {
+                        introEyepiece.complete();}
+                        });
 
-        $("#switch").click(function () {
-            if (setupLightSwitch.isActive()) {
-                setupLightSwitch.complete();}
-        });
+                $("#knobsCoarse").click(function () {
+                        if (introCoarse.isActive()) {
+                        introCoarse.complete();}
+                        });
 
-/*
-	$("#ocularRight").click(function(){
-		alert("Ocular right clicked");
-	});	
-*/
+                $("#knobsFine").click(function () {
+                        if (introFine.isActive()) {
+                        introFine.complete();}
+                        });
 
+                $("#diaphragm").click(function () {
+                        if (introDiaphragm.isActive()) {
+                        introDiaphragm.complete();}
+                        });
 
+                $("#caliperKnob, #caliper, #xcaliper, #ycaliper").click(function () {
+                        if (introCaliper.isActive()) {
+                        introCaliper.complete();}
+                        });
 
-//==========ocular movement===============
-var isDown = false;
-var isDragging = false;
-var prevX;
-var ocularSpread = 0;
-var MAX_OCULAR=50;
-
-$("#ocularRight")
-.mousedown(function() {
-    isDown = true;
-})
-.mousemove(function(event) {
-	if (isDown){
-		if (prevX < event.pageX){
-			console.log("Moved right");
-			if (ocularSpread < MAX_OCULAR){
-				ocularSpread++;
-
-/*
-$('#ocularRight').css({
-    "-webkit-transform":"translate(100px,100px)",
-    "-ms-transform":"translate(100px,100px)",
-    "transform":"translate(100px,100px)"
-  });
-*/			}
-
-
-		}else if (prevX > event.pageX){
-			console.log("Moved left");
-			if (ocularSpread > 0){
-				ocularSpread--;
-			}
-
-		}
-
-		$("#ocularRight").css( "transform", "translate(" + ocularSpread  +"px," + 0  + "px)");
-		$("#ocularLeft").css( "transform", "translate(-" + ocularSpread  +"px," + 0  + "px)");
-		prevX = event.pageX;
-	}
-})
-.mouseup(function() {
-	isDown = false;
-})
-.mouseleave(function(){
-	isDown = false;
-});
-//==========ocular movement===============
-        if (setupEyepiece.isActive()) {
-          setupEyepiece.complete();
-        }
-
-
-	//mousemove jquery
-        $( "#target" ).mousemove(function( event ) {
-            $( "#log" ).append( "<div>" + msg + "</div>" );
-        });
-
-
-
-         $(window).keypress(function(event) {
-             if (event.which == 32) {
-                if (spaceBar.isActive()) {
-                    spaceBar.complete();
-                }
+                $("#lenses, #lensesRed, #lensesBlue, #lensesYellow, #lensesWhite").click(function () {
+                        if (introLenses.isActive()) {
+                        introLenses.complete();
+                        $("#popup").removeClass("elementOn");
+                        $("#popup").addClass("elementOff");
+                        showAllParts();
+                        }
+                        });
             }
-            if (event.which == 102) {
-                if (pressF.isActive()) {
-                pressF.complete();
-                }
+
+
+            //===============setup===============
+
+            $("#switch").click(function () {
+                    if (setupLightSwitch.isActive()) {
+                    setupLightSwitch.complete();}
+                    });
+
+            //==========ocular movement===============
+            var isDown = false;
+            var isDragging = false;
+            var prevX;
+            var ocularSpread = 0;
+            var MAX_OCULAR=50;
+
+            $("#ocularRight")
+                .mousedown(function() {
+                        isDown = true;
+                        })
+            .mousemove(function(event) {
+                    if (isDown){
+                    if (prevX < event.pageX){
+                    console.log("Moved right");
+                    if (ocularSpread < MAX_OCULAR){
+                    ocularSpread++;
+
+                    }
+                    }else if (prevX > event.pageX){
+                    if (ocularSpread > 0){
+                    ocularSpread--;
+                    }
+
+                    }
+
+                    $("#ocularRight").css({
+                        "-website-transform":"translate(" + ocularSpread  +"px," + 0  + "px)",
+                        "-ms-transform":"translate(" + ocularSpread  +"px," + 0  + "px)",
+                        "transform":"translate(" + ocularSpread  +"px," + 0  + "px)"
+                        });
+
+                    $("#ocularLeft").css({
+                            "-website-transform":"translate(-" + ocularSpread  +"px," + 0  + "px)",
+                            "-ms-transform":"translate(-" + ocularSpread  +"px," + 0  + "px)",
+                            "transform":"translate(-" + ocularSpread  +"px," + 0  + "px)"
+                            });
+                    prevX = event.pageX;
+                    }
+            })
+            .mouseup(function() {
+                    isDown = false;
+                    })
+            .mouseleave(function(){
+                    isDown = false;
+                    });
+
+
+            $("#endOption2").click(function () {
+                    // Start Intermediate Mode
+                    if (false)
+                    newGame(false, false);
+                    });
+
+            $("#endOption3").click(function () {
+                    // Start Expert Mode
+                    if (false)
+                    newGame(false, true);
+                    });
+            for (var i = 1; i <= 3; i++) {
+                initEndOptionHover(i);
             }
-         });
 
-
-
-        $("#endOption2").click(function () {
-            // Start Intermediate Mode
-            if (false)
-                newGame(false, false);
-        });
-
-        $("#endOption3").click(function () {
-            // Start Expert Mode
-            if (false)
-                newGame(false, true);
-        });
-        for (var i = 1; i <= 3; i++) {
-            initEndOptionHover(i);
-        }
-
-})
+        })
 });
 
