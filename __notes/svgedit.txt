@@ -1,0 +1,14 @@
+SVG edit:
+
+
+<g id="slide" opacity="0">
+
+<g id="apertureFixed">
+
+
+
+display="none"  ->   opacity="0"
+
+
+
+
