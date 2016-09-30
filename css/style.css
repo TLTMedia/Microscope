@@ -13,7 +13,8 @@
 .elementOff { visibility: hidden;  }
 .opacityLow { opacity: 0.1; }
 
-.lightOn  { opacity: 1; visibility: visible; }
+.lightOn  { opacity: 1;}
+.lightOff { opacity: 0;}
 
 
 /*     Shifts slide     */

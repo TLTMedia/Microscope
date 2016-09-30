@@ -54,6 +54,15 @@ class StateMachine{
 var microscope = new StateMachine();
 
 
+/* User global states
+*/
+
+//Globalize drag components (this is fine because there cannot be multiple drag instances unless user is not homosapien)
+var isDown = false;
+var prevX;
+var ocularSpread = 0;
+var MAX_OCULAR=50;
+
 function secludePart(keepOn) {
 
     for (var i = 0; i < components.length; i++) {
@@ -190,16 +199,21 @@ function triggerLenses() {
 /* Toggles the light switch */
 function toggleLightSwitch(){
     //$("#headerText").text("Turn on the light.");
-    $("#switch").click(function () {
+    $("#switch").on('click', function () {
         microscope.lightStatus = (1+microscope.lightStatus)%2; 
         console.log(microscope.lightStatus);
+       
         if (microscope.lightStatus>0){
-            $("#light").removeClass("elementOff");
-            $("#light").addClass("lightOn");
+
+            
+//            $("#light").removeClass("lightOff");
+//            $("#light").addClass("lightOn");
         }
         else{
-            $("#light").removeClass("lightOn");
-            $("#light").addClass("elementOff");
+
+  //          $("#light").removeClass("lightOn");
+      //      $("#light").addClass("lightOff");
+     //       $("#light").addClass("elementOff");
         }
     });
 }

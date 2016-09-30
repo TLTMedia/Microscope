@@ -28,23 +28,11 @@ var setupCaliper;
 
 
 // Used to skip steps when testing
-var debug=false;
+var debug=true;
 var intro=true;
 
-//Globalize drag components (this is fine because there cannot be multiple drag instances unless user is not homosapien)
-var isDown = false;
-var isDragging = false;
-var prevX;
-var ocularSpread = 0;
-var MAX_OCULAR=50;
 
 $(function () {
-
-        $('#microscope').load('img/microscope2.svg', function() {
-            resizeWindow();
-            loadStartMenu();
-            loadSubMenu();
-
             // Create dragability on horizontal component on a div. Precisely to be used for the ocular component. DRY principle applied so we don't reuse the same code for both ocular ends.
             $('#microscope').load('img/microscope.svg', function() {
                     resizeWindow();
@@ -139,4 +127,4 @@ $(function () {
             })
         });
 
-});
+
