@@ -3,6 +3,8 @@
  *
  * Provides UI to teach users how to use the microscope, step by step.
  * Currently also includes functionality to change the ocular component via drag. (This will probably be modularized into another source file).
+ * The intro.js source is a wrapper or layer above the state machine logic. The state machine should be able to operate seperately from any
+ * layer that tries to utilize it. Decoupling layer from state machine allows for reusablity of the state machine.
  **/
 
 
@@ -26,7 +28,7 @@ var setupCaliper;
 
 
 // Used to skip steps when testing
-var debug=true;
+var debug=false;
 var intro=true;
 
 //Globalize drag components (this is fine because there cannot be multiple drag instances unless user is not homosapien)
@@ -44,58 +46,6 @@ $(function () {
             loadSubMenu();
 
             // Create dragability on horizontal component on a div. Precisely to be used for the ocular component. DRY principle applied so we don't reuse the same code for both ocular ends.
-            function addOcularDrag(ocularPart){
-            var ocularPartOpposite = "#ocularLeft";
-            var baseDir = 0;
-            var val=1;
-            //Swap logic based on which side of the component is being dragged.
-
-            if (ocularPart=="#ocularRight"){
-            val=1;
-
-            }
-            else if(ocularPart=="#ocularLeft"){ 
-                ocularPartOpposite = "#ocularRight";
-            }
-
-            $(ocularPart)
-                .mousedown(function() {
-                        isDown = true;
-                        })
-            .mousemove(function(event) {
-                    if (isDown){
-                    if ((prevX < event.pageX && ocularPart == "#ocularRight") || (prevX > event.pageX && ocularPart=="#ocularLeft")){
-                      if (ocularSpread < MAX_OCULAR){
-                          ocularSpread += val;   
-                     }
-                    }
-                    else if ((prevX > event.pageX && ocularPart == "#ocularRight") ||(prevX < event.pageX && ocularPart=="#ocularLeft")){
-                        if (ocularSpread > 0){
-                            ocularSpread -= val;
-                        }
-                    }
-
-
-                    $("#ocularRight").css({
-                        "-website-transform":"translate(" + ocularSpread  +"px," + 0  + "px)",
-                        "-ms-transform":"translate(" + ocularSpread  +"px," + 0  + "px)",
-                        "transform":"translate(" + ocularSpread  +"px," + 0  + "px)"
-                        });
-                    $("#ocularLeft").css({
-                        "-website-transform":"translate(" + -1*ocularSpread  +"px," + 0  + "px)",
-                        "-ms-transform":"translate(" + -1*ocularSpread  +"px," + 0  + "px)",
-                        "transform":"translate(" + -1*ocularSpread  +"px," + 0  + "px)"
-                        });
-                    prevX = event.pageX;
-                    }
-            })
-            .mouseup(function() {
-                    isDown = false;
-                    })
-            .mouseleave(function(){
-                    isDown = false;
-                    });
-            }
             $('#microscope').load('img/microscope.svg', function() {
                     resizeWindow();
                     loadStartMenu();
@@ -168,8 +118,8 @@ $(function () {
                             });
 
                     //==========ocular movement===============
-                    addOcularDrag("#ocularRight");            
-                    addOcularDrag("#ocularLeft");            
+                    enableEyepiece();                
+
 
                     $("#endOption2").click(function () {
                             // Start Intermediate Mode
