@@ -1,12 +1,14 @@
 /* http://www.w3schools.com/cssref/css3_pr_animation.asp*/
 
 
+#light{
+    pointer-events: none;
+}
+
 #overlay {
     position: absolute;
     z-index: -1;
-
 }
-
 
 /*     Shows/Hides Element     */
 .elementOn  { visibility: visible; }

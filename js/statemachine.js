@@ -66,7 +66,8 @@ var prevY=0;
 var ocularSpread = 0;
 var knobSpread = 0;
 var MAX_OCULAR=50;
-
+var MAX_KNOB=40;
+var MIN_KNOB=-20;
 
 
 //function lowMagnification(){
@@ -166,26 +167,31 @@ function enableEyepiece(){
 /* Modify the level of the state up and down to focus. */
 function enableCoarseKnob()
 {
-    function addCourseDrag(coursePart){
-
-        var val=1;
+    /*Params: knob type, degree of slide*/
+    function addCourseDrag(coursePart, power){
+        var val=power;
         $(coursePart)
             .mousedown(function() {
                     isDown = true;
                     })
         .mousemove(function(event) {
                 if (isDown){
-                if (prevY < event.pageY){
-                if (knobSpread < MAX_OCULAR){
+                if (prevY > event.pageY){
+                if (knobSpread < MAX_KNOB){
                 knobSpread += val;   
                 }
                 }
-                else if ((prevY > event.pageY)){
-                    if (knobSpread > 0){
+                else if ((prevY < event.pageY)){
+                    if (knobSpread > MIN_KNOB){
                      knobSpread -= val;
                      }
                 }
                 console.log(knobSpread);
+                $("#slideStage").css({
+                    "-website-transform":"translate(" + 0  +"px," + knobSpread  + "px)",
+                    "-ms-transform":"translate(" + 0  +"px," + knobSpread  + "px)",
+                    "transform":"translate(" + 0  +"px," + knobSpread  + "px)"
+                    });
                 prevY = event.pageY;
                 microscope.knobPosition = knobSpread;
                 }
@@ -197,7 +203,9 @@ function enableCoarseKnob()
                 isDown = false;
                 });
     }
-    addCourseDrag("#knobsFine");
+
+    addCourseDrag("#knobsCoarse", 1.0);
+    addCourseDrag("#knobsFine", 0.5);
 }
 
 

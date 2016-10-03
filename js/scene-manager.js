@@ -1,5 +1,5 @@
 
-function intro() {
+function introText() {
     $("#headerText").text("Click the microscope to learn about its components.");
 }
 
@@ -13,15 +13,13 @@ function setupText(){
    Use of below function is for intro.js (intro.js + gameLogic.js interdependence).
  */
 function startStep(step) {
-
-
     /* intro
 
        Intro doesn't necessarily have flexible choices for the user to act on.
        The purpose of the introduction is to teach the user about the different
        parts of the microscope.
      */
-    if (step == introLightSwitch)   { intro(); triggerLightSwitch();
+    if (step == introLightSwitch)   { introText(); triggerLightSwitch();
         $("#light").addClass("elementOff");}
         if (step == introDiaphragm)     { triggerDiaphragm(); }
         if (step == introFine)          { triggerFine(); }
@@ -38,10 +36,11 @@ function startStep(step) {
          */
         if (step == setupLightSwitch)       { setupText(); setupEnableSwitch(); toggleLightSwitch(); }
         if (step == setupEyepiece)          { setupAdjustEyepiece(); enableEyepiece(); }
-        if (step == setupCoarse)            { enableCoarseKnob();  }
+        if (step == setupCoarse)            { setupAdjustCoarse(); enableCoarseKnob();  }
+        if (step == setupFine)              { setupAdjustFine(); toggleFine(); }
         if (step == setupDiaphragmLight)    { toggleDiaphragmLight(); }
         if (step == setupDiaphragmHeight)   { toggleDiaphragmHeight(); }
-        if (step == setupFine)              { toggleFine(); }
+
 
         if (step == setupLenses)            { toggleLenses(); }
         if (step == setupCaliper)           { toggleCaliper(); }
