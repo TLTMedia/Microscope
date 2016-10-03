@@ -81,7 +81,6 @@ function lockModes() {
 
 
 function newGame(guided, manual) {
-
     hideMenu(); // Hide menu
     updateSteps(); // Update steps
 
@@ -145,9 +144,6 @@ function loadSubMenu() {
                 }
             ]
         },
-
-
-
         {
             "id": "setup",
             "shortText": "Setup",
@@ -202,12 +198,6 @@ function loadSubMenu() {
                 }
             ]
         },
-
-
-
-
-
-
         {
             "id": "lowmagnification",
             "shortText": "Low Magnification",
@@ -293,9 +283,6 @@ function loadSubMenu() {
     // introLightSwitch.activate();
     introLightSwitch.activate();
 }
-
-
-
 
 
 function initEndOptionHover(id) {

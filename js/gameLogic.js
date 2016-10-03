@@ -1,6 +1,16 @@
+
+
+/*
+Use of below function is for intro.js (intro.js + gameLogic.js interdependence).
+*/
 function startStep(step) {
 
-    // intro
+    /* intro
+
+    Intro doesn't necessarily have flexible choices for the user to act on.
+    The purpose of the introduction is to teach the user about the different
+    parts of the microscope.
+    */
     if (step == introLightSwitch)   { intro(); triggerLightSwitch();
                                       $("#light").addClass("elementOff");}
     if (step == introDiaphragm)     { triggerDiaphragm(); }
@@ -10,7 +20,12 @@ function startStep(step) {
     if (step == introCaliper)       { triggerCaliper(); }
     if (step == introEyepiece)      { triggerEyepiece(); }
 
-    // setup
+    /* setup
+
+    Steps now have an intermission period between each step where the user must
+    act/adjust the microscope before the game proceeds onto the next step.
+
+    */
     if (step == setupStart)             { setup(); }
     if (step == setupLightSwitch)       { toggleLightSwitch(); }
     if (step == setupDiaphragmLight)    { toggleDiaphragmLight(); }
@@ -20,6 +35,8 @@ function startStep(step) {
     if (step == setupLenses)            { toggleLenses(); }
     if (step == setupCaliper)           { toggleCaliper(); }
     if (step == setupEyepiece)          { toggleEyepiece(); }
+
+    // enable freemode? (user can do whatever they want with the scope)
 
 }
 

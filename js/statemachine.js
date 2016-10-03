@@ -1,5 +1,5 @@
 /*
-* eventLogic.js
+* statemachine.js 
 *
 * Responsible for feedback on events triggered by the user.
 *
@@ -132,69 +132,6 @@ function setup(){
 
 
 
-function triggerLightSwitch() {
-    var arr = ["#switch"];
-    popupOn("Light Switch: Turns the light on and off.", {
-        "left": "10%",
-        "top": "73%",
-    });
-    secludePart(arr);
-}
-
-
-function triggerEyepiece() {
-    var arr = ["#eyepiece", "#ocularRight", "#ocularLeft", "#ocularLensBase"];
-    popupOn("Eyepiece: View the sample through the ocular lenses. They magnify the image ten times.", {
-        "left": "5%",
-        "top": "25%",
-    });
-    secludePart(arr);
-}
-
-function triggerDiaphragm() {
-    arr = ["#diaphragm", "#apertureFixed", "#aperture"];
-    popupOn("Diaphragm: Adjusts the amount of light on the slide", {
-        "left": "15%",
-        "top": "60%",
-    });
-    secludePart(arr);
-}
-
-function triggerFine() {
-    arr = ["#knobsFine"];
-    popupOn("Fine Knobs: Moves the stage slightly to sharpen the focus", {
-        "left": "10%",
-        "top": "64%",
-    });
-    secludePart(arr);
-}
-
-function triggerCoarse() {
-    arr = ["#knobsCoarse"];
-    popupOn("Coarse Knobs: Moves the stage up and down for focusing", {
-        "left": "10%",
-        "top": "64%",
-    });
-    secludePart(arr);
-}
-
-function triggerCaliper() {
-    arr = ["#caliper", "#xcaliper", "#ycaliper", "#caliperKnob"];
-    popupOn("Caliper: Adjusts the vertical and horizontal positions of the slide.", {
-        "left": "55%",
-        "top": "55%",
-    });
-    secludePart(arr);
-}
-
-function triggerLenses() {
-    arr = ["#lenses"];
-    popupOn("Lenses: The lenses are rotated on the nosepiece to change the magnification. These different lenses are referred to as the objectives.", {
-        "left": "10%",
-        "top": "36%",
-    });
-    secludePart(arr);
-}
 
 /* Toggles the light switch */
 function toggleLightSwitch(){
