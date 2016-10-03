@@ -46,12 +46,13 @@ var stepIndex=0;
 class StateMachine{
     constructor(){
         this.lightStatus = 0; // Brightness of the light ranged 0-1. 0 being off.
+        this.eyepiecePosition = 0;
         console.log("State machine has been created");
     }
 
 }
 
-var microscope = new StateMachine();
+microscope = new StateMachine();
 
 
 /* User global states
@@ -63,59 +64,6 @@ var prevX;
 var ocularSpread = 0;
 var MAX_OCULAR=50;
 
-function secludePart(keepOn) {
-
-    for (var i = 0; i < components.length; i++) {
-        $(components[i]).removeClass("opacityLow");
-        $(components[i]).removeClass("elementOn");
-        $(components[i]).removeClass("elementOff");
-    }
-    for (var i = 0; i < components.length; i++) {
-        $(components[i]).addClass("opacityLow");
-    }
-
-    for (var i = 0; i < keepOn.length; i++) {
-        $(keepOn[i]).removeClass("opacityLow");
-        $(keepOn[i]).addClass("elementOn");
-    }
-    //  console.log($('body').html());
-
-}
-
-
-
-function showAllParts() {
-    for (var i = 0; i < components.length; i++) {
-        $(components[i]).removeClass("opacityLow");
-        $(components[i]).removeClass("elementOn");
-        $(components[i]).removeClass("elementOff");
-    }
-    for (var i = 0; i < components.length; i++) {
-        $(components[i]).addClass("elementOn");
-    }
-
-}
-
-
-
-function popupOn(text, props) {
-    $("#popup").css("display", "inline-block");
-    $("#popup").addClass("elementOn");
-    $("#popup").css(props);
-    $("#popupText").text(text);
-}
-
-function popupOff() {
-    $("#popup").css("display", "none");
-}
-
-function intro() {
-    $("#headerText").text("Click the microscope to learn about its components.");
-}
-
-function setup(){
-    $("#headerText").text("Follow the instructions to toggle the components.");
-}
 
 
 //function lowMagnification(){
@@ -141,24 +89,21 @@ function toggleLightSwitch(){
         console.log(microscope.lightStatus);
        
         if (microscope.lightStatus>0){
-
-            
-//            $("#light").removeClass("lightOff");
-//            $("#light").addClass("lightOn");
+            $("#light").removeClass("elementOff"); 
+            $("#light").addClass("lightOn");
         }
+
         else{
-
-  //          $("#light").removeClass("lightOn");
-      //      $("#light").addClass("lightOff");
-     //       $("#light").addClass("elementOff");
+            $("#light").removeClass("lightOn");
+            $("#light").addClass("elementOff");
         }
+
     });
 }
 
 
 /*Enables functionality for the eyepiece on call.*/
 function enableEyepiece(){
-
             function addOcularDrag(ocularPart){
             var ocularPartOpposite = "#ocularLeft";
             var baseDir = 0;
@@ -202,6 +147,7 @@ function enableEyepiece(){
                         "transform":"translate(" + -1*ocularSpread  +"px," + 0  + "px)"
                         });
                     prevX = event.pageX;
+                    microscope.eyepiecePosition = ocularSpread;
                     }
             })
             .mouseup(function() {
