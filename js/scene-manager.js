@@ -4,7 +4,7 @@ function intro() {
 }
 
 
-function setup(){
+function setupText(){
     $("#headerText").text("Follow the instructions to toggle the components.");
 }
 
@@ -36,13 +36,13 @@ function startStep(step) {
            act/adjust the microscope before the game proceeds onto the next step.
 
          */
-        if (step == setupStart)             { setup();}
-        if (step == setupLightSwitch)       { setupEnableSwitch(); toggleLightSwitch(); }
+        if (step == setupLightSwitch)       { setupText(); setupEnableSwitch(); toggleLightSwitch(); }
         if (step == setupEyepiece)          { setupAdjustEyepiece(); enableEyepiece(); }
+        if (step == setupCoarse)            { enableCoarseKnob();  }
         if (step == setupDiaphragmLight)    { toggleDiaphragmLight(); }
         if (step == setupDiaphragmHeight)   { toggleDiaphragmHeight(); }
         if (step == setupFine)              { toggleFine(); }
-        if (step == setupCoarse)            { toggleCoarse(); }
+
         if (step == setupLenses)            { toggleLenses(); }
         if (step == setupCaliper)           { toggleCaliper(); }
 
