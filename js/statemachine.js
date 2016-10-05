@@ -23,15 +23,19 @@ var components = ["#frame",
     "#ocularRight",
     "#ocularLeft",
     "#lenses",
-    //                      "#lensesRed",
-    //                      "#lensesBlue",
-    //                      "#lensesYellow",
-    //                      "#lensesWhite",
     "#switch",
     // "#light",
     "#knobsCoarse",
     "#knobsFine"];
 
+
+var overlapnents = [
+                          "#lensesRed",
+                          "#lensesBlue",
+                          "#lensesYellow",
+                          "#lensesWhite",
+                          
+]
 
 // Steps ordered in an array
 var stepTexts =["Turn on the light.", "Adjust the eyepieces"];

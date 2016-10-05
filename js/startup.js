@@ -18,6 +18,18 @@ opacity: 0
 showMenu();
 }
 
+function loadIntroComplete(){
+
+    $("#endText").text("Great job!");
+    $("#endSubText").text("The next phase will teach you how to\n set up the microscope.\n If you forget what each part does, you can go back.")
+    $("#endSubText").css({
+opacity: 1
+});
+$(".endErrorText").css({
+opacity: 0
+});
+showMenu();
+}
 
 function showMenu() {
     // Make overlay visible
@@ -26,7 +38,7 @@ function showMenu() {
             'z-index': 100
             });
     // Lock/unlock modes
-    lockModes();
+//    lockModes();
     // Show results screen
     $("#results").removeClass("anim_exitResults");
     $("#results").addClass("anim_enterResults");

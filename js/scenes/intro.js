@@ -33,26 +33,40 @@ var setupCaliper;
 var debug=false;
 intro=true;
 setup=false;
+var introCount=0;
+edgeArr = []
+
+
+function hideAll(){
+    for (var i = 0; i < components.length; i++) {
+        $(components[i]).addClass("opacityLow");
+        $(components[i]).removeClass("elementOn");
+        $(components[i]).removeClass("elementOff");
+    }
+
+    console.log("intro count: " + introCount);
+    //All steps complete.
+    if (introCount == 7 && intro){
+        showAllParts();
+        loadIntroComplete(); 
+        intro = false;
+    }
+
+}
 
 
 // Hide-Show component functions
 function secludePart(keepOn) {
-
-    for (var i = 0; i < components.length; i++) {
-        $(components[i]).removeClass("opacityLow");
-        $(components[i]).removeClass("elementOn");
-        $(components[i]).removeClass("elementOff");
-    }
-    for (var i = 0; i < components.length; i++) {
-        $(components[i]).addClass("opacityLow");
-    }
-
     for (var i = 0; i < keepOn.length; i++) {
         $(keepOn[i]).removeClass("opacityLow");
+        $(keepOn[i]).removeClass("elementOff");
         $(keepOn[i]).addClass("elementOn");
     }
     //  console.log($('body').html());
 
+}
+
+function detachBindings(){
 }
 
 function showAllParts() {
@@ -60,7 +74,16 @@ function showAllParts() {
         $(components[i]).removeClass("opacityLow");
         $(components[i]).removeClass("elementOn");
         $(components[i]).removeClass("elementOff");
+        $(components[i]).off("mouseleave");
+        $(components[i]).off("mouseenter");
+        console.log(components[i]);
     }
+
+    for (var j=0; i< overlapnents.length;j++){ 
+        $(overlapnents[j]).off("mouseleave");
+        $(overlapnents[j]).off("mouseenter");
+    }
+
     for (var i = 0; i < components.length; i++) {
         $(components[i]).addClass("elementOn");
     }
@@ -143,7 +166,8 @@ function triggerCaliper() {
 }
 
 function triggerLenses() {
-    arr = ["#lenses"];
+    arr = ["#lenses", "#lensesRed", "#lensesBlue", "#lensesYellow", "#lensesWhite"];
+    edgeArr = arr;
     popupOn("Lenses: The lenses are rotated on the nosepiece to change the magnification. These different lenses are referred to as the objectives.", {
             "left": "10%",
             "top": "36%",
@@ -183,49 +207,98 @@ $(function () {
 
             //===============intro===============
             if (intro){
-                $("#switch").click(function () {
+                console.log("debugger");
+                hideAll();
+                $("#switch")
+                    .mouseenter(function () {
+                            triggerLightSwitch();
+                            })
+                .mouseleave(function(){ 
                         if (introLightSwitch.isActive()) {
-                        introLightSwitch.complete();}
-                        });
-
-                $("#ocularLensBase, #ocularRight, #ocularLeft").click(function () {
-                        if (introEyepiece.isActive()) {
-                        introEyepiece.complete();}
-                        });
-
-                $("#knobsCoarse").click(function () {
-                        if (introCoarse.isActive()) {
-                        introCoarse.complete();}
-                        });
-
-                $("#knobsFine").click(function () {
-                        if (introFine.isActive()) {
-                        introFine.complete();}
-                        });
-
-                $("#diaphragm").click(function () {
-                        if (introDiaphragm.isActive()) {
-                        introDiaphragm.complete();}
-                        });
-
-                $("#caliperKnob, #caliper, #xcaliper, #ycaliper").click(function () {
-                        if (introCaliper.isActive()) {
-                        introCaliper.complete();}
-                        });
-
-                $("#lenses, #lensesRed, #lensesBlue, #lensesYellow, #lensesWhite").click(function () {
-                        if (introLenses.isActive()) {
-                        introLenses.complete();
-                        $("#popup").removeClass("elementOn");
-                        $("#popup").addClass("elementOff");
-                        showAllParts();
+                        introLightSwitch.complete();
+                        introCount++;
                         }
+                        popupOff();hideAll();
+
+                        });
+
+                $("#ocularLensBase, #ocularRight, #ocularLeft")
+                    .mouseenter(function(){
+                            triggerEyepiece(); 
+                            })
+                .mouseleave(function () {
+                        if (introEyepiece.isActive()) {
+                        introCount++;
+                        introEyepiece.complete();}
+                        popupOff();hideAll();
+
+                        });
+
+                $("#knobsCoarse")
+                    .mouseenter(function(){
+                            triggerCoarse();
+                            })
+                .mouseleave(function () {
+                        if (introCoarse.isActive()) {
+                        introCount++;
+                        introCoarse.complete();}
+                        popupOff();hideAll();
+
+                        });
+
+                $("#knobsFine")
+                    .mouseenter(function(){
+                            triggerFine();
+                            })
+                .mouseleave(function () {
+                        if (introFine.isActive()) {
+                        introCount++;
+                        introFine.complete();}
+                        popupOff();hideAll();
+
+                        });
+
+                $("#diaphragm")
+                    .mouseenter(function(){
+                            triggerDiaphragm()
+                            })
+                .mouseleave(function () {
+                        if (introDiaphragm.isActive()) {
+                        introCount++;
+                        introDiaphragm.complete();}
+                        popupOff();hideAll();
+
+                        });
+
+                $("#caliperKnob, #caliper, #xcaliper, #ycaliper")
+                    .mouseenter(function(){
+                            triggerCaliper();
+                            })
+                .mouseleave(function () {
+                        if (introCaliper.isActive()) {
+                        introCount++;
+                        introCaliper.complete();}
+                        popupOff();hideAll();
+
+                        });
+
+                $("#lenses")
+                    .mouseenter(function(){
+                            triggerLenses();  
+                            })
+                .mouseleave(function () {
+                        if (introLenses.isActive()) {
+                        introCount++;
+                        introLenses.complete();} 
+                        popupOff();hideAll();
                         });
             }
 
-            // Introduction complete!
-            intro = false;
-            setup = true;
+
+
+
+
+
 
             //==========light toggle==================
             //toggleLightSwitch();
@@ -233,22 +306,22 @@ $(function () {
             //enableEyepiece();                
 
 
-    /*
-            $("#endOption2").click(function () {
-                    // Start Intermediate Mode
-                    if (false)
-                    newGame(false, false);
-                    });
+            /*
+               $("#endOption2").click(function () {
+            // Start Intermediate Mode
+            if (false)
+            newGame(false, false);
+            });
 
             $("#endOption3").click(function () {
-                    // Start Expert Mode
-                    if (false)
-                    newGame(false, true);
-                    });
+            // Start Expert Mode
+            if (false)
+            newGame(false, true);
+            });
             for (var i = 1; i <= 3; i++) {
-                initEndOptionHover(i);
+            initEndOptionHover(i);
             }
-    */
+             */
 
 
 

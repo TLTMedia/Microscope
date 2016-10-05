@@ -6,6 +6,23 @@
  */ 
 
 
+
+function showAllPartsSetup() {
+    for (var i = 0; i < components.length; i++) {
+        console.log(components[i]);
+        $(components[i]).removeClass("opacityLow");
+        $(components[i]).removeClass("elementOff");
+        $(components[i]).off("mouseleave");
+        $(components[i]).off("hover");
+        
+    }
+    for (var i = 0; i < components.length; i++) {
+        $(components[i]).addClass("elementOn");
+    }
+
+}
+
+
 function setupEnableSwitch(){
     $("#switch").click(function() {
             if (setupLightSwitch.isActive()){

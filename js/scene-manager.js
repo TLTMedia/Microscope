@@ -19,7 +19,7 @@ function startStep(step) {
        The purpose of the introduction is to teach the user about the different
        parts of the microscope.
      */
-    if (step == introLightSwitch)   { introText(); triggerLightSwitch();
+    if (step == introLightSwitch)   { introText(); //triggerLightSwitch();
         $("#light").addClass("elementOff");}
         if (step == introDiaphragm)     { triggerDiaphragm(); }
         if (step == introFine)          { triggerFine(); }
