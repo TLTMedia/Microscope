@@ -1,5 +1,4 @@
-/*
- * startup.js
+/* * startup.js
  * Source provides user with UI to choose start up options. 
  * Startup options include the choice between three game modes.
  *

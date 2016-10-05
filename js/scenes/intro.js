@@ -18,23 +18,12 @@ var introFine;
 var introCoarse;
 var introLenses;
 var introCaliper;
-var setupStart;
-var setupLightSwitch;
-var setupEyepiece;
-var setupDiaphragmLight;
-var setupDiaphragmHeight;
-var setupFine;
-var setupCoarse;
-var setupLenses;
-var setupCaliper;
-
 
 // Used to skip steps when testing
 var debug=false;
 intro=true;
 setup=false;
 var introCount=0;
-edgeArr = []
 
 
 function hideAll(){
@@ -44,7 +33,7 @@ function hideAll(){
         $(components[i]).removeClass("elementOff");
     }
 
-    console.log("intro count: " + introCount);
+    //console.log("intro count: " + introCount);
     //All steps complete.
     if (introCount == 7 && intro){
         showAllParts();
@@ -76,7 +65,7 @@ function showAllParts() {
         $(components[i]).removeClass("elementOff");
         $(components[i]).off("mouseleave");
         $(components[i]).off("mouseenter");
-        console.log(components[i]);
+
     }
 
     for (var j=0; i< overlapnents.length;j++){ 
@@ -92,17 +81,6 @@ function showAllParts() {
 // End Hide Show component functions
 
 
-// Misc. Functions
-function popupOn(text, props) {
-    $("#popup").css("display", "inline-block");
-    $("#popup").addClass("elementOn");
-    $("#popup").css(props);
-    $("#popupText").text(text);
-}
-
-function popupOff() {
-    $("#popup").css("display", "none");
-}
 
 
 // End  misc. functions
