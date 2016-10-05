@@ -6,34 +6,33 @@
  **/
 
 
-        function loadStartMenu() {
-        $("#headerText").text("Microscope Simulator");
-        $("#endText").text("Welcome back!");
-        $("#endSubText").text("Select a game mode to begin.");
-        $("#endSubText").css({
+function loadStartMenu() {
+    $("#endText").text("Microscope Simulator");
+    $("#endSubText").text("By the end of the simulation, \nyou will know how to use a microscope.");
+    $("#endSubText").css({
 opacity: 1
 });
-        $(".endErrorText").css({
+$(".endErrorText").css({
 opacity: 0
 });
-        showMenu();
-        }
+showMenu();
+}
 
 
-        function showMenu() {
-        // Make overlay visible
-        $("#overlay").css({
+function showMenu() {
+    // Make overlay visible
+    $("#overlay").css({
             'opacity': 1,
             'z-index': 100
             });
-        // Lock/unlock modes
-        lockModes();
-        // Show results screen
-        $("#results").removeClass("anim_exitResults");
-        $("#results").addClass("anim_enterResults");
-        $("#overlayBG").removeClass("anim_fadeOutBG");
-        $("#overlayBG").addClass("anim_fadeInBG");
-        }
+    // Lock/unlock modes
+    lockModes();
+    // Show results screen
+    $("#results").removeClass("anim_exitResults");
+    $("#results").addClass("anim_enterResults");
+    $("#overlayBG").removeClass("anim_fadeOutBG");
+    $("#overlayBG").addClass("anim_fadeInBG");
+}
 
 
 function hideMenu() {

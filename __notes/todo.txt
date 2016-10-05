@@ -9,32 +9,6 @@ Modes:
 - Add warnings
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 We will be using a compound microscope with 40x, 100x, 400x, and 1000x lenses.
 The microscope works by magnifying a sample on the slide using the lenses. Let’s get started!
 
