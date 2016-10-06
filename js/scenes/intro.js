@@ -26,49 +26,30 @@ setup = false;
 var introCount = 0;
 
 
-function hideAll() {
+
+
+function secludePart(keepOn) {
     for (var i = 0; i < components.length; i++) {
-        $(components[i]).addClass("opacityLow");
+        $(components[i]).removeClass("opacityLow");
         $(components[i]).removeClass("elementOn");
         $(components[i]).removeClass("elementOff");
     }
-
-    //console.log("intro count: " + introCount);
-    //All steps complete.
-    if (introCount == 7 && intro) {
-        showAllParts();
-        loadIntroComplete();
-        intro = false;
+    for (var i = 0; i < components.length; i++) {
+        $(components[i]).addClass("opacityLow");
     }
 
-}
-
-
-// Hide-Show component functions
-function secludePart(keepOn) {
     for (var i = 0; i < keepOn.length; i++) {
         $(keepOn[i]).removeClass("opacityLow");
-        $(keepOn[i]).removeClass("elementOff");
         $(keepOn[i]).addClass("elementOn");
     }
-    //  console.log($('body').html());
-
 }
 
-function detachBindings() {}
 
 function showAllParts() {
     for (var i = 0; i < components.length; i++) {
         $(components[i]).removeClass("opacityLow");
         $(components[i]).removeClass("elementOn");
         $(components[i]).removeClass("elementOff");
-        $(components[i]).off("mouseleave");
-        $(components[i]).off("mouseenter");
-    }
-
-    for (var j = 0; i < overlapnents.length; j++) {
-        $(overlapnents[j]).off("mouseleave");
-        $(overlapnents[j]).off("mouseenter");
     }
 
     for (var i = 0; i < components.length; i++) {
@@ -76,9 +57,34 @@ function showAllParts() {
     }
 
 }
+
+/*
+old shit son
+
+function hideAll() {
+    for (var i = 0; i < components.length; i++) {
+        $(components[i]).addClass("opacityLow");
+        $(components[i]).removeClass("elementOn");
+        $(components[i]).removeClass("elementOff");
+    }
+}
+
+// Hide-Show component functions
+function secludePart(keepOn) {
+    // hideAll();
+    for (var i = 0; i < keepOn.length; i++) {
+        $(keepOn[i]).removeClass("opacityLow");
+        $(keepOn[i]).removeClass("elementOff");
+        $(keepOn[i]).addClass("elementOn");
+    }
+    //  console.log($('body').html());
+}
+
+function detachBindings() {}
+
+
 // End Hide Show component functions
-
-
+*/
 
 
 // End  misc. functions
@@ -98,6 +104,7 @@ function triggerLightSwitch() {
 
 function triggerEyepiece() {
     var arr = ["#eyepiece", "#ocularRight", "#ocularLeft", "#ocularLensBase"];
+    console.log("HH")
     popupOn("Eyepiece: View the sample through the ocular lenses. They magnify the image ten times.", {
         "left": "5%",
         "top": "25%",
@@ -172,111 +179,73 @@ $(function() {
         // debug = true;
         if (debug) {
             debugIntro();
-            // debugSetup();
-            // debugLowMag();
-            // debugHighMag();
+             //debugSetup();
+             //debugLowMag();
+             //debugHighMag();
         }
 
 
         // ===============intro===============
         if (intro) {
             console.log("debugger");
-            hideAll();
+            // hideAll();
             $("#switch")
-                .mouseenter(function() {
-                    triggerLightSwitch();
-                })
-                .mouseleave(function() {
+                .click(function() {
                     if (introLightSwitch.isActive()) {
                         introLightSwitch.complete();
-                        introCount++;
+
                     }
-                    popupOff();
-                    hideAll();
 
                 });
 
             $("#ocularLensBase, #ocularRight, #ocularLeft")
-                .mouseenter(function() {
-                    triggerEyepiece();
-                })
-                .mouseleave(function() {
+                .click(function() {
                     if (introEyepiece.isActive()) {
-                        introCount++;
                         introEyepiece.complete();
                     }
-                    popupOff();
-                    hideAll();
 
                 });
 
             $("#knobsCoarse")
-                .mouseenter(function() {
-                    triggerCoarse();
-                })
-                .mouseleave(function() {
+
+                .click(function() {
                     if (introCoarse.isActive()) {
-                        introCount++;
                         introCoarse.complete();
                     }
-                    popupOff();
-                    hideAll();
 
                 });
 
             $("#knobsFine")
-                .mouseenter(function() {
-                    triggerFine();
-                })
-                .mouseleave(function() {
+                .click(function() {
                     if (introFine.isActive()) {
-                        introCount++;
                         introFine.complete();
                     }
-                    popupOff();
-                    hideAll();
-
                 });
 
             $("#diaphragm")
-                .mouseenter(function() {
-                    triggerDiaphragm();
-                })
-                .mouseleave(function() {
+                .click(function() {
                     if (introDiaphragm.isActive()) {
-                        introCount++;
                         introDiaphragm.complete();
                     }
-                    popupOff();
-                    hideAll();
 
                 });
 
             $("#caliperKnob, #caliper, #xcaliper, #ycaliper")
-                .mouseenter(function() {
-                    triggerCaliper();
-                })
-                .mouseleave(function() {
+                .click(function() {
                     if (introCaliper.isActive()) {
-                        introCount++;
                         introCaliper.complete();
                     }
-                    popupOff();
-                    hideAll();
-
                 });
 
-            $("#lenses")
-                .mouseenter(function() {
-                    triggerLenses();
-                })
-                .mouseleave(function() {
+            $("#lenses, #lensesBlue, #lensesRed, #lensesYellow, #lensesWhite")
+                .click(function() {
                     if (introLenses.isActive()) {
-                        introCount++;
                         introLenses.complete();
+                        showAllParts()
                     }
-                    popupOff();
-                    hideAll();
+                    //popupOff();
+                    // hideAll();
+
                 });
         }
 

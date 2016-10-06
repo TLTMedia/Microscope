@@ -16,11 +16,10 @@ function textSetupSwitch() {
 
 function textSetupEyepiece() {
     var arr = ["#eyepiece", "#ocularRight", "#ocularLeft", "#ocularLensBase"];
-    popupOn("Eyepiece: View the sample through the ocular lenses. They magnify the image ten times.", {
+    popupOn("Adjust the eyepiece to change the magnification.", {
         "left": "5%",
         "top": "25%",
     });
-    secludePart(arr);
 }
 
 function textSetupDiaphragm() {
@@ -29,7 +28,6 @@ function textSetupDiaphragm() {
         "left": "15%",
         "top": "60%",
     });
-    secludePart(arr);
 }
 
 function textSetupFine() {
@@ -38,7 +36,6 @@ function textSetupFine() {
         "left": "10%",
         "top": "64%",
     });
-    secludePart(arr);
 }
 
 function textSetupCoarse() {
@@ -47,7 +44,6 @@ function textSetupCoarse() {
         "left": "10%",
         "top": "64%",
     });
-    secludePart(arr);
 }
 
 function textSetupCaliper() {
@@ -56,7 +52,6 @@ function textSetupCaliper() {
         "left": "55%",
         "top": "55%",
     });
-    secludePart(arr);
 }
 
 function textSetupLenses() {
@@ -66,7 +61,6 @@ function textSetupLenses() {
         "left": "10%",
         "top": "36%",
     });
-    secludePart(arr);
 }
 
 function showAllPartsSetup() {
@@ -86,7 +80,6 @@ function showAllPartsSetup() {
 
 
 function setupEnableSwitch() {
-    console.log("SWITCH");
     textSetupSwitch();
 
     $("#switch").click(function() {
@@ -98,10 +91,9 @@ function setupEnableSwitch() {
 
 
 function setupAdjustEyepiece() {
-
+    textSetupEyepiece();
     if (setupEyepiece.isActive()) {
         var intervalId = window.setInterval(ocularCallback, 1000);
-
         function ocularCallback() {
             //console.log(microscope.eyepiecePosition);
             if (microscope.eyepiecePosition > 10 && microscope.eyepiecePosition < 25) {
