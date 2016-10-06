@@ -1,6 +1,27 @@
-Dim light
+////////////////////////////////////////////////////////////////////////////////////
+CAUTION alerts. User should be penalized or not proceed if the following occurs:
+(Emphasis on physical activity that may damage microscope IRL.)
+////////////////////////////////////////////////////////////////////////////////////
 
-Don’t touch lenses— only rubber part
 
-Once lenses are switched, do not adjust coarse knobs
+- Light Switch
+  Is a variable switch with parameters (warm temperature ~ white). Color temperature should be neutral-- achieved by turning light switch ~all the way up~
+  Users often turn the switch midway, resulting in an orange-tinted image. This makes the image difficult to see.
+  => Implementation : CSS color overlay (#ff0000) with variable opacity. Probably logarithmic, not linear.
 
+
+- Objective Lenses
+  The objective lenses (white, blue, red, yellow) should not actually be touched. The rubber wheel should.
+  => Implementation : Flash warning when lenses are clicked. Only rotating the wheel should move them.
+
+
+- Objective Lenses
+  Once the image is in focus, it is no longer necessary to adjust the coarse knob, only the fine knob.
+
+
+!!!
+- Objective Lenses
+  The worst. Do not make the following transitions:
+    Red -> White
+    Blue -> White
+unless the stage has been lowered. Otherwise, the glass of the white lens will make contact with the stage and break.

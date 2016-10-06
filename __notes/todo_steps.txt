@@ -4,8 +4,8 @@ Modes:
 
 
 - Merge intro + setup
-- Delete Low Magnification/High Magnification
-  -> replace with “e magnification” + “onion cell”   
+- Replace Low Magnification/High Magnification
+  -> “e magnification” + “onion cell”
 - Add warnings
 
 
@@ -22,11 +22,10 @@ The microscope works by magnifying a sample on the slide using the lenses. Let�
 			Moves the stage up and down for focusing
 		- Fine Adjustment
 			Moves the stage slightly to sharpen the focus
-
 		- Diaphragm
 			Adjusts the amount of light on the slide
 		- Nosepiece (Lenses)
-			The lenses are rotated on the nosepiece to change the magnification. 
+			The lenses are rotated on the nosepiece to change the magnification.
 			These different lenses are referred to as the objectives, for example, the 40x objective.
 		- Caliper
 			View the sample through the eyepiece. The lens magnifies the image ten times.
@@ -52,25 +51,36 @@ The microscope works by magnifying a sample on the slide using the lenses. Let�
 		- Nosepiece (Lenses)
 		- Caliper x
 		- Caliper y
-			
+
 ////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
 
- 
+(Some of the order does not matter here. -> statemachine)
 	Low Magnification(10x)
-	        - Turn on light
-	        - Nosepiece (values, rotate)
+		- Turn on light
+		- Turn the lens to 10x (low magnification)
 		- Place slide
-		- Coarse Focus
-		- Fine Focus
-		- Nosepiece
-			Turn the nosepiece to 10x
-		- Center slide (Field Diaphragm Centering)
-		- Adjust light (Diaphragm - Light)
-			Adjust the diaphragm so more light comes through.
+		  Slide will be on table. Click+drag onto stage.
+		- Center the slide
+		  x, y adjustment through caliper knobs
+		- Adjust coarse knob
+		  Image should not appear until a particular value has been reached. Value doesn't matter in particular.
+		- Adjust fine knob
+		  CSS: Variable gaussian blur, turn off when achieved.
+  	        - Adjust brightness (Diaphragm - Light)
+		  Adjust the diaphragm so more/less light comes through.
+
+
+	    Note to user:
+		  Multiply the number on the objective lens by 10, the magnification of the eyepiece lens, to find the total magnification. For example, the 10x objective would give you 10x10, or 100x magnification.
+		  Be sure to adjust the eyepiece before raising the platform.
+		  (Rotation state determined by y-axis displacement. Will add extra frames for “pseudo-tweening” (search:"inbetweening"))
+
+
+
 
 
 	High Magnification (100x)
@@ -88,10 +98,7 @@ The microscope works by magnifying a sample on the slide using the lenses. Let�
 
 	Clean up
 		- Turn off light
-
-
-
-
+		- ?
 
 
 

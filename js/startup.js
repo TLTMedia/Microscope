@@ -1,5 +1,5 @@
 /* * startup.js
- * Source provides user with UI to choose start up options. 
+ * Source provides user with UI to choose start up options.
  * Startup options include the choice between three game modes.
  *
  **/
@@ -9,35 +9,35 @@ function loadStartMenu() {
     $("#endText").text("Microscope Simulator");
     $("#endSubText").text("By the end of the simulation, \nyou will know how to use a microscope.");
     $("#endSubText").css({
-opacity: 1
-});
-$(".endErrorText").css({
-opacity: 0
-});
-showMenu();
+        opacity: 1
+    });
+    $(".endErrorText").css({
+        opacity: 0
+    });
+    showMenu();
 }
 
-function loadIntroComplete(){
+function loadIntroComplete() {
 
     $("#endText").text("Great job!");
     $("#endSubText").text("The next phase will teach you how to\n set up the microscope.\n If you forget what each part does, you can go back.")
     $("#endSubText").css({
-opacity: 1
-});
-$(".endErrorText").css({
-opacity: 0
-});
-showMenu();
+        opacity: 1
+    });
+    $(".endErrorText").css({
+        opacity: 0
+    });
+    showMenu();
 }
 
 function showMenu() {
     // Make overlay visible
     $("#overlay").css({
-            'opacity': 1,
-            'z-index': 100
-            });
+        'opacity': 1,
+        'z-index': 100
+    });
     // Lock/unlock modes
-//    lockModes();
+    //    lockModes();
     // Show results screen
     $("#results").removeClass("anim_exitResults");
     $("#results").addClass("anim_enterResults");
@@ -48,12 +48,12 @@ function showMenu() {
 
 function hideMenu() {
     // Make overlay invisible after it fades out
-    setTimeout(function () {
-            $("#overlay").css({
-                'opacity': 0,
-                'z-index': -100
-                });
-            }, 500);
+    setTimeout(function() {
+        $("#overlay").css({
+            'opacity': 0,
+            'z-index': -100
+        });
+    }, 500);
     // Hide results screen
     $("#results").removeClass("anim_enterResults");
     $("#results").addClass("anim_exitResults");
@@ -105,145 +105,151 @@ function newGame(guided, manual) {
 
 function loadSubMenu() {
     //  Define steps (order doesn't matter here)
-    var stepText = [
-    {
-        "id": "intro",
+    var stepText = [{
+            "id": "intro",
             "shortText": "Introduction",
-            "steps": [
-            {
+            "steps": [{
                 "id": "introLightSwitch",
                 "shortText": "Light Switch",
                 "longText": "Click the light switch.",
                 "feedbackText": "click the light switch"
-            },
-            {
+            }, {
                 "id": "introEyepiece",
                 "shortText": "Eyepiece",
                 "longText": "Click the eyepiece.",
                 "feedbackText": "click the eyepiece"
-            },
-            {
+            }, {
                 "id": "introCoarse",
                 "shortText": "Coarse Knob",
                 "longText": "Click the coarse knobs.",
                 "feedbackText": "click the coarse knobs"
-            },
-            {
+            }, {
                 "id": "introFine",
                 "shortText": "Fine Knobs",
                 "longText": "Click the fine knobs.",
                 "feedbackText": "click the fine knobs"
-            },
-            {
+            }, {
                 "id": "introDiaphragm",
                 "shortText": "Diaphragm",
                 "longText": "Click the diaphragm.",
                 "feedbackText": "click the diaphragm"
-            },
-            {
+            }, {
                 "id": "introCaliper",
                 "shortText": "Caliper",
                 "longText": "Click the caliper.",
                 "feedbackText": "click the caliper"
-            },
-            {
+            }, {
                 "id": "introLenses",
                 "shortText": "Lenses",
                 "longText": "Click the lenses.",
                 "feedbackText": "click the lenses"
-            }
-        ]
-    },
-    {
-        "id": "setup",
-        "shortText": "Setup",
-        "steps": [
-        {
-            "id": "setupLightSwitch",
-            "shortText": "Light Switch",
-            "longText": "Click the light switch.",
-            "feedbackText": "click the light switch"
-        },
-        {
-            "id": "setupEyepiece",
-            "shortText": "Eyepiece",
-            "longText": "Click the eyepiece.",
-            "feedbackText": "click the eyepiece"
-        },
-        {
-            "id": "setupCoarse",
-            "shortText": "Coarse Knob",
-            "longText": "Click the coarse knobs.",
-            "feedbackText": "click the coarse knobs"
-        },
-        {
-            "id": "setupFine",
-            "shortText": "Fine Knobs",
-            "longText": "Click the fine knobs.",
-            "feedbackText": "click the fine knobs"
-        },
-        {
-            "id": "setupDiaphragmLight",
-            "shortText": "Diaphragm Light",
-            "longText": "Click the diaphragm.",
-            "feedbackText": "click the diaphragm"
-        },
-        {
-            "id": "setupDiaphragmHeight",
-            "shortText": "Diaphragm Height",
-            "longText": "Click the diaphragm.",
-            "feedbackText": "click the diaphragm"
-        },
-        {
-            "id": "setupCaliper",
-            "shortText": "Caliper",
-            "longText": "Click the caliper.",
-            "feedbackText": "click the caliper"
-        },
-        {
-            "id": "setupLenses",
-            "shortText": "Lenses",
-            "longText": "Click the lenses.",
-            "feedbackText": "click the lenses"
+            }]
+        }, {
+            "id": "setup",
+            "shortText": "Setup",
+            "steps": [{
+                "id": "setupLightSwitch",
+                "shortText": "Light Switch",
+                "longText": "Click the light switch.",
+                "feedbackText": "click the light switch"
+            }, {
+                "id": "setupEyepiece",
+                "shortText": "Eyepiece",
+                "longText": "Click the eyepiece.",
+                "feedbackText": "click the eyepiece"
+            }, {
+                "id": "setupCoarse",
+                "shortText": "Coarse Knob",
+                "longText": "Click the coarse knobs.",
+                "feedbackText": "click the coarse knobs"
+            }, {
+                "id": "setupFine",
+                "shortText": "Fine Knobs",
+                "longText": "Click the fine knobs.",
+                "feedbackText": "click the fine knobs"
+            }, {
+                "id": "setupDiaphragmLight",
+                "shortText": "Diaphragm Light",
+                "longText": "Click the diaphragm.",
+                "feedbackText": "click the diaphragm"
+            }, {
+                "id": "setupDiaphragmHeight",
+                "shortText": "Diaphragm Height",
+                "longText": "Click the diaphragm.",
+                "feedbackText": "click the diaphragm"
+            }, {
+                "id": "setupCaliper",
+                "shortText": "Caliper",
+                "longText": "Click the caliper.",
+                "feedbackText": "click the caliper"
+            }, {
+                "id": "setupLenses",
+                "shortText": "Lenses",
+                "longText": "Click the lenses.",
+                "feedbackText": "click the lenses"
+            }]
+        }, {
+            "id": "lowmagnification",
+            "shortText": "Low Magnification",
+            "steps": [{
+                "id": "lowLight",
+                "shortText": "Light",
+                "longText": "Press the space bar.",
+                "feedbackText": "press the space bar"
+            }, {
+                "id": "lowLens",
+                "shortText": "10x Lens",
+                "longText": "Press F to pay respects.",
+                "feedbackText": "press the F key"
+            }, {
+                "id": "lowSlidePlace",
+                "shortText": "Place Slide",
+                "longText": "Press F to pay respects.",
+                "feedbackText": "press the F key"
+            }, {
+                "id": "lowSlideCenter",
+                "shortText": "Center Slide",
+                "longText": "Click the lenses.",
+                "feedbackText": "click the lenses"
+            }, {
+                "id": "lowCoarse",
+                "shortText": "Coarse Knob",
+                "longText": "Click the lenses.",
+                "feedbackText": "click the lenses"
+            }, {
+                "id": "lowFine",
+                "shortText": "Fine Knob",
+                "longText": "Click the lenses.",
+                "feedbackText": "click the lenses"
+            }, {
+                "id": "lowDiaphragm",
+                "shortText": "Diaphragm",
+                "longText": "Click the lenses.",
+                "feedbackText": "click the lenses"
+
+            // Might want separate steps for diaphragm light and height. Maybe.
+            // }, {
+            //     "id": "lowDiaphragm",
+            //     "shortText": "Diaphragm",
+            //     "longText": "Click the lenses.",
+            //     "feedbackText": "click the lenses"
+            }]
+
+        }, {
+            "id": "highmagnification",
+            "shortText": "High Magnification",
+            "steps": [{
+                "id": "#idname",
+                "shortText": "#shortText",
+                "longText": "#longText",
+                "feedbackText": "#feedbackText"
+            }, {
+                "id": "pressF",
+                "shortText": "Press F",
+                "longText": "Press F to pay respects.",
+                "feedbackText": "ty for much respects"
+            }]
         }
-        ]
-    },
-    {
-        "id": "lowmagnification",
-        "shortText": "Low Magnification",
-        "steps": [
-        {
-            "id": "triggerL",
-            "shortText": "Space Bar",
-            "longText": "Press the space bar.",
-            "feedbackText": "press the space bar"
-        },
-        {
-            "id": "pressF2",
-            "shortText": "Press F",
-            "longText": "Press F to pay respects.",
-            "feedbackText": "press the F key"
-        }
-        ]
-    },
-    {
-        "id": "highmagnification",
-        "shortText": "High Magnification",
-        "steps": [
-        {
-            "id": "triggerL",
-            "shortText": "Space Bar",
-            "longText": "Press the space bar.",
-            "feedbackText": "press the space bar"
-        },
-        {
-            "id": "pressF2",
-            "shortText": "Press F",
-            "longText": "Press F to pay respects.",
-            "feedbackText": "press the F key"
-        }
-        ]
-    }
 
     ];
 
@@ -286,6 +292,21 @@ function loadSubMenu() {
     setupCaliper = game.getGroupStep(1, 6);
     setupLenses = game.getGroupStep(1, 7);
 
+    // Low Magnification
+    lowLight = game.getGroupStep(2, 0);
+    lowLens = game.getGroupStep(2, 2);
+    lowSlidePlace = game.getGroupStep(2, 2);
+    lowSlideCenter = game.getGroupStep(2, 3);
+    lowCoarse = game.getGroupStep(2, 4);
+    lowFine = game.getGroupStep(2, 5);
+    lowDiaphragm = game.getGroupStep(2, 6);
+
+    // High Magnification
+    // a1 = game.getGroupStep(3, 0);
+    // a2 = game.getGroupStep(3, 2);
+
+
+
 
     updateSteps();
     //enterStepObjects();
@@ -296,14 +317,14 @@ function loadSubMenu() {
 
 
 function initEndOptionHover(id) {
-    $("#endOption" + id).hover(function () {
-            // Mouse over cell
-            $("#endOptionDesc" + id).removeClass("anim_exitEndOptionDesc");
-            $("#endOptionDesc" + id).addClass("anim_enterEndOptionDesc");
+    $("#endOption" + id).hover(function() {
+        // Mouse over cell
+        $("#endOptionDesc" + id).removeClass("anim_exitEndOptionDesc");
+        $("#endOptionDesc" + id).addClass("anim_enterEndOptionDesc");
 
-            }, function () {
-            // Leave cell
-            $("#endOptionDesc" + id).removeClass("anim_enterEndOptionDesc");
-            $("#endOptionDesc" + id).addClass("anim_exitEndOptionDesc");
-            });
+    }, function() {
+        // Leave cell
+        $("#endOptionDesc" + id).removeClass("anim_enterEndOptionDesc");
+        $("#endOptionDesc" + id).addClass("anim_exitEndOptionDesc");
+    });
 }

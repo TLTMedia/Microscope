@@ -1,10 +1,9 @@
-
 function introText() {
     $("#headerText").text("Click the microscope to learn about its components.");
 }
 
 
-function setupText(){
+function setupText() {
     $("#headerText").text("Follow the instructions to toggle the components.");
 }
 
@@ -19,37 +18,70 @@ function startStep(step) {
        The purpose of the introduction is to teach the user about the different
        parts of the microscope.
      */
-    if (step == introLightSwitch)   { introText(); //triggerLightSwitch();
-        $("#light").addClass("elementOff");}
-        if (step == introDiaphragm)     { triggerDiaphragm(); }
-        if (step == introFine)          { triggerFine(); }
-        if (step == introCoarse)        { triggerCoarse(); }
-        if (step == introLenses)        { triggerLenses(); }
-        if (step == introCaliper)       { triggerCaliper(); }
-        if (step == introEyepiece)      { triggerEyepiece();}
+    if (step == introLightSwitch) {
+        introText(); //triggerLightSwitch();
+        $("#light").addClass("elementOff");
+    }
+    if (step == introDiaphragm) {
+        triggerDiaphragm();
+    }
+    if (step == introFine) {
+        triggerFine();
+    }
+    if (step == introCoarse) {
+        triggerCoarse();
+    }
+    if (step == introLenses) {
+        triggerLenses();
+    }
+    if (step == introCaliper) {
+        triggerCaliper();
+    }
+    if (step == introEyepiece) {
+        triggerEyepiece();
+    }
 
-        /* setup
+    /* setup
 
-           Steps now have an intermission period between each step where the user must
-           act/adjust the microscope before the game proceeds onto the next step.
+       Steps now have an intermission period between each step where the user must
+       act/adjust the microscope before the game proceeds onto the next step.
 
-         */
-        if (step == setupLightSwitch)       { setupText(); setupEnableSwitch(); toggleLightSwitch(); }
-        if (step == setupEyepiece)          { setupAdjustEyepiece(); enableEyepiece(); }
-        if (step == setupCoarse)            { setupAdjustCoarse(); enableCoarseKnob();  }
-        if (step == setupFine)              { setupAdjustFine(); toggleFine(); }
-        if (step == setupDiaphragmLight)    { toggleDiaphragmLight(); }
-        if (step == setupDiaphragmHeight)   { toggleDiaphragmHeight(); }
+     */
+    if (step == setupLightSwitch) {
+        setupText();
+        setupEnableSwitch();
+        toggleLightSwitch();
+    }
+    if (step == setupEyepiece) {
+        setupAdjustEyepiece();
+        enableEyepiece();
+    }
+    if (step == setupCoarse) {
+        setupAdjustCoarse();
+        enableCoarseKnob();
+    }
+    if (step == setupFine) {
+        setupAdjustFine();
+        toggleFine();
+    }
+    if (step == setupDiaphragmLight) {
+        toggleDiaphragmLight();
+    }
+    if (step == setupDiaphragmHeight) {
+        toggleDiaphragmHeight();
+    }
 
 
-        if (step == setupLenses)            { toggleLenses(); }
-        if (step == setupCaliper)           { toggleCaliper(); }
+    if (step == setupLenses) {
+        toggleLenses();
+    }
+    if (step == setupCaliper) {
+        toggleCaliper();
+    }
 
 
-        // enable freemode? (user can do whatever they want with the scope)
+    // enable freemode? (user can do whatever they want with the scope)
 
 }
 
 function endStep(step) {}
-
-

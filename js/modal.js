@@ -1,12 +1,12 @@
 /**
-* modal.js
-* 
-* Functionality for popup boxes and modals.
-*/
+ * modal.js
+ *
+ * Functionality for popup boxes and modals.
+ */
 
 // Misc. Functions
 function popupOn(text, props) {
-    console.log("debug2");
+    // console.log("debug2");
     $("#popup").css("display", "inline-block");
     $("#popup").show();
     $("#popup").addClass("elementOn");

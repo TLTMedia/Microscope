@@ -1,11 +1,11 @@
 /*
-* resize.js 
-* Resizes the components inside the window if the window is resized by user.
-*
-**/
+ * resize.js
+ * Resizes the components inside the window if the window is resized by user.
+ *
+ **/
 
 // Fix aspect ratio of the stage
-$(window).resize(function () {
+$(window).resize(function() {
     resizeWindow();
 });
 
