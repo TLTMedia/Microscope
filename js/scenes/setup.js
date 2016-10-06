@@ -24,7 +24,7 @@ function textSetupEyepiece() {
 
 function textSetupDiaphragm() {
     arr = ["#diaphragm", "#apertureFixed", "#aperture"];
-    popupOn("Diaphragm: Adjusts the amount of light on the slide", {
+    popupOn("Adjust the diaphragm to change the lighting on the slide..", {
         "left": "15%",
         "top": "60%",
     });
@@ -32,7 +32,7 @@ function textSetupDiaphragm() {
 
 function textSetupFine() {
     arr = ["#knobsFine"];
-    popupOn("Fine Knobs: Moves the stage slightly to sharpen the focus", {
+    popupOn("Move the stage up a little to sharpen the focus", {
         "left": "10%",
         "top": "64%",
     });
@@ -40,7 +40,7 @@ function textSetupFine() {
 
 function textSetupCoarse() {
     arr = ["#knobsCoarse"];
-    popupOn("Coarse Knobs: Moves the stage up and down for focusing", {
+    popupOn("Move the stage up by moving the coarse knob.", {
         "left": "10%",
         "top": "64%",
     });
@@ -48,7 +48,7 @@ function textSetupCoarse() {
 
 function textSetupCaliper() {
     arr = ["#caliper", "#xcaliper", "#ycaliper", "#caliperKnob"];
-    popupOn("Caliper: Adjusts the vertical and horizontal positions of the slide.", {
+    popupOn("Move the caliper to adjust the position of the slide.", {
         "left": "55%",
         "top": "55%",
     });
@@ -63,25 +63,9 @@ function textSetupLenses() {
     });
 }
 
-function showAllPartsSetup() {
-    for (var i = 0; i < components.length; i++) {
-        console.log(components[i]);
-        $(components[i]).removeClass("opacityLow");
-        $(components[i]).removeClass("elementOff");
-        $(components[i]).off("mouseleave");
-        $(components[i]).off("hover");
-
-    }
-    for (var i = 0; i < components.length; i++) {
-        $(components[i]).addClass("elementOn");
-    }
-
-}
-
 
 function setupEnableSwitch() {
     textSetupSwitch();
-
     $("#switch").click(function() {
         if (setupLightSwitch.isActive()) {
             setupLightSwitch.complete();
@@ -104,10 +88,9 @@ function setupAdjustEyepiece() {
     }
 }
 
-
-
 /*Trigger for coarse knob (for now I have conjoined them)*/
 function setupAdjustCoarse() {
+    textSetupCoarse();
     if (setupCoarse.isActive()) {
         var intervalId = window.setInterval(coarseCallback, 1000);
 
@@ -123,6 +106,7 @@ function setupAdjustCoarse() {
 
 /*Trigger for fine knob (for now I have conjoined them)*/
 function setupAdjustFine() {
+  textSetupFine();
     if (setupFine.isActive()) {
         var intervalId = window.setInterval(fineCallback, 1000);
 

@@ -1,5 +1,5 @@
 function introText() {
-    $("#headerText").text("Click the microscope to learn about its components.");
+    $("#headerText").html("-Introduction-");
 }
 
 
@@ -19,8 +19,8 @@ function startStep(step) {
        parts of the microscope.
      */
     if (step == introLightSwitch) {
-
-        introText(); triggerLightSwitch();
+        //introText();
+        triggerLightSwitch();
         $("#light").addClass("elementOff");
     }
     if (step == introDiaphragm) {
@@ -49,7 +49,7 @@ function startStep(step) {
 
      */
     if (step == setupLightSwitch) {
-        setupText();
+        //setupText();
         setupEnableSwitch();
         toggleLightSwitch();
     }
