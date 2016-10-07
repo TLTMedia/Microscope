@@ -24,7 +24,7 @@ function textSetupEyepiece() {
 
 function textSetupDiaphragmLight() {
     arr = ["#diaphragm", "#apertureFixed", "#aperture"];
-    popupOn("Adjust the diaphragm to change the lighting on the slide..", {
+    popupOn("Adjust the diaphragm to change the lighting on the slide.", {
             "left": "15%",
             "top": "60%",
             });
@@ -34,7 +34,7 @@ function textSetupDiaphragmLight() {
 function textSetupDiaphragmHeight() {
     arr = ["#diaphragm", "#apertureFixed", "#aperture"];
     popupOn("Adjust the height of the diaphragm by rotating the knob.", {
-            "left": "15%",
+            "left": "10%",
             "top": "60%",
             });
 }
@@ -136,10 +136,9 @@ function setupDLight() {
     textSetupDiaphragmLight();
     if (setupDiaphragmLight.isActive()) {
         var intervalId = window.setInterval(dLightCallback, 1000);
-
         function dLightCallback() {
             //console.log(microscope.eyepiecePosition);
-            if (microscope.diaphragmLightPosition > 5 && microscope.diaphragmLightPosition < 10) {
+            if (microscope.diaphragmLightPosition > 5 && microscope.diaphragmLightPosition < 30) {
                 clearInterval(intervalId);
                 setupDiaphragmLight.complete();
             }

@@ -78,6 +78,9 @@ var MIN_KNOB = -20;
 var MAX_DIAPHRAGM_LIGHT = 40;
 
 
+// Variables needed for rotating
+var target_wp,o_x, o_y, h_x, h_y, last_angle;
+
 //function lowMagnification(){
 //    $("#headerText").text("Test 2 ");
 //}
@@ -111,6 +114,8 @@ function enableLightSwitch() {
     });
 }
 
+
+// === Functionality for the FRONT view of the Microscope ==== /// 
 
 /*Enables functionality for the eyepiece on call.*/
 function enableEyepiece() {
@@ -249,6 +254,72 @@ function enableDiaphragmLight() {
     
 }
 
+/* 
+ * Rotate functionality attributed to mgibsonbr for the algorithm.
+ * http://stackoverflow.com/questions/14599738/how-to-make-object-rotate-with-drag-how-to-get-a-rotate-point-around-the-origin 
+ * 
+ */
+function enableSideDiaphragmRotate(){
+    $('#sideDiaphragmHeight').mousedown(function (e) {
+        console.log("TeSTROTATE");
+        h_x = e.pageX;
+        h_y = e.pageY; // clicked point
+        e.preventDefault();
+        e.stopPropagation();
+        isDown = true;
+        target_wp = $(e.target).closest('#sideDiaphragmHeight');
+        if (!target_wp.data("origin")) target_wp.data("origin", {
+            left: target_wp.offset().left,
+            top: target_wp.offset().top
+        });
+        o_x = target_wp.data("origin").left;
+        o_y = target_wp.data("origin").top; // origin point
+        
+        last_angle = target_wp.data("last_angle") || 0;
+    })
+
+    $("#sideDiaphragmHeight").mousemove(function (e) {
+        if (isDown) {
+            var s_x = e.pageX,
+                s_y = e.pageY; // start rotate point
+            if (s_x !== o_x && s_y !== o_y) { //start rotate
+                var s_rad = Math.atan2(s_y - o_y, s_x - o_x); // current to origin
+                s_rad -= Math.atan2(h_y - o_y, h_x - o_x); // handle to origin
+                s_rad += last_angle; // relative to the last one
+                var degree = (s_rad * (360 / (2 * Math.PI)));
+
+
+                    $("#adjustDHeight").css({
+                        "-website-transform": "translate(" + 0 + "px," + degree + "px)",
+                        "-ms-transform": "translate(" + 0 + "px," + degree + "px)",
+                        "transform": "translate(" + 0 + "px," + degree + "px)"
+                    });
+
+                target_wp.css('-moz-transform', 'rotate(' + degree + 'deg)');
+                target_wp.css('-moz-transform-origin', '50% 50%');
+                target_wp.css('-webkit-transform', 'rotate(' + degree + 'deg)');
+                target_wp.css('-webkit-transform-origin', '50% 50%');
+                target_wp.css('-o-transform', 'rotate(' + degree + 'deg)');
+                target_wp.css('-o-transform-origin', '50% 50%');
+                target_wp.css('-ms-transform', 'rotate(' + degree + 'deg)');
+                target_wp.css('-ms-transform-origin', '50% 50%');
+            }
+        }
+    }) // end mousemove
+    
+    $('#sideDiaphragmHeight').mouseup(function (e) {
+        isDown = false
+        var s_x = e.pageX,
+            s_y = e.pageY;
+        
+        // Saves the last angle for future iterations
+        var s_rad = Math.atan2(s_y - o_y, s_x - o_x); // current to origin
+        s_rad -= Math.atan2(h_y - o_y, h_x - o_x); // handle to origin
+        s_rad += last_angle;
+        target_wp.data("last_angle", s_rad);
+    })
+}
+
 //Enables all the functionality of the microscope.
 function enableScope(){
     enableLightSwitch();
@@ -257,17 +328,26 @@ function enableScope(){
     enableDiaphragmLight();
 }
 
+function enableFrontScope(){
+    enableSideDiaphragmRotate()
+}
+
 // Rotates the view of the microscope
 function rotateView(){
   
     var adjustView = function(){
         resizeWindow();
-        enableScope();
+        if (microscope.view==0){
+            enableScope();
+        }
+        else{
+            enableFrontScope();
+        }
     }
  
     microscope.view = (microscope.view+1)%2;
     if (microscope.view == 1){
-         $('#microscope').load('img/sideview.svg', adjustView);
+         $('#microscope').load('img/sideview-tofit.svg', adjustView);
     }
     else{
      $('#microscope').load('img/microscope.svg', adjustView);
