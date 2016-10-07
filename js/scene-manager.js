@@ -19,7 +19,7 @@ function startStep(step) {
        parts of the microscope.
      */
     if (step == introLightSwitch) {
-        //introText();
+        introText();
         triggerLightSwitch();
         $("#light").addClass("elementOff");
     }
@@ -49,9 +49,8 @@ function startStep(step) {
 
      */
     if (step == setupLightSwitch) {
-        //setupText();
-        setupEnableSwitch();
-        toggleLightSwitch();
+        setupText();
+        enableLightSwitch();
     }
     if (step == setupEyepiece) {
         setupAdjustEyepiece();
@@ -66,11 +65,11 @@ function startStep(step) {
         toggleFine();
     }
     if (step == setupDiaphragmLight) {
-        setupDiaphragmLight();
-        toggleDiaphragmLight();
+        setupDLight();
+        enableDiaphragmLight();
     }
     if (step == setupDiaphragmHeight) {
-        setupDiaphragmHeight();
+        setupDHeight();
         toggleDiaphragmHeight();
     }
 

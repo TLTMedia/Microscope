@@ -80,9 +80,6 @@ The microscope works by magnifying a sample on the slide using the lenses. Let�
 		  (Rotation state determined by y-axis displacement. Will add extra frames for “pseudo-tweening” (search:"inbetweening"))
 
 
-
-
-
 	High Magnification (100x)
 		- Place slide
 		- Knobs

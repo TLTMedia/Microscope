@@ -21,10 +21,10 @@ function debugSetup() {
     setupEyepiece.complete();
     setupCoarse.complete();
     setupFine.complete();
-    setupDiaphragmLight.complete();
-    setupDiaphragmHeight.complete();
-    setupCaliper.complete();
-    setupLenses.complete();
+    //setupDiaphragmLight.complete();
+    //setupDiaphragmHeight.complete();
+    //setupCaliper.complete();
+    //setupLenses.complete();
     // $("#popup").removeClass("elementOn");
     // $("#popup").addClass("elementOff");
     showAllParts();

@@ -2,6 +2,7 @@
  * statemachine.js
  *
  * Responsible for feedback on events triggered by the user.
+ * Singleton design pattern (Instantiate ONLY once).
  *
  **/
 
@@ -53,6 +54,8 @@ class StateMachine {
         this.lightStatus = 0; // Brightness of the light ranged 0-1. 0 being off.
         this.eyepiecePosition = 0;
         this.knobPosition = 0;
+        this.diaphragmLightPosition = 0;
+        this.view = 0; //0 for front, 1 for left
         console.log("State machine has been created");
     }
 
@@ -68,11 +71,11 @@ microscope = new StateMachine();
 var isDown = false;
 var prevX = 0;
 var prevY = 0;
-var ocularSpread = 0;
 var knobSpread = 0;
 var MAX_OCULAR = 50;
 var MAX_KNOB = 40;
 var MIN_KNOB = -20;
+var MAX_DIAPHRAGM_LIGHT = 40;
 
 
 //function lowMagnification(){
@@ -91,7 +94,7 @@ var MIN_KNOB = -20;
 
 
 /* Toggles the light switch */
-function toggleLightSwitch() {
+function enableLightSwitch() {
     //$("#headerText").text("Turn on the light.");
     $("#switch").on('click', function() {
         microscope.lightStatus = (1 + microscope.lightStatus) % 2;
@@ -130,28 +133,28 @@ function enableEyepiece() {
             .mousemove(function(event) {
                 if (isDown) {
                     if ((prevX < event.pageX && ocularPart == "#ocularRight") || (prevX > event.pageX && ocularPart == "#ocularLeft")) {
-                        if (ocularSpread < MAX_OCULAR) {
-                            ocularSpread += val;
+                        if (microscope.eyepiecePosition < MAX_OCULAR) {
+                            microscope.eyepiecePosition += val;
                         }
                     } else if ((prevX > event.pageX && ocularPart == "#ocularRight") || (prevX < event.pageX && ocularPart == "#ocularLeft")) {
-                        if (ocularSpread > 0) {
-                            ocularSpread -= val;
+                        if (microscope.eyepiecePosition > 0) {
+                            microscope.eyepiecePosition -= val;
                         }
                     }
 
 
                     $("#ocularRight").css({
-                        "-website-transform": "translate(" + ocularSpread + "px," + 0 + "px)",
-                        "-ms-transform": "translate(" + ocularSpread + "px," + 0 + "px)",
-                        "transform": "translate(" + ocularSpread + "px," + 0 + "px)"
+                        "-website-transform": "translate(" + microscope.eyepiecePosition + "px," + 0 + "px)",
+                        "-ms-transform": "translate(" + microscope.eyepiecePosition + "px," + 0 + "px)",
+                        "transform": "translate(" + microscope.eyepiecePosition + "px," + 0 + "px)"
                     });
                     $("#ocularLeft").css({
-                        "-website-transform": "translate(" + -1 * ocularSpread + "px," + 0 + "px)",
-                        "-ms-transform": "translate(" + -1 * ocularSpread + "px," + 0 + "px)",
-                        "transform": "translate(" + -1 * ocularSpread + "px," + 0 + "px)"
+                        "-website-transform": "translate(" + -1 * microscope.eyepiecePosition + "px," + 0 + "px)",
+                        "-ms-transform": "translate(" + -1 * microscope.eyepiecePosition + "px," + 0 + "px)",
+                        "transform": "translate(" + -1 * microscope.eyepiecePosition + "px," + 0 + "px)"
                     });
                     prevX = event.pageX;
-                    microscope.eyepiecePosition = ocularSpread;
+                    microscope.eyepiecePosition = microscope.eyepiecePosition;
                 }
             })
             .mouseup(function() {
@@ -205,6 +208,70 @@ function enableCoarseKnob() {
 
     addCourseDrag("#knobsCoarse", 1.0);
     addCourseDrag("#knobsFine", 0.5);
+}
+
+
+/*Enables functionality for the eyepiece on call.*/
+function enableDiaphragmLight() {
+    function addDiaphragmDrag(part) {
+        var val = 1;
+        $(part)
+            .mousedown(function() {
+                isDown = true;
+            })
+            .mousemove(function(event) {
+                if (isDown) {
+                    if ((prevX < event.pageX)){ 
+                        if (microscope.diaphragmLightPosition < MAX_DIAPHRAGM_LIGHT) {
+                            microscope.diaphragmLightPosition += val;
+                        }
+                    } else if ((prevX > event.pageX)){ 
+                        if (microscope.diaphragmLightPosition > 0) {
+                            microscope.diaphragmLightPosition -= val;
+                        }
+                    }
+                    $("#apertureKnob").css({
+                        "-website-transform": "translate(" + microscope.diaphragmLightPosition + "px," + 0 + "px)",
+                        "-ms-transform": "translate(" + microscope.diaphragmLightPosition + "px," + 0 + "px)",
+                        "transform": "translate(" + microscope.diaphragmLightPosition + "px," + 0 + "px)"
+                    });
+                    prevX = event.pageX;
+                }
+            })
+            .mouseup(function() {
+                isDown = false;
+            })
+            .mouseleave(function() {
+                isDown = false;
+            });
+    }
+    addDiaphragmDrag("#diaphragm");
+    
+}
+
+//Enables all the functionality of the microscope.
+function enableScope(){
+    enableLightSwitch();
+    enableEyepiece();
+    enableCoarseKnob();
+    enableDiaphragmLight();
+}
+
+// Rotates the view of the microscope
+function rotateView(){
+  
+    var adjustView = function(){
+        resizeWindow();
+        enableScope();
+    }
+ 
+    microscope.view = (microscope.view+1)%2;
+    if (microscope.view == 1){
+         $('#microscope').load('img/sideview.svg', adjustView);
+    }
+    else{
+     $('#microscope').load('img/microscope.svg', adjustView);
+    }
 }
 
 

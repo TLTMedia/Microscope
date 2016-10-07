@@ -20,7 +20,7 @@ var introLenses;
 var introCaliper;
 
 // Used to skip steps when testing
-var debug = false;
+var debug = true;
 intro = true;
 setup = false;
 var introCount = 0;
@@ -164,6 +164,11 @@ function triggerLenses() {
 $(function() {
     // ====== End Trigger ======= //
 
+//Bind the rotate
+$("#rotate").click(function(){
+    console.log("Rotate");
+    rotateView();
+});
     // Create dragability on horizontal component on a div. Precisely to be used for the ocular component. DRY principle applied so we don't reuse the same code for both ocular ends.
     $('#microscope').load('img/microscope.svg', function() {
         resizeWindow();
@@ -179,7 +184,7 @@ $(function() {
         // debug = true;
         if (debug) {
             debugIntro();
-             //debugSetup();
+             debugSetup();
              //debugLowMag();
              //debugHighMag();
         }
@@ -187,7 +192,6 @@ $(function() {
 
         // ===============intro===============
         if (intro) {
-            console.log("debugger");
             // hideAll();
             $("#switch")
                 .click(function() {
