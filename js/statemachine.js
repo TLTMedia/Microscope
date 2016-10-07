@@ -347,7 +347,7 @@ function rotateView(){
  
     microscope.view = (microscope.view+1)%2;
     if (microscope.view == 1){
-         $('#microscope').load('img/sideview-tofit.svg', adjustView);
+         $('#microscope').load('img/sideview.svg', adjustView);
     }
     else{
      $('#microscope').load('img/microscope.svg', adjustView);
