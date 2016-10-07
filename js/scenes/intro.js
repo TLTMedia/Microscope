@@ -184,7 +184,7 @@ $("#rotate").click(function(){
         // debug = true;
         if (debug) {
             debugIntro();
-             debugSetup();
+//             debugSetup();
              //debugLowMag();
              //debugHighMag();
         }

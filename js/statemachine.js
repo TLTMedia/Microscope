@@ -55,6 +55,7 @@ class StateMachine {
         this.eyepiecePosition = 0;
         this.knobPosition = 0;
         this.diaphragmLightPosition = 0;
+        this.diaphragmHeightPosition = 0;
         this.view = 0; //0 for front, 1 for left
         console.log("State machine has been created");
     }
@@ -76,10 +77,12 @@ var MAX_OCULAR = 50;
 var MAX_KNOB = 40;
 var MIN_KNOB = -20;
 var MAX_DIAPHRAGM_LIGHT = 40;
+var MIN_DIAPHRAGM_HEIGHT = -15;
+var MAX_DIAPHRAGM_HEIGHT = 15;
 
 
 // Variables needed for rotating
-var target_wp,o_x, o_y, h_x, h_y, last_angle;
+var target_wp,o_x, o_y, h_x, h_y, last_angle, last_degree;
 
 //function lowMagnification(){
 //    $("#headerText").text("Test 2 ");
@@ -259,15 +262,15 @@ function enableDiaphragmLight() {
  * http://stackoverflow.com/questions/14599738/how-to-make-object-rotate-with-drag-how-to-get-a-rotate-point-around-the-origin 
  * 
  */
+
 function enableSideDiaphragmRotate(){
-    $('#sideDiaphragmHeight').mousedown(function (e) {
-        console.log("TeSTROTATE");
+    $('#draggableDiaphragm').mousedown(function (e) {
         h_x = e.pageX;
         h_y = e.pageY; // clicked point
         e.preventDefault();
         e.stopPropagation();
         isDown = true;
-        target_wp = $(e.target).closest('#sideDiaphragmHeight');
+        target_wp = $(e.target).closest('#draggableDiaphragm');
         if (!target_wp.data("origin")) target_wp.data("origin", {
             left: target_wp.offset().left,
             top: target_wp.offset().top
@@ -278,7 +281,7 @@ function enableSideDiaphragmRotate(){
         last_angle = target_wp.data("last_angle") || 0;
     })
 
-    $("#sideDiaphragmHeight").mousemove(function (e) {
+    $("#draggableDiaphragm").mousemove(function (e) {
         if (isDown) {
             var s_x = e.pageX,
                 s_y = e.pageY; // start rotate point
@@ -286,13 +289,27 @@ function enableSideDiaphragmRotate(){
                 var s_rad = Math.atan2(s_y - o_y, s_x - o_x); // current to origin
                 s_rad -= Math.atan2(h_y - o_y, h_x - o_x); // handle to origin
                 s_rad += last_angle; // relative to the last one
-                var degree = (s_rad * (360 / (2 * Math.PI)));
+                    
+                var degree = parseInt(s_rad * (360 / (2 * Math.PI)));
 
-
+                if (last_degree < degree && degree%3==0){
+                    if (microscope.diaphragmHeightPosition < MAX_DIAPHRAGM_HEIGHT) {
+                        microscope.diaphragmHeightPosition++;
+                    }
+                }
+                else if (last_degree > degree && degree%3==0){
+                    if (microscope.diaphragmHeightPosition > MIN_DIAPHRAGM_HEIGHT){
+                        microscope.diaphragmHeightPosition--;
+                    }
+                }
+               
+                 last_degree = parseInt(degree);
+                 //console.log(degree); 
+                console.log(microscope.diaphragmHeightPosition);
                     $("#adjustDHeight").css({
-                        "-website-transform": "translate(" + 0 + "px," + degree + "px)",
-                        "-ms-transform": "translate(" + 0 + "px," + degree + "px)",
-                        "transform": "translate(" + 0 + "px," + degree + "px)"
+                        "-website-transform": "translate(" + 0 + "px," + microscope.diaphragmHeightPosition + "px)",
+                        "-ms-transform": "translate(" + 0 + "px," + microscope.diaphragmHeightPosition + "px)",
+                        "transform": "translate(" + 0 + "px," + microscope.diaphragmHeightPosition + "px)"
                     });
 
                 target_wp.css('-moz-transform', 'rotate(' + degree + 'deg)');
@@ -307,7 +324,7 @@ function enableSideDiaphragmRotate(){
         }
     }) // end mousemove
     
-    $('#sideDiaphragmHeight').mouseup(function (e) {
+    $(document).mouseup(function (e) {
         isDown = false
         var s_x = e.pageX,
             s_y = e.pageY;

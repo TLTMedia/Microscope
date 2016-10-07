@@ -5,6 +5,11 @@
  * Second scene that teaches student how to set up the microcope.
  */
 
+// ===== Hardcoded Bounds ===== //
+
+var bounds = {}
+
+
 // ====== Start Trigger ======= //
 function textSetupSwitch() {
     console.log("debug");
@@ -25,7 +30,7 @@ function textSetupEyepiece() {
 function textSetupDiaphragmLight() {
     arr = ["#diaphragm", "#apertureFixed", "#aperture"];
     popupOn("Adjust the diaphragm to change the lighting on the slide.", {
-            "left": "15%",
+            "left": "10%",
             "top": "60%",
             });
 }
@@ -34,7 +39,7 @@ function textSetupDiaphragmLight() {
 function textSetupDiaphragmHeight() {
     arr = ["#diaphragm", "#apertureFixed", "#aperture"];
     popupOn("Adjust the height of the diaphragm by rotating the knob.", {
-            "left": "10%",
+            "left": "50%",
             "top": "60%",
             });
 }
@@ -82,16 +87,22 @@ function setupEnableSwitch() {
             });
 }
 
+function doComplete(upperBound, lowerBound, stepTask){
+    if (upperBound && lowerBound){
+             stepTask.complete();
+             return true;
+    }
+    return false;
+}
+
 
 function setupAdjustEyepiece() {
     textSetupEyepiece();
     if (setupEyepiece.isActive()) {
-        var intervalId = window.setInterval(ocularCallback, 1000);
-        function ocularCallback() {
-            //console.log(microscope.eyepiecePosition);
-            if (microscope.eyepiecePosition > 10 && microscope.eyepiecePosition < 25) {
+        var intervalId = window.setInterval(check, 1000);
+        function check() {
+            if(doComplete(microscope.eyepiecePosition > 10, microscope.eyepiecePosition < 25, setupEyepiece)){ 
                 clearInterval(intervalId);
-                setupEyepiece.complete();
             }
         }
     }
@@ -149,13 +160,29 @@ function setupDLight() {
 
 function setupDHeight() {
     textSetupDiaphragmHeight();
-    if (setupDiaphragmLight.isActive()) {
-        var intervalId = window.setInterval(dLightCallback, 1000);
-        function dLightCallback() {
+    if (setupDiaphragmHeight.isActive()) {
+        var intervalId = window.setInterval(dHeightCallback, 1000);
+        function dHeightCallback() {
             //console.log(microscope.eyepiecePosition);
-            if (microscope.diaphragmLightPosition > 5 && microscope.diaphragmLightPosition < 10) {
+            if (microscope.diaphragmHeightPosition > 5 && microscope.diaphragmHeightPosition < 15) {
                 clearInterval(intervalId);
-                setupDiaphragmLight.complete();
+                setupDiaphragmHeight.complete();
+            }
+        }
+    }
+}
+
+
+
+function setupAdjustCaliper() {
+    textSetupCaliperHeight 
+    if (setupDiaphragmHeight.isActive()) {
+        var intervalId = window.setInterval(dHeightCallback, 1000);
+        function dHeightCallback() {
+            //console.log(microscope.eyepiecePosition);
+            if (microscope.diaphragmHeightPosition > 5 && microscope.diaphragmHeightPosition < 15) {
+                clearInterval(intervalId);
+                setupDiaphragmHeight.complete();
             }
         }
     }

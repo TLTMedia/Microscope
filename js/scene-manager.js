@@ -50,6 +50,7 @@ function startStep(step) {
      */
     if (step == setupLightSwitch) {
         setupText();
+        setupEnableSwitch();
         enableLightSwitch();
     }
     if (step == setupEyepiece) {
@@ -72,14 +73,13 @@ function startStep(step) {
         setupDHeight();
         toggleDiaphragmHeight();
     }
-
     if (step == setupLenses) {
-        setupLenses();
-        toggleLenses();
+        setupAdjustLenses();
+        //enableLenses();
     }
     if (step == setupCaliper) {
-        setupCaliper();
-        toggleCaliper();
+        setupAdjustCaliper();
+        //enableCaliper(); 
     }
 
 
