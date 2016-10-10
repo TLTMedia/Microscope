@@ -73,13 +73,13 @@ function startStep(step) {
         setupDHeight();
         toggleDiaphragmHeight();
     }
-    if (step == setupLenses) {
-        setupAdjustLenses();
-        //enableLenses();
-    }
     if (step == setupCaliper) {
         setupAdjustCaliper();
-        //enableCaliper(); 
+        enableCaliper(); 
+    }
+    if (step == setupLenses) {
+        //setupAdjustLenses();
+        //enableLenses();
     }
 
 

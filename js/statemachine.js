@@ -56,6 +56,8 @@ class StateMachine {
         this.knobPosition = 0;
         this.diaphragmLightPosition = 0;
         this.diaphragmHeightPosition = 0;
+        this.xcaliper = 0;
+        this.ycaliper = 0;
         this.view = 0; //0 for front, 1 for left
         console.log("State machine has been created");
     }
@@ -79,6 +81,7 @@ var MIN_KNOB = -20;
 var MAX_DIAPHRAGM_LIGHT = 40;
 var MIN_DIAPHRAGM_HEIGHT = -15;
 var MAX_DIAPHRAGM_HEIGHT = 15;
+var MAX_X_CALIPER = 20;
 
 
 // Variables needed for rotating
@@ -257,6 +260,88 @@ function enableDiaphragmLight() {
     
 }
 
+function enableCaliper(){
+
+    // Low knob
+    function addCaliperXDrag(part) {
+        var val = 1;
+
+        $(part)
+            .mousedown(function() {
+                isDown = true;
+            })
+            .mousemove(function(event) {
+                if (isDown) {
+                    console.log("run");
+                    if ((prevX < event.pageX)){ 
+                        if (microscope.xcaliper < MAX_X_CALIPER) {
+                            microscope.xcaliper += val;
+                        }
+                    } else if ((prevX > event.pageX)){ 
+                        if (microscope.xcaliper > -20) {
+                            microscope.xcaliper -= val;
+                        }
+                    }
+                    $("#xcaliper").css({
+                        "-website-transform": "translate(" + microscope.xcaliper + "px," + microscope.ycaliper + "px)",
+                        "-ms-transform": "translate(" + microscope.xcaliper + "px," + microscope.ycaliper + "px)",
+                        "transform": "translate(" + microscope.xcaliper + "px," + microscope.ycaliper + "px)"
+                    });
+                    prevX = event.pageX;
+                }
+            })
+            .mouseup(function() {
+                isDown = false;
+            })
+            .mouseleave(function() {
+                isDown = false;
+            });
+    }
+     
+    function addCaliperYDrag(part) {
+        var val = 1;
+
+        $(part)
+            .mousedown(function() {
+                isDown = true;
+            })
+            .mousemove(function(event) {
+                if (isDown) { 
+                    if ((prevX < event.pageX)){ 
+                        if (microscope.ycaliper < MAX_X_CALIPER) {
+                            microscope.ycaliper += val;
+                        }
+                    } else if ((prevX > event.pageX)){ 
+                        if (microscope.ycaliper > -20) {
+                            microscope.ycaliper -= val;
+                        }
+                    }
+                    $("#ycaliper").css({
+                        "-website-transform": "translate(" +  0 + "px," + microscope.ycaliper + "px)",
+                        "-ms-transform": "translate(" + 0 + "px," +  microscope.ycaliper+ "px)",
+                        "transform": "translate(" + 0 + "px," + microscope.ycaliper + "px)"
+                    });
+
+                    $("#xcaliper").css({
+                        "-website-transform": "translate(" + microscope.xcaliper + "px," + microscope.ycaliper + "px)",
+                        "-ms-transform": "translate(" + microscope.xcaliper + "px," + microscope.ycaliper + "px)",
+                        "transform": "translate(" + microscope.xcaliper + "px," + microscope.ycaliper + "px)"
+                    });
+                    prevX = event.pageX;
+                }
+            })
+            .mouseup(function() {
+                isDown = false;
+            })
+            .mouseleave(function() {
+                isDown = false;
+            });
+    }
+    addCaliperXDrag("#xcaliperKnob");
+    addCaliperYDrag("#ycaliperKnob");
+}
+
+
 /* 
  * Rotate functionality attributed to mgibsonbr for the algorithm.
  * http://stackoverflow.com/questions/14599738/how-to-make-object-rotate-with-drag-how-to-get-a-rotate-point-around-the-origin 
@@ -350,8 +435,7 @@ function enableFrontScope(){
 }
 
 // Rotates the view of the microscope
-function rotateView(){
-  
+function rotateView(){  
     var adjustView = function(){
         resizeWindow();
         if (microscope.view==0){

@@ -60,6 +60,7 @@ function textSetupCoarse() {
             });
 }
 
+
 function textSetupCaliper() {
     arr = ["#caliper", "#xcaliper", "#ycaliper", "#caliperKnob"];
     popupOn("Move the caliper to adjust the position of the slide.", {
@@ -173,12 +174,11 @@ function setupDHeight() {
 }
 
 
-
 function setupAdjustCaliper() {
-    textSetupCaliperHeight 
-    if (setupDiaphragmHeight.isActive()) {
-        var intervalId = window.setInterval(dHeightCallback, 1000);
-        function dHeightCallback() {
+    textSetupCaliper();
+    if (setupCaliper.isActive()) {
+        var intervalId = window.setInterval(caliperCallback, 1000);
+        function caliperCallback() {
             //console.log(microscope.eyepiecePosition);
             if (microscope.diaphragmHeightPosition > 5 && microscope.diaphragmHeightPosition < 15) {
                 clearInterval(intervalId);
