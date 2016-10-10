@@ -60,12 +60,11 @@ function textSetupCoarse() {
             });
 }
 
-
 function textSetupCaliper() {
     arr = ["#caliper", "#xcaliper", "#ycaliper", "#caliperKnob"];
     popupOn("Move the caliper to adjust the position of the slide.", {
-            "left": "55%",
-            "top": "55%",
+            "left": "62%",
+            "top": "60%",
             });
 }
 

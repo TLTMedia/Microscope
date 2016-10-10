@@ -153,7 +153,6 @@ function enableEyepiece() {
                         }
                     }
 
-
                     $("#ocularRight").css({
                         "-website-transform": "translate(" + microscope.eyepiecePosition + "px," + 0 + "px)",
                         "-ms-transform": "translate(" + microscope.eyepiecePosition + "px," + 0 + "px)",
