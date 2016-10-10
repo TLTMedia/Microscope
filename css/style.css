@@ -158,13 +158,13 @@
 
 
 #rotate {
-    background-color: rgba(100,200,100,0.8);
+    background-color: rgba(255,160,122,0.8);
     border-radius: 15px;
     left: 0%;
     top: 0%;
     display:visible;
     position: absolute;
-    left: 75%; 
+    left: 85%; 
     top: 75%;
     z-index: 1000000;
 

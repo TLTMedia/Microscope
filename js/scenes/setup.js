@@ -179,9 +179,9 @@ function setupAdjustCaliper() {
         var intervalId = window.setInterval(caliperCallback, 1000);
         function caliperCallback() {
             //console.log(microscope.eyepiecePosition);
-            if (microscope.diaphragmHeightPosition > 5 && microscope.diaphragmHeightPosition < 15) {
+            if (microscope.xcaliper > 5 && microscope.xcaliper < 20 && microscope.ycaliper > 5 && microscope.ycaliper < 20) {
                 clearInterval(intervalId);
-                setupDiaphragmHeight.complete();
+                setupCaliper.complete();
             }
         }
     }

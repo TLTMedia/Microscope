@@ -7,9 +7,22 @@ function setupText() {
     $("#headerText").text("Follow the instructions to toggle the components.");
 }
 
+
 String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
 }
+
+// Make use of the header by making it a tooltip.
+// When user hovers over a piece, describe what it is. 
+// To improve it, use a mapping that takes a key word and redirects it into a proper tooltip.
+function bindTooltip(){
+    components.forEach(function(component){
+            $(component).hover(function(){
+                $("#headerText").text((component.replace("#","")).capitalize());
+                }); 
+            }); 
+}
+
 
 /*
    Use of below function is for intro.js (intro.js + gameLogic.js interdependence).
@@ -52,17 +65,7 @@ function startStep(step) {
 
      */
     if (step == setupLightSwitch) {
-        // Make use of the header by making it a tooltip.
-        // When user hovers over a piece, describe what it is. 
-        // To improve it, use a mapping that takes a key word and redirects it into a proper tooltip.
-        components.forEach(function(component){
-            $(component).hover(function(){
-                $("#headerText").text((component.replace("#","")).capitalize());
-            }); 
-        }); 
-        
-
-
+        bindTooltip(); 
         setupText();
         setupEnableSwitch();
         enableLightSwitch();
