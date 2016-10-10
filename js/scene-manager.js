@@ -95,8 +95,8 @@ function startStep(step) {
         enableCaliper(); 
     }
     if (step == setupLenses) {
-        //setupAdjustLenses();
-        //enableLenses();
+        setupAdjustLenses();
+        enableLenses();
     }
 
 

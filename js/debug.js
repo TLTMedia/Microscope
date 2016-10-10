@@ -23,7 +23,7 @@ function debugSetup() {
     setupFine.complete();
     setupDiaphragmLight.complete();
     setupDiaphragmHeight.complete();
-    //setupCaliper.complete();
+    setupCaliper.complete();
     //setupLenses.complete();
     // $("#popup").removeClass("elementOn");
     // $("#popup").addClass("elementOff");

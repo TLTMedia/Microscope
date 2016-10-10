@@ -58,6 +58,8 @@ var components = [
             this.diaphragmHeightPosition = 0;
             this.xcaliper = 0;
             this.ycaliper = 0;
+            this.lensePosition = 0;
+            this.lenseStates = ["#lenseRed", "#lensesYellow", "#lensesBlue", "#lensesWhite"];
             this.view = 0; //0 for front, 1 for left
             console.log("State machine has been created");
         }
@@ -341,6 +343,19 @@ function enableCaliper(){
 }
 
 
+function enableLenses(){
+    // For the sake of time, just make clicking rotate.
+    function addLenseClick(part){
+        $(part).click(function(){
+                $(statemachine.lenseStates[stateMachine.lensePosition]).css("opacity", "0");  
+                statemachine.lensePosition =( stateMachine.lensePosition + 1 % stateMachine.lenseStates.length) 
+                $(statemachine.lenseStates[stateMachine.lensePosition]).css("opacity", "1");     
+                })
+    }
+    addLenseClick("#lenses");
+    //$("#lenses, #lensesRed, #lensesBlue, #lensesYellow, #lensesWhite").click(function(){console.log(this);});
+}
+
 /* 
  * Rotate functionality attributed to mgibsonbr for the algorithm.
  * http://stackoverflow.com/questions/14599738/how-to-make-object-rotate-with-drag-how-to-get-a-rotate-point-around-the-origin 
@@ -454,6 +469,7 @@ function rotateView(){
         $('#microscope').load('img/microscope.svg', adjustView);
     }
 }
+
 
 
 function toggleDiaphragmLight() {}
