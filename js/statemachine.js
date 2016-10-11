@@ -59,7 +59,7 @@ var components = [
             this.xcaliper = 0;
             this.ycaliper = 0;
             this.lensePosition = 0;
-            this.lenseStates = ["#lenseRed", "#lensesYellow", "#lensesBlue", "#lensesWhite"];
+            this.lenseStates = ["#lensesRed", "#lensesYellow", "#lensesBlue", "#lensesWhite"];
             this.view = 0; //0 for front, 1 for left
             console.log("State machine has been created");
         }
@@ -346,14 +346,18 @@ function enableCaliper(){
 function enableLenses(){
     // For the sake of time, just make clicking rotate.
     function addLenseClick(part){
+        $(microscope.lenseStates[0]).css("opacity", "1");  
+                $(part).css("opacity", "0");  
         $(part).click(function(){
-                $(statemachine.lenseStates[stateMachine.lensePosition]).css("opacity", "0");  
-                statemachine.lensePosition =( stateMachine.lensePosition + 1 % stateMachine.lenseStates.length) 
-                $(statemachine.lenseStates[stateMachine.lensePosition]).css("opacity", "1");     
+
+                console.log(part);
+                $(microscope.lenseStates[microscope.lensePosition]).css("opacity", "0");  
+                microscope.lensePosition = ((microscope.lensePosition + 1) % microscope.lenseStates.length) 
+                $(microscope.lenseStates[microscope.lensePosition]).css("opacity", "1");     
                 })
     }
     addLenseClick("#lenses");
-    //$("#lenses, #lensesRed, #lensesBlue, #lensesYellow, #lensesWhite").click(function(){console.log(this);});
+    $("#lenses, #lensesRed, #lensesBlue, #lensesYellow, #lensesWhite").click(function(){console.log(this);});
 }
 
 /* 

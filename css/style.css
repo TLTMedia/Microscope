@@ -1,7 +1,7 @@
 /* http://www.w3schools.com/cssref/css3_pr_animation.asp*/
 
 
-#light{
+#light, #lensesWhite, #lensesRed, #lensesBlue, #lensesYellow{
     pointer-events: none;
 }
 

@@ -95,6 +95,7 @@ function startStep(step) {
         enableCaliper(); 
     }
     if (step == setupLenses) {
+        console.log("Do get");
         setupAdjustLenses();
         enableLenses();
     }
