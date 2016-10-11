@@ -98,6 +98,8 @@ function setupEnableSwitch() {
 
 function setupEnableSlide(){
     textSetupSlide();
+    // Make the slide visible
+    $("#slide").css("opacity", "1");  
 }
 
 function doComplete(upperBound, lowerBound, stepTask){

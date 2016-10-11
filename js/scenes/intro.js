@@ -197,7 +197,6 @@ $("#rotate").click(function(){
                 .click(function() {
                     if (introLightSwitch.isActive()) {
                         introLightSwitch.complete();
-
                     }
 
                 });

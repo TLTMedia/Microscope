@@ -345,7 +345,7 @@ function enableLenses(){
     // For the sake of time, just make clicking rotate.
     function addLenseClick(part){
         $(microscope.lenseStates[0]).css("opacity", "1");  
-                $(part).css("opacity", "0");  
+        $(part).css("opacity", "0");  
         $(part).click(function(){
 
                 console.log(part);
