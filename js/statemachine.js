@@ -109,9 +109,7 @@ var target_wp,o_x, o_y, h_x, h_y, last_angle, last_degree;
 function enableLightSwitch() {
     //$("#headerText").text("Turn on the light.");
     $("#switch").on('click', function() {
-            microscope.lightStatus = (1 + microscope.lightStatus) % 2;
-            console.log(microscope.lightStatus);
-
+            microscope.lightStatus = (1 + microscope.lightStatus) % 2; 
             if (microscope.lightStatus > 0) {
             $("#light").removeClass("elementOff");
             $("#light").addClass("lightOn");

@@ -153,6 +153,11 @@ function loadSubMenu() {
                 "longText": "Click the light switch.",
                 "feedbackText": "click the light switch"
             }, {
+                "id": "setupSlide",
+                "shortText": "Slide",
+                "longText": "Push in the slide.",
+                "feedbackText": "click the light switch"
+            }, {
                 "id": "setupEyepiece",
                 "shortText": "Eyepiece",
                 "longText": "Click the eyepiece.",
@@ -284,15 +289,18 @@ function loadSubMenu() {
 
     // Setup
     setupLightSwitch = game.getGroupStep(1, 0);
-    setupEyepiece = game.getGroupStep(1, 1);
-    setupCoarse = game.getGroupStep(1, 2);
-    setupFine = game.getGroupStep(1, 3);
-    setupDiaphragmLight = game.getGroupStep(1, 4);
-    setupDiaphragmHeight = game.getGroupStep(1, 5);
-    setupCaliper = game.getGroupStep(1, 6);
-    setupLenses = game.getGroupStep(1, 7);
+    setupSlide = game.getGroupStep(1,1);   
+ 
+     // Low Magnification
+    setupEyepiece = game.getGroupStep(2, 0);
+    setupCoarse = game.getGroupStep(2, 1);
+    setupFine = game.getGroupStep(2, 2);
+    setupDiaphragmLight = game.getGroupStep(2, 3);
+    setupDiaphragmHeight = game.getGroupStep(2, 4);
+    setupCaliper = game.getGroupStep(2, 5);
+    setupLenses = game.getGroupStep(2, 6);
 
-    // Low Magnification
+  /* 
     lowLight = game.getGroupStep(2, 0);
     lowLens = game.getGroupStep(2, 2);
     lowSlidePlace = game.getGroupStep(2, 2);
@@ -300,6 +308,8 @@ function loadSubMenu() {
     lowCoarse = game.getGroupStep(2, 4);
     lowFine = game.getGroupStep(2, 5);
     lowDiaphragm = game.getGroupStep(2, 6);
+*/
+
 
     // High Magnification
     // a1 = game.getGroupStep(3, 0);

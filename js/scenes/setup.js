@@ -12,12 +12,21 @@ var bounds = {}
 
 // ====== Start Trigger ======= //
 function textSetupSwitch() {
-    console.log("debug");
     popupOn("First, let's turn on the light switch.", {
             "left": "10%",
             "top": "73%",
             });
 }
+
+
+
+function textSetupSlide() {
+    popupOn("Now take the slide and put it against the caliper.", {
+            "left": "10%",
+            "top": "50%",
+            });
+}
+
 
 function textSetupEyepiece() {
     var arr = ["#eyepiece", "#ocularRight", "#ocularLeft", "#ocularLensBase"];
@@ -85,6 +94,10 @@ function setupEnableSwitch() {
             setupLightSwitch.complete();
             }
             });
+}
+
+function setupEnableSlide(){
+    textSetupSlide();
 }
 
 function doComplete(upperBound, lowerBound, stepTask){

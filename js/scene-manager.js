@@ -70,6 +70,13 @@ function startStep(step) {
         setupEnableSwitch();
         enableLightSwitch();
     }
+    if (step == setupSlide){
+        console.log("We are now in this step");
+       setupEnableSlide(); 
+    }
+
+    
+    // Diving in: Low magnification
     if (step == setupEyepiece) {
         setupAdjustEyepiece();
         enableEyepiece();
@@ -95,7 +102,6 @@ function startStep(step) {
         enableCaliper(); 
     }
     if (step == setupLenses) {
-        console.log("Do get");
         setupAdjustLenses();
         enableLenses();
     }
