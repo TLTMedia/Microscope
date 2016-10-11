@@ -99,13 +99,24 @@ function setupEnableSwitch() {
 function setupEnableSlide(){
     textSetupSlide();
     // Make the slide visible
-    $("#slide").css("opacity", "1");  
+
+    $("#slider").css({
+            "-website-transform": "translate(" + 100 + "px," + 0 + "px)",
+            "transform": "translate(" + 0 + "px," + 0 + "px)"
+    });
+
+    $("#slider").click(function(){
+        if (setupSlide.isActive())
+        {
+            setupSlide.complete();
+        }
+    });
 }
 
 function doComplete(upperBound, lowerBound, stepTask){
     if (upperBound && lowerBound){
-             stepTask.complete();
-             return true;
+        stepTask.complete();
+        return true;
     }
     return false;
 }

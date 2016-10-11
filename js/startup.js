@@ -157,7 +157,11 @@ function loadSubMenu() {
                 "shortText": "Slide",
                 "longText": "Push in the slide.",
                 "feedbackText": "click the light switch"
-            }, {
+            }]},
+            {
+            "id": "lowMag",
+            "shortText": "Learning the Ropes",
+            "steps": [{
                 "id": "setupEyepiece",
                 "shortText": "Eyepiece",
                 "longText": "Click the eyepiece.",
