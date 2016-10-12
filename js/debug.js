@@ -18,26 +18,16 @@ function debugIntro() {
 
 function debugSetup() {
     setupLightSwitch.complete();
-    setupEyepiece.complete();
-    setupCoarse.complete();
-    setupFine.complete();
-    setupDiaphragmLight.complete();
-    setupDiaphragmHeight.complete();
-    setupCaliper.complete();
-    //setupLenses.complete();
-    // $("#popup").removeClass("elementOn");
-    // $("#popup").addClass("elementOff");
-    showAllParts();
+    setupSlide.complete();
 }
 
-function debugLowMag(){
-    lowLight.complete();
-    lowLens.complete();
-    lowSlidePlace.complete();
-    lowSlideCenter.complete();
+function debugLow(){
+    lowEyepiece.complete();
     lowCoarse.complete();
     lowFine.complete();
-    lowDiaphragm.complete();
+    lowDiaphragmLight.complete();
+    lowDiaphragmHeight.complete();
+    lowCaliper.complete();
 }
 
 function debugHighMag(){}

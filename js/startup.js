@@ -296,13 +296,13 @@ function loadSubMenu() {
     setupSlide = game.getGroupStep(1,1);   
  
      // Low Magnification
-    setupEyepiece = game.getGroupStep(2, 0);
-    setupCoarse = game.getGroupStep(2, 1);
-    setupFine = game.getGroupStep(2, 2);
-    setupDiaphragmLight = game.getGroupStep(2, 3);
-    setupDiaphragmHeight = game.getGroupStep(2, 4);
-    setupCaliper = game.getGroupStep(2, 5);
-    setupLenses = game.getGroupStep(2, 6);
+    lowEyepiece = game.getGroupStep(2, 0);
+    lowCoarse = game.getGroupStep(2, 1);
+    lowFine = game.getGroupStep(2, 2);
+    lowDiaphragmLight = game.getGroupStep(2, 3);
+    lowDiaphragmHeight = game.getGroupStep(2, 4);
+    lowCaliper = game.getGroupStep(2, 5);
+    lowLenses = game.getGroupStep(2, 6);
 
   /* 
     lowLight = game.getGroupStep(2, 0);

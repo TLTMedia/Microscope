@@ -77,32 +77,32 @@ function startStep(step) {
 
     
     // Diving in: Low magnification
-    if (step == setupEyepiece) {
-        setupAdjustEyepiece();
+    if (step == lowEyepiece) {
+        lowAdjustEyepiece();
         enableEyepiece();
     }
-    if (step == setupCoarse) {
-        setupAdjustCoarse();
+    if (step == lowCoarse) {
+        lowAdjustCoarse();
         enableCoarseKnob();
     }
-    if (step == setupFine) {
-        setupAdjustFine();
+    if (step == lowFine) {
+        lowAdjustFine();
         toggleFine();
     }
-    if (step == setupDiaphragmLight) {
-        setupDLight();
+    if (step == lowDiaphragmLight) {
+        lowDLight();
         enableDiaphragmLight();
     }
-    if (step == setupDiaphragmHeight) {
-        setupDHeight();
+    if (step == lowDiaphragmHeight) {
+        lowDHeight();
         toggleDiaphragmHeight();
     }
-    if (step == setupCaliper) {
-        setupAdjustCaliper();
+    if (step == lowCaliper) {
+        lowAdjustCaliper();
         enableCaliper(); 
     }
-    if (step == setupLenses) {
-        setupAdjustLenses();
+    if (step == lowLenses) {
+        lowAdjustLenses();
         enableLenses();
     }
 
