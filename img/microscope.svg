@@ -116,8 +116,9 @@
         </g>
         <ellipse cx="380.751" cy="310.919" rx="15.785" ry="8.197"/>
     </g>
-    <g id="slide" opacity="0">
-        <rect x="331.65" y="301.382" display="inline" fill="#FFFFFF" width="100.024" height="28.207"/>
+    <g id="slide" opacity="1">
+        <path fill="#DFF3FD" d="M494.667,305.601"/>
+        <polygon fill="#9CACB5" points="427.865,302.813 432.5,320.05 344.684,320.05 350.745,302.813 "/>
     </g>
     <g id="caliperKnob">
         <g id="ycaliperKnob">
