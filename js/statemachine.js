@@ -54,6 +54,8 @@ var components = [
             this.lightStatus = 0; // Brightness of the light ranged 0-1. 0 being off.
             this.eyepiecePosition = 0;
             this.knobPosition = 0;
+            this.xslide = 0;
+            this.yslide = 0;
             this.diaphragmLightPosition = 0;
             this.diaphragmHeightPosition = 0;
             this.xcaliper = 0;
@@ -199,7 +201,7 @@ function enableCoarseKnob() {
                 knobSpread -= val;
                 }
                 }
-                console.log(knobSpread);
+                //console.log(knobSpread);
                 $("#slideStage").css({
                     "-website-transform": "translate(" + 0 + "px," + knobSpread + "px)",
                     "-ms-transform": "translate(" + 0 + "px," + knobSpread + "px)",
