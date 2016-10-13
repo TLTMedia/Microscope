@@ -156,9 +156,9 @@ function updateAnimation(){
             });
 
     $("#ycaliper").css({
-            "-website-transform": "translate(" +  0 + "px," + microscope.ycaliper + "px)",
-            "-ms-transform": "translate(" + 0 + "px," +  microscope.ycaliper+ "px)",
-            "transform": "translate(" + 0 + "px," + microscope.ycaliper + "px)"
+            "-website-transform": "translate(" +  microscope.xcaliper + "px," + microscope.ycaliper + "px)",
+            "-ms-transform": "translate(" + microscope.xcaliper + "px," +  microscope.ycaliper+ "px)",
+            "transform": "translate(" + microscope.xcaliper + "px," + microscope.ycaliper + "px)"
             });
 
     $("#xcaliper").css({
@@ -324,10 +324,12 @@ function enableCaliper(){
                 if ((prevX < event.pageX)){ 
                 if (microscope.xcaliper < MAX_CALIPER) {
                 microscope.xcaliper += val;
+                microscope.xslide += val;
                 }
                 } else if ((prevX > event.pageX)){ 
                 if (microscope.xcaliper > MIN_CALIPER) {
                 microscope.xcaliper -= val;
+                microscope.xslide -= val;
                 }
                 }
                 prevX = event.pageX;
