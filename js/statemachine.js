@@ -60,6 +60,7 @@ var components = [
             this.diaphragmHeightPosition = 0;
             this.xcaliper = 0;
             this.ycaliper = 0;
+            this.yknobcaliper = 0;
             this.lensePosition = 0;
             this.lenseStates = ["#lensesRed", "#lensesYellow", "#lensesBlue", "#lensesWhite"];
             this.view = 0; //0 for front, 1 for left
@@ -113,8 +114,6 @@ var target_wp,o_x, o_y, h_x, h_y, last_angle, last_degree;
 
  */
 function updateAnimation(){
-
-
     $("#ocularRight").css({
             "-website-transform": "translate(" + microscope.eyepiecePosition + "px," + 0 + "px)",
             "-ms-transform": "translate(" + microscope.eyepiecePosition + "px," + 0 + "px)",
@@ -143,16 +142,18 @@ function updateAnimation(){
             "transform": "translate(" + microscope.diaphragmLightPosition + "px," + 0 + "px)"
             });
 
-    $("#xcaliper").css({
-            "-website-transform": "translate(" + microscope.xcaliper + "px," + microscope.ycaliper + "px)",
-            "-ms-transform": "translate(" + microscope.xcaliper + "px," + microscope.ycaliper + "px)",
-            "transform": "translate(" + microscope.xcaliper + "px," + microscope.ycaliper + "px)"
-            });
 
     $("#adjustDHeight").css({
             "-website-transform": "translate(" + 0 + "px," + microscope.diaphragmHeightPosition + "px)",
             "-ms-transform": "translate(" + 0 + "px," + microscope.diaphragmHeightPosition + "px)",
             "transform": "translate(" + 0 + "px," + microscope.diaphragmHeightPosition + "px)"
+            });
+
+
+    $("#caliperKnob, #caliper").css({
+            "-website-transform": "translate(" + 0 + "px," + microscope.yknobcaliper + "px)",
+            "-ms-transform": "translate(" + 0  + "px," +  microscope.yknobcaliper+ "px)",
+            "transform": "translate(" + 0 + "px," + microscope.yknobcaliper + "px)"
             });
 
     $("#ycaliper").css({
@@ -249,12 +250,14 @@ function enableCoarseKnob() {
                 microscope.knobPosition += val;
                 microscope.yslide += val;
                 microscope.ycaliper += val;
+                microscope.yknobcaliper +=val;
                 }
                 } else if ((prevY < event.pageY)) {
                 if (microscope.knobPosition > MIN_KNOB) {
                 microscope.knobPosition -= val;
                 microscope.yslide -= val;
                 microscope.ycaliper -= val;
+                microscope.yknobcaliper -=val;
                 }
                 }
                 //console.log(microscope.knobPosition);
@@ -357,11 +360,15 @@ function enableCaliper(){
                 if (microscope.ycaliper < MAX_CALIPER) {
                 microscope.ycaliper += val;
                 microscope.yslide += val;
+                microscope.xcaliper += (val/3);
+                microscope.xslide += (val/3);
                 }
                 } else if ((prevX > event.pageX)){ 
                 if (microscope.ycaliper > MIN_CALIPER) {
                 microscope.ycaliper -= val;
                 microscope.yslide -= val;
+                microscope.xcaliper -= (val/3);
+                microscope.xslide -= (val/3);
                 }
                 }
                 prevX = event.pageX;
