@@ -78,7 +78,6 @@ microscope = new StateMachine();
 var isDown = false;
 var prevX = 0;
 var prevY = 0;
-var knobSpread = 0;
 var MAX_OCULAR = 50;
 var MAX_KNOB = 40;
 var MIN_KNOB = -20;
@@ -104,6 +103,70 @@ var target_wp,o_x, o_y, h_x, h_y, last_angle, last_degree;
 // function sideViewOn(){}
 // function sideViewOff(){}
 
+
+/*
+
+   Instead of updating the animation per function call,
+   do it all at once.
+
+    Call function everytime state changes.
+
+ */
+function updateAnimation(){
+
+
+    $("#ocularRight").css({
+            "-website-transform": "translate(" + microscope.eyepiecePosition + "px," + 0 + "px)",
+            "-ms-transform": "translate(" + microscope.eyepiecePosition + "px," + 0 + "px)",
+            "transform": "translate(" + microscope.eyepiecePosition + "px," + 0 + "px)"
+            });
+    $("#ocularLeft").css({
+            "-website-transform": "translate(" + -1 * microscope.eyepiecePosition + "px," + 0 + "px)",
+            "-ms-transform": "translate(" + -1 * microscope.eyepiecePosition + "px," + 0 + "px)",
+            "transform": "translate(" + -1 * microscope.eyepiecePosition + "px," + 0 + "px)"
+            });
+
+    $("#slideStage").css({
+            "-website-transform": "translate(" + 0 + "px," + microscope.knobPosition + "px)",
+            "-ms-transform": "translate(" + 0 + "px," + microscope.knobPosition + "px)",
+            "transform": "translate(" + 0 + "px," + microscope.knobPosition + "px)"
+            });
+
+    $("#slide").css({
+            "-website-transform": "translate(" + microscope.xslide + "px," + microscope.yslide + "px)",
+            "-ms-transform": "translate(" + microscope.xslide + "px," +  microscope.yslide + "px)",
+            "transform": "translate(" + microscope.xslide + "px," + microscope.yslide  + "px)"
+            });
+    $("#apertureKnob").css({
+            "-website-transform": "translate(" + microscope.diaphragmLightPosition + "px," + 0 + "px)",
+            "-ms-transform": "translate(" + microscope.diaphragmLightPosition + "px," + 0 + "px)",
+            "transform": "translate(" + microscope.diaphragmLightPosition + "px," + 0 + "px)"
+            });
+
+    $("#xcaliper").css({
+            "-website-transform": "translate(" + microscope.xcaliper + "px," + microscope.ycaliper + "px)",
+            "-ms-transform": "translate(" + microscope.xcaliper + "px," + microscope.ycaliper + "px)",
+            "transform": "translate(" + microscope.xcaliper + "px," + microscope.ycaliper + "px)"
+            });
+
+    $("#adjustDHeight").css({
+            "-website-transform": "translate(" + 0 + "px," + microscope.diaphragmHeightPosition + "px)",
+            "-ms-transform": "translate(" + 0 + "px," + microscope.diaphragmHeightPosition + "px)",
+            "transform": "translate(" + 0 + "px," + microscope.diaphragmHeightPosition + "px)"
+            });
+
+    $("#ycaliper").css({
+            "-website-transform": "translate(" +  0 + "px," + microscope.ycaliper + "px)",
+            "-ms-transform": "translate(" + 0 + "px," +  microscope.ycaliper+ "px)",
+            "transform": "translate(" + 0 + "px," + microscope.ycaliper + "px)"
+            });
+
+    $("#xcaliper").css({
+            "-website-transform": "translate(" + microscope.xcaliper + "px," + microscope.ycaliper + "px)",
+            "-ms-transform": "translate(" + microscope.xcaliper + "px," + microscope.ycaliper + "px)",
+            "transform": "translate(" + microscope.xcaliper + "px," + microscope.ycaliper + "px)"
+            });
+}
 
 
 
@@ -154,22 +217,11 @@ function enableEyepiece() {
                 if (microscope.eyepiecePosition > 0) {
                 microscope.eyepiecePosition -= val;
                 }
-                }
-
-                $("#ocularRight").css({
-                    "-website-transform": "translate(" + microscope.eyepiecePosition + "px," + 0 + "px)",
-                    "-ms-transform": "translate(" + microscope.eyepiecePosition + "px," + 0 + "px)",
-                    "transform": "translate(" + microscope.eyepiecePosition + "px," + 0 + "px)"
-                    });
-                $("#ocularLeft").css({
-                    "-website-transform": "translate(" + -1 * microscope.eyepiecePosition + "px," + 0 + "px)",
-                    "-ms-transform": "translate(" + -1 * microscope.eyepiecePosition + "px," + 0 + "px)",
-                    "transform": "translate(" + -1 * microscope.eyepiecePosition + "px," + 0 + "px)"
-                    });
+                } 
                 prevX = event.pageX;
-                microscope.eyepiecePosition = microscope.eyepiecePosition;
+                updateAnimation();
                 }
-        })
+                })
         .mouseup(function() {
                 isDown = false;
                 })
@@ -193,22 +245,21 @@ function enableCoarseKnob() {
         .mousemove(function(event) {
                 if (isDown) {
                 if (prevY > event.pageY) {
-                if (knobSpread < MAX_KNOB) {
-                knobSpread += val;
+                if (microscope.knobPosition < MAX_KNOB) {
+                microscope.knobPosition += val;
+                microscope.yslide += val;
+                microscope.ycaliper += val;
                 }
                 } else if ((prevY < event.pageY)) {
-                if (knobSpread > MIN_KNOB) {
-                knobSpread -= val;
+                if (microscope.knobPosition > MIN_KNOB) {
+                microscope.knobPosition -= val;
+                microscope.yslide -= val;
+                microscope.ycaliper -= val;
                 }
                 }
-                //console.log(knobSpread);
-                $("#slideStage").css({
-                    "-website-transform": "translate(" + 0 + "px," + knobSpread + "px)",
-                    "-ms-transform": "translate(" + 0 + "px," + knobSpread + "px)",
-                    "transform": "translate(" + 0 + "px," + knobSpread + "px)"
-                    });
+                //console.log(microscope.knobPosition);
                 prevY = event.pageY;
-                microscope.knobPosition = knobSpread;
+                updateAnimation();
                 }
                 })
         .mouseup(function() {
@@ -243,12 +294,8 @@ function enableDiaphragmLight() {
                 microscope.diaphragmLightPosition -= val;
                 }
                 }
-                $("#apertureKnob").css({
-                    "-website-transform": "translate(" + microscope.diaphragmLightPosition + "px," + 0 + "px)",
-                    "-ms-transform": "translate(" + microscope.diaphragmLightPosition + "px," + 0 + "px)",
-                    "transform": "translate(" + microscope.diaphragmLightPosition + "px," + 0 + "px)"
-                    });
                 prevX = event.pageX;
+                updateAnimation();
                 }
                 })
         .mouseup(function() {
@@ -283,12 +330,8 @@ function enableCaliper(){
                 microscope.xcaliper -= val;
                 }
                 }
-                $("#xcaliper").css({
-                    "-website-transform": "translate(" + microscope.xcaliper + "px," + microscope.ycaliper + "px)",
-                    "-ms-transform": "translate(" + microscope.xcaliper + "px," + microscope.ycaliper + "px)",
-                    "transform": "translate(" + microscope.xcaliper + "px," + microscope.ycaliper + "px)"
-                    });
                 prevX = event.pageX;
+                updateAnimation();
                 }
                 })
         .mouseup(function() {
@@ -311,26 +354,18 @@ function enableCaliper(){
                 if ((prevX < event.pageX)){ 
                 if (microscope.ycaliper < MAX_CALIPER) {
                 microscope.ycaliper += val;
+                microscope.yslide += val;
                 }
                 } else if ((prevX > event.pageX)){ 
                 if (microscope.ycaliper > MIN_CALIPER) {
                 microscope.ycaliper -= val;
+                microscope.yslide -= val;
                 }
                 }
-                $("#ycaliper").css({
-                    "-website-transform": "translate(" +  0 + "px," + microscope.ycaliper + "px)",
-                    "-ms-transform": "translate(" + 0 + "px," +  microscope.ycaliper+ "px)",
-                    "transform": "translate(" + 0 + "px," + microscope.ycaliper + "px)"
-                    });
-
-                $("#xcaliper").css({
-                    "-website-transform": "translate(" + microscope.xcaliper + "px," + microscope.ycaliper + "px)",
-                    "-ms-transform": "translate(" + microscope.xcaliper + "px," + microscope.ycaliper + "px)",
-                    "transform": "translate(" + microscope.xcaliper + "px," + microscope.ycaliper + "px)"
-                    });
                 prevX = event.pageX;
+                updateAnimation();
                 }
-        })
+                })
         .mouseup(function() {
                 isDown = false;
                 })
@@ -409,12 +444,7 @@ $("#draggableDiaphragm").mousemove(function (e) {
         last_degree = parseInt(degree);
         //console.log(degree); 
         //console.log(microscope.diaphragmHeightPosition);
-        $("#adjustDHeight").css({
-                "-website-transform": "translate(" + 0 + "px," + microscope.diaphragmHeightPosition + "px)",
-                "-ms-transform": "translate(" + 0 + "px," + microscope.diaphragmHeightPosition + "px)",
-                "transform": "translate(" + 0 + "px," + microscope.diaphragmHeightPosition + "px)"
-                });
-
+        updateAnimation();
         target_wp.css('-moz-transform', 'rotate(' + degree + 'deg)');
         target_wp.css('-moz-transform-origin', '50% 50%');
         target_wp.css('-webkit-transform', 'rotate(' + degree + 'deg)');
@@ -447,6 +477,7 @@ function enableScope(){
     enableEyepiece();
     enableCoarseKnob();
     enableDiaphragmLight();
+    enableCaliper();
 }
 
 function enableFrontScope(){
