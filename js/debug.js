@@ -22,11 +22,11 @@ function debugSetup() {
 }
 
 function debugLow(){
-    lowEyepiece.complete();
-    lowCoarse.complete();
-    lowFine.complete();
-    lowDiaphragmLight.complete();
-    lowDiaphragmHeight.complete();
+    //lowEyepiece.complete();
+    //lowCoarse.complete();
+    //lowFine.complete();
+    //lowDiaphragmLight.complete();
+    //lowDiaphragmHeight.complete();
     //lowCaliper.complete();
 }
 

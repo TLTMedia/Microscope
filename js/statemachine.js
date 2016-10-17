@@ -197,10 +197,7 @@ function enableEyepiece() {
         var val = 1;
         //Swap logic based on which side of the component is being dragged.
 
-        if (ocularPart == "#ocularRight") {
-            val = 1;
-
-        } else if (ocularPart == "#ocularLeft") {
+        if (ocularPart == "#ocularLeft") {
             ocularPartOpposite = "#ocularRight";
         }
 

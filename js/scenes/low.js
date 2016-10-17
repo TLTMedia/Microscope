@@ -71,40 +71,34 @@ function textSetupLenses() {
 }
 
 
-function doComplete(upperBound, lowerBound, stepTask){
-    if (upperBound && lowerBound){
-        stepTask.complete();
-        return true;
+/* Property to inspect, lower bound, upper bound, engine piece, div piece, remove listener*/
+function subHandler(prop, low, upper, piece, components, handler){
+    if(prop > low && prop < upper){ 
+        piece.complete();
+        $(components).unbind("mousemove", handler);               
     }
-    return false;
 }
-
 
 function lowAdjustEyepiece() {
     textSetupEyepiece();
     if (lowEyepiece.isActive()) {
-        var intervalId = window.setInterval(check, 1000);
-        function check() {
-            if(doComplete(microscope.eyepiecePosition > 10, microscope.eyepiecePosition < 25, lowEyepiece)){ 
-                clearInterval(intervalId);
-            }
+        var components = "#ocularRight, #ocularLeft" 
+        var handler = function(){
+            subHandler(microscope.eyepiecePosition, 10, 25, lowEyepiece, components, handler);
         }
+        $(components).bind("mousemove", handler);
     }
 }
 
 /*Trigger for coarse knob (for now I have conjoined them)*/
 function lowAdjustCoarse() {
     textSetupCoarse();
-    if (lowCoarse.isActive()) {
-        var intervalId = window.setInterval(coarseCallback, 1000);
-
-        function coarseCallback() {
-            //console.log(microscope.eyepiecePosition);
-            if (microscope.knobPosition > -30 && microscope.knobPosition < 0) {
-                clearInterval(intervalId);
-                lowCoarse.complete();
-            }
+    if (lowCoarse.isActive()) { 
+        var components = "#knobsCoarse" 
+        var handler = function(){
+            subHandler(microscope.knobPosition, -30, 0, lowCoarse, components, handler);
         }
+        $(components).bind("mousemove", handler);
     }
 }
 
@@ -113,15 +107,11 @@ function lowAdjustCoarse() {
 function lowAdjustFine() {
     textSetupFine();
     if (lowFine.isActive()) {
-        var intervalId = window.setInterval(fineCallback, 1000);
-
-        function fineCallback() {
-            //console.log(microscope.eyepiecePosition);
-            if (microscope.knobPosition > -30 && microscope.knobPosition < -10) {
-                clearInterval(intervalId);
-                lowFine.complete();
-            }
+        var components = "#knobsFine" 
+        var handler = function(){
+            subHandler(microscope.knobPosition, -30, -10, lowFine, components, handler);
         }
+        $(components).bind("mousemove", handler);
     }
 }
 
@@ -130,14 +120,11 @@ function lowAdjustFine() {
 function lowDLight() {
     textSetupDiaphragmLight();
     if (lowDiaphragmLight.isActive()) {
-        var intervalId = window.setInterval(dLightCallback, 1000);
-        function dLightCallback() {
-            //console.log(microscope.eyepiecePosition);
-            if (microscope.diaphragmLightPosition > 5 && microscope.diaphragmLightPosition < 30) {
-                clearInterval(intervalId);
-                lowDiaphragmLight.complete();
-            }
+        var components = "#diaphragm" 
+        var handler = function(){
+            subHandler(microscope.diaphragmLightPosition, 5, 30, lowDiaphragmLight, components, handler);
         }
+        $(components).bind("mousemove", handler);
     }
 }
 
@@ -145,14 +132,11 @@ function lowDLight() {
 function lowDHeight() {
     textSetupDiaphragmHeight();
     if (lowDiaphragmHeight.isActive()) {
-        var intervalId = window.setInterval(dHeightCallback, 1000);
-        function dHeightCallback() {
-            //console.log(microscope.eyepiecePosition);
-            if (microscope.diaphragmHeightPosition > 5 && microscope.diaphragmHeightPosition < 15) {
-                clearInterval(intervalId);
-                lowDiaphragmHeight.complete();
-            }
+        var components = document 
+        var handler = function(){
+            subHandler(microscope.diaphragmHeightPosition, 5, 15, lowDiaphragmHeight, components, handler);
         }
+        $(components).bind("mousemove", handler);
     }
 }
 
@@ -160,28 +144,25 @@ function lowDHeight() {
 function lowAdjustCaliper() {
     textSetupCaliper();
     if (lowCaliper.isActive()) {
-        var intervalId = window.setInterval(caliperCallback, 1000);
-        function caliperCallback() {
-            //console.log(microscope.eyepiecePosition);
-            if (microscope.xcaliper > 5 && microscope.xcaliper < 20 && microscope.ycaliper > 5 && microscope.ycaliper < 20) {
-                clearInterval(intervalId);
-                lowCaliper.complete();
-            }
+        var components = document 
+        var handler = function(){
+            subHandler(microscope.xcaliper, 5, 20, lowCaliper, components, handler);
+            subHandler(microscope.ycaliper, 5, 20, lowCaliper, components, handler);
         }
-    }
+        $(components).bind("mousemove", handler);
+
+        }
+    
 }
 
 
 function lowAdjustLenses() {
     textSetupLenses();
     if (lowLenses.isActive()) {
-        var intervalId = window.setInterval(caliperCallback, 1000);
-        function caliperCallback() {
-            //console.log(microscope.eyepiecePosition);
-            if (microscope.xcaliper > 5 && microscope.xcaliper < 20 && microscope.ycaliper > 5 && microscope.ycaliper < 20) {
-                clearInterval(intervalId);
-                lowLenses.complete();
-            }
+        var components = document 
+        var handler = function(){
+            subHandler(microscope.diaphragmHeightPosition, 5, 15, lowLenses, components, handler);
         }
+        $(components).bind("mousemove", handler);
     }
 }
