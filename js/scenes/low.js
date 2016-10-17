@@ -5,13 +5,10 @@
  * Third scene that teaches student how to use the microscope 
  */
 
-// ===== Utility Functions ===== //
+// ===== End Trigger Functions ===== //
 
-function textSetup(tooltip, lt, tp){
-    popupOn(tooltip, {"left": lt, "top": tp});
-}
-
-// Property to inspect, lower bound, upper bound, engine piece, div piece, remove listener
+// args: 
+// property to inspect, lower bound, upper bound, engine piece, div piece, remove listener
 function subHandler(prop, low, upper, piece, doc, handler){
     if(prop > low && prop < upper){ 
         piece.complete();
@@ -20,7 +17,6 @@ function subHandler(prop, low, upper, piece, doc, handler){
 }
 
 // ====== Start Trigger Listeners ======= //
-
 
 function lowAdjustEyepiece() {
     textSetup("Adjust the eyepiece to change the magnification.", "5%", "25%");
@@ -32,7 +28,7 @@ function lowAdjustEyepiece() {
     }
 }
 
-/*Trigger for coarse knob (for now I have conjoined them)*/
+// Trigger for coarse knob.
 function lowAdjustCoarse() {
     textSetup("Move the stage up by moving the course knob.", "10%", "64%");
     if (lowCoarse.isActive()) { 
@@ -43,7 +39,7 @@ function lowAdjustCoarse() {
     }
 }
 
-/*Trigger for fine knob (for now I have conjoined them)*/
+//Trigger for fine knob 
 
 function lowAdjustFine() {
     textSetup("Move the stage up slightly by moving the fine knob.", "10%", "64%");

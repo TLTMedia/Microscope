@@ -2,14 +2,8 @@ function introText() {
     $("#headerText").html("-Introduction-");
 }
 
-
 function setupText() {
     $("#headerText").text("Follow the instructions to toggle the components.");
-}
-
-
-String.prototype.capitalize = function() {
-    return this.charAt(0).toUpperCase() + this.slice(1);
 }
 
 // Make use of the header by making it a tooltip.
@@ -28,15 +22,19 @@ function bindTooltip(){
    Use of below function is for intro.js (intro.js + gameLogic.js interdependence).
  */
 function startStep(step) {
+    var isDebug = true;
+
     /* intro
 
        Intro doesn't necessarily have flexible choices for the user to act on.
        The purpose of the introduction is to teach the user about the different
        parts of the microscope.
      */
+
     if (step == introLightSwitch) {
+        isDebug = DEBUG(isDebug);
         introText();
-        triggerLightSwitch();
+        if (!isDebug) triggerLightSwitch();
         $("#light").addClass("elementOff");
     }
     if (step == introDiaphragm) {
@@ -48,14 +46,14 @@ function startStep(step) {
     if (step == introCoarse) {
         triggerCoarse();
     }
-    if (step == introLenses) {
-        triggerLenses();
-    }
     if (step == introCaliper) {
         triggerCaliper();
     }
     if (step == introEyepiece) {
         triggerEyepiece();
+    }
+    if (step == introLenses) {
+        triggerLenses();  
     }
 
     /* setup
@@ -65,6 +63,8 @@ function startStep(step) {
 
      */
     if (step == setupLightSwitch) {
+        showAllParts();
+        loadIntroComplete();
         bindTooltip(); 
         setupText();
         setupEnableSwitch();

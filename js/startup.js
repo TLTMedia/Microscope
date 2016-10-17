@@ -235,13 +235,6 @@ function loadSubMenu() {
                 "shortText": "Diaphragm",
                 "longText": "Click the lenses.",
                 "feedbackText": "click the lenses"
-
-            // Might want separate steps for diaphragm light and height. Maybe.
-            // }, {
-            //     "id": "lowDiaphragm",
-            //     "shortText": "Diaphragm",
-            //     "longText": "Click the lenses.",
-            //     "feedbackText": "click the lenses"
             }]
 
         }, {
@@ -261,8 +254,6 @@ function loadSubMenu() {
         }
 
     ];
-
-
 
     game = new Game(true, true);
     var stepCount = -1;
@@ -342,3 +333,25 @@ function initEndOptionHover(id) {
         $("#endOptionDesc" + id).addClass("anim_exitEndOptionDesc");
     });
 }
+
+
+
+// ====== Frame setup and microscope initialization. ====== //
+$(function() {
+        //Bind the rotate
+        $("#rotate").click(function(){ 
+            rotateView();
+            });
+
+        $('#microscope').load('img/microscope.svg', function() {
+            resizeWindow();
+            loadStartMenu();
+            loadSubMenu();
+
+            $("#endOption1").click(function() {
+                // Start Beginner Mode
+                newGame(true, false);
+                });
+
+        })
+});

@@ -1,9 +1,10 @@
 /* =================================
-        Debugging functions
-     Use these to skip scenes
-================================= */
+   Debugging functions
+   Use these to skip scenes
+   ================================= */
 
 function debugIntro() {
+    console.log("Intro debugged.");
     introLightSwitch.complete();
     introEyepiece.complete();
     introCoarse.complete();
@@ -11,12 +12,13 @@ function debugIntro() {
     introDiaphragm.complete();
     introCaliper.complete();
     introLenses.complete();
-    $("#popup").removeClass("elementOn");
-    $("#popup").addClass("elementOff");
+    //$("#popup").removeClass("elementOn");
+    //$("#popup").addClass("elementOff");
     showAllParts();
 }
 
 function debugSetup() {
+    console.log("Setup debugged.");
     setupLightSwitch.complete();
     setupSlide.complete();
 }
@@ -31,3 +33,17 @@ function debugLow(){
 }
 
 function debugHighMag(){}
+
+
+function DEBUG(state){
+    var isDebug = state;
+    if (isDebug){
+        debugIntro();
+        //debugSetup();
+        //debugLow();
+    }
+      //debugHighMag(); 
+    return isDebug;
+}
+
+
