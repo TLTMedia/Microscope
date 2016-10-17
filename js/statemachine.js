@@ -484,6 +484,7 @@ function enableScope(){
     enableCoarseKnob();
     enableDiaphragmLight();
     enableCaliper();
+    updateAnimation();
 }
 
 function enableFrontScope(){
