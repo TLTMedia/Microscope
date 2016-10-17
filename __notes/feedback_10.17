@@ -1,0 +1,18 @@
+10/17/16
+Feedback:
+
+-When y caliper moves down, everything on the view gets realistically bigger (scale x/y, slide down).
+-Create a side view of the scope and put it at the side of the front-view so there are two views active simultaneously.
+-Create 8 SVG views of the lenses. 4 for fixed pivots, 4 for intermission pivots. Add drag functionality at top of lense (Warning to not touch lenses)
+    -Modify SVG files to represent orientation of the scope better.
+-Modify setup stage to include:
+    -Place slide in.
+    -Toggle aperture light.
+    -Control calipers to make sure specimen is under the aperture light (Perhaps popup view to show specimen orientation). 
+-Aperture knob light should increase as magnification increases
+    -Low mag should have very low light.
+    -High mag should have higher aperture value (more diffraction).
+    -Change orientation of aperture knob to rightmost side.
+-Consider the use of event targets as opposed to hardcoded div names.
+-Utilize bindings over setTimeout if possible.
+-Slide view should change by state changes. 
