@@ -129,12 +129,6 @@
     animation-fill-mode: forwards;
 }
 
-
-
-
-
-
-
 #popup {
     background-color:#aaaaaa;
     border-radius: 25px;
@@ -158,43 +152,39 @@
 
 
 #rotate {
-    background-color: rgba(255,160,122,0.8);
-    border-radius: 15px;
-    left: 0%;
-    top: 0%;
+    border-radius: 50%;
+    border-color: black;
     display:visible;
     position: absolute;
-    left: 85%; 
-    top: 75%;
+    left: 2%; 
+    top: 60%;
     z-index: 1000000;
-
-    max-height: 20%;
-    min-height: 2%;
-    max-width: 10%;
-    min-width: 10%;
-
-    padding-top: 1%;
-    padding-right: 1%;
-    padding-bottom: 1%;
-    padding-left: 1%;
     text-align: center;
+    overflow: hidden; 
+    border: 1px solid rgb(90,90,90);
 }
 
-
-#sideView{
-  background-color:#ff0000;
-  border-radius: 50%;
-  width:200px;
-  height:200px;
-
-  left: 60%;
-  top: 15%;
-  position: absolute;
-  z-index: 1000000;
-  text-align: center;
+#rotate2{
+    position: relative;
+    float: left;
+    top: -110%;
+    left: -190%;
 }
+ 
 
 
+#slideView {
+    border-radius: 50%;
+    border-color: black;
+    display:visible;
+    position: absolute;
+    left: 2%; 
+    top: 20%;
+    z-index: 1000000;
+    text-align: center;
+    overflow: hidden; 
+    border: 1px solid rgb(90,90,90);
+}
 
 #switchTarget {
     width: 4%;

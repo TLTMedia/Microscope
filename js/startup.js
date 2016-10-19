@@ -338,12 +338,11 @@ function initEndOptionHover(id) {
 
 // ====== Frame setup and microscope initialization. ====== //
 $(function() {
-        //Bind the rotate
-        $("#rotate").click(function(){ 
-            rotateView();
-            });
 
+            $("#rotate2").load('img/sideview.svg', function(){ 
+            })
         $('#microscope').load('img/microscope.svg', function() {
+
             resizeWindow();
             loadStartMenu();
             loadSubMenu();
@@ -354,4 +353,7 @@ $(function() {
                 });
 
         })
+        
+        
+
 });

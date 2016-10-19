@@ -87,7 +87,7 @@ var MIN_DIAPHRAGM_HEIGHT = -15;
 var MAX_DIAPHRAGM_HEIGHT = 15;
 var MAX_CALIPER = 20;
 var MIN_CALIPER = -20;
-
+var last_angle = 0; 
 
 // Variables needed for rotating
 var target_wp,o_x, o_y, h_x, h_y, last_angle, last_degree;
@@ -110,7 +110,7 @@ var target_wp,o_x, o_y, h_x, h_y, last_angle, last_degree;
    Instead of updating the animation per function call,
    do it all at once.
 
-    Call function everytime state changes.
+   Call function everytime state changes.
 
  */
 function updateAnimation(){
@@ -261,7 +261,7 @@ function enableCoarseKnob() {
                 prevY = event.pageY;
                 updateAnimation();
                 }
-                })
+        })
         .mouseup(function() {
                 isDown = false;
                 })
@@ -390,8 +390,6 @@ function enableLenses(){
         $(microscope.lenseStates[0]).css("opacity", "1");  
         $(part).css("opacity", "0");  
         $(part).click(function(){
-
-                console.log(part);
                 $(microscope.lenseStates[microscope.lensePosition]).css("opacity", "0");  
                 microscope.lensePosition = ((microscope.lensePosition + 1) % microscope.lenseStates.length) 
                 $(microscope.lenseStates[microscope.lensePosition]).css("opacity", "1");     
@@ -407,7 +405,7 @@ function enableLenses(){
  * 
  */
 
-function enableSideDiaphragmRotate(){
+function enableSideDiaphragmRotate(){ 
     $('#draggableDiaphragm').mousedown(function (e) {
             h_x = e.pageX;
             h_y = e.pageY; // clicked point
@@ -447,8 +445,7 @@ $("#draggableDiaphragm").mousemove(function (e) {
         }
         }
 
-        last_degree = parseInt(degree);
-        //console.log(degree); 
+        last_degree = parseInt(degree); 
         //console.log(microscope.diaphragmHeightPosition);
         updateAnimation();
         target_wp.css('-moz-transform', 'rotate(' + degree + 'deg)');
@@ -472,6 +469,7 @@ $(document).mouseup(function (e) {
         var s_rad = Math.atan2(s_y - o_y, s_x - o_x); // current to origin
         s_rad -= Math.atan2(h_y - o_y, h_x - o_x); // handle to origin
         s_rad += last_angle;
+        if (target_wp)
         target_wp.data("last_angle", s_rad);
         })
 }
@@ -484,35 +482,9 @@ function enableScope(){
     enableCoarseKnob();
     enableDiaphragmLight();
     enableCaliper();
-    updateAnimation();
-}
-
-function enableFrontScope(){
     enableSideDiaphragmRotate()
+        updateAnimation();
 }
-
-// Rotates the view of the microscope
-function rotateView(){  
-    var adjustView = function(){
-        resizeWindow();
-        if (microscope.view==0){
-            enableScope();
-        }
-        else{
-            enableFrontScope();
-        }
-    }
-
-    microscope.view = (microscope.view+1)%2;
-    if (microscope.view == 1){
-        $('#microscope').load('img/sideview.svg', adjustView);
-    }
-    else{
-        $('#microscope').load('img/microscope.svg', adjustView);
-    }
-}
-
-
 
 function toggleDiaphragmLight() {}
 function toggleDiaphragmHeight() {}
