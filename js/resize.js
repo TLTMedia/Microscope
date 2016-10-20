@@ -107,12 +107,14 @@ function resizeWindow() {
         'background-size': stripeSize
     });
 
+    if (w>1500) w=1500;
 
     $("#rotate").css({
        'height': w*0.2 + "px", 
         'width': w*0.2 + "px"
     });
-     
+
+
     $("#rotate2 > svg").css({
         "height": w*0.55 + "px",
         "width": w + "px"
