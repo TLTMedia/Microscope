@@ -157,7 +157,20 @@ function loadSubMenu() {
                 "shortText": "Slide",
                 "longText": "Push in the slide.",
                 "feedbackText": "click the light switch"
+            },{
+                "id": "setupAperture",
+                "shortText": "Aperture Knob",
+                "longText": "Move the aperture knob slightly to the left.",
+                "feedbackText": "Move the aperture knob."
+            
+            },{
+                "id": "setupCaliper",
+                "shortText": "Caliper Knob",
+                "longText": "Adjust the caliper knobs.",
+                "feedbackText": "Move the caliper knob."
+            
             }]},
+
             {
             "id": "lowMag",
             "shortText": "Learning the Ropes",
@@ -285,7 +298,9 @@ function loadSubMenu() {
     // Setup
     setupLightSwitch = game.getGroupStep(1, 0);
     setupSlide = game.getGroupStep(1,1);   
- 
+    setupAperture = game.getGroupStep(1,2);
+    setupCaliper = game.getGroupStep(1,3);
+
      // Low Magnification
     lowEyepiece = game.getGroupStep(2, 0);
     lowCoarse = game.getGroupStep(2, 1);

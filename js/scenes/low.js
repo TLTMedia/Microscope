@@ -6,16 +6,6 @@
  */
 
 // ===== End Trigger Functions ===== //
-
-// args: 
-// property to inspect, lower bound, upper bound, engine piece, div piece, remove listener
-function subHandler(prop, low, upper, piece, doc, handler){
-    if(prop > low && prop < upper){ 
-        piece.complete();
-        $(doc).unbind("mousemove", handler);               
-    }
-}
-
 // ====== Start Trigger Listeners ======= //
 
 function lowAdjustEyepiece() {
@@ -65,7 +55,7 @@ function lowDLight() {
 
 
 function lowDHeight() {
-    textSetup("Adjust the height of the diaphragm by rotating the knob.", "50%", "60%");
+    textSetup("Adjust the height of the diaphragm by rotating the diaphragm knob", "5%", "60%");
     if (lowDiaphragmHeight.isActive()) {
         var handler = function(){
             subHandler(microscope.diaphragmHeightPosition, 5, 15, lowDiaphragmHeight, document, handler);

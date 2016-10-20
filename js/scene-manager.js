@@ -74,7 +74,15 @@ function startStep(step) {
         console.log("We are now in this step");
        setupEnableSlide(); 
     }
+    if (step == setupAperture){ 
+        setupDLight();
+        enableDiaphragmLight();
+    }
 
+    if (step == setupCaliper){ 
+        setupAdjustCaliper();
+        enableCaliper(); 
+    }
     
     // Diving in: Low magnification
     if (step == lowEyepiece) {

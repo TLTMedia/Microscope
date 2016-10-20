@@ -19,8 +19,9 @@ function debugIntro() {
 
 function debugSetup() {
     console.log("Setup debugged.");
-    setupLightSwitch.complete();
-    setupSlide.complete();
+    //setupLightSwitch.complete();
+   // setupSlide.complete();
+   // setupAperture.complete();
 }
 
 function debugLow(){
@@ -40,7 +41,7 @@ function DEBUG(state){
     if (isDebug){
         debugIntro();
         debugSetup();
-        debugLow();
+//        debugLow();
     }
       //debugHighMag(); 
     return isDebug;
