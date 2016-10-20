@@ -37,9 +37,18 @@ function setupEnableSlide(){
 
 function setupDLight() {
     textSetup("Move the aperture knob slightly to the left.", "55%", "60%");
+    id = "#diaphragm"
     if (setupAperture.isActive()) { 
+        var clonePart = $(id).clone();
+        clonePart.toggleClass("highlightPart")
+        clonePart.attr("id", id+"Copy");
+        clonePart.attr("filter","url(#blurMe)");
+        clonePart.attr("z-index", "0");
+        clonePart.children().attr("fill", "rgba(0,0,0,0)");
+        
+        clonePart.appendTo($(id).parent())
         var handler = function(){
-            subHandler(microscope.diaphragmLightPosition, 5, 30, setupAperture, document, handler);
+            subHandler(microscope.diaphragmLightPosition, 5, 30, setupAperture, document, handler, id);
         }
         $(document).bind("mousemove", handler);
     }
@@ -48,10 +57,12 @@ function setupDLight() {
 
 function setupAdjustCaliper() {
     textSetup("Move the caliper knob so the aperture light is on the specimen.", "62%", "60%");
+    id = "#caliperKnob"
     if (setupCaliper.isActive()) {
-        var handler = function(){
-            subHandler(microscope.xcaliper, 5, 20, setupCaliper, document, handler);
-            subHandler(microscope.ycaliper, 5, 20, setupCaliper, document, handler);
+         $(id).toggleClass("highlightPart"); 
+        var handler = function(){    
+            subHandler(microscope.xcaliper, 5, 20, setupCaliper, document, handler, id);
+            subHandler(microscope.ycaliper, 5, 20, setupCaliper, document, handler, id);
         }
         $(document).bind("mousemove", handler);
 

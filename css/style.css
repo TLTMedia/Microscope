@@ -214,6 +214,10 @@
     
 }
 
+.highlightPart{
+     stroke: rgba(0, 0, 255, 0.2);
+     stroke-width: 5px;
+}
 
 #fineknobsTarget1{
     width: 3%;

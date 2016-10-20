@@ -358,6 +358,8 @@ $(function() {
             })
         $('#microscope').load('img/microscope.svg', function() {
 
+//            $('#microscope svg').append('<filter id="blurMe"><feGaussianBlur in="SourceGraphic" stdDeviation="1" /></filter>')
+
             resizeWindow();
             loadStartMenu();
             loadSubMenu();

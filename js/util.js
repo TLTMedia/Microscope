@@ -33,9 +33,10 @@ String.prototype.capitalize = function() {
 // low.js && setup.js dependant on this function
 // args: 
 // property to inspect, lower bound, upper bound, engine piece, div piece, remove listener
-function subHandler(prop, low, upper, piece, doc, handler){
+function subHandler(prop, low, upper, piece, doc, handler, id){
     if(prop > low && prop < upper){ 
         piece.complete();
+        if (id != null) $(id).toggleClass("highlightPart"); 
         $(doc).unbind("mousemove", handler);               
     }
 }
