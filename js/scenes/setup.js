@@ -11,7 +11,7 @@
 function setupEnableSwitch() {
     textSetup("First, let's turn on the light switch.", "60%", "73%");
     id="#switch"
-    highlightComponent(id);
+        highlightComponent(id);
     $("#switch").click(function() {
         if (setupLightSwitch.isActive()) {
             removeHighlight(id);
@@ -43,9 +43,9 @@ function setupDLight() {
     id = "#diaphragm"
         if (setupAperture.isActive()) {
             highlightComponent(id);
-                var handler = function(){
-                    subHandler(microscope.diaphragmLightPosition, 5, 30, setupAperture, document, handler, id);
-                }
+            var handler = function(){
+                subHandler(microscope.diaphragmLightPosition, 5, 30, setupAperture, document, handler, id);
+            }
             $(document).bind("mousemove", handler);
         }
 }
