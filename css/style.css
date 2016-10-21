@@ -215,7 +215,7 @@
 }
 
 .highlightPart{
-     stroke: rgba(0, 0, 255, 0.2);
+     stroke: rgba(0, 0, 255, 0.5);
      stroke-width: 5px;
 }
 
