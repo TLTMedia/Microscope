@@ -37,7 +37,6 @@ function subHandler(prop, low, upper, piece, doc, handler, id){
     if(prop > low && prop < upper){ 
         piece.complete();
         if (id != null) {
-            console.log(id);
             removeHighlight(id);
         } 
         $(doc).unbind("mousemove", handler);               
@@ -47,19 +46,21 @@ function subHandler(prop, low, upper, piece, doc, handler, id){
 // Utility function to highlight component.
 function highlightComponent(id){
     var origPart = $(id)
-        var clonePart = $(id).clone();
-    clonePart.toggleClass("highlightPart")
-        clonePart.attr("id", id+"Copy");
-    clonePart.attr("filter","url(#blurMe)");
-    clonePart.children().attr("fill", "rgba(0,0,0,0)");
+    var clonePart = $(id).clone();
+    clonePart.attr("pointer-events", "none")
+    origPart.toggleClass("highlightPart")
+    clonePart.attr("id", id+"Copy");
+    origPart.attr("filter","url(#blurMe)");
+    origPart.children().attr("fill", "rgba(0,0,0,0)");
     clonePart.appendTo($(id).parent())
-        $(id).remove();
-    origPart.appendTo($(clonePart).parent())
+//        $(id).remove();
+ //   origPart.appendTo($(clonePart).parent())
 }
 
 // Utility function to remove highlight component.
 // Best hacky solution I could think of..
 // Since append guarantees
 function removeHighlight(id){
-    $(id).prev().remove(); 
+//    $(id).last().remove(); 
+    $(id).toggleClass("highlightPart")
 }

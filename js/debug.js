@@ -19,9 +19,9 @@ function debugIntro() {
 
 function debugSetup() {
     console.log("Setup debugged.");
-    //setupLightSwitch.complete();
-   // setupSlide.complete();
-   // setupAperture.complete();
+    setupLightSwitch.complete();
+    setupSlide.complete();
+    setupAperture.complete();
 }
 
 function debugLow(){

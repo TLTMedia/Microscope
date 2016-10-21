@@ -81,6 +81,7 @@ function startStep(step) {
 
     if (step == setupCaliper){ 
         setupAdjustCaliper();
+        console.log("append prepend work");
         enableCaliper(); 
     }
     

@@ -380,8 +380,10 @@ function enableCaliper(){
             isDown = false;
         });
     }
+    console.log("Caliper events set");
     addCaliperXDrag("#xcaliperKnob");
     addCaliperYDrag("#ycaliperKnob");
+
 }
 
 
