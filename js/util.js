@@ -61,6 +61,7 @@ function highlightComponent(id){
 // Best hacky solution I could think of..
 // Since append guarantees
 function removeHighlight(id){
-//    $(id).last().remove(); 
+    $(id+"Copy").last().remove(); // This is broken.. 
     $(id).toggleClass("highlightPart")
+    $(id).css("filter", "none");
 }
