@@ -12,9 +12,10 @@ function lowAdjustEyepiece() {
     textSetup("Adjust the eyepiece to change the magnification.", "5%", "25%");
     var id="#ocularLensBase";
     if (lowEyepiece.isActive()) { 
-        highlightComponent(id);
+        var clonedComp = highlightComponent(id);
+            bringToFront($(id));
         var handler = function(){
-            subHandler(microscope.eyepiecePosition, 10, 25, lowEyepiece, document, handler, id);
+            subHandler(microscope.eyepiecePosition, 10, 25, lowEyepiece, document, handler, id, clonedComp);
         }
         $(document).bind("mousemove", handler);
     }
@@ -25,9 +26,10 @@ function lowAdjustCoarse() {
     textSetup("Move the stage up by moving the course knob.", "10%", "64%");
     var id="#knobsCoarse"
     if (lowCoarse.isActive()) { 
-        highlightComponent(id); 
+        var clonedComp = highlightComponent(id);
+            bringToFront($(id));
         var handler = function(){
-            subHandler(microscope.knobPosition, -30, 0, lowCoarse, document, handler, id);
+            subHandler(microscope.knobPosition, -30, 0, lowCoarse, document, handler, id, clonedComp);
         }
         $(document).bind("mousemove", handler);
     }
@@ -38,10 +40,11 @@ function lowAdjustCoarse() {
 function lowAdjustFine() {
     textSetup("Move the stage up slightly by moving the fine knob.", "10%", "64%");
     var id="#knobsFine"
-    if (lowFine.isActive()) { 
-        highlightComponent(id); 
+    if (lowFine.isActive()) {  
+        var clonedComp = highlightComponent(id);
+            bringToFront($(id));
         var handler = function(){
-            subHandler(microscope.knobPosition, -30, -10, lowFine, document, handler, id);
+            subHandler(microscope.knobPosition, -30, -10, lowFine, document, handler, id, clonedComp);
         }
         $(document).bind("mousemove", handler);
     }
@@ -64,10 +67,11 @@ function lowDLight() {
 function lowDHeight() {
     textSetup("Adjust the height of the diaphragm by rotating the diaphragm knob", "5%", "60%");
     var id="#draggableDiaphragm"
-    if (lowDiaphragmHeight.isActive()) {
-        highlightComponent(id); 
+    if (lowDiaphragmHeight.isActive()) { 
+        var clonedComp = highlightComponent(id);
+            bringToFront($(id));
         var handler = function(){
-            subHandler(microscope.diaphragmHeightPosition, 5, 15, lowDiaphragmHeight, document, handler, id);
+            subHandler(microscope.diaphragmHeightPosition, 5, 15, lowDiaphragmHeight, document, handler, id, clonedComp);
         }
         $(document).bind("mousemove", handler);
     }
@@ -93,10 +97,11 @@ function lowAdjustCaliper() {
 function lowAdjustLenses() {
     textSetup("Lenses: The lenses are rotated on the nosepiece to change the magnification. These different lenses are referred to as the objectives.", "10%", "36%"); 
     var id="lenses"
-    if (lowLenses.isActive()) {
-        highlightComponent(id); 
+    if (lowLenses.isActive()) { 
+        var clonedComp = highlightComponent(id);
+            bringToFront($(id));
         var handler = function(){
-            subHandler(microscope.diaphragmHeightPosition, 5, 15, lowLenses, document, handler, id);
+            subHandler(microscope.diaphragmHeightPosition, 5, 15, lowLenses, document, handler, id, clonedComp);
         }
         $(document).bind("mousemove", handler);
     }

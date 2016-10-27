@@ -33,35 +33,40 @@ String.prototype.capitalize = function() {
 // low.js && setup.js dependant on this function
 // args: 
 // property to inspect, lower bound, upper bound, engine piece, div piece, remove listener
-function subHandler(prop, low, upper, piece, doc, handler, id){
+function subHandler(prop, low, upper, piece, doc, handler, id, cloned){
     if(prop > low && prop < upper){ 
+        console.log(id);
         piece.complete();
-        if (id != null) {
-            removeHighlight(id);
+        if (cloned != null) {
+            removeHighlight(cloned);
         } 
         $(doc).unbind("mousemove", handler);               
     }
 }
 
+
+function bringToFront(elem){
+   elem.appendTo(elem.parent()); 
+}
+
 // Utility function to highlight component.
 function highlightComponent(id){
+    //return;
     var origPart = $(id)
     var clonePart = $(id).clone();
+    lastPart = clonePart;
     clonePart.attr("pointer-events", "none")
-    origPart.toggleClass("highlightPart")
+    clonePart.toggleClass("highlightPart")
     clonePart.attr("id", id+"Copy");
-    origPart.attr("filter","url(#blurMe)");
-    origPart.children().attr("fill", "rgba(0,0,0,0)");
+    clonePart.attr("filter","url(#blurMe)");
+    clonePart.children().attr("fill", "rgba(0,0,0,0)");
     clonePart.appendTo($(id).parent())
-//        $(id).remove();
- //   origPart.appendTo($(clonePart).parent())
+    return clonePart
 }
 
 // Utility function to remove highlight component.
 // Best hacky solution I could think of..
 // Since append guarantees
-function removeHighlight(id){
-    $(id+"Copy").last().remove(); // This is broken.. 
-    $(id).toggleClass("highlightPart")
-    $(id).css("filter", "none");
+function removeHighlight(elem){
+    elem.remove();
 }

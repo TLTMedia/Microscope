@@ -11,13 +11,14 @@
 function setupEnableSwitch() {
     textSetup("First, let's turn on the light switch.", "60%", "73%");
     id="#switch"
-        highlightComponent(id);
+        var clonedComp = highlightComponent(id);
+            bringToFront($(id));
     $("#switch").click(function() {
-        if (setupLightSwitch.isActive()) {
-            removeHighlight(id);
+            if (setupLightSwitch.isActive()) {
+            removeHighlight(clonedComp);
             setupLightSwitch.complete();
-        }
-    });
+            }
+            });
 }
 
 function setupEnableSlide(){
@@ -28,23 +29,26 @@ function setupEnableSlide(){
        "-website-transform": "translate(" + 0 + "px," + 0 + "px)",
        "transform": "translate(" + 0 + "px," + 0 + "px)"
        });
-       */
+     */
     $(document).click(function(){
-        if (setupSlide.isActive())
-    {
-        setupSlide.complete();
+            if (setupSlide.isActive())
+            {
+            setupSlide.complete();
 
-    }
-    });
+            }
+            });
 }
 
 function setupDLight() {
     textSetup("Move the aperture knob slightly to the left.", "55%", "60%");
     id = "#diaphragm"
         if (setupAperture.isActive()) {
-            highlightComponent(id);
+            var clonedComp = highlightComponent(id);
+            bringToFront($(id));
+            bringToFront($("#aperture"));
+            bringToFront($("#apertureKnob"));
             var handler = function(){
-                subHandler(microscope.diaphragmLightPosition, 5, 30, setupAperture, document, handler, id);
+                subHandler(microscope.diaphragmLightPosition, 5, 30, setupAperture, document, handler, id, clonedComp);
             }
             $(document).bind("mousemove", handler);
         }
@@ -55,10 +59,10 @@ function setupAdjustCaliper() {
     textSetup("Move the caliper knob so the aperture light is on the specimen.", "62%", "60%");
     id = "#caliperKnob"
         if (setupCaliper.isActive()) {
-            highlightComponent(id);
+            var clonedComp = highlightComponent(id);
             var handler = function(){    
-                subHandler(microscope.xcaliper, 5, 20, setupCaliper, document, handler, id);
-                subHandler(microscope.ycaliper, 5, 20, setupCaliper, document, handler, id);
+                subHandler(microscope.xcaliper, 5, 20, setupCaliper, document, handler, id, clonedComp);
+                subHandler(microscope.ycaliper, 5, 20, setupCaliper, document, handler, id, clonedComp);
             }
             $(document).bind("mousemove", handler);
 

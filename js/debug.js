@@ -19,18 +19,18 @@ function debugIntro() {
 
 function debugSetup() {
     console.log("Setup debugged.");
-    setupLightSwitch.complete();
-    setupSlide.complete();
-    setupAperture.complete();
+//    setupLightSwitch.complete();
+//    setupSlide.complete();
+//    setupAperture.complete();
 }
 
 function debugLow(){
     lowEyepiece.complete();
     lowCoarse.complete();
     lowFine.complete();
-    lowDiaphragmLight.complete();
-    lowDiaphragmHeight.complete();
-    lowCaliper.complete();
+//    lowDiaphragmLight.complete();
+//    lowDiaphragmHeight.complete();
+//    lowCaliper.complete();
 }
 
 function debugHighMag(){}
