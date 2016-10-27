@@ -1,0 +1,8 @@
+.blurSlide {
+  -webkit-animation: blur 3s infinite;
+}
+
+@-webkit-keyframes blur {
+  0%, 100%  { -webkit-filter: blur(0px); }
+  50% { -webkit-filter: blur(10px); }
+}

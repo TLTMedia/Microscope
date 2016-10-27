@@ -360,7 +360,7 @@ $(function() {
         slideImg.attr('src', "img/eyepieceCells.png"); 
         slideImg.appendTo('#slideContentsContainer');
         $('#microscope').load('img/microscope.svg', function() {
-
+        updateAnimation();
 
 //            $('#microscope svg').append('<filter id="blurMe"><feGaussianBlur in="SourceGraphic" stdDeviation="1" /></filter>')
 

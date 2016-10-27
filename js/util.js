@@ -44,7 +44,7 @@ function subHandler(prop, low, upper, piece, doc, handler, id, cloned){
     }
 }
 
-
+// Brings an element to the front of the page (z-index workaround)
 function bringToFront(elem){
    elem.appendTo(elem.parent()); 
 }
@@ -65,8 +65,6 @@ function highlightComponent(id){
 }
 
 // Utility function to remove highlight component.
-// Best hacky solution I could think of..
-// Since append guarantees
 function removeHighlight(elem){
     elem.remove();
 }

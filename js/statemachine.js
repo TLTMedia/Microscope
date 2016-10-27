@@ -56,7 +56,7 @@ var components = [
             this.knobPosition = 0;
             this.xslide = 0;
             this.yslide = 0;
-            this.diaphragmLightPosition = 0;
+            this.diaphragmLightPosition = 5;
             this.diaphragmHeightPosition = 0;
             this.xcaliper = 0;
             this.ycaliper = 0;
@@ -64,13 +64,12 @@ var components = [
             this.lensePosition = 0;
             this.lenseStates = ["#lensesRed", "#lensesYellow", "#lensesBlue", "#lensesWhite"];
             this.view = 0; //0 for front, 1 for left
-            console.log("State machine has been created");
+            console.log("State machine has been created and updated.");
         }
 
     }
 
 microscope = new StateMachine();
-
 
 /* User global states
 */
@@ -105,15 +104,11 @@ var target_wp,o_x, o_y, h_x, h_y, last_angle, last_degree;
 // function sideViewOff(){}
 
 
-/*
-
-   Instead of updating the animation per function call,
-   do it all at once.
-
-   Call function everytime state changes.
-
+/* 
+   Call updateAnimation() for everytime there is a state change. The microscope animation is dependent on only ONE source, and that is the state of the machine. Thus, everytime the state of the machine changes from user input, the changes of the scope should reflect all at once. 
 */
 function updateAnimation(){
+    /* Microscope animations */
     $("#ocularRight").css({
         "-website-transform": "translate(" + microscope.eyepiecePosition + "px," + 0 + "px)",
     "-ms-transform": "translate(" + microscope.eyepiecePosition + "px," + 0 + "px)",
@@ -168,6 +163,21 @@ function updateAnimation(){
         "-ms-transform": "translate(" + microscope.xcaliper + "px," + microscope.ycaliper + "px)",
         "transform": "translate(" + microscope.xcaliper + "px," + microscope.ycaliper + "px)"
     });
+
+    /* Slide Contents Animations */
+
+    // Caliper movements on slide.
+    $("#slideContentsContainer").css({
+        "transform": "translate(" + microscope.xcaliper + "px," + microscope.ycaliper + "px)"
+    });
+
+    // Microscope darkness (hack is based off of a black background to darken)
+    // [0,40] -> Expand to [0,100]
+    $("#slideContents").css({
+        "opacity" : (2.5*microscope.diaphragmLightPosition)/100
+    });
+    
+
 }
 
 
@@ -486,7 +496,7 @@ function enableScope(){
     enableDiaphragmLight();
     enableCaliper();
     enableSideDiaphragmRotate()
-        updateAnimation();
+    updateAnimation();
 }
 
 function toggleDiaphragmLight() {}

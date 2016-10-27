@@ -179,6 +179,7 @@
     border-color: black;
     display:visible;
     position: absolute;
+    background-color: black;
     left: 2%; 
     top: 10%;    
     overflow: hidden; 
@@ -190,6 +191,7 @@
     height: 100%;
     margin-left: -50%;
     width: 100%;
+    background-color: black;
 }
 
 #slideContents{

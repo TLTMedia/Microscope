@@ -5,9 +5,6 @@
  * Third scene that teaches student how to use the microscope 
  */
 
-// ===== End Trigger Functions ===== //
-// ====== Start Trigger Listeners ======= //
-
 function lowAdjustEyepiece() {
     textSetup("Adjust the eyepiece to change the magnification.", "5%", "25%");
     var id="#ocularLensBase";
@@ -36,7 +33,6 @@ function lowAdjustCoarse() {
 }
 
 //Trigger for fine knob 
-
 function lowAdjustFine() {
     textSetup("Move the stage up slightly by moving the fine knob.", "10%", "64%");
     var id="#knobsFine"
