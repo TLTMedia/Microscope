@@ -356,7 +356,11 @@ $(function() {
 
             $("#rotate2").load('img/sideview.svg', function(){ 
             })
+        var slideImg = $('<img id="slideContents">');
+        slideImg.attr('src', "img/eyepieceCells.png"); 
+        slideImg.appendTo('#slideContentsContainer');
         $('#microscope').load('img/microscope.svg', function() {
+
 
 //            $('#microscope svg').append('<filter id="blurMe"><feGaussianBlur in="SourceGraphic" stdDeviation="1" /></filter>')
 
