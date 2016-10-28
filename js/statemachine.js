@@ -70,7 +70,7 @@ var components = [
 
     }
 
-microscope = new StateMachine();
+ms = new StateMachine();
 
 /* User global states
 */
@@ -113,8 +113,8 @@ var target_wp,o_x, o_y, h_x, h_y, last_angle, last_degree;
 function translateReduce(components, x, y){
     $(components).css({
         "-website-transform": "translate(" + x + "px," + y + "px)",
-        "-ms-transform": "translate(" + x + "px," + y + "px)",
-        "transform": "translate(" + x +  "px," + y + "px)"
+    "-ms-transform": "translate(" + x + "px," + y + "px)",
+    "transform": "translate(" + x +  "px," + y + "px)"
     });
 }
 
@@ -123,26 +123,23 @@ function translateReduce(components, x, y){
    */
 function updateAnimation(){
     /* Microscope animations */
-    translateReduce("#ocularRight", microscope.eyepiecePosition, 0);
-    translateReduce("#ocularLeft", -1 * microscope.eyepiecePosition, 0);
-    translateReduce("#slideStage", 0, microscope.knobPosition);
-    translateReduce("#slide", microscope.xslide, microscope.yslide);
-    translateReduce("#apertureKnob", microscope.diaphragmLightPosition, microscope.knobPosition);
-    translateReduce("#diaphragm, #aperture", 0, microscope.knobPosition);
-    translateReduce("#adjustDHeight", 0, microscope.diaphragmHeightPosition);
-    translateReduce("#caliperKnob, #caliper", 0, microscope.yknobcaliper);
-    translateReduce("#ycaliper, #xcaliper", microscope.xcaliper, microscope.ycaliper);
+    translateReduce("#ocularRight", ms.eyepiecePosition, 0);
+    translateReduce("#ocularLeft", -1 * ms.eyepiecePosition, 0);
+    translateReduce("#slideStage", 0, ms.knobPosition);
+    translateReduce("#slide", ms.xslide, ms.yslide);
+    translateReduce("#apertureKnob", ms.diaphragmLightPosition, ms.knobPosition);
+    translateReduce("#diaphragm, #aperture", 0, ms.knobPosition);
+    translateReduce("#adjustDHeight", 0, ms.diaphragmHeightPosition);
+    translateReduce("#caliperKnob, #caliper", 0, ms.yknobcaliper);
+    translateReduce("#ycaliper, #xcaliper", ms.xcaliper, ms.ycaliper);
 
     /* Slide Contents Animations */
     // Caliper movements on slide.
-    $("#slideContentsContainer").css({
-        "transform": "translate(" + microscope.xcaliper + "px," + microscope.ycaliper - microscope.yheight + "px)"
-    });
-
+    translateReduce("#slideContentsContainer", ms.xcaliper, ms.ycaliper-ms.yheight);
     // Microscope darkness (hack is based off of a black background to darken)
     // [0,40] -> Expand to [0,100]
     $("#slideContents").css({
-        "opacity" : (2.5*microscope.diaphragmLightPosition)/100
+        "opacity" : (2.5*ms.diaphragmLightPosition)/100
     });
 
 
@@ -154,8 +151,8 @@ function updateAnimation(){
 function enableLightSwitch() {
     //$("#headerText").text("Turn on the light.");
     $("#switch").on('click', function() {
-        microscope.lightStatus = (1 + microscope.lightStatus) % 2; 
-        if (microscope.lightStatus > 0) {
+        ms.lightStatus = (1 + ms.lightStatus) % 2; 
+        if (ms.lightStatus > 0) {
             $("#light").removeClass("elementOff");
             $("#light").addClass("lightOn");
         } else {
@@ -187,12 +184,12 @@ function enableEyepiece() {
         .mousemove(function(event) {
             if (isDown) {
                 if ((prevX < event.pageX && ocularPart == "#ocularRight") || (prevX > event.pageX && ocularPart == "#ocularLeft")) {
-                    if (microscope.eyepiecePosition < MAX_OCULAR) {
-                        microscope.eyepiecePosition += val;
+                    if (ms.eyepiecePosition < MAX_OCULAR) {
+                        ms.eyepiecePosition += val;
                     }
                 } else if ((prevX > event.pageX && ocularPart == "#ocularRight") || (prevX < event.pageX && ocularPart == "#ocularLeft")) {
-                    if (microscope.eyepiecePosition > 0) {
-                        microscope.eyepiecePosition -= val;
+                    if (ms.eyepiecePosition > 0) {
+                        ms.eyepiecePosition -= val;
                     }
                 } 
                 prevX = event.pageX;
@@ -222,23 +219,23 @@ function enableCoarseKnob() {
         .mousemove(function(event) {
             if (isDown) {
                 if (prevY > event.pageY) {
-                    if (microscope.knobPosition < MAX_KNOB) {
-                        microscope.knobPosition += val;
-                        microscope.yslide += val;
-                        microscope.ycaliper += val;
-                        microscope.yknobcaliper +=val;
-                        microscope.yheight += val;
+                    if (ms.knobPosition < MAX_KNOB) {
+                        ms.knobPosition += val;
+                        ms.yslide += val;
+                        ms.ycaliper += val;
+                        ms.yknobcaliper +=val;
+                        ms.yheight += val;
                     }
                 } else if ((prevY < event.pageY)) {
-                    if (microscope.knobPosition > MIN_KNOB) {
-                        microscope.knobPosition -= val;
-                        microscope.yslide -= val;
-                        microscope.ycaliper -= val;
-                        microscope.yknobcaliper -=val;
-                        microscope.yheight -= val;
+                    if (ms.knobPosition > MIN_KNOB) {
+                        ms.knobPosition -= val;
+                        ms.yslide -= val;
+                        ms.ycaliper -= val;
+                        ms.yknobcaliper -=val;
+                        ms.yheight -= val;
                     }
                 }
-                //console.log(microscope.knobPosition);
+                //console.log(ms.knobPosition);
                 prevY = event.pageY;
                 updateAnimation();
             }
@@ -267,12 +264,12 @@ function enableDiaphragmLight() {
         .mousemove(function(event) {
             if (isDown) {
                 if ((prevX < event.pageX)){ 
-                    if (microscope.diaphragmLightPosition < MAX_DIAPHRAGM_LIGHT) {
-                        microscope.diaphragmLightPosition += val;
+                    if (ms.diaphragmLightPosition < MAX_DIAPHRAGM_LIGHT) {
+                        ms.diaphragmLightPosition += val;
                     }
                 } else if ((prevX > event.pageX)){ 
-                    if (microscope.diaphragmLightPosition > 0) {
-                        microscope.diaphragmLightPosition -= val;
+                    if (ms.diaphragmLightPosition > 0) {
+                        ms.diaphragmLightPosition -= val;
                     }
                 }
                 prevX = event.pageX;
@@ -303,14 +300,14 @@ function enableCaliper(){
         .mousemove(function(event) {
             if (isDown) {
                 if ((prevX < event.pageX)){ 
-                    if (microscope.xcaliper < MAX_CALIPER) {
-                        microscope.xcaliper += val;
-                        microscope.xslide += val;
+                    if (ms.xcaliper < MAX_CALIPER) {
+                        ms.xcaliper += val;
+                        ms.xslide += val;
                     }
                 } else if ((prevX > event.pageX)){ 
-                    if (microscope.xcaliper > MIN_CALIPER) {
-                        microscope.xcaliper -= val;
-                        microscope.xslide -= val;
+                    if (ms.xcaliper > MIN_CALIPER) {
+                        ms.xcaliper -= val;
+                        ms.xslide -= val;
                     }
                 }
                 prevX = event.pageX;
@@ -335,18 +332,18 @@ function enableCaliper(){
         .mousemove(function(event) {
             if (isDown) { 
                 if ((prevX < event.pageX)){ 
-                    if (microscope.ycaliper < MAX_CALIPER) {
-                        microscope.ycaliper += val;
-                        microscope.yslide += val;
-                        //                microscope.xcaliper += (val/3);
-                        //              microscope.xslide += (val/3);
+                    if (ms.ycaliper < MAX_CALIPER) {
+                        ms.ycaliper += val;
+                        ms.yslide += val;
+                        //                ms.xcaliper += (val/3);
+                        //              ms.xslide += (val/3);
                     }
                 } else if ((prevX > event.pageX)){ 
-                    if (microscope.ycaliper > MIN_CALIPER) {
-                        microscope.ycaliper -= val;
-                        microscope.yslide -= val;
-                        //                microscope.xcaliper -= (val/3);
-                        //                microscope.xslide -= (val/3);
+                    if (ms.ycaliper > MIN_CALIPER) {
+                        ms.ycaliper -= val;
+                        ms.yslide -= val;
+                        //                ms.xcaliper -= (val/3);
+                        //                ms.xslide -= (val/3);
                     }
                 }
                 prevX = event.pageX;
@@ -370,12 +367,12 @@ function enableCaliper(){
 function enableLenses(){
     // For the sake of time, just make clicking rotate.
     function addLenseClick(part){
-        $(microscope.lenseStates[0]).css("opacity", "1");  
+        $(ms.lenseStates[0]).css("opacity", "1");  
         $(part).css("opacity", "0");  
         $(part).click(function(){
-            $(microscope.lenseStates[microscope.lensePosition]).css("opacity", "0");  
-            microscope.lensePosition = ((microscope.lensePosition + 1) % microscope.lenseStates.length) 
-            $(microscope.lenseStates[microscope.lensePosition]).css("opacity", "1");     
+            $(ms.lenseStates[ms.lensePosition]).css("opacity", "0");  
+            ms.lensePosition = ((ms.lensePosition + 1) % ms.lenseStates.length) 
+            $(ms.lenseStates[ms.lensePosition]).css("opacity", "1");     
         })
     }
     addLenseClick("#lenses");
@@ -387,6 +384,7 @@ function enableLenses(){
  * http://stackoverflow.com/questions/14599738/how-to-make-object-rotate-with-drag-how-to-get-a-rotate-point-around-the-origin 
  * 
  */
+var dir=0; //unset, setRight, setLeft
 
 function enableSideDiaphragmRotate(){ 
     $('#draggableDiaphragm').mousedown(function (e) {
@@ -417,19 +415,29 @@ function enableSideDiaphragmRotate(){
 
         var degree = parseInt(s_rad * (360 / (2 * Math.PI)));
 
+        if (dir==0){
         if (last_degree < degree && degree%3==0){
-            if (microscope.diaphragmHeightPosition < MAX_DIAPHRAGM_HEIGHT) {
-                microscope.diaphragmHeightPosition++;
-            }
+                dir=1;
         }
         else if (last_degree > degree && degree%3==0){
-            if (microscope.diaphragmHeightPosition > MIN_DIAPHRAGM_HEIGHT){
-                microscope.diaphragmHeightPosition--;
+                dir=-1;
+        }
+        }
+        if (dir!=0){
+            // Turning Right
+            if (ms.diaphragmHeightPosition < MAX_DIAPHRAGM_HEIGHT && dir == 1) {
+                ms.diaphragmHeightPosition += dir;
             }
+            // Turning Left
+            else if(ms.diaphragmHeightPosition > MIN_DIAPHRAGM_HEIGHT && dir == -1){
+                ms.diaphragmHeightPosition += dir;
+            }
+            // Detect directional change
+            //
+            //if (((last_degree > degree && dir == 1) || (degree < last_degree && dir == -1)) && (Math.abs(degree-last_degree) < 3) ) dir=0;
         }
 
         last_degree = parseInt(degree); 
-        //console.log(microscope.diaphragmHeightPosition);
         updateAnimation();
         target_wp.css('-moz-transform', 'rotate(' + degree + 'deg)');
         target_wp.css('-moz-transform-origin', '50% 50%');
@@ -445,6 +453,7 @@ function enableSideDiaphragmRotate(){
 
     $(document).mouseup(function (e) {
         isDown = false
+        dir=0;
         var s_x = e.pageX,
     s_y = e.pageY;
 
@@ -457,7 +466,7 @@ function enableSideDiaphragmRotate(){
     })
 }
 
-//Enables all the functionality of the microscope.
+//Enables all the functionality of the ms.
 function enableScope(){
     bindTooltip();
     enableLightSwitch();
@@ -466,13 +475,6 @@ function enableScope(){
     enableDiaphragmLight();
     enableCaliper();
     enableSideDiaphragmRotate()
-        updateAnimation();
+    updateAnimation();
 }
 
-function toggleDiaphragmLight() {}
-function toggleDiaphragmHeight() {}
-function toggleFine() {}
-function toggleCoarse() {}
-function toggleLenses() {}
-function toggleCaliper() {}
-function toggleEyepiece() {}

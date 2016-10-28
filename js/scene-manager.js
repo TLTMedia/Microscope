@@ -95,8 +95,7 @@ function startStep(step) {
         enableCoarseKnob();
     }
     if (step == lowFine) {
-        lowAdjustFine();
-        toggleFine();
+        lowAdjustFine(); 
     }
     if (step == lowDiaphragmLight) {
         lowDLight();

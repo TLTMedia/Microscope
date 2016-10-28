@@ -48,7 +48,7 @@ function setupDLight() {
             bringToFront($("#aperture"));
             bringToFront($("#apertureKnob"));
             var handler = function(){
-                subHandler(microscope.diaphragmLightPosition, 5, 30, setupAperture, document, handler, id, clonedComp);
+                subHandler(ms.diaphragmLightPosition, 5, 30, setupAperture, document, handler, id, clonedComp);
             }
             $(document).bind("mousemove", handler);
         }
@@ -61,8 +61,8 @@ function setupAdjustCaliper() {
         if (setupCaliper.isActive()) {
             var clonedComp = highlightComponent(id);
             var handler = function(){    
-                subHandler(microscope.xcaliper, 5, 20, setupCaliper, document, handler, id, clonedComp);
-                subHandler(microscope.ycaliper, 5, 20, setupCaliper, document, handler, id, clonedComp);
+                subHandler(ms.xcaliper, 5, 20, setupCaliper, document, handler, id, clonedComp);
+                subHandler(ms.ycaliper, 5, 20, setupCaliper, document, handler, id, clonedComp);
             }
             $(document).bind("mousemove", handler);
 

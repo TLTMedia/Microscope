@@ -16,3 +16,14 @@ Feedback:
 -Consider the use of event targets as opposed to hardcoded div names.
 -Utilize bindings over setTimeout if possible.
 -Slide view should change by state changes. 
+
+10/28/16
+-Debug the circular motion of the side view
+-Attach side view to mag view so they update synchronously
+-Coarse knob needs to moderately zoom on slide
+-Fine knob needs to blur/unblur the slide
+-Make a middleware function between animations to translate pixel to percentage values
+-"Learning the Ropes" should be renamed to low mag
+-Turn old low mag into high mag scene.
+-Debugger should destroy highlights
+-Can we make it so that the clone blurs move with the main objects.

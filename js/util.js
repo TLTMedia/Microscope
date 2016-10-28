@@ -35,7 +35,6 @@ String.prototype.capitalize = function() {
 // property to inspect, lower bound, upper bound, engine piece, div piece, remove listener
 function subHandler(prop, low, upper, piece, doc, handler, id, cloned){
     if(prop > low && prop < upper){ 
-        console.log(id);
         piece.complete();
         if (cloned != null) {
             removeHighlight(cloned);

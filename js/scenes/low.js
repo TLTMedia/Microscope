@@ -2,7 +2,7 @@
  * low.js
  *
  * Scene 3
- * Third scene that teaches student how to use the microscope 
+ * Third scene that teaches student how to use the microscope.
  */
 
 function lowAdjustEyepiece() {
@@ -12,7 +12,7 @@ function lowAdjustEyepiece() {
         var clonedComp = highlightComponent(id);
             bringToFront($(id));
         var handler = function(){
-            subHandler(microscope.eyepiecePosition, 10, 25, lowEyepiece, document, handler, id, clonedComp);
+            subHandler(ms.eyepiecePosition, 10, 25, lowEyepiece, document, handler, id, clonedComp);
         }
         $(document).bind("mousemove", handler);
     }
@@ -26,7 +26,7 @@ function lowAdjustCoarse() {
         var clonedComp = highlightComponent(id);
             bringToFront($(id));
         var handler = function(){
-            subHandler(microscope.knobPosition, -30, 0, lowCoarse, document, handler, id, clonedComp);
+            subHandler(ms.knobPosition, 0, 20, lowCoarse, document, handler, id, clonedComp);
         }
         $(document).bind("mousemove", handler);
     }
@@ -40,7 +40,7 @@ function lowAdjustFine() {
         var clonedComp = highlightComponent(id);
             bringToFront($(id));
         var handler = function(){
-            subHandler(microscope.knobPosition, -15, -10, lowFine, document, handler, id, clonedComp);
+            subHandler(ms.knobPosition, -10, 0, lowFine, document, handler, id, clonedComp);
         }
         $(document).bind("mousemove", handler);
     }
@@ -53,7 +53,7 @@ function lowDLight() {
     var id="#diaphragm"
     if (lowDiaphragmLight.isActive()) { 
         var handler = function(){
-            subHandler(microscope.diaphragmLightPosition, 5, 30, lowDiaphragmLight, document, handler, id);
+            subHandler(ms.diaphragmLightPosition, 5, 30, lowDiaphragmLight, document, handler, id);
         }
         $(document).bind("mousemove", handler);
     }
@@ -61,13 +61,13 @@ function lowDLight() {
 
 
 function lowDHeight() {
-    textSetup("Adjust the height of the diaphragm by rotating the diaphragm knob", "5%", "60%");
+    textSetup("Adjust the height of the diaphragm by rotating the diaphragm knob", "5%", "50%");
     var id="#draggableDiaphragm"
     if (lowDiaphragmHeight.isActive()) { 
         var clonedComp = highlightComponent(id);
             bringToFront($(id));
         var handler = function(){
-            subHandler(microscope.diaphragmHeightPosition, 5, 15, lowDiaphragmHeight, document, handler, id, clonedComp);
+            subHandler(ms.diaphragmHeightPosition, 5, 15, lowDiaphragmHeight, document, handler, id, clonedComp);
         }
         $(document).bind("mousemove", handler);
     }
@@ -80,8 +80,8 @@ function lowAdjustCaliper() {
     if (lowCaliper.isActive()) {
 
         var handler = function(){
-            subHandler(microscope.xcaliper, 5, 20, lowCaliper, document, handler, id);
-            subHandler(microscope.ycaliper, 5, 20, lowCaliper, document, handler, id);
+            subHandler(ms.xcaliper, 5, 20, lowCaliper, document, handler, id);
+            subHandler(ms.ycaliper, 5, 20, lowCaliper, document, handler, id);
         }
         $(document).bind("mousemove", handler);
 
@@ -97,7 +97,7 @@ function lowAdjustLenses() {
         var clonedComp = highlightComponent(id);
             bringToFront($(id));
         var handler = function(){
-            subHandler(microscope.diaphragmHeightPosition, 5, 15, lowLenses, document, handler, id, clonedComp);
+            subHandler(ms.diaphragmHeightPosition, 5, 15, lowLenses, document, handler, id, clonedComp);
         }
         $(document).bind("mousemove", handler);
     }
