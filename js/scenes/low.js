@@ -40,7 +40,7 @@ function lowAdjustFine() {
         var clonedComp = highlightComponent(id);
             bringToFront($(id));
         var handler = function(){
-            subHandler(microscope.knobPosition, -30, -10, lowFine, document, handler, id, clonedComp);
+            subHandler(microscope.knobPosition, -15, -10, lowFine, document, handler, id, clonedComp);
         }
         $(document).bind("mousemove", handler);
     }

@@ -12,22 +12,21 @@ function debugIntro() {
     introDiaphragm.complete();
     introCaliper.complete();
     introLenses.complete();
-    //$("#popup").removeClass("elementOn");
-    //$("#popup").addClass("elementOff");
     showAllParts();
 }
 
 function debugSetup() {
     console.log("Setup debugged.");
-//    setupLightSwitch.complete();
-//    setupSlide.complete();
-//    setupAperture.complete();
+    setupLightSwitch.complete();
+    setupSlide.complete();
+    setupAperture.complete();
+    setupCaliper.complete();
 }
 
 function debugLow(){
     lowEyepiece.complete();
-    lowCoarse.complete();
-    lowFine.complete();
+//    lowCoarse.complete();
+//    lowFine.complete();
 //    lowDiaphragmLight.complete();
 //    lowDiaphragmHeight.complete();
 //    lowCaliper.complete();

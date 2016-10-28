@@ -60,6 +60,7 @@ var components = [
             this.diaphragmHeightPosition = 0;
             this.xcaliper = 0;
             this.ycaliper = 0;
+            this.yheight = 0;
             this.yknobcaliper = 0;
             this.lensePosition = 0;
             this.lenseStates = ["#lensesRed", "#lensesYellow", "#lensesBlue", "#lensesWhite"];
@@ -79,8 +80,8 @@ var isDown = false;
 var prevX = 0;
 var prevY = 0;
 var MAX_OCULAR = 50;
-var MAX_KNOB = 40;
-var MIN_KNOB = -20;
+var MAX_KNOB = 20;
+var MIN_KNOB = -10;
 var MAX_DIAPHRAGM_LIGHT = 40;
 var MIN_DIAPHRAGM_HEIGHT = -15;
 var MAX_DIAPHRAGM_HEIGHT = 15;
@@ -104,71 +105,38 @@ var target_wp,o_x, o_y, h_x, h_y, last_angle, last_degree;
 // function sideViewOff(){}
 
 
+/* Translate Reduce (DRY)
+ *
+ * Condense all transforms into a single method and pass by argument.
+ * 
+ */
+function translateReduce(components, x, y){
+    $(components).css({
+        "-website-transform": "translate(" + x + "px," + y + "px)",
+        "-ms-transform": "translate(" + x + "px," + y + "px)",
+        "transform": "translate(" + x +  "px," + y + "px)"
+    });
+}
+
 /* 
    Call updateAnimation() for everytime there is a state change. The microscope animation is dependent on only ONE source, and that is the state of the machine. Thus, everytime the state of the machine changes from user input, the changes of the scope should reflect all at once. 
-*/
+   */
 function updateAnimation(){
     /* Microscope animations */
-    $("#ocularRight").css({
-        "-website-transform": "translate(" + microscope.eyepiecePosition + "px," + 0 + "px)",
-    "-ms-transform": "translate(" + microscope.eyepiecePosition + "px," + 0 + "px)",
-    "transform": "translate(" + microscope.eyepiecePosition + "px," + 0 + "px)"
-    });
-    $("#ocularLeft").css({
-        "-website-transform": "translate(" + -1 * microscope.eyepiecePosition + "px," + 0 + "px)",
-        "-ms-transform": "translate(" + -1 * microscope.eyepiecePosition + "px," + 0 + "px)",
-        "transform": "translate(" + -1 * microscope.eyepiecePosition + "px," + 0 + "px)"
-    });
-
-    $("#slideStage").css({
-        "-website-transform": "translate(" + 0 + "px," + microscope.knobPosition + "px)",
-        "-ms-transform": "translate(" + 0 + "px," + microscope.knobPosition + "px)",
-        "transform": "translate(" + 0 + "px," + microscope.knobPosition + "px)"
-    });
-
-    $("#slide").css({
-        "-website-transform": "translate(" + microscope.xslide + "px," + microscope.yslide + "px) " + "scale(" + (1) + ",1)",
-        "-ms-transform": "translate(" + microscope.xslide + "px," +  microscope.yslide + "px) " + "scale(" + (1) + ",1)",
-        "transform": "translate(" + microscope.xslide + "px," + microscope.yslide  + "px) " //+ "scale("+ Math.abs(1-(0.1*microscope.yslide))*0.2 +",1)"
-    });
-
-    $("#apertureKnob").css({
-        "-website-transform": "translate(" + microscope.diaphragmLightPosition + "px," + 0 + "px)",
-        "-ms-transform": "translate(" + microscope.diaphragmLightPosition + "px," + 0 + "px)",
-        "transform": "translate(" + microscope.diaphragmLightPosition + "px," + 0 + "px)"
-    });
-
-
-    $("#adjustDHeight").css({
-        "-website-transform": "translate(" + 0 + "px," + microscope.diaphragmHeightPosition + "px)",
-        "-ms-transform": "translate(" + 0 + "px," + microscope.diaphragmHeightPosition + "px)",
-        "transform": "translate(" + 0 + "px," + microscope.diaphragmHeightPosition + "px)"
-    });
-
-
-    $("#caliperKnob, #caliper").css({
-        "-website-transform": "translate(" + 0 + "px," + microscope.yknobcaliper + "px)",
-        "-ms-transform": "translate(" + 0  + "px," +  microscope.yknobcaliper+ "px)",
-        "transform": "translate(" + 0 + "px," + microscope.yknobcaliper + "px)"
-    });
-
-    $("#ycaliper").css({
-        "-website-transform": "translate(" +  microscope.xcaliper + "px," + microscope.ycaliper + "px)",
-        "-ms-transform": "translate(" + microscope.xcaliper + "px," +  microscope.ycaliper+ "px)",
-        "transform": "translate(" + microscope.xcaliper + "px," + microscope.ycaliper + "px)"
-    });
-
-    $("#xcaliper").css({
-        "-website-transform": "translate(" + microscope.xcaliper + "px," + microscope.ycaliper + "px)",
-        "-ms-transform": "translate(" + microscope.xcaliper + "px," + microscope.ycaliper + "px)",
-        "transform": "translate(" + microscope.xcaliper + "px," + microscope.ycaliper + "px)"
-    });
+    translateReduce("#ocularRight", microscope.eyepiecePosition, 0);
+    translateReduce("#ocularLeft", -1 * microscope.eyepiecePosition, 0);
+    translateReduce("#slideStage", 0, microscope.knobPosition);
+    translateReduce("#slide", microscope.xslide, microscope.yslide);
+    translateReduce("#apertureKnob", microscope.diaphragmLightPosition, microscope.knobPosition);
+    translateReduce("#diaphragm, #aperture", 0, microscope.knobPosition);
+    translateReduce("#adjustDHeight", 0, microscope.diaphragmHeightPosition);
+    translateReduce("#caliperKnob, #caliper", 0, microscope.yknobcaliper);
+    translateReduce("#ycaliper, #xcaliper", microscope.xcaliper, microscope.ycaliper);
 
     /* Slide Contents Animations */
-
     // Caliper movements on slide.
     $("#slideContentsContainer").css({
-        "transform": "translate(" + microscope.xcaliper + "px," + microscope.ycaliper + "px)"
+        "transform": "translate(" + microscope.xcaliper + "px," + microscope.ycaliper - microscope.yheight + "px)"
     });
 
     // Microscope darkness (hack is based off of a black background to darken)
@@ -176,7 +144,7 @@ function updateAnimation(){
     $("#slideContents").css({
         "opacity" : (2.5*microscope.diaphragmLightPosition)/100
     });
-    
+
 
 }
 
@@ -259,6 +227,7 @@ function enableCoarseKnob() {
                         microscope.yslide += val;
                         microscope.ycaliper += val;
                         microscope.yknobcaliper +=val;
+                        microscope.yheight += val;
                     }
                 } else if ((prevY < event.pageY)) {
                     if (microscope.knobPosition > MIN_KNOB) {
@@ -266,6 +235,7 @@ function enableCoarseKnob() {
                         microscope.yslide -= val;
                         microscope.ycaliper -= val;
                         microscope.yknobcaliper -=val;
+                        microscope.yheight -= val;
                     }
                 }
                 //console.log(microscope.knobPosition);
@@ -496,7 +466,7 @@ function enableScope(){
     enableDiaphragmLight();
     enableCaliper();
     enableSideDiaphragmRotate()
-    updateAnimation();
+        updateAnimation();
 }
 
 function toggleDiaphragmLight() {}
