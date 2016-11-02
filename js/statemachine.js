@@ -64,6 +64,7 @@ var components = [
             this.yknobcaliper = 0;
             this.lensePosition = 0;
             this.zoom = 1;
+            this.slideBlur = 0;
             this.lenseStates = ["#lensesRed", "#lensesYellow", "#lensesBlue", "#lensesWhite"];
             this.view = 0; //0 for front, 1 for left
             console.log("State machine has been created and updated.");
@@ -113,7 +114,7 @@ var target_wp,o_x, o_y, h_x, h_y, last_angle, last_degree;
  */
 function translateReduce(components, x, y){
     $(components).css({
-        "-website-transform": "translate(" + x + "px," + y + "px)",
+     "-webkit-transform": "translate(" + x + "px," + y + "px)",
     "-ms-transform": "translate(" + x + "px," + y + "px)",
     "transform": "translate(" + x +  "px," + y + "px)"
     });
@@ -145,6 +146,12 @@ function updateAnimation(){
 
     $("#slideContents").css({
         "transform": "scale(" + ms.zoom + ")" 
+    });
+
+    $("#slideContents").css({
+        "-ms-filter": "blur(" + Math.abs(ms.slideBlur) + "px)", 
+        "-webkit-filter": "blur(" + Math.abs(ms.slideBlur) + "px)", 
+        "filter": "blur(" + Math.abs(ms.slideBlur) + "px)" 
     });
 
 
@@ -231,6 +238,12 @@ function enableCoarseKnob() {
                         ms.yknobcaliper +=val;
                         ms.yheight += val;
                         ms.zoom += val*0.02;
+                        if (coursePart == "#knobsFine"){
+                            ms.slideBlur += 0.2;
+                        }
+                        else if (coursePart == "#knobsCoarse"){
+                            ms.slideBlur += 0.1;
+                        }
                     }
                 } else if ((prevY < event.pageY)) {
                     if (ms.knobPosition > MIN_KNOB) {
@@ -240,6 +253,14 @@ function enableCoarseKnob() {
                         ms.yknobcaliper -=val;
                         ms.yheight -= val;
                         ms.zoom -= val*0.02;
+                        if (coursePart == "#knobsFine"){
+                            ms.slideBlur -= 0.2;
+                        }
+                        else if (coursePart == "#knobsCoarse"){
+                            ms.slideBlur -= 0.1;
+                        }
+ 
+ 
                     }
                 }
                 //console.log(ms.knobPosition);
