@@ -63,6 +63,7 @@ var components = [
             this.yheight = 0;
             this.yknobcaliper = 0;
             this.lensePosition = 0;
+            this.zoom = 1;
             this.lenseStates = ["#lensesRed", "#lensesYellow", "#lensesBlue", "#lensesWhite"];
             this.view = 0; //0 for front, 1 for left
             console.log("State machine has been created and updated.");
@@ -140,6 +141,10 @@ function updateAnimation(){
     // [0,40] -> Expand to [0,100]
     $("#slideContents").css({
         "opacity" : (2.5*ms.diaphragmLightPosition)/100
+    });
+
+    $("#slideContents").css({
+        "transform": "scale(" + ms.zoom + ")" 
     });
 
 
@@ -225,6 +230,7 @@ function enableCoarseKnob() {
                         ms.ycaliper += val;
                         ms.yknobcaliper +=val;
                         ms.yheight += val;
+                        ms.zoom += val*0.02;
                     }
                 } else if ((prevY < event.pageY)) {
                     if (ms.knobPosition > MIN_KNOB) {
@@ -233,6 +239,7 @@ function enableCoarseKnob() {
                         ms.ycaliper -= val;
                         ms.yknobcaliper -=val;
                         ms.yheight -= val;
+                        ms.zoom -= val*0.02;
                     }
                 }
                 //console.log(ms.knobPosition);
@@ -248,8 +255,8 @@ function enableCoarseKnob() {
         });
     }
 
-    addCourseDrag("#knobsCoarse", 1.0);
-    addCourseDrag("#knobsFine", 0.5);
+    addCourseDrag("#knobsCoarse", 0.5);
+    addCourseDrag("#knobsFine", 0.1);
 }
 
 
