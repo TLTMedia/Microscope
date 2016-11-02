@@ -48,7 +48,7 @@ function setupDLight() {
             bringToFront($("#aperture"));
             bringToFront($("#apertureKnob"));
             var handler = function(){
-                subHandler(ms.diaphragmLightPosition, 5, 30, setupAperture, document, handler, id, clonedComp);
+                subHandler(ms.diaphragmLightPosition, 30, 40, setupAperture, document, handler, id, clonedComp);
             }
             $(document).bind("mousemove", handler);
         }
