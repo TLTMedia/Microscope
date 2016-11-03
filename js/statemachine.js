@@ -27,7 +27,10 @@ var components = [
     "#lenses",
     "#switch",
     "#knobsCoarse",
-    "#knobsFine"
+    "#knobsFine",
+    "#lensesBasePath",
+    "#lensesBase",
+    "#slide"
     // "#light"     // to be added in separate SVG to reduce load delay
     ];
 

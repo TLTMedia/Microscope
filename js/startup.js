@@ -359,6 +359,7 @@ $(function() {
         var slideImg = $('<img id="slideContents">');
         slideImg.attr('src', "img/eyepieceCells.png"); 
         slideImg.appendTo('#slideContentsContainer');
+//        $('#microscope').load('img/microscope-old.svg', function() {
         $('#microscope').load('img/microscope.svg', function() {
         updateAnimation();
 
