@@ -143,7 +143,7 @@ function triggerCaliper() {
 }
 
 function triggerLenses() {
-    arr = ["#lenses", "#lensesRed", "#lensesBlue", "#lensesYellow", "#lensesWhite"]; 
+    arr = ["#lenses", "#lensesBase"]; 
     textSetup("Lenses: The lenses are rotated on the nosepiece to change the magnification. These different lenses are referred to as the objectives.", "10%", "36%");
     secludePart(arr);
 

@@ -18,7 +18,7 @@ function setupEnableSwitch() {
             removeHighlight(clonedComp);
             setupLightSwitch.complete();
             }
-            });
+            });hot 
 }
 
 function setupEnableSlide(){
@@ -39,6 +39,9 @@ function setupEnableSlide(){
             });
 }
 
+
+//  (´・ω・`) broke this
+//  knob should go <- not ->
 function setupDLight() {
     textSetup("Move the aperture knob slightly to the left.", "55%", "60%");
     id = "#diaphragm"
@@ -48,7 +51,7 @@ function setupDLight() {
             bringToFront($("#aperture"));
             bringToFront($("#apertureKnob"));
             var handler = function(){
-                subHandler(ms.diaphragmLightPosition, 30, 40, setupAperture, document, handler, id, clonedComp);
+                subHandler(ms.diaphragmLightPosition, 10, 40, setupAperture, document, handler, id, clonedComp);
             }
             $(document).bind("mousemove", handler);
         }
