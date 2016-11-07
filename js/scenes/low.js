@@ -92,7 +92,7 @@ function lowAdjustCaliper() {
 
 function lowAdjustLenses() {
     textSetup("Lenses: The lenses are rotated on the nosepiece to change the magnification. These different lenses are referred to as the objectives.", "10%", "36%"); 
-    var id="lenses"
+    var id="#lenses"
     if (lowLenses.isActive()) { 
         var clonedComp = highlightComponent(id);
             bringToFront($(id));

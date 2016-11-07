@@ -28,8 +28,9 @@ function debugLow(){
     lowCoarse.complete();
     lowFine.complete();
     lowDiaphragmLight.complete();
-//    lowDiaphragmHeight.complete();
-//    lowCaliper.complete();
+    lowDiaphragmHeight.complete();
+    lowCaliper.complete();
+    lowLenses.complete();
 }
 
 function debugHighMag(){}
@@ -40,7 +41,7 @@ function DEBUG(state){
     if (isDebug){
         debugIntro();
         debugSetup();
-        debugLow();
+//        debugLow();
     }
       //debugHighMag(); 
     return isDebug;
