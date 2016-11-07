@@ -483,6 +483,7 @@ function enableSideDiaphragmRotate(){
             //if (((last_degree > degree && dir == 1) || (degree < last_degree && dir == -1)) && (Math.abs(degree-last_degree) < 3) ) dir=0;
         }
 
+        console.log()
         last_degree = parseInt(degree); 
         updateAnimation();
         target_wp.css('-moz-transform', 'rotate(' + degree + 'deg)');
