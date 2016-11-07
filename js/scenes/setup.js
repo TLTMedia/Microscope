@@ -18,7 +18,7 @@ function setupEnableSwitch() {
             removeHighlight(clonedComp);
             setupLightSwitch.complete();
             }
-            });hot 
+            });
 }
 
 function setupEnableSlide(){
