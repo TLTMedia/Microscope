@@ -463,27 +463,19 @@ function enableSideDiaphragmRotate(){
 
         if (dir==0){
         if (last_degree < degree && degree%3==0){
-                dir=1;
+            if (ms.diaphragmHeightPosition < MAX_DIAPHRAGM_HEIGHT) {
+                ms.diaphragmHeightPosition += 1;
+            }
+ 
         }
         else if (last_degree > degree && degree%3==0){
-                dir=-1;
-        }
-        }
-        if (dir!=0){
-            // Turning Right
-            if (ms.diaphragmHeightPosition < MAX_DIAPHRAGM_HEIGHT && dir == 1) {
-                ms.diaphragmHeightPosition += dir;
+            if(ms.diaphragmHeightPosition > MIN_DIAPHRAGM_HEIGHT){
+                ms.diaphragmHeightPosition -= 1;
             }
-            // Turning Left
-            else if(ms.diaphragmHeightPosition > MIN_DIAPHRAGM_HEIGHT && dir == -1){
-                ms.diaphragmHeightPosition += dir;
-            }
-            // Detect directional change
-            //
-            //if (((last_degree > degree && dir == 1) || (degree < last_degree && dir == -1)) && (Math.abs(degree-last_degree) < 3) ) dir=0;
-        }
 
-        console.log()
+        }
+        }
+        console.log(degree);
         last_degree = parseInt(degree); 
         updateAnimation();
         target_wp.css('-moz-transform', 'rotate(' + degree + 'deg)');
@@ -501,6 +493,7 @@ function enableSideDiaphragmRotate(){
     $(document).mouseup(function (e) {
         isDown = false
         dir=0;
+        degree=0;
         var s_x = e.pageX,
     s_y = e.pageY;
 
