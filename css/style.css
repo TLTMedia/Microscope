@@ -130,7 +130,8 @@
 }
 
 #popup {
-    background-color:#aaaaaa;
+    background-color:#ffffff;
+    border: 2px solid #000;
     border-radius: 25px;
     left: 0%;
     top: 0%;
@@ -150,6 +151,9 @@
     text-align: center;
 }
 
+#popup .text{
+    color:#000;
+}
 
 #rotate {
     border-radius: 50%;

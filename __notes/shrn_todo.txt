@@ -1,0 +1,9 @@
+- add light separate svg
+- stage light
+
+
+- arrows
+- popupText		make more prominent
+	change color
+	text bigger?
+	position (on top of microscope)
