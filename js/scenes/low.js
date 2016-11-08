@@ -7,10 +7,12 @@
 
 function lowAdjustEyepiece() {
     textSetup("Adjust the eyepiece to change the magnification.", "5%", "25%");
-    var id="#ocularLensBase";
+    var id="#ocularHighlight";
     if (lowEyepiece.isActive()) { 
         var clonedComp = highlightComponent(id);
             bringToFront($(id));
+            bringToFront($("#ocularLeft"));
+            bringToFront($("#ocularRight"));
         var handler = function(){
             subHandler(ms.eyepiecePosition, 10, 25, lowEyepiece, document, handler, id, clonedComp);
         }
@@ -91,7 +93,7 @@ function lowAdjustCaliper() {
 
 
 function lowAdjustLenses() {
-    textSetup("Lenses: The lenses are rotated on the nosepiece to change the magnification. These different lenses are referred to as the objectives.", "10%", "36%"); 
+    textSetup("Lenses: The lenses are rotated on the nosepiece to change the magnification. These different lenses are referred to as the objectives.", "36%", "49%"); 
     var id="#lenses"
     if (lowLenses.isActive()) { 
         var clonedComp = highlightComponent(id);

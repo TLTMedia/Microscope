@@ -62,10 +62,14 @@ function setupAdjustCaliper() {
     textSetup("Move the caliper knob so the aperture light is on the specimen.", "62%", "60%");
     id = "#caliperKnob"
         if (setupCaliper.isActive()) {
-            var clonedComp = highlightComponent(id);
+            var clonedComp = highlightComponent(id);            
+            //bringToFront($(id));
+            //bringToFront($("#xCaliperKnob"));
+            //bringToFront($("#yCaliperKnob"));
+            
             var handler = function(){    
-                subHandler(ms.xcaliper, 5, 20, setupCaliper, document, handler, id, clonedComp);
-                subHandler(ms.ycaliper, 5, 20, setupCaliper, document, handler, id, clonedComp);
+                subHandler(ms.xcaliper, 5, 20, setupCaliper, document, handler, id, null);
+                subHandler(ms.ycaliper, 5, 20, setupCaliper, document, handler, id, null);
             }
             $(document).bind("mousemove", handler);
 

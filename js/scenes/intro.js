@@ -23,7 +23,7 @@ var introCaliper;
 
 
 // ====== Helper Functions  ======= //
-function secludePart(keepOn) { 
+function secludePart(keepOn) {
     for (var i = 0; i < components.length; i++) {
         $(components[i]).removeClass("opacityLow");
         $(components[i]).removeClass("elementOn");
@@ -59,12 +59,12 @@ function triggerLightSwitch() {
     textSetup("Light Switch: Turns the light on and off.", "10%", "73%");
     secludePart(arr);
     $("#switch")
-        .click(function() {
-                if (introLightSwitch.isActive()) {
+        .click(function () {
+            if (introLightSwitch.isActive()) {
                 introLightSwitch.complete();
-                }
+            }
 
-                });
+        });
 }
 
 
@@ -74,45 +74,45 @@ function triggerEyepiece() {
     secludePart(arr);
 
     $("#ocularLensBase, #ocularRight, #ocularLeft")
-        .click(function() {
-                if (introEyepiece.isActive()) {
+        .click(function () {
+            if (introEyepiece.isActive()) {
                 introEyepiece.complete();
-                }
+            }
 
-                });
+        });
 }
 
 function triggerDiaphragm() {
     arr = ["#diaphragm", "#apertureFixed", "#aperture"];
     popupOn("Diaphragm: Adjusts the amount of light on the slide", {
-            "left": "15%",
-            "top": "60%",
-            });
+        "left": "15%",
+        "top": "60%",
+    });
     secludePart(arr);
 
     $("#diaphragm")
-        .click(function() {
-                if (introDiaphragm.isActive()) {
+        .click(function () {
+            if (introDiaphragm.isActive()) {
                 introDiaphragm.complete();
-                }
+            }
 
-                });
+        });
 }
 
 function triggerFine() {
     arr = ["#knobsFine"];
     popupOn("Fine Knobs: Moves the stage slightly to sharpen the focus", {
-            "left": "10%",
-            "top": "64%",
-            });
+        "left": "10%",
+        "top": "64%",
+    });
     secludePart(arr);
 
     $("#knobsFine")
-        .click(function() {
-                if (introFine.isActive()) {
+        .click(function () {
+            if (introFine.isActive()) {
                 introFine.complete();
-                }
-                });
+            }
+        });
 }
 
 function triggerCoarse() {
@@ -121,12 +121,12 @@ function triggerCoarse() {
     secludePart(arr);
 
     $("#knobsCoarse")
-        .click(function() {
-                if (introCoarse.isActive()) {
+        .click(function () {
+            if (introCoarse.isActive()) {
                 introCoarse.complete();
-                }
+            }
 
-                });
+        });
 }
 
 function triggerCaliper() {
@@ -135,24 +135,23 @@ function triggerCaliper() {
     secludePart(arr);
 
     $("#caliperKnob, #caliper, #xcaliper, #ycaliper")
-        .click(function() {
-                if (introCaliper.isActive()) {
+        .click(function () {
+            if (introCaliper.isActive()) {
                 introCaliper.complete();
-                }
-                });
+            }
+        });
 }
 
 function triggerLenses() {
-    arr = ["#lenses", "#lensesBase"]; 
+    arr = ["#lenses", "#lensesBase"];
     textSetup("Lenses: The lenses are rotated on the nosepiece to change the magnification. These different lenses are referred to as the objectives.", "10%", "36%");
     secludePart(arr);
 
     $("#lenses, #lensesBlue, #lensesRed, #lensesYellow, #lensesWhite")
-        .click(function() {
-                if (introLenses.isActive()) {
+        .click(function () {
+            if (introLenses.isActive()) {
                 introLenses.complete();
                 showAllParts()
-                }
-                });
+            }
+        });
 }
-

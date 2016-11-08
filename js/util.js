@@ -50,6 +50,7 @@ function bringToFront(elem){
 
 // Utility function to highlight component.
 function highlightComponent(id){
+    
     //return;
     var origPart = $(id)
     var clonePart = $(id).clone();
@@ -62,6 +63,7 @@ function highlightComponent(id){
     clonePart.children().attr("fill", "rgba(0,0,0,0)");
     clonePart.appendTo($(id).parent())
     return clonePart
+    
 }
 
 // Utility function to remove highlight component.
