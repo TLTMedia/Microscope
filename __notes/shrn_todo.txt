@@ -1,0 +1,3 @@
+- sideview.svg doesn’t work roundtrip
+
+- apply knob rotation value to stage position y-displacement

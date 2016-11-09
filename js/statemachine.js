@@ -45,7 +45,7 @@ var components = [
     "#lenses11",
     "#lenses12",
     "#stageLight",
-    "#light"
+    "#illuminationLight"
     ];
 
 
@@ -185,11 +185,11 @@ function enableLightSwitch() {
     $("#switch").on('click', function () {
         ms.lightStatus = (1 + ms.lightStatus) % 2;
         if (ms.lightStatus > 0) {
-            $("#light").removeClass("elementOff");
-            $("#light").addClass("lightOn");
+            $("#illuminationLight").removeClass("elementOff");
+            $("#illuminationLight").addClass("lightOn");
         } else {
-            $("#light").removeClass("lightOn");
-            $("#light").addClass("elementOff");
+            $("#illuminationLight").removeClass("lightOn");
+            $("#illuminationLight").addClass("elementOff");
         }
 
     });
@@ -410,6 +410,10 @@ function enableCaliper() {
 }
 
 
+
+
+// lenses work differently now
+// horizontal slider should trigger corresponding set of lenses (12 total sets)
 function enableLenses() {
     // For the sake of time, just make clicking rotate.
     function addLenseClick(part) {
@@ -422,10 +426,12 @@ function enableLenses() {
         })
     }
     addLenseClick("#lenses");
-    $("#lenses, #lensesRed, #lensesBlue, #lensesYellow, #lensesWhite").click(function () {
+    $("#lenses, #lenses1Red, #lensesBlue, #lensesYellow, #lensesWhite").click(function () {
         console.log(this);
     });
 }
+
+
 
 /* 
  * Rotate functionality attributed to mgibsonbr for the algorithm.

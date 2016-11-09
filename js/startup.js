@@ -358,8 +358,8 @@ $(function () {
     $("#rotate2").load('img/sideview.svg', function () {
 
         $("#draggableDiaphragm").addClass("knob");
-//        $("#draggableDiaphragm").addClass("knob");
-//        $("#draggableDiaphragm").addClass("knob");
+//        $("#").addClass("knob");
+//        $("#").addClass("knob");
         
     })
     

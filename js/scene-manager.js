@@ -111,7 +111,7 @@ function startStep(step) {
     }
     if (step == lowLenses) {
         lowAdjustLenses();
-        enableLenses();
+//        enableLenses();
     }
 
 
