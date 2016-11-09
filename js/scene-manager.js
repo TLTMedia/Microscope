@@ -103,7 +103,7 @@ function startStep(step) {
     }
     if (step == lowDiaphragmHeight) {
         lowDHeight();
-        enableSideDiaphragmRotate()
+//        enableSideDiaphragmRotate();
     }
     if (step == lowCaliper) {
         lowAdjustCaliper();

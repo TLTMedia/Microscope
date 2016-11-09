@@ -48,7 +48,7 @@ function showMenu() {
 
 function hideMenu() {
     // Make overlay invisible after it fades out
-    setTimeout(function() {
+    setTimeout(function () {
         $("#overlay").css({
             'opacity': 0,
             'z-index': -100
@@ -157,21 +157,22 @@ function loadSubMenu() {
                 "shortText": "Slide",
                 "longText": "Push in the slide.",
                 "feedbackText": "click the light switch"
-            },{
+            }, {
                 "id": "setupAperture",
                 "shortText": "Aperture Knob",
                 "longText": "Move the aperture knob slightly to the left.",
                 "feedbackText": "Move the aperture knob."
-            
-            },{
+
+            }, {
                 "id": "setupCaliper",
                 "shortText": "Caliper Knob",
                 "longText": "Adjust the caliper knobs.",
                 "feedbackText": "Move the caliper knob."
-            
-            }]},
 
-            {
+            }]
+        },
+
+        {
             "id": "lowMag",
             "shortText": "Learning the Ropes",
             "steps": [{
@@ -297,11 +298,11 @@ function loadSubMenu() {
 
     // Setup
     setupLightSwitch = game.getGroupStep(1, 0);
-    setupSlide = game.getGroupStep(1,1);   
-    setupAperture = game.getGroupStep(1,2);
-    setupCaliper = game.getGroupStep(1,3);
+    setupSlide = game.getGroupStep(1, 1);
+    setupAperture = game.getGroupStep(1, 2);
+    setupCaliper = game.getGroupStep(1, 3);
 
-     // Low Magnification
+    // Low Magnification
     lowEyepiece = game.getGroupStep(2, 0);
     lowCoarse = game.getGroupStep(2, 1);
     lowFine = game.getGroupStep(2, 2);
@@ -310,7 +311,7 @@ function loadSubMenu() {
     lowCaliper = game.getGroupStep(2, 5);
     lowLenses = game.getGroupStep(2, 6);
 
-  /* 
+    /* 
     lowLight = game.getGroupStep(2, 0);
     lowLens = game.getGroupStep(2, 2);
     lowSlidePlace = game.getGroupStep(2, 2);
@@ -337,12 +338,12 @@ function loadSubMenu() {
 
 
 function initEndOptionHover(id) {
-    $("#endOption" + id).hover(function() {
+    $("#endOption" + id).hover(function () {
         // Mouse over cell
         $("#endOptionDesc" + id).removeClass("anim_exitEndOptionDesc");
         $("#endOptionDesc" + id).addClass("anim_enterEndOptionDesc");
 
-    }, function() {
+    }, function () {
         // Leave cell
         $("#endOptionDesc" + id).removeClass("anim_enterEndOptionDesc");
         $("#endOptionDesc" + id).addClass("anim_exitEndOptionDesc");
@@ -352,30 +353,44 @@ function initEndOptionHover(id) {
 
 
 // ====== Frame setup and microscope initialization. ====== //
-$(function() {
+$(function () {
 
-            $("#rotate2").load('img/sideview.svg', function(){ 
-            })
-        var slideImg = $('<img id="slideContents">');
-        slideImg.attr('src', "img/eyepieceCells.png"); 
-        slideImg.appendTo('#slideContentsContainer');
-//        $('#microscope').load('img/microscope-old.svg', function() {
-        $('#microscope').load('img/microscope.svg', function() {
+    $("#rotate2").load('img/sideview.svg', function () {
+
+        $("#draggableDiaphragm").addClass("knob");
+//        $("#draggableDiaphragm").addClass("knob");
+//        $("#draggableDiaphragm").addClass("knob");
+        
+    })
+    
+    
+    
+    var slideImg = $('<img id="slideContents">');
+    slideImg.attr('src', "img/eyepieceCells.png");
+    slideImg.appendTo('#slideContentsContainer');
+    //        $('#microscope').load('img/microscope-old.svg', function() {
+    $('#microscope').load('img/microscope.svg', function () {
         updateAnimation();
 
-//            $('#microscope svg').append('<filter id="blurMe"><feGaussianBlur in="SourceGraphic" stdDeviation="1" /></filter>')
+        //$('#microscope svg').append('<filter id="blurMe"><feGaussianBlur in="SourceGraphic" stdDeviation="1" /></filter>')
 
-            resizeWindow();
-            loadStartMenu();
-            loadSubMenu();
+        resizeWindow();
+        loadStartMenu();
+        loadSubMenu();
 
-            $("#endOption1").click(function() {
-                // Start Beginner Mode
-                newGame(true, false);
-                });
-
-        })
+        $("#endOption1").click(function () {
+            // Start Beginner Mode
+            newGame(true, false);
+        });
         
         
+        setupKnobs();
+        resizeWindow();
+
+    });
+    
+    
+
+
 
 });

@@ -336,3 +336,8 @@
     opacity: 1;
 */
 }
+
+
+.knob{
+    transform-origin: 50% 50%;
+}

@@ -20,12 +20,15 @@ function popupOff() {
 }
 
 
-function textSetup(tooltip, lt, tp){
-    popupOn(tooltip, {"left": lt, "top": tp});
+function textSetup(tooltip, lt, tp) {
+    popupOn(tooltip, {
+        "left": lt,
+        "top": tp
+    });
 }
 
 
-String.prototype.capitalize = function() {
+String.prototype.capitalize = function () {
     return this.charAt(0).toUpperCase() + this.slice(1);
 }
 
@@ -33,40 +36,40 @@ String.prototype.capitalize = function() {
 // low.js && setup.js dependant on this function
 // args: 
 // property to inspect, lower bound, upper bound, engine piece, div piece, remove listener
-function subHandler(prop, low, upper, piece, doc, handler, id, cloned){
-    if(prop > low && prop < upper){ 
+function subHandler(prop, low, upper, piece, doc, handler, id, cloned) {
+    if (prop > low && prop < upper) {
         piece.complete();
         if (cloned != null) {
             removeHighlight(cloned);
-        } 
-        $(doc).unbind("mousemove", handler);               
+        }
+        $(doc).unbind("mousemove", handler);
     }
 }
 
 // Brings an element to the front of the page (z-index workaround)
-function bringToFront(elem){
-   elem.appendTo(elem.parent()); 
+function bringToFront(elem) {
+    elem.appendTo(elem.parent());
 }
 
 // Utility function to highlight component.
-function highlightComponent(id){
-    
+function highlightComponent(id) {
+
     //return;
     var origPart = $(id)
     var clonePart = $(id).clone();
     lastPart = clonePart;
     clonePart.attr("pointer-events", "none")
     clonePart.toggleClass("highlightPart")
-    clonePart.attr("id", id.replace("#", "") +"Copy");
-    clonePart.attr("style","border:10px solid blue");
-    clonePart.attr("filter","url(#blurMe)");
+    clonePart.attr("id", id.replace("#", "") + "Copy");
+    clonePart.attr("style", "border:10px solid blue");
+    clonePart.attr("filter", "url(#blurMe)");
     clonePart.children().attr("fill", "rgba(0,0,0,0)");
     clonePart.appendTo($(id).parent())
     return clonePart
-    
+
 }
 
 // Utility function to remove highlight component.
-function removeHighlight(elem){
+function removeHighlight(elem) {
     elem.remove();
 }
