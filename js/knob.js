@@ -1,60 +1,61 @@
 var knobs = [{
-    width: 0,
-    height: 0,
-    center: {
-        x: 0,
-        y: 0
-    },
-    angle: 0,
-    rotation: 0,
-    link: [0],
-    enabled: true,
-    bounds: [0, 270],
-    divID: "draggableDiaphragm"
-}, 
-{
-    width: 0,
-    height: 0,
-    center: {
-        x: 0,
-        y: 0
-    },
-    angle: 0,
-    rotation: 0,
-    link: [1],
-    enabled: true,
-    bounds: [0, 360],
-    divID: ""
-},          
-{
-    width: 0,
-    height: 0,
-    center: {
-        x: 0,
-        y: 0
-    },
-    angle: 0,
-    rotation: 0,
-    link: [2],
-    enabled: true,
-    bounds: [0, 360],
-    divID: ""
-},          
-            
-            ];
+        width: 0,
+        height: 0,
+        center: {
+            x: 0,
+            y: 0
+        },
+        angle: 0,
+        rotation: 0,
+        link: [0],
+        enabled: true,
+        bounds: [0, 270],
+        divID: "draggableDiaphragm"
+}
+//             ,
+//    {
+//        width: 0,
+//        height: 0,
+//        center: {
+//            x: 0,
+//            y: 0
+//        },
+//        angle: 0,
+//        rotation: 0,
+//        link: [1],
+//        enabled: true,
+//        bounds: [0, 360],
+//        divID: ""
+//},
+//    {
+//        width: 0,
+//        height: 0,
+//        center: {
+//            x: 0,
+//            y: 0
+//        },
+//        angle: 0,
+//        rotation: 0,
+//        link: [2],
+//        enabled: true,
+//        bounds: [0, 360],
+//        divID: ""
+//},
+
+];
 
 function setupKnobs() {
     $("body").mouseup(function () {
         $(".knob").off("mousemove touchmove");
     });
-    for (var i=0; i<knobs.length; i++) {
+    for (var i = 0; i < knobs.length; i++) {
         knobControls(i);
     }
     console.log("setup knobs")
 }
 
 function knobControls(numericID) {
-   
+
     var divID = knobs[numericID].divID;
     $("#" + divID).bind('mousedown', function (e) {
         var knob = knobs[numericID];
@@ -78,7 +79,7 @@ function knobControls(numericID) {
                 //console.log(angle);
             });
         }
-        
+
     });
     $("#" + divID).bind('touchstart', function (e) {
         var knob = knobs[i];
@@ -124,7 +125,7 @@ function knobRotate(id, delta) {
         knob.rotation = knob.bounds[1];
     }
     $("#" + knobs[id].divID).css({
-        'transform': "rotate(" + knob.rotation + "deg)"               //apply rotation to element
+        'transform': "rotate(" + knob.rotation + "deg)" //apply rotation to element
     });
     console.log(knob.rotation);
 }
