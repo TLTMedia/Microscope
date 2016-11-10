@@ -384,7 +384,6 @@ $(function () {
         });
         
         
-        setupKnobs();
         resizeWindow();
 
     });

@@ -42,6 +42,7 @@ function setupEnableSlide(){
 
 //  (´・ω・`) broke this
 //  knob should go <- not ->
+// hehe dwai shrin i got u
 function setupDLight() {
     textSetup("Move the aperture knob slightly to the left.", "55%", "60%");
     id = "#diaphragm"

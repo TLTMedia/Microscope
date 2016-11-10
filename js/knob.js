@@ -1,5 +1,10 @@
 var APERTURE_HEIGHT_KNOB = 0;
 
+// If hell ever breaks lose, you can assume it's from these
+// They keep an alias to the state machine and update it externally
+var smAlias;
+var updateAlias;
+
 var knobs = [{
         width: 0,
         height: 0,
@@ -46,18 +51,20 @@ var knobs = [{
 
 ];
 
-function setupKnobs() {
+function setupKnobs(sm, callback) {
+    //Link em up
+    smAlias = sm;
+    updateAlias = callback;
+
     $("body").mouseup(function () {
         $(".knob").off("mousemove touchmove");
     });
     for (var i = 0; i < knobs.length; i++) {
         knobControls(i);
     }
-    console.log("setup knobs")
 }
 
 function knobControls(numericID) {
-
     var divID = knobs[numericID].divID;
     $("#" + divID).bind('mousedown', function (e) {
         var knob = knobs[numericID];
@@ -99,7 +106,7 @@ function knobControls(numericID) {
                 var delta = angleDistance(knob.angle, angle);
                 var links = knob.link;
                 for (var j = 0; j < links.length; j++) {
-                    knobRotate(links[j], delta);
+                    knobRotate(links[j], delta, sm, callback);
                 }
                 knob.angle = angle;
             });
@@ -129,8 +136,8 @@ function knobRotate(id, delta) {
     $("#" + knobs[id].divID).css({
         'transform': "rotate(" + knob.rotation + "deg)" //apply rotation to element
     });
-    //console.log(knob.rotation);
-    APERTURE_KNOB_HEIGHT = knob.rotation;
+    smAlias.diaphragmHeightPosition = knob.rotation/12;
+    updateAlias();
 }
 
 // Returns the angle (from 0 to 360 degrees) determined by the given offset (x, y)

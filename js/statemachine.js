@@ -151,8 +151,8 @@ function updateAnimation() {
     translateReduce("#adjustDHeight", 0, ms.diaphragmHeightPosition);
     translateReduce("#caliperKnob, #caliper", 0, ms.yknobcaliper);
     translateReduce("#ycaliper, #xcaliper", ms.xcaliper, ms.ycaliper);
-    
-    
+
+
 
     /* Slide Contents Animations */
     // Caliper movements on slide.
@@ -433,26 +433,8 @@ function enableLenses() {
 
 
 function enableSideDiaphragmRotate() {
-console.log("Invoke");
-    $('#draggableDiaphragm').mousedown(function (e) {
-                isDown = true;
-            })
-
-
-
-    $("#draggableDiaphragm").mousemove(function (e) {
-            if (isDown) {
-
-               ms.diaphragmHeightPosition = APERTURE_KNOB_HEIGHT; 
-                console.log(ms.diaphragmHeightPosition);
-                updateAnimation();
-            }
-
-            }) // end mousemove
-
-    $(document).mouseup(function (e) {
-            isDown = false
-            });
+    // Abstracted in Jimrambe's code, passed in state machine.
+    setupKnobs(ms, updateAnimation);
 }
 
 //Enables all the functionality of the ms.
