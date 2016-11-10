@@ -146,7 +146,7 @@ function updateAnimation() {
     translateReduce("#ocularLeft", -1 * ms.eyepiecePosition, 0);
     translateReduce("#slideStage", 0, ms.knobPosition);
     translateReduce("#slide", ms.xslide, ms.yslide);
-    translateReduce("#apertureKnob", ms.diaphragmLightPosition, ms.knobPosition);
+    translateReduce("#apertureKnob", ms.diaphragmLightPosition*-1, ms.knobPosition);
     translateReduce("#diaphragm, #aperture", 0, ms.knobPosition);
     translateReduce("#adjustDHeight", 0, ms.diaphragmHeightPosition);
     translateReduce("#caliperKnob, #caliper", 0, ms.yknobcaliper);
@@ -309,11 +309,11 @@ function enableDiaphragmLight() {
             })
             .mousemove(function (event) {
                 if (isDown) {
-                    if ((prevX < event.pageX)) {
+                    if ((prevX > event.pageX)) {
                         if (ms.diaphragmLightPosition < MAX_DIAPHRAGM_LIGHT) {
                             ms.diaphragmLightPosition += val;
                         }
-                    } else if ((prevX > event.pageX)) {
+                    } else if ((prevX < event.pageX)) {
                         if (ms.diaphragmLightPosition > 0) {
                             ms.diaphragmLightPosition -= val;
                         }
