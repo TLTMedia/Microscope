@@ -40,8 +40,8 @@ function DEBUG(state){
     var isDebug = state;
     if (isDebug){
         debugIntro();
-        debugSetup();
-        debugLow();
+//        debugSetup();
+//        debugLow();
     }
       //debugHighMag(); 
     return isDebug;

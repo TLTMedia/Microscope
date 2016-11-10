@@ -1,3 +1,5 @@
+var APERTURE_HEIGHT_KNOB = 0;
+
 var knobs = [{
         width: 0,
         height: 0,
@@ -127,7 +129,8 @@ function knobRotate(id, delta) {
     $("#" + knobs[id].divID).css({
         'transform': "rotate(" + knob.rotation + "deg)" //apply rotation to element
     });
-    console.log(knob.rotation);
+    //console.log(knob.rotation);
+    APERTURE_KNOB_HEIGHT = knob.rotation;
 }
 
 // Returns the angle (from 0 to 360 degrees) determined by the given offset (x, y)

@@ -174,7 +174,7 @@ function loadSubMenu() {
 
         {
             "id": "lowMag",
-            "shortText": "Learning the Ropes",
+            "shortText": "Low Magnification",
             "steps": [{
                 "id": "setupEyepiece",
                 "shortText": "Eyepiece",
@@ -212,8 +212,8 @@ function loadSubMenu() {
                 "feedbackText": "click the lenses"
             }]
         }, {
-            "id": "lowmagnification",
-            "shortText": "Low Magnification",
+            "id": "highMag",
+            "shortText": "High Magnification",
             "steps": [{
                 "id": "lowLight",
                 "shortText": "Light",
@@ -252,8 +252,8 @@ function loadSubMenu() {
             }]
 
         }, {
-            "id": "highmagnification",
-            "shortText": "High Magnification",
+            "id": "quiz",
+            "shortText": "Quiz",
             "steps": [{
                 "id": "#idname",
                 "shortText": "#shortText",
