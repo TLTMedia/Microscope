@@ -54,6 +54,11 @@ function lowDLight() {
     textSetup("Adjust the diaphragm to change the lighting on the slide.", "10%", "60%");
     var id="#diaphragm"
         if (lowDiaphragmLight.isActive()) { 
+            var clonedComp = highlightComponent(id);
+            bringToFront($(id));
+            bringToFront($("#aperture"));
+            bringToFront($("#apertureKnob"));
+
             var handler = function(){
                 subHandler(ms.diaphragmLightPosition, 5, 30, lowDiaphragmLight, document, handler, id);
             }
@@ -80,6 +85,12 @@ function lowAdjustCaliper() {
     textSetup("Move the caliper to adjust the position of the slide.", "62%", "60%");
     var id="#caliperKnob"
         if (lowCaliper.isActive()) {
+            var clonedComp2 = highlightComponent("#yCaliperKnob");
+            var clonedComp2 = highlightComponent("#xCaliperKnob");
+
+            //bringToFront($(id));
+            bringToFront($("#xCaliperKnob"));
+            bringToFront($("#yCaliperKnob"));
 
             var handler = function(){
                 subHandler(ms.xcaliper, 5, 20, lowCaliper, document, handler, id);
