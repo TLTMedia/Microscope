@@ -106,8 +106,20 @@ var MIN_KNOB = -10;
 var MAX_DIAPHRAGM_LIGHT = 40;
 var MIN_DIAPHRAGM_HEIGHT = -15;
 var MAX_DIAPHRAGM_HEIGHT = 15;
-var MAX_CALIPER = 20;
-var MIN_CALIPER = -20;
+
+// Bounded caliper
+var MAX_X_CALIPER = 20;
+var MIN_X_CALIPER = -20;
+var MAX_Y_CALIPER = 13;
+var MIN_Y_CALIPER = -13;
+
+// Bounded specimen vision
+var MIN_Y_BOUND = -10;
+var MAX_Y_BOUND = 10;
+var MIN_X_BOUND = -10;
+var MAX_X_BOUND = 10;
+
+
 var last_angle = 0;
 
 // Variables needed for rotating
@@ -261,6 +273,8 @@ function enableCoarseKnob() {
                         ms.knobPosition += val;
                         ms.yslide += val;
                         ms.ycaliper += val;
+                        MAX_Y_CALIPER += val;
+                        MIN_Y_CALIPER += val;
                         ms.yknobcaliper += val;
                         ms.yheight += val;
                         ms.zoom += val * 0.02;
@@ -276,6 +290,8 @@ function enableCoarseKnob() {
                         ms.yslide -= val;
                         ms.ycaliper -= val;
                         ms.yknobcaliper -= val;
+                        MAX_Y_CALIPER -= val;
+                        MIN_Y_CALIPER -= val;
                         ms.yheight -= val;
                         ms.zoom -= val * 0.02;
                         if (coursePart == "#knobsFine") {
@@ -353,12 +369,12 @@ function enableCaliper() {
         .mousemove(function (event) {
             if (isDown) {
                 if ((prevX < event.pageX)) {
-                    if (ms.xcaliper < MAX_CALIPER) {
+                    if (ms.xcaliper < MAX_X_CALIPER) {
                         ms.xcaliper += val;
                         ms.xslide += val;
                     }
                 } else if ((prevX > event.pageX)) {
-                    if (ms.xcaliper > MIN_CALIPER) {
+                    if (ms.xcaliper > MIN_X_CALIPER) {
                         ms.xcaliper -= val;
                         ms.xslide -= val;
                     }
@@ -366,6 +382,7 @@ function enableCaliper() {
                 prevX = event.pageX;
 
                 // Blur out if out of magic bounds
+                console.log("X:" + ms.xcaliper + ", Y: " + ms.ycaliper);
                 if (ms.xcaliper > -10 && ms.xcaliper < 10 && ms.ycaliper > -10 && ms.ycaliper <10 ){
                     ms.inBounds = true;
                 }
@@ -395,14 +412,14 @@ function enableCaliper() {
         .mousemove(function (event) {
             if (isDown) {
                 if ((prevX < event.pageX)) {
-                    if (ms.ycaliper < MAX_CALIPER) {
+                    if (ms.ycaliper < MAX_Y_CALIPER) {
                         ms.ycaliper += val;
                         ms.yslide += val;
                         //                ms.xcaliper += (val/3);
                         //              ms.xslide += (val/3);
                     }
                 } else if ((prevX > event.pageX)) {
-                    if (ms.ycaliper > MIN_CALIPER) {
+                    if (ms.ycaliper > MIN_Y_CALIPER) {
                         ms.ycaliper -= val;
                         ms.yslide -= val;
                         //                ms.xcaliper -= (val/3);
@@ -411,6 +428,7 @@ function enableCaliper() {
                 }
                 prevX = event.pageX;
                 // Blur out if out of magic bounds
+                console.log("X:" + ms.xcaliper + ", Y: " + ms.ycaliper);
                 if (ms.xcaliper > -10 && ms.xcaliper < 10 && ms.ycaliper > -10 && ms.ycaliper <10 ){
                     ms.inBounds = true;
                 }
