@@ -172,9 +172,9 @@ function updateAnimation() {
     // Caliper movements on slide.
     translateReduce("#slideContentsContainer", ms.xcaliper, ms.ycaliper - ms.yheight);
     // Microscope darkness (hack is based off of a black background to darken)
-    // [0,40] -> Expand to [0,100]
+    // [0,40] -> Expand to [0,60]
     $("#slideContents, #stageLight").css({
-        "opacity": (2.5 * ms.diaphragmLightPosition) / 100
+        "opacity": (0.4) + ((1.5 * ms.diaphragmLightPosition) / 100)
     });
 
     $("#slideContents").css({
