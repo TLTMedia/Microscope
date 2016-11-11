@@ -22,7 +22,7 @@ function bindTooltip(){
    Use of below function is for intro.js (intro.js + gameLogic.js interdependence).
  */
 function startStep(step) {
-    var isDebug = true;
+    var isDebug = false;
 
     /* intro
 

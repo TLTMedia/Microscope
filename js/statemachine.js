@@ -7,7 +7,7 @@
  **/
 
 var components = [
-"#frame",
+    "#frame",
     "#base",
     "#diaphragm",
     "#diaphragmKnob",

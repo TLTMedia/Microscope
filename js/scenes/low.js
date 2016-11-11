@@ -63,7 +63,7 @@ function lowDLight() {
 
 
 function lowDHeight() {
-    textSetup("Adjust the height of the diaphragm by rotating the diaphragm knob", "5%", "50%");
+    textSetup("Adjust the height of the diaphragm by rotating the diaphragm knob", "18%", "70%");
     var id="#draggableDiaphragm"
         if (lowDiaphragmHeight.isActive()) { 
             var clonedComp = highlightComponent(id);

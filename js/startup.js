@@ -332,7 +332,6 @@ function loadSubMenu() {
     updateSteps();
     //enterStepObjects();
     // console.log("Starting game");
-    // introLightSwitch.activate();
     introLightSwitch.activate();
 }
 
