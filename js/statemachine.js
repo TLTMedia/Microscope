@@ -81,8 +81,10 @@ var components = [
             this.yknobcaliper = 0;
             this.lensePosition = 0;
             this.zoom = 1;
+            this.zoomSave = 1;
             this.slideBlur = 0;
-            this.lenseStates = ["#lensesRed", "#lensesYellow", "#lensesBlue", "#lensesWhite"];
+            this.lenseWheel = 0;
+            this.lenseStates = ["#lenses1Red", "#lenses2", "#lenses3", "#lenses4Yellow", "#lenses5", "#lenses6", "#lenses7Blue", "#lenses8", "#lenses9", "#lenses10White", "#lenses11", "#lenses12"];
             this.view = 0; //0 for front, 1 for left
             console.log("State machine has been created and updated.");
         }
@@ -98,7 +100,7 @@ ms = new StateMachine();
 var isDown = false;
 var prevX = 0;
 var prevY = 0;
-var MAX_OCULAR = 30;
+var MAX_OCULAR = 15;
 var MAX_KNOB = 20;
 var MIN_KNOB = -10;
 var MAX_DIAPHRAGM_LIGHT = 40;
@@ -417,18 +419,65 @@ function enableCaliper() {
 function enableLenses() {
     // For the sake of time, just make clicking rotate.
     function addLenseClick(part) {
-        $(ms.lenseStates[0]).css("opacity", "1");
-        $(part).css("opacity", "0");
-        $(part).click(function () {
-                $(ms.lenseStates[ms.lensePosition]).css("opacity", "0");
+        $(part)
+            .mousedown(function () {
+                    isDown=true;
+                    })
+        .mousemove(function(event){
+                if (isDown){
+
+                if ((prevX < event.pageX)) {
+                if (ms.lenseWheel%10==0){
+                $(ms.lenseStates[ms.lensePosition]).addClass("st0");
                 ms.lensePosition = ((ms.lensePosition + 1) % ms.lenseStates.length)
-                $(ms.lenseStates[ms.lensePosition]).css("opacity", "1");
+                $(ms.lenseStates[ms.lensePosition]).removeClass("st0");
+                ms.lenseWheel=1;
+                }
+                else{
+                ms.lenseWheel++;
+                }
+
+                }
+
+                if ((prevX > event.pageX)) {
+                if (ms.lenseWheel%10==0){
+                $(ms.lenseStates[ms.lensePosition]).addClass("st0");
+                ms.lensePosition = ((ms.lensePosition - 1) % ms.lenseStates.length)
+                if (ms.lensePosition==-1) ms.lensePosition = ms.lenseStates.length-1;
+                $(ms.lenseStates[ms.lensePosition]).removeClass("st0");
+                ms.lenseWheel=19; 
+                }
+                else{
+                    ms.lenseWheel--;
+                }
+
+                }
+                prevX = event.pageX;
+                if (ms.lenseStates[ms.lensePosition].includes("Red") ||
+                        ms.lenseStates[ms.lensePosition].includes("Yellow") || 
+                        ms.lenseStates[ms.lensePosition].includes("Blue") ||
+                        ms.lenseStates[ms.lensePosition].includes("White")
+                   ){
+                    ms.zoom = 1;
+                }
+                else{
+                    ms.zoomSave = ms.zoom
+                        ms.zoom = 100;
+                }
+                updateAnimation();
+                }
+
+        })
+        .mouseup(function(){
+                isDown=false;
                 })
+        .mouseleave(function(){
+                isDown=false;
+                });
     }
-    addLenseClick("#lenses");
-    $("#lenses, #lenses1Red, #lensesBlue, #lensesYellow, #lensesWhite").click(function () {
-            console.log(this);
-            });
+    $(ms.lenseStates[0]).removeClass("st0");
+    $("#lenses").removeClass("elementOn").addClass("elementOff");
+    addLenseClick("#lensesBasePath");
 }
 
 

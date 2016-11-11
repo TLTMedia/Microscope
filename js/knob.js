@@ -19,36 +19,6 @@ var knobs = [{
         bounds: [0, 270],
         divID: "draggableDiaphragm"
 }
-//             ,
-//    {
-//        width: 0,
-//        height: 0,
-//        center: {
-//            x: 0,
-//            y: 0
-//        },
-//        angle: 0,
-//        rotation: 0,
-//        link: [1],
-//        enabled: true,
-//        bounds: [0, 360],
-//        divID: ""
-//},
-//    {
-//        width: 0,
-//        height: 0,
-//        center: {
-//            x: 0,
-//            y: 0
-//        },
-//        angle: 0,
-//        rotation: 0,
-//        link: [2],
-//        enabled: true,
-//        bounds: [0, 360],
-//        divID: ""
-//},
-
 ];
 
 function setupKnobs(sm, callback) {

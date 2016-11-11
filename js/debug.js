@@ -28,7 +28,7 @@ function debugLow(){
     lowCoarse.complete();
     lowFine.complete();
     lowDiaphragmLight.complete();
-//    lowDiaphragmHeight.complete();
+    lowDiaphragmHeight.complete();
 //    lowCaliper.complete();
 //    lowLenses.complete();
 }
