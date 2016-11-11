@@ -77,6 +77,7 @@ function setupAdjustCaliper() {
                 subHandler(ms.ycaliper, 5, 20, setupCaliper, document, handler, id, null);
             }
             $(document).bind("mousemove", handler);
+            $("#stageLight").removeClass("st0");
 
         }
 
