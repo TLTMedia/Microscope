@@ -1,4 +1,2 @@
-
 - different views of cell (low -> high mag)
-- draw arrows
 - draw paper with letter on slide
