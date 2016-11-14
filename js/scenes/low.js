@@ -34,7 +34,11 @@ function lowAdjustCoarse() {
         }
 }
 
-//Trigger for fine knob 
+
+//  !!! (´・ω・`)
+//  fine knob shouldn't move stage.
+
+// Trigger for fine knob 
 function lowAdjustFine() {
     textSetup("Move the stage up slightly by moving the fine knob.", "10%", "64%");
     var id="#knobsFine"
@@ -49,7 +53,7 @@ function lowAdjustFine() {
 }
 
 
-// Adjust diaphram light
+// Adjust diaphragm light
 function lowDLight() {
     textSetup("Adjust the diaphragm to change the lighting on the slide.", "10%", "60%");
     var id="#diaphragm"
@@ -80,6 +84,10 @@ function lowDHeight() {
         }
 }
 
+//  !!! (´・ω・`)
+//  separated components. ycaliper shouldn't move with x-Knob
+//  xcaliperKnob - "#slide", #xcaliper",  "#caliperMetal"
+//  ycaliperKnob - "#slide", #xcaliper", "#ycaliper", "#caliperMetal"
 
 function lowAdjustCaliper() {
     textSetup("Move the caliper to adjust the position of the slide.", "62%", "60%");
@@ -102,7 +110,9 @@ function lowAdjustCaliper() {
 
 }
 
-
+//  !!! (´・ω・`)
+//  eyepiece position should displace cell view.
+//  See: /__image-reference/gifs/ocular.gif
 function lowAdjustLenses() {
     textSetup("Lenses: The lenses are rotated on the nosepiece to change the magnification. These different lenses are referred to as the objectives.", "15%", "35%"); 
     var id="#lensesBasePath"

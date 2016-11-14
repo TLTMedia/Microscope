@@ -302,6 +302,10 @@ function loadSubMenu() {
     setupAperture = game.getGroupStep(1, 2);
     setupCaliper = game.getGroupStep(1, 3);
 
+
+    //  !!! (´・ω・`)
+    // Ocular adjustment should go after diaphragm + before caliper
+    
     // Low Magnification
     lowEyepiece = game.getGroupStep(2, 0);
     lowCoarse = game.getGroupStep(2, 1);
@@ -311,6 +315,8 @@ function loadSubMenu() {
     lowCaliper = game.getGroupStep(2, 5);
     lowLenses = game.getGroupStep(2, 6);
 
+    
+    
     /* 
     lowLight = game.getGroupStep(2, 0);
     lowLens = game.getGroupStep(2, 2);

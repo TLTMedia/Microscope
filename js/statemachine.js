@@ -7,7 +7,7 @@
  **/
 
 var components = [
-"#frame",
+    "#frame",
     "#base",
     "#diaphragm",
     "#diaphragmKnob",
@@ -15,6 +15,7 @@ var components = [
     "#slide",
     "#caliperKnob",
     "#caliper",
+    "#caliperMetal",
     "#xcaliper",
     "#ycaliper",
     "#apertureFixed",

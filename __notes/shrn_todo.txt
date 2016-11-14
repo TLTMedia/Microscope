@@ -1,1 +1,0 @@
-- draw paper with letter on slide
