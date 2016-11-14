@@ -1,4 +1,3 @@
-
 /*
  * setup.js
  *
@@ -10,18 +9,18 @@
 // ====== Start Trigger ======= //
 function setupEnableSwitch() {
     textSetup("First, let's turn on the light switch.", "60%", "73%");
-    id="#switch"
-        var clonedComp = highlightComponent(id);
-            bringToFront($(id));
-    $("#switch").click(function() {
-            if (setupLightSwitch.isActive()) {
+    id = "#switch"
+    var clonedComp = highlightComponent(id);
+    bringToFront($(id));
+    $("#switch").click(function () {
+        if (setupLightSwitch.isActive()) {
             removeHighlight(clonedComp);
             setupLightSwitch.complete();
-            }
-            });
+        }
+    });
 }
 
-function setupEnableSlide(){
+function setupEnableSlide() {
     textSetup("Now take the slide and put it against the caliper.", "60%", "50%");
     // Make the slide visible
     /*
@@ -30,13 +29,12 @@ function setupEnableSlide(){
        "transform": "translate(" + 0 + "px," + 0 + "px)"
        });
      */
-    $(document).click(function(){
-            if (setupSlide.isActive())
-            {
+    $(document).click(function () {
+        if (setupSlide.isActive()) {
             setupSlide.complete();
 
-            }
-            });
+        }
+    });
 }
 
 
@@ -46,39 +44,39 @@ function setupEnableSlide(){
 function setupDLight() {
     textSetup("Move the aperture knob slightly to the left.", "55%", "60%");
     id = "#diaphragm"
-        if (setupAperture.isActive()) {
-            var clonedComp = highlightComponent(id);
-            bringToFront($(id));
-            bringToFront($("#aperture"));
-            bringToFront($("#apertureKnob"));
-            var handler = function(){
-                subHandler(ms.diaphragmLightPosition, 10, 40, setupAperture, document, handler, id, clonedComp);
-            }
-            $(document).bind("mousemove", handler);
+    if (setupAperture.isActive()) {
+        var clonedComp = highlightComponent(id);
+        bringToFront($(id));
+        bringToFront($("#aperture"));
+        bringToFront($("#apertureKnob"));
+        var handler = function () {
+            subHandler(ms.diaphragmLightPosition, 10, 40, setupAperture, document, handler, id, clonedComp);
         }
+        $(document).bind("mousemove", handler);
+    }
 }
 
 
 function setupAdjustCaliper() {
     textSetup("Move the caliper knob so the aperture light is on the specimen.", "62%", "60%");
     id = "#caliperKnob"
-        if (setupCaliper.isActive()) {
-             //var clonedComp = highlightComponent("#caliperKnob");
+    if (setupCaliper.isActive()) {
+        //var clonedComp = highlightComponent("#caliperKnob");
 
-             var clonedComp2 = highlightComponent("#yCaliperKnob");
-             var clonedComp2 = highlightComponent("#xCaliperKnob");
- 
-            //bringToFront($(id));
-            bringToFront($("#xCaliperKnob"));
-            bringToFront($("#yCaliperKnob"));
-            
-            var handler = function(){    
-                subHandler(ms.xcaliper, 5, 20, setupCaliper, document, handler, id, null);
-                subHandler(ms.ycaliper, 5, 20, setupCaliper, document, handler, id, null);
-            }
-            $(document).bind("mousemove", handler);
-            $("#stageLight").removeClass("st0");
+        var clonedComp2 = highlightComponent("#yCaliperKnob");
+        var clonedComp2 = highlightComponent("#xCaliperKnob");
 
+        //bringToFront($(id));
+        bringToFront($("#xCaliperKnob"));
+        bringToFront($("#yCaliperKnob"));
+
+        var handler = function () {
+            subHandler(ms.xcaliper, 5, 20, setupCaliper, document, handler, id, null);
+            subHandler(ms.ycaliper, 5, 20, setupCaliper, document, handler, id, null);
         }
+        $(document).bind("mousemove", handler);
+        $("#stageLight").removeClass("st0");
+
+    }
 
 }

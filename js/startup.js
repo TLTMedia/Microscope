@@ -365,10 +365,18 @@ $(function () {
     
     
     var slideImg = $('<img id="slideContents">');
-    slideImg.attr('src', "img/eyepieceCells.png");
+    
+    // image paths
+    var microscope = 'img/microscope.svg';
+    var path = 'img/cells/'
+    var cellLowMag = path + 'eyepieceCellsLow-bg.png';
+    var cellHighMag = path + 'eyepieceCellsHigh.png';
+    var eUpsidedown = path + 'e.png';
+    
+    slideImg.attr('src', cellLowMag);
     slideImg.appendTo('#slideContentsContainer');
-    //        $('#microscope').load('img/microscope-old.svg', function() {
-    $('#microscope').load('img/microscope.svg', function () {
+    
+    $('#microscope').load(microscope, function () {
         updateAnimation();
 
         //$('#microscope svg').append('<filter id="blurMe"><feGaussianBlur in="SourceGraphic" stdDeviation="1" /></filter>')
