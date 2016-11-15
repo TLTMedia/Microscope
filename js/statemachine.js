@@ -51,10 +51,10 @@ var components = [
 
 
     var overlapnents = [
-    "#lensesRed",
-    "#lensesBlue",
-    "#lensesYellow",
-    "#lensesWhite",
+    "#lenses1Red",
+    "#lenses7Blue",
+    "#lenses4Yellow",
+    "#lenses10White",
     ]
 
     // Steps ordered in an array
