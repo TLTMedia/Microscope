@@ -164,8 +164,8 @@ function updateAnimation() {
     translateReduce("#apertureKnob", ms.diaphragmLightPosition*-1, ms.knobPosition+ms.diaphragmHeightPosition);
     translateReduce("#diaphragm, #aperture, #diaphragmCopy", 0, ms.knobPosition+ms.diaphragmHeightPosition);
     translateReduce("#adjustDHeight", 0, ms.diaphragmHeightPosition);
-    translateReduce("#caliperKnob, #caliper", 0, ms.yknobcaliper);
-    translateReduce("#ycaliper, #xcaliper", ms.xcaliper, ms.ycaliper);
+    translateReduce("#caliperMetal, #caliperKnob, #caliper", 0, ms.yknobcaliper);
+    translateReduce("#caliperMetal, #ycaliper, #xcaliper", ms.xcaliper, ms.ycaliper);
 
 
 
@@ -271,7 +271,6 @@ function enableCoarseKnob() {
             if (isDown) {
                 if (prevY > event.pageY) {
                     if (ms.knobPosition < MAX_KNOB) {
-                        ms.knobPosition += val;
                         ms.yslide += val;
                         ms.ycaliper += val;
                         MAX_Y_CALIPER += val;
@@ -282,12 +281,12 @@ function enableCoarseKnob() {
                         if (coursePart == "#knobsFine") {
                             ms.slideBlur += 0.2;
                         } else if (coursePart == "#knobsCoarse") {
+                            ms.knobPosition += val;
                             ms.slideBlur += 0.1;
                         }
                     }
                 } else if ((prevY < event.pageY)) {
                     if (ms.knobPosition > MIN_KNOB) {
-                        ms.knobPosition -= val;
                         ms.yslide -= val;
                         ms.ycaliper -= val;
                         ms.yknobcaliper -= val;
@@ -298,6 +297,7 @@ function enableCoarseKnob() {
                         if (coursePart == "#knobsFine") {
                             ms.slideBlur -= 0.2;
                         } else if (coursePart == "#knobsCoarse") {
+                            ms.knobPosition -= val;
                             ms.slideBlur -= 0.1;
                         }
 
