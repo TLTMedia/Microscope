@@ -130,7 +130,7 @@ function triggerCoarse() {
 }
 
 function triggerCaliper() {
-    arr = ["#caliper", "#xcaliper", "#ycaliper", "#caliperKnob"];
+    arr = ["#caliper", "#xcaliper", "#ycaliper", "#caliperKnob", "#caliperMetal"];
     textSetup("Caliper: Adjusts the vertical and horizontal positions of the slide.", "55%", "55%");
     secludePart(arr);
 

@@ -2,6 +2,7 @@
 <!-- Generator: Adobe Illustrator 19.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="microscope" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 793 640.1" enable-background="new 0 0 793 640.1" xml:space="preserve">
+<filter id="blurMe"><feGaussianBlur in="SourceGraphic" stdDeviation="2" /></filter>
 <g id="bg" display="none">
 	<rect x="1" display="inline" fill="#A6C5E8" width="792" height="612"/>
 </g>
@@ -323,7 +324,7 @@
 	<path fill="#3D3D3D" d="M475.1,285.8h-98.3l-7.2,9.3H423h33h26.8L475.1,285.8z M458.3,289v1v1.3v1.6h-3.8h-19.1h-3.8v-1.6V290v-1
 		l0,0c0-1.6,1.1-1.4,3.2-1.4h19.7C456.6,287.5,458.3,287.3,458.3,289L458.3,289z"/>
 </g>
-<g id="caliperMetal_1_">
+<g id="caliperMetal">
 	<g>
 		<g>
 			<path fill="#444445" d="M307.3,302.5l6.7,0.1h2l-0.8-0.9l-6.2-0.1c-0.3,0-0.8-0.1-0.9-0.4l-0.3-1c-0.1-0.3,0-0.4,0.2-0.5
