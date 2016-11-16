@@ -300,8 +300,6 @@ function enableCoarseKnob() {
                             ms.knobPosition -= val;
                             ms.slideBlur -= 0.1;
                         }
-
-
                     }
                 }
                 //console.log(ms.knobPosition);
@@ -358,7 +356,6 @@ function enableDiaphragmLight() {
 
 
 function enableCaliper() {
-
     // Low knob
     function addCaliperXDrag(part) {
         var val = 1;

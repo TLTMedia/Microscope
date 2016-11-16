@@ -1,0 +1,6 @@
+HELLO
+HELLO
+HELLO
+<filter id="blurMe"><feGaussianBlur in="SourceGraphic" stdDeviation="2" /></filter>
+HELLO
+HELLO
