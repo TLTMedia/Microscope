@@ -6,6 +6,28 @@
  *
  **/
 
+
+/* WARNING: the code that follows will make you cry;    
+ *          a safety is provided below for your benefit
+ *                           _
+ *   _._ _..._ .-',     _.._(`))
+ *  '-. `     '  /-._.-'    ',/
+ *     )         \            '.
+ *    / _    _    |             \
+ *   |  a    a    /              |
+ *   \   .-.                     ;  
+ *    '-('' ).-'       ,'       ;
+ *       '-;           |      .'
+ *          \           \    /
+ *          | 7  .__  _.-\   \
+ *          | |  |  ``/  /`  /
+ *         /,_|  |   /,_/   /
+ *            /,_/      '`-'
+ *          
+ */
+
+
+
 var components = [
     "#frame",
     "#base",
@@ -51,10 +73,10 @@ var components = [
 
 
     var overlapnents = [
-    "#lensesRed",
-    "#lensesBlue",
-    "#lensesYellow",
-    "#lensesWhite",
+    "#lenses1Red",
+    "#lenses7Blue",
+    "#lenses4Yellow",
+    "#lenses10White",
     ]
 
     // Steps ordered in an array

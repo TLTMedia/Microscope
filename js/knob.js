@@ -1,7 +1,8 @@
 var APERTURE_HEIGHT_KNOB = 0;
 
-// If hell ever breaks lose, you can assume it's from these
+// If hell ever breaks loose, you can assume it's from these
 // They keep an alias to the state machine and update it externally
+
 var smAlias;
 var updateAlias;
 

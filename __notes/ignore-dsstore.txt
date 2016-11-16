@@ -1,0 +1,9 @@
+//remove all .DS_Store
+ find . -name .DS_Store -print0 | xargs -0 git rm --ignore-unmatch
+
+
+//add .DS_Store to gitignore
+echo .DS_Store >> ~/.gitignore_global0
+git config --global core.excludesfile ~/.gitignore_global
+
+
