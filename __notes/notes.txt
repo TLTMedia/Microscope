@@ -1,0 +1,88 @@
+Intro
+- Light Switch
+- Condenser:		y-axis diaphragm— should always be at the top
+
+
+
+diopter- bool
+
+
+
+red lens	aperture lowest good
+
+
+initial state:	
+	- light off
+	- stage down
+	- condenser down
+	- slide off
+	- lens that is not red
+
+
+low mag/high mag	->		low/medium/high
+
+**calibrate views
+** overexposure
+__ aperture- start closed
+
+linear:
+	> turn on light
+	> condenser up— scale
+	> slide on
+	> caliper (x, y)
+	> lenses- lowmag
+	> coarse
+
+
+	** cannot set diopter on low mag **
+	yellow:
+	> change lens
+	> fine
+	> diopter
+	> ocular (note: don’t set on low)
+	
+	blue:
+	> change lens
+	> aperture — max
+	> fine
+
+
+
+	-> Game
+	1. change slide
+		> rotate red (not through white)
+		> lower stage
+		> reduce light
+		> remove slide
+		> add new slide
+			> caliper (x,y)
+			> coarse
+			> rotate medium
+			> fine
+			> rotate to high
+			> open aperture
+			> fine
+	
+
+	2. 	 troubleshooting (fix the scope)
+		> 
+
+	3. clean scope
+		> lens paper / windex
+
+	4. field of view (measuring)
+		> low mag
+			> place ruler
+			> caliper
+		> high mag
+		
+	5. depth of focus
+		>
+
+	6. Orientation (e-slide)
+		> 
+
+	* warning: don’t go to oil *
+
+
+
