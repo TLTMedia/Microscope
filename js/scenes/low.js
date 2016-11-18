@@ -120,7 +120,11 @@ function lowAdjustLenses() {
             var clonedComp = highlightComponent(id);
             bringToFront($(id));
             var handler = function(){
-                subHandler(ms.diaphragmHeightPosition, 5, 15, lowLenses, document, handler, id, clonedComp);
+                if (ms.lensePosition==0){
+                    removeHighlightCopy();
+                    lowLenses.complete();
+                    $(document).unbind("mousemove", handler);
+                }
             }
             $(document).bind("mousemove", handler);
         }

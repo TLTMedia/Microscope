@@ -85,97 +85,97 @@ var MAX_X_BOUND = 10;
 
 var last_angle = 0;
 
-    /*
-     * We should introduce the idea of a state machine which represents the state
-     * of the microscope at any given time. The machine should be able to
-     * transition into other states seamlessly, regardles of the current state.
-     */
+/*
+ * We should introduce the idea of a state machine which represents the state
+ * of the microscope at any given time. The machine should be able to
+ * transition into other states seamlessly, regardles of the current state.
+ */
 
-    // Everything is set to minimum on init
-    class StateMachine {
-        constructor() {
-            this.lightStatus = 0; // Brightness of the light ranged 0-1. 0 being off.
-            this.eyepiecePosition = 0;
-            this.knobPosition = 0;
-            this.xslide = 0;
-            this.yslide = 0;
-            this.diaphragmLightPosition = 0;
-            this.diaphragmHeightPosition = 0;
-            this.xcaliper = 0;
-            this.ycaliper = 0;
-            this.yheight = 0;
-            this.yknobcaliper = 0;
-            this.lensePosition = 0;
-            this.zoom = 1;
-            this.slideBlur = 0;
-            this.lenseWheel = 0;
-            this.inBounds = true;
-            this.lenseStates = ["#lenses1Red", "#lenses2", "#lenses3", "#lenses4Yellow", "#lenses5", "#lenses6", "#lenses7Blue", "#lenses8", "#lenses9", "#lenses10White", "#lenses11", "#lenses12"];
-            console.log("State machine has been created and updated.");
-        }
-    
-        // Set values to setup values
-        setup(){
+// Everything is set to minimum on init
+class StateMachine {
+    constructor() {
+        this.lightStatus = 0; // Brightness of the light ranged 0-1. 0 being off.
+        this.eyepiecePosition = 0;
+        this.knobPosition = 0;
+        this.xslide = 0;
+        this.yslide = 0;
+        this.diaphragmLightPosition = 0;
+        this.diaphragmHeightPosition = 0;
+        this.xcaliper = 0;
+        this.ycaliper = 0;
+        this.yheight = 0;
+        this.yknobcaliper = 0;
+        this.lensePosition = 0;
+        this.zoom = 1;
+        this.slideBlur = 0;
+        this.lenseWheel = 0;
+        this.inBounds = true;
+        this.lenseStates = ["#lenses1Red", "#lenses2", "#lenses3", "#lenses4Yellow", "#lenses5", "#lenses6", "#lenses7Blue", "#lenses8", "#lenses9", "#lenses10White", "#lenses11", "#lenses12"];
+        console.log("State machine has been created and updated.");
+    }
 
-            MAX_Y_CALIPER += MAX_KNOB;
-            MIN_Y_CALIPER += MAX_KNOB;
+    // Set values to setup values
+    setup(){
+
+        MAX_Y_CALIPER += MAX_KNOB;
+        MIN_Y_CALIPER += MAX_KNOB;
 
 
-            this.lightStatus = 0; // Brightness of the light ranged 0-1. 0 being off.
-            this.eyepiecePosition = 0;
-            this.knobPosition = MAX_KNOB;
-            this.xslide = 0;
-            this.yslide = 0+this.knobPosition;
-            this.diaphragmLightPosition = 0+this.knobPosition;
-            this.diaphragmHeightPosition = 0;
-            this.xcaliper = 0;
-            this.ycaliper = 0+this.knobPosition;
-            this.yheight = 0+this.knobPosition;
-            this.yknobcaliper = 0+this.knobPosition;
-            this.lensePosition = 0;
-            this.zoom = 1;
-            this.slideBlur = 0;
-            this.lenseWheel = 0;
-            this.inBounds = true;
-            this.lenseStates = ["#lenses1Red", "#lenses2", "#lenses3", "#lenses4Yellow", "#lenses5", "#lenses6", "#lenses7Blue", "#lenses8", "#lenses9", "#lenses10White", "#lenses11", "#lenses12"];
-            console.log("State machine is set to default values.");
-        }
-        }
+        this.lightStatus = 0; // Brightness of the light ranged 0-1. 0 being off.
+        this.eyepiecePosition = 0;
+        this.knobPosition = MAX_KNOB;
+        this.xslide = 0;
+        this.yslide = 0+this.knobPosition;
+        this.diaphragmLightPosition = 0;
+        this.diaphragmHeightPosition = 270/12;
+        this.xcaliper = 0;
+        this.ycaliper = 0+this.knobPosition;
+        this.yheight = 0+this.knobPosition;
+        this.yknobcaliper = 0+this.knobPosition;
+        this.lensePosition = 6;
+        this.zoom = 1;
+        this.slideBlur = 0;
+        this.lenseWheel = 0;
+        this.inBounds = true;
+        this.lenseStates = ["#lenses1Red", "#lenses2", "#lenses3", "#lenses4Yellow", "#lenses5", "#lenses6", "#lenses7Blue", "#lenses8", "#lenses9", "#lenses10White", "#lenses11", "#lenses12"];
+        console.log("State machine is set to default values.");
+    }
+}
 
-    
+
 
 ms = new StateMachine();
 ms.setup()
 
 
-// Variables needed for rotating
-var target_wp, o_x, o_y, h_x, h_y, last_angle, last_degree;
+    // Variables needed for rotating
+    var target_wp, o_x, o_y, h_x, h_y, last_angle, last_degree;
 
-//function lowMagnification(){
-//    $("#headerText").text("Test 2 ");
-//}
+    //function lowMagnification(){
+    //    $("#headerText").text("Test 2 ");
+    //}
 
-// function highMagnification(){
-//    $("#headerText").text("");
-// }
-
-
-// function sideViewOn(){}
-// function sideViewOff(){}
+    // function highMagnification(){
+    //    $("#headerText").text("");
+    // }
 
 
-/* Translate Reduce (DRY)
- *
- * Condense all transforms into a single method and pass by argument.
- * 
- */
-function translateReduce(components, x, y) {
-    $(components).css({
-        "-webkit-transform": "translate(" + x + "px," + y + "px)",
-    "-ms-transform": "translate(" + x + "px," + y + "px)",
-    "transform": "translate(" + x + "px," + y + "px)"
-    });
-}
+    // function sideViewOn(){}
+    // function sideViewOff(){}
+
+
+    /* Translate Reduce (DRY)
+     *
+     * Condense all transforms into a single method and pass by argument.
+     * 
+     */
+    function translateReduce(components, x, y) {
+        $(components).css({
+            "-webkit-transform": "translate(" + x + "px," + y + "px)",
+        "-ms-transform": "translate(" + x + "px," + y + "px)",
+        "transform": "translate(" + x + "px," + y + "px)"
+        });
+    }
 
 /* 
    Call updateAnimation() for everytime there is a state change. The microscope animation is dependent on only ONE source, and that is the state of the machine. Thus, everytime the state of the machine changes from user input, the changes of the scope should reflect all at once. 
@@ -504,7 +504,7 @@ function enableLenses() {
 
                 }
 
-                if ((prevX > event.pageX)) {
+                else if ((prevX > event.pageX)) {
                     if (ms.lenseWheel%10==0){
                         $(ms.lenseStates[ms.lensePosition]).addClass("st0");
                         ms.lensePosition = ((ms.lensePosition - 1) % ms.lenseStates.length)
@@ -540,8 +540,8 @@ function enableLenses() {
             isDown=false;
         });
     }
-    $(ms.lenseStates[0]).removeClass("st0");
-    $("#lenses").removeClass("elementOn").addClass("elementOff");
+    //$(ms.lenseStates[0]).removeClass("st0");
+    //$("#lenses").removeClass("elementOn").addClass("elementOff");
     addLenseClick("#lensesBasePath");
 }
 

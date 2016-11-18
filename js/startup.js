@@ -176,50 +176,45 @@ function loadSubMenu() {
             "id": "lowMag",
             "shortText": "Low Magnification",
             "steps": [{
-                "id": "setupEyepiece",
-                "shortText": "Eyepiece",
-                "longText": "Click the eyepiece.",
-                "feedbackText": "click the eyepiece"
-            }, {
-                "id": "setupCoarse",
-                "shortText": "Coarse Knob",
-                "longText": "Click the coarse knobs.",
-                "feedbackText": "click the coarse knobs"
-            }, {
-                "id": "setupFine",
-                "shortText": "Fine Knobs",
-                "longText": "Click the fine knobs.",
-                "feedbackText": "click the fine knobs"
+                "id": "setupLenses",
+                "shortText": "Lenses",
+                "longText": "Click the lenses.",
+                "feedbackText": "click the lenses"
             }, {
                 "id": "setupDiaphragmLight",
                 "shortText": "Diaphragm Light",
                 "longText": "Click the diaphragm.",
                 "feedbackText": "click the diaphragm"
-            }, {
-                "id": "setupDiaphragmHeight",
-                "shortText": "Diaphragm Height",
-                "longText": "Click the diaphragm.",
-                "feedbackText": "click the diaphragm"
-            }, {
-                "id": "setupCaliper",
-                "shortText": "Caliper",
-                "longText": "Click the caliper.",
-                "feedbackText": "click the caliper"
-            }, {
+            },{
+                "id": "setupCoarse",
+                "shortText": "Coarse Knob",
+                "longText": "Click the coarse knobs.",
+                "feedbackText": "click the coarse knobs"
+            } ]  
+        }, {
+            "id": "medMag",
+            "shortText": "Medium Magnification",
+            "steps": [{
                 "id": "setupLenses",
                 "shortText": "Lenses",
                 "longText": "Click the lenses.",
                 "feedbackText": "click the lenses"
-            }]
-        }, {
-            "id": "highMag",
-            "shortText": "High Magnification",
-            "steps": [{
+            },{ 
+                "id": "setupEyepiece",
+                "shortText": "Eyepiece",
+                "longText": "Click the eyepiece.",
+                "feedbackText": "click the eyepiece"
+            }, {
                 "id": "lowLight",
                 "shortText": "Light",
                 "longText": "Press the space bar.",
                 "feedbackText": "press the space bar"
             }, {
+            "id": "setupFine",
+            "shortText": "Fine Knobs",
+            "longText": "Click the fine knobs.",
+            "feedbackText": "click the fine knobs"
+        }, {
                 "id": "lowLens",
                 "shortText": "10x Lens",
                 "longText": "Press F to pay respects.",
@@ -302,20 +297,24 @@ function loadSubMenu() {
     setupCondense = game.getGroupStep(1, 2);
     setupCaliper = game.getGroupStep(1, 3);
 
-
     //  !!! (´・ω・`)
     // Ocular adjustment should go after diaphragm + before caliper
     
     // Low Magnification
-    lowEyepiece = game.getGroupStep(2, 0);
-    lowCoarse = game.getGroupStep(2, 1);
-    lowFine = game.getGroupStep(2, 2);
-    lowDiaphragmLight = game.getGroupStep(2, 3);
-    lowDiaphragmHeight = game.getGroupStep(2, 4);
-    lowCaliper = game.getGroupStep(2, 5);
-    lowLenses = game.getGroupStep(2, 6);
+    lowLenses = game.getGroupStep(2,0)
+    lowDiaphragmLight = game.getGroupStep(2, 1);
+    lowCoarse = game.getGroupStep(2, 2);
+    //lowDiaphragmHeight = game.getGroupStep(2, 4);
+    //lowCaliper = game.getGroupStep(2, 5);
+    //lowLenses = game.getGroupStep(2, 6);
 
-    
+    // Med Magnification
+    medLenses = game.getGroupStep(3,0)
+    medEyepiece = game.getGroupStep(3, 1);
+    medFine = game.getGroupStep(3, 2);
+
+
+    // High magnification
     
     /* 
     lowLight = game.getGroupStep(2, 0);
@@ -325,15 +324,11 @@ function loadSubMenu() {
     lowCoarse = game.getGroupStep(2, 4);
     lowFine = game.getGroupStep(2, 5);
     lowDiaphragm = game.getGroupStep(2, 6);
-*/
-
+    */
 
     // High Magnification
     // a1 = game.getGroupStep(3, 0);
     // a2 = game.getGroupStep(3, 2);
-
-
-
 
     updateSteps();
     //enterStepObjects();

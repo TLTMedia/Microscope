@@ -115,7 +115,7 @@ function setupCondenser() {
            bringToFront($("#apertureKnob"));
            */
         var handler = function () {
-            subHandler(ms.diaphragmHeightPosition, 10, 40, setupCondense, document, handler, id, null);
+            subHandler(ms.diaphragmHeightPosition, 0, 5, setupCondense, document, handler, id, null);
         }
         $(document).bind("mousemove", handler);
     }
@@ -123,7 +123,7 @@ function setupCondenser() {
 
 
 function setupAdjustCaliper() {
-    textSetup("Move the caliper knob so the aperture light is on the specimen.", "62%", "60%");
+    textSetup("Move the caliper knob so the aperture light is directly on the specimen.", "62%", "60%");
     id = "#caliperKnob"
         if (setupCaliper.isActive()) {
             //var clonedComp = highlightComponent("#caliperKnob");

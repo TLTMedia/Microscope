@@ -1,4 +1,5 @@
 var APERTURE_HEIGHT_KNOB = 0;
+var CONDENSER_START = 270;
 
 // If hell ever breaks loose, you can assume it's from these
 // They keep an alias to the state machine and update it externally
@@ -13,8 +14,8 @@ var knobs = [{
             x: 0,
             y: 0
         },
-        angle: 0,
-        rotation: 0,
+        angle:0,
+        rotation: CONDENSER_START,
         link: [0],
         enabled: true,
         bounds: [0, 270],

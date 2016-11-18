@@ -88,35 +88,33 @@ function startStep(step) {
         enableCaliper(); 
     }
     
-    // Diving in: Low magnification
-    if (step == lowEyepiece) {
-        lowAdjustEyepiece();
-        enableEyepiece();
-    }
-    if (step == lowCoarse) {
-        lowAdjustCoarse();
-        enableCoarseKnob();
-    }
-    if (step == lowFine) {
-        lowAdjustFine(); 
+    // Low magnification
+    if (step == lowLenses) {
+        lowAdjustLenses();
+        enableLenses();
     }
     if (step == lowDiaphragmLight) {
         lowDLight();
         enableDiaphragmLight();
     }
-    if (step == lowDiaphragmHeight) {
-        lowDHeight();
-        enableSideDiaphragmRotate();
-    }
-    if (step == lowCaliper) {
-        lowAdjustCaliper();
-        enableCaliper(); 
-    }
-    if (step == lowLenses) {
-        lowAdjustLenses();
-        enableLenses();
+    if (step == lowCoarse) {
+        lowAdjustCoarse();
+        enableCoarseKnob();
     }
 
+    /* Med magnification
+    if (step == medLenses) {
+        medAdjustLenses();
+        //enableLenses();
+    }
+    if (step == lowEyepiece) {
+        medAdjustEyepiece();
+        //enableEyepiece();
+    }
+    if (step == medFine) {
+        medAdjustFine(); 
+    }
+    */
 
     // enable freemode? (user can do whatever they want with the scope)
 

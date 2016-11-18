@@ -94,6 +94,5 @@ function removeHighlightId(id){
 }
 
 function removeHighlightCopy(){
-    console.log("yo");
     $("[id$='Copy']").remove();
 }
