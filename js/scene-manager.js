@@ -76,9 +76,10 @@ function startStep(step) {
         console.log("We are now in this step");
        setupEnableSlide(); 
     }
-    if (step == setupAperture){ 
-        setupDLight();
-        enableDiaphragmLight();
+    if (step == setupCondense){ 
+        setupCondenser();
+        enableSideDiaphragmRotate();
+        //enableDiaphragmLight();
     }
 
     if (step == setupCaliper){ 

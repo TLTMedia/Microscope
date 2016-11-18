@@ -1,0 +1,51 @@
+var components = [
+    "#frame",
+    "#base",
+    "#diaphragm",
+    "#diaphragmKnob",
+    "#slideStage",
+    "#slide",
+    "#caliperKnob",
+    "#caliper",
+    "#caliperMetal",
+    "#xcaliper",
+    "#ycaliper",
+    "#apertureFixed",
+    "#aperture",
+    "#illumination",
+    "#eyepiece",
+    "#ocularLensBase",
+    "#ocularRight",
+    "#ocularLeft",
+    "#lenses",
+    "#switch",
+    "#knobsCoarse",
+    "#knobsFine",
+    "#lensesBasePath",
+    "#lensesBase",
+    "#slide",
+
+    "#lenses1Red",
+    "#lenses2",
+    "#lenses3",
+    "#lenses4Yellow",
+    "#lenses5",
+    "#lenses6",
+    "#lenses7Blue",
+    "#lenses8",
+    "#lenses9",
+    "#lenses10White",
+    "#lenses11",
+    "#lenses12",
+    "#stageLight",
+    "#illuminationLight"
+    ];
+
+
+    var overlapnents = [
+    "#lenses1Red",
+    "#lenses7Blue",
+    "#lenses4Yellow",
+    "#lenses10White",
+    ];
+

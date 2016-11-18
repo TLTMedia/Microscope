@@ -14,7 +14,7 @@ function lowAdjustEyepiece() {
         bringToFront($("#ocularRight"));
         //bringToFront($("#ocularLeft"));
         var handler = function(){
-            subHandler(ms.eyepiecePosition, 10, 25, lowEyepiece, document, handler, id, [clonedComp, clonedComp2]);
+            subHandler(ms.eyepiecePosition, 10, 25, lowEyepiece, document, handler, id, [clonedComp]);
         }
         $(document).bind("mousemove", handler);
     }

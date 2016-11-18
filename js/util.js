@@ -70,16 +70,17 @@ function bringToFront(elem) {
 function highlightComponent(id) {
     //return;
     var origPart = $(id)
-        var clonePart = $(id).clone();
+    var clonePart = $(id).clone();
     lastPart = clonePart;
     clonePart.attr("pointer-events", "none")
-        clonePart.toggleClass("highlightPart")
-        clonePart.attr("id", id.replace("#", "") + "Copy");
+    clonePart.toggleClass("highlightPart")
+    clonePart.attr("id", id.replace("#", "") + "Copy");
     clonePart.attr("style", "border:10px solid blue");
     clonePart.attr("filter", "url(#blurMe)");
     clonePart.children().attr("fill", "rgba(0,0,0,0)");
     clonePart.insertBefore($(id))
-        return clonePart
+    console.log("test");
+    return clonePart
 
 }
 
@@ -93,5 +94,6 @@ function removeHighlightId(id){
 }
 
 function removeHighlightCopy(){
+    console.log("yo");
     $("[id$='Copy']").remove();
 }

@@ -158,10 +158,10 @@ function loadSubMenu() {
                 "longText": "Push in the slide.",
                 "feedbackText": "click the light switch"
             }, {
-                "id": "setupAperture",
-                "shortText": "Aperture Knob",
+                "id": "setupCondenser",
+                "shortText": "Condenser",
                 "longText": "Move the aperture knob slightly to the left.",
-                "feedbackText": "Move the aperture knob."
+                "feedbackText": "Move the condensor knob."
 
             }, {
                 "id": "setupCaliper",
@@ -299,7 +299,7 @@ function loadSubMenu() {
     // Setup
     setupLightSwitch = game.getGroupStep(1, 0);
     setupSlide = game.getGroupStep(1, 1);
-    setupAperture = game.getGroupStep(1, 2);
+    setupCondense = game.getGroupStep(1, 2);
     setupCaliper = game.getGroupStep(1, 3);
 
 

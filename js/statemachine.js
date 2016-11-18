@@ -5,117 +5,6 @@
  * Singleton design pattern (Instantiate ONLY once).
  *
  **/
-
-
-/* WARNING: the code that follows will make you cry;    
- *          a safety is provided below for your benefit
- *                           _
- *   _._ _..._ .-',     _.._(`))
- *  '-. `     '  /-._.-'    ',/
- *     )         \            '.
- *    / _    _    |             \
- *   |  a    a    /              |
- *   \   .-.                     ;  
- *    '-('' ).-'       ,'       ;
- *       '-;           |      .'
- *          \           \    /
- *          | 7  .__  _.-\   \
- *          | |  |  ``/  /`  /
- *         /,_|  |   /,_/   /
- *            /,_/      '`-'
- *          
- */
-
-
-
-var components = [
-    "#frame",
-    "#base",
-    "#diaphragm",
-    "#diaphragmKnob",
-    "#slideStage",
-    "#slide",
-    "#caliperKnob",
-    "#caliper",
-    "#caliperMetal",
-    "#xcaliper",
-    "#ycaliper",
-    "#apertureFixed",
-    "#aperture",
-    "#illumination",
-    "#eyepiece",
-    "#ocularLensBase",
-    "#ocularRight",
-    "#ocularLeft",
-    "#lenses",
-    "#switch",
-    "#knobsCoarse",
-    "#knobsFine",
-    "#lensesBasePath",
-    "#lensesBase",
-    "#slide",
-
-    "#lenses1Red",
-    "#lenses2",
-    "#lenses3",
-    "#lenses4Yellow",
-    "#lenses5",
-    "#lenses6",
-    "#lenses7Blue",
-    "#lenses8",
-    "#lenses9",
-    "#lenses10White",
-    "#lenses11",
-    "#lenses12",
-    "#stageLight",
-    "#illuminationLight"
-    ];
-
-
-    var overlapnents = [
-    "#lenses1Red",
-    "#lenses7Blue",
-    "#lenses4Yellow",
-    "#lenses10White",
-    ]
-
-    // Steps ordered in an array
-    var stepTexts = ["Turn on the light.", "Adjust the eyepieces"];
-    var stepIndex = 0;
-
-    /*
-     * We should introduce the idea of a state machine which represents the state
-     * of the microscope at any given time. The machine should be able to
-     * transition into other states seamlessly, regardles of the current state.
-     */
-
-    class StateMachine {
-        constructor() {
-            this.lightStatus = 0; // Brightness of the light ranged 0-1. 0 being off.
-            this.eyepiecePosition = 0;
-            this.knobPosition = 0;
-            this.xslide = 0;
-            this.yslide = 0;
-            this.diaphragmLightPosition = 5;
-            this.diaphragmHeightPosition = 0;
-            this.xcaliper = 0;
-            this.ycaliper = 0;
-            this.yheight = 0;
-            this.yknobcaliper = 0;
-            this.lensePosition = 0;
-            this.zoom = 1;
-            this.slideBlur = 0;
-            this.lenseWheel = 0;
-            this.inBounds = true;
-            this.lenseStates = ["#lenses1Red", "#lenses2", "#lenses3", "#lenses4Yellow", "#lenses5", "#lenses6", "#lenses7Blue", "#lenses8", "#lenses9", "#lenses10White", "#lenses11", "#lenses12"];
-            this.view = 0; //0 for front, 1 for left
-            console.log("State machine has been created and updated.");
-        }
-
-    }
-
-ms = new StateMachine();
-
 /* User global states
 */
 
@@ -144,6 +33,120 @@ var MAX_X_BOUND = 10;
 
 
 var last_angle = 0;
+
+/* shrn pls
+ *                           _
+ *   _._ _..._ .-',     _.._(`))
+ *  '-. `     '  /-._.-'    ',/
+ *     )         \            '.
+ *    / _    _    |             \
+ *   |  a    a    /              |
+ *   \   .-.                     ;  
+ *    '-('' ).-'       ,'       ;
+ *       '-;           |      .'
+ *          \           \    /
+ *          | 7  .__  _.-\   \
+ *          | |  |  ``/  /`  /
+ *         /,_|  |   /,_/   /
+ *            /,_/      '`-'
+ *          
+ */
+
+
+
+
+/* User global states
+*/
+
+//Globalize drag components (this is fine because there cannot be multiple drag instances unless user is not homosapien)
+var isDown = false;
+
+var prevX = 0;
+var prevY = 0;
+var MAX_OCULAR = 15;
+var MAX_KNOB = 20;
+var MIN_KNOB = -10;
+var MAX_DIAPHRAGM_LIGHT = 40;
+var MIN_DIAPHRAGM_HEIGHT = -15;
+var MAX_DIAPHRAGM_HEIGHT = 15;
+
+// Bounded caliper
+var MAX_X_CALIPER = 20;
+var MIN_X_CALIPER = -20;
+var MAX_Y_CALIPER = 13;
+var MIN_Y_CALIPER = -13;
+
+// Bounded specimen vision
+var MIN_Y_BOUND = -10;
+var MAX_Y_BOUND = 10;
+var MIN_X_BOUND = -10;
+var MAX_X_BOUND = 10;
+
+
+var last_angle = 0;
+
+    /*
+     * We should introduce the idea of a state machine which represents the state
+     * of the microscope at any given time. The machine should be able to
+     * transition into other states seamlessly, regardles of the current state.
+     */
+
+    // Everything is set to minimum on init
+    class StateMachine {
+        constructor() {
+            this.lightStatus = 0; // Brightness of the light ranged 0-1. 0 being off.
+            this.eyepiecePosition = 0;
+            this.knobPosition = 0;
+            this.xslide = 0;
+            this.yslide = 0;
+            this.diaphragmLightPosition = 0;
+            this.diaphragmHeightPosition = 0;
+            this.xcaliper = 0;
+            this.ycaliper = 0;
+            this.yheight = 0;
+            this.yknobcaliper = 0;
+            this.lensePosition = 0;
+            this.zoom = 1;
+            this.slideBlur = 0;
+            this.lenseWheel = 0;
+            this.inBounds = true;
+            this.lenseStates = ["#lenses1Red", "#lenses2", "#lenses3", "#lenses4Yellow", "#lenses5", "#lenses6", "#lenses7Blue", "#lenses8", "#lenses9", "#lenses10White", "#lenses11", "#lenses12"];
+            console.log("State machine has been created and updated.");
+        }
+    
+        // Set values to setup values
+        setup(){
+
+            MAX_Y_CALIPER += MAX_KNOB;
+            MIN_Y_CALIPER += MAX_KNOB;
+
+
+            this.lightStatus = 0; // Brightness of the light ranged 0-1. 0 being off.
+            this.eyepiecePosition = 0;
+            this.knobPosition = MAX_KNOB;
+            this.xslide = 0;
+            this.yslide = 0+this.knobPosition;
+            this.diaphragmLightPosition = 0+this.knobPosition;
+            this.diaphragmHeightPosition = 0;
+            this.xcaliper = 0;
+            this.ycaliper = 0+this.knobPosition;
+            this.yheight = 0+this.knobPosition;
+            this.yknobcaliper = 0+this.knobPosition;
+            this.lensePosition = 0;
+            this.zoom = 1;
+            this.slideBlur = 0;
+            this.lenseWheel = 0;
+            this.inBounds = true;
+            this.lenseStates = ["#lenses1Red", "#lenses2", "#lenses3", "#lenses4Yellow", "#lenses5", "#lenses6", "#lenses7Blue", "#lenses8", "#lenses9", "#lenses10White", "#lenses11", "#lenses12"];
+            console.log("State machine is set to default values.");
+        }
+        }
+
+    
+
+ms = new StateMachine();
+ms.setup()
+
 
 // Variables needed for rotating
 var target_wp, o_x, o_y, h_x, h_y, last_angle, last_degree;
@@ -193,7 +196,7 @@ function updateAnimation() {
 
     /* Slide Contents Animations */
     // Caliper movements on slide.
-    translateReduce("#slideContentsContainer", ms.xcaliper*10, ms.ycaliper*20);
+    translateReduce("#slideContentsContainer", ms.xcaliper*10, ms.ycaliper);
     // Microscope darkness (hack is based off of a black background to darken)
     // [0,40] -> Expand to [0,60]
     $("#slideContents, #stageLight").css({
@@ -215,6 +218,7 @@ function updateAnimation() {
 
 
 }
+
 
 /* Toggles the light switch */
 function enableLightSwitch() {
@@ -558,3 +562,6 @@ function enableScope() {
     enableSideDiaphragmRotate()
         updateAnimation();
 }
+
+
+updateAnimation()

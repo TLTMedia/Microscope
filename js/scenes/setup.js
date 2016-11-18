@@ -28,12 +28,12 @@ function setupEnableSlide() {
     $pseudoSlide.attr("id", "pseudo_slideCopy")
         var pos = $pseudoSlide.position()
         var x = 0.115*$(window).width();
-        var y = $(window).height()*0.05;
-        $pseudoSlide.css({
-            "-webkit-transform": "translate(" + x + "px," + y + "px)",
-            "-ms-transform": "translate(" + x + "px," + y + "px)",
-            "transform": "translate(" + x + "px," + y + "px)"
-        });
+    var y = $(window).height()*0.05;
+    $pseudoSlide.css({
+        "-webkit-transform": "translate(" + x + "px," + y + "px)",
+        "-ms-transform": "translate(" + x + "px," + y + "px)",
+        "transform": "translate(" + x + "px," + y + "px)"
+    });
     $pseudoSlide.attr("data-x", x);
     $pseudoSlide.attr("data-y", y);
     highlightComponent("#pseudo_slideCopy")
@@ -79,8 +79,9 @@ function setupEnableSlide() {
         if (setupSlide.isActive() && Math.abs(x) < 10 && Math.abs(y) < 10) {
             setupSlide.complete();
             toggleVisibility("#slide");
-            removeHighlightCopy()
 
+            $("#pseudo_slideCopyCopy").remove();
+            $("#pseudo_slideCopy").remove();
         }
 
         // translate the element
@@ -102,19 +103,22 @@ function setupEnableSlide() {
 //  (´・ω・`) broke this
 //  knob should go <- not ->
 // hehe dwai shrin i got u
-function setupDLight() {
-    textSetup("Move the aperture knob slightly to the left.", "55%", "60%");
-    id = "#diaphragm"
-        if (setupAperture.isActive()) {
-            var clonedComp = highlightComponent(id);
-            bringToFront($(id));
-            bringToFront($("#aperture"));
-            bringToFront($("#apertureKnob"));
-            var handler = function () {
-                subHandler(ms.diaphragmLightPosition, 10, 40, setupAperture, document, handler, id, clonedComp);
-            }
-            $(document).bind("mousemove", handler);
+function setupCondenser() {
+    textSetup("Move the condenser knob all the way to the top.", "20%", "60%");
+    var id="#draggableDiaphragm";
+    console.log("testing");
+    if (setupCondense.isActive()) {
+        var clonedComp = highlightComponent(id);
+        bringToFront($(id));
+        /*
+           bringToFront($("#aperture"));
+           bringToFront($("#apertureKnob"));
+           */
+        var handler = function () {
+            subHandler(ms.diaphragmHeightPosition, 10, 40, setupCondense, document, handler, id, null);
         }
+        $(document).bind("mousemove", handler);
+    }
 }
 
 
