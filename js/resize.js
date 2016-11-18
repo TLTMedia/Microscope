@@ -109,7 +109,7 @@ function resizeWindow() {
 
     if (w>1500) w=1500;
 
-    $("#rotate, #slideView").css({
+    $("#rotate, .sview").css({
        'height': w*0.2 + "px", 
         'width': w*0.2 + "px"
     });

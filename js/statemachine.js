@@ -193,7 +193,7 @@ function updateAnimation() {
 
     /* Slide Contents Animations */
     // Caliper movements on slide.
-    translateReduce("#slideContentsContainer", ms.xcaliper, ms.ycaliper - ms.yheight);
+    translateReduce("#slideContentsContainer", ms.xcaliper*10, ms.ycaliper*20);
     // Microscope darkness (hack is based off of a black background to darken)
     // [0,40] -> Expand to [0,60]
     $("#slideContents, #stageLight").css({
@@ -206,7 +206,6 @@ function updateAnimation() {
 
     var chosenBlur = ms.slideBlur;
     if (!ms.inBounds){
-        chosenBlur = 3;
     }
     $("#slideContents").css({
         "-ms-filter": "blur(" + Math.abs(chosenBlur) + "px)",

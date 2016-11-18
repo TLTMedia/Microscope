@@ -371,6 +371,7 @@ $(function () {
     
     
     var slideImg = $('<img id="slideContents">');
+    var slideImg2 = $('<img id="slideContents2">');
     
     // image paths
     var microscope = 'img/microscope.svg';
@@ -381,6 +382,9 @@ $(function () {
     
     slideImg.attr('src', cellLowMag);
     slideImg.appendTo('#slideContentsContainer');
+
+    slideImg2.attr('src', cellLowMag);
+    slideImg2.appendTo('#slideContentsContainer2');
     
     $('#microscope').load(microscope, function () {
         updateAnimation();

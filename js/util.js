@@ -28,6 +28,12 @@ function textSetup(tooltip, lt, tp) {
 }
 
 
+function toggleVisibility(id){
+    $(id).toggleClass("elementOff");
+    $(id).toggleClass("elementOn");
+}
+
+
 String.prototype.capitalize = function () {
     return this.charAt(0).toUpperCase() + this.slice(1);
 }

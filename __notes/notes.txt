@@ -30,6 +30,8 @@ linear:
 	> condenser up— scale
 	> slide on
 	> caliper (x, y)
+--- end set up
+
 	> lenses- lowmag
 	> coarse
 

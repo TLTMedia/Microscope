@@ -178,22 +178,36 @@
  
 
 
-#slideView {
+.sview {
     border-radius: 50%;
     border-color: black;
     display:visible;
     position: absolute;
     background-color: black;
-    left: 2%; 
+    left: 4%; 
     top: 10%;    
     overflow: hidden; 
     border: 1px solid rgb(90,90,90);
+    z-index: 1;
 }
 
+#slideView2{
+    left: 2%;
+    z-index: 0;
+}
 
 #slideContentsContainer{
     height: 100%;
     margin-left: -50%;
+    margin-top: -50%;
+    width: 100%;
+    background-color: black;
+}
+
+#slideContentsContainer2{
+    height: 100%;
+    margin-left: -50%;
+    margin-top: -50%;
     width: 100%;
     background-color: black;
 }
@@ -205,6 +219,13 @@
     margin: 0 auto;
 }
 
+
+#slideContents2{
+    width: 200%;
+    height: 200%;
+    position: relative;
+    margin: 0 auto;
+}
 
 #switchTarget {
     width: 4%;

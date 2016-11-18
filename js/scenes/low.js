@@ -6,13 +6,13 @@
  */
 
 function lowAdjustEyepiece() {
-    textSetup("Adjust the eyepiece to change the magnification.", "5%", "25%");
+    textSetup("Adjust the eyepiece to change the magnification.", "60%", "30%");
     var id="#ocularRight";
     if (lowEyepiece.isActive()) { 
         var clonedComp = highlightComponent(id);
-        var clonedComp2 = highlightComponent("#ocularLeft");
+        //var clonedComp2 = highlightComponent("#ocularLeft");
         bringToFront($("#ocularRight"));
-        bringToFront($("#ocularLeft"));
+        //bringToFront($("#ocularLeft"));
         var handler = function(){
             subHandler(ms.eyepiecePosition, 10, 25, lowEyepiece, document, handler, id, [clonedComp, clonedComp2]);
         }

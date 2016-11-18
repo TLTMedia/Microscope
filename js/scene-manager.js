@@ -36,6 +36,8 @@ function startStep(step) {
         introText();
         if (!isDebug) triggerLightSwitch();
         $("#light").addClass("elementOff");
+        toggleVisibility("#slide")
+
     }
     if (step == introDiaphragm) {
         triggerDiaphragm();
