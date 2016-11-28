@@ -4,7 +4,6 @@
    ================================= */
 
 function debugIntro() {
-    console.log("Intro debugged.");
     introLightSwitch.complete();
     introEyepiece.complete();
     introCoarse.complete();
@@ -16,7 +15,6 @@ function debugIntro() {
 }
 
 function debugSetup() {
-    console.log("Setup debugged.");
     setupLightSwitch.complete();
     setupSlide.complete();
     setupCondense.complete();
@@ -24,13 +22,13 @@ function debugSetup() {
 }
 
 function debugLow(){
-
     lowLenses.complete();
     lowDiaphragmLight.complete();
     lowCoarse.complete();
 //    lowFine.complete();
 }
 
+function debugmedMag(){}
 function debugHighMag(){}
 
 
@@ -42,7 +40,7 @@ function DEBUG(state){
         removeHighlightCopy();
         debugLow(); 
         removeHighlightCopy();
-      //debugHighMag(); 
+       //debugHighMag(); 
     }
     return isDebug;
 }

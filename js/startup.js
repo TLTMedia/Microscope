@@ -217,16 +217,41 @@ function loadSubMenu() {
             }]
 
         }, {
+            "id": "highMag",
+            "shortText": "High Magnification",
+            "steps": [{
+                "id": "setupLenses",
+                "shortText": "Lenses",
+                "longText": "Click the lenses.",
+                "feedbackText": "click the lenses"
+            },{
+                "id": "setupFine",
+                "shortText": "Fine Knobs",
+                "longText": "Click the fine knobs.",
+                "feedbackText": "click the fine knobs"
+            },{ 
+                "id": "setupDiopter",
+                "shortText": "Diopter",
+                "longText": "Adjust the diopter (left ocular)",
+                "feedbackText": "click the eyepiece"
+            },{ 
+                "id": "setupEyepiece",
+                "shortText": "Eyepiece",
+                "longText": "Click the eyepiece.",
+                "feedbackText": "click the eyepiece"
+            }]
+        },{
+
             "id": "quiz",
             "shortText": "Quiz",
             "steps": [{
                 "id": "#idname",
-                "shortText": "#shortText",
+                "shortText": "Q1",
                 "longText": "#longText",
                 "feedbackText": "#feedbackText"
             }, {
                 "id": "pressF",
-                "shortText": "Press F",
+                "shortText": "Q2",
                 "longText": "Press F to pay respects.",
                 "feedbackText": "ty for much respects"
             }]
@@ -272,11 +297,8 @@ function loadSubMenu() {
 
     // Low Magnification
     lowLenses = game.getGroupStep(2,0)
-        lowDiaphragmLight = game.getGroupStep(2, 1);
+    lowDiaphragmLight = game.getGroupStep(2, 1);
     lowCoarse = game.getGroupStep(2, 2);
-    //lowDiaphragmHeight = game.getGroupStep(2, 4);
-    //lowCaliper = game.getGroupStep(2, 5);
-    //lowLenses = game.getGroupStep(2, 6);
 
     // Med Magnification
     medLenses = game.getGroupStep(3,0)
@@ -286,20 +308,11 @@ function loadSubMenu() {
 
 
     // High magnification
+    highLenses = game.getGroupStep(4,0)
+    highFine = game.getGroupStep(4, 1);
+    highDiopter = game.getGroupStep(4, 2);
+    highOcular = game.getGroupStep(4, 3);
 
-    /* 
-       lowLight = game.getGroupStep(2, 0);
-       lowLens = game.getGroupStep(2, 2);
-       lowSlidePlace = game.getGroupStep(2, 2);
-       lowSlideCenter = game.getGroupStep(2, 3);
-       lowCoarse = game.getGroupStep(2, 4);
-       lowFine = game.getGroupStep(2, 5);
-       lowDiaphragm = game.getGroupStep(2, 6);
-       */
-
-    // High Magnification
-    // a1 = game.getGroupStep(3, 0);
-    // a2 = game.getGroupStep(3, 2);
 
     updateSteps();
     //enterStepObjects();
@@ -321,41 +334,50 @@ function initEndOptionHover(id) {
     });
 }
 
+// 0 - first occurence, 1 - low, 2 - med, 3 - high
+function swapMag(n){
+    var path = 'img/cells/';
+    var cell = "";
+    var slideImg = ""
+    var slideImg2 = ""
 
+    if (n==0){
+        slideImg = $('<img id="slideContents">');
+        slideImg2 = $('<img id="slideContents2">');
+        slideImg.appendTo('#slideContentsContainer');
+        slideImg2.appendTo('#slideContentsContainer2');
+        return;
+    }
+    slideImg = $("#slideContents");
+    slideImg2 = $("#slideContents2");
+    if (n==1)
+        cell = path + 'eyepieceCellsLow-bg.png';
+    else if (n==2 || n==3)
+        cell = path + 'eyepieceCellsHigh.png';
+    //var eUpsidedown = path + 'e.png';
+
+    slideImg.attr('src', cell);
+    slideImg2.attr('src', cell);
+}
 
 // ====== Frame setup and microscope initialization. ====== //
 $(function () {
-
     $("#rotate2").load('img/sideview.svg', function () {
-
         $("#draggableDiaphragm").addClass("knob");
         //        $("#").addClass("knob");
         //        $("#").addClass("knob");
 
     })
 
-
-
-    var slideImg = $('<img id="slideContents">');
-    var slideImg2 = $('<img id="slideContents2">');
-
     // image paths
     var microscope = 'img/microscope.svg';
-    var path = 'img/cells/'
-    var cellLowMag = path + 'eyepieceCellsLow-bg.png';
-var cellHighMag = path + 'eyepieceCellsHigh.png';
-var eUpsidedown = path + 'e.png';
-
-slideImg.attr('src', cellLowMag);
-slideImg.appendTo('#slideContentsContainer');
-
-slideImg2.attr('src', cellLowMag);
-slideImg2.appendTo('#slideContentsContainer2');
 
 $('#microscope').load(microscope, function () {
     updateAnimation();
 
     //$('#microscope svg').append('<filter id="blurMe"><feGaussianBlur in="SourceGraphic" stdDeviation="1" /></filter>')
+    swapMag(0);
+
 
     resizeWindow();
     loadStartMenu();

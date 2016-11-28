@@ -449,13 +449,10 @@ function enableCaliper() {
             isDown = false;
         });
     }
-    console.log("Caliper events set");
     addCaliperXDrag("#xCaliperKnob");
     addCaliperYDrag("#yCaliperKnob");
 
 }
-
-
 
 
 // lenses work differently now
@@ -497,11 +494,16 @@ function enableLenses() {
 
                 }
         prevX = event.pageX;
-        if (ms.lenseStates[ms.lensePosition].includes("Red") ||
-                ms.lenseStates[ms.lensePosition].includes("Yellow") || 
+        if (ms.lenseStates[ms.lensePosition].includes("Red"))
+        {
+            swapMag(1);
+            ms.zoom = 1;
+        }
+        else if (ms.lenseStates[ms.lensePosition].includes("Yellow") || 
                 ms.lenseStates[ms.lensePosition].includes("Blue") ||
                 ms.lenseStates[ms.lensePosition].includes("White")
            ){
+            swapMag(2);
             ms.zoom = 1;
         }
         else{
@@ -539,7 +541,7 @@ function enableScope() {
     enableDiaphragmLight();
     enableCaliper();
     enableSideDiaphragmRotate()
-        updateAnimation();
+    updateAnimation();
 }
 
 

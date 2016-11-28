@@ -11,16 +11,16 @@ function setupText() {
 // To improve it, use a mapping that takes a key word and redirects it into a proper tooltip.
 function bindTooltip(){
     components.forEach(function(component){
-            $(component).hover(function(){
-                $("#headerText").text((component.replace("#","")).capitalize());
-                }); 
-            }); 
+        $(component).hover(function(){
+            $("#headerText").text((component.replace("#","")).capitalize());
+        }); 
+    }); 
 }
 
 
 /*
    Use of below function is for intro.js (intro.js + gameLogic.js interdependence).
- */
+   */
 function startStep(step) {
     var isDebug = true;
 
@@ -29,7 +29,7 @@ function startStep(step) {
        Intro doesn't necessarily have flexible choices for the user to act on.
        The purpose of the introduction is to teach the user about the different
        parts of the microscope.
-     */
+       */
 
     if (step == introLightSwitch) {
         isDebug = DEBUG(isDebug);
@@ -63,7 +63,7 @@ function startStep(step) {
        Steps now have an intermission period between each step where the user must
        act/adjust the microscope before the game proceeds onto the next step.
 
-     */
+*/
     if (step == setupLightSwitch) {
         showAllParts();
         loadIntroComplete();
@@ -73,8 +73,7 @@ function startStep(step) {
         enableLightSwitch();
     }
     if (step == setupSlide){
-        console.log("We are now in this step");
-       setupEnableSlide(); 
+        setupEnableSlide(); 
     }
     if (step == setupCondense){ 
         setupCondenser();
@@ -84,10 +83,9 @@ function startStep(step) {
 
     if (step == setupCaliper){ 
         setupAdjustCaliper();
-        console.log("append prepend work");
         enableCaliper(); 
     }
-    
+
     // Low magnification
     if (step == lowLenses) {
         lowAdjustLenses();
@@ -114,6 +112,22 @@ function startStep(step) {
     }
     if (step == medOcular) {
         medAdjustEyepiece();
+        enableEyepiece();
+    }
+
+
+    // High magnification
+    if (step == highLenses) {
+        highAdjustLenses();
+    }
+    if (step == highFine) {
+        highAdjustFine(); 
+    }
+    if (step == highDiopter){
+        highAdjustDiopter();
+    }
+    if (step == highOcular) {
+        highAdjustEyepiece();
         enableEyepiece();
     }
 
