@@ -2,14 +2,9 @@ Intro
 - Light Switch
 - Condenser:		y-axis diaphragm— should always be at the top
 
-
-
 diopter- bool
 
-
-
 red lens	aperture lowest good
-
 
 initial state:	
 	- light off
@@ -47,8 +42,6 @@ linear:
 	> aperture — max
 	> fine
 
-
-
 	-> Game
 	1. change slide
 		> rotate red (not through white)
@@ -84,6 +77,3 @@ linear:
 		> 
 
 	* warning: don’t go to oil *
-
-
-

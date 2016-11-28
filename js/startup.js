@@ -338,6 +338,7 @@ function initEndOptionHover(id) {
 function swapMag(n){
     var path = 'img/cells/';
     var cell = "";
+    var cell2 = "";
     var slideImg = ""
     var slideImg2 = ""
 
@@ -350,14 +351,17 @@ function swapMag(n){
     }
     slideImg = $("#slideContents");
     slideImg2 = $("#slideContents2");
-    if (n==1)
+    if (n==1){
         cell = path + 'eyepieceCellsLow-bg.png';
-    else if (n==2 || n==3)
+    }
+    else if (n==2 || n==3){
         cell = path + 'eyepieceCellsHigh.png';
+        cell2 = path + 'eyepieceCellsHigh.png';
+    }
     //var eUpsidedown = path + 'e.png';
 
     slideImg.attr('src', cell);
-    slideImg2.attr('src', cell);
+    slideImg2.attr('src', cell2);
 }
 
 // ====== Frame setup and microscope initialization. ====== //

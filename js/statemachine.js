@@ -173,27 +173,31 @@ function updateAnimation() {
 
     /* Slide Contents Animations */
     // Caliper movements on slide.
-    translateReduce("#slideContentsContainer", ms.xcaliper*10, ms.ycaliper);
+    translateReduce("#slideContentsContainer, #slideContentsContainer2", ms.xcaliper*10, ms.ycaliper);
     // Microscope darkness (hack is based off of a black background to darken)
     // [0,40] -> Expand to [0,60]
-    $("#slideContents, #stageLight").css({
+    $("#slideContents,#slideContents2,#stageLight").css({
         "opacity": (0.4) + ((1.5 * ms.diaphragmLightPosition) / 100)
     });
 
-    $("#slideContents").css({
+    $("#slideContents, #slideContents2").css({
         "transform": "scale(" + ms.zoom + ")"
     });
 
     var chosenBlur = ms.slideBlur;
     if (!ms.inBounds){
     }
-    $("#slideContents").css({
+    $("#slideContents, #slideContents2").css({
         "-ms-filter": "blur(" + Math.abs(chosenBlur) + "px)",
         "-webkit-filter": "blur(" + Math.abs(chosenBlur) + "px)",
         "filter": "blur(" + Math.abs(chosenBlur) + "px)"
     });
-
-
+    chosenBlur = 10;
+    $("#slideContents2").css({
+        "-ms-filter": "blur(" + Math.abs(chosenBlur) + "px)",
+        "-webkit-filter": "blur(" + Math.abs(chosenBlur) + "px)",
+        "filter": "blur(" + Math.abs(chosenBlur) + "px)"
+    });
 }
 
 
