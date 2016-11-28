@@ -21,9 +21,9 @@ function loadIntroComplete() {
 
     $("#endText").text("Great job!");
     $("#endSubText").text("The next phase will teach you how to\n set up the microscope.\n If you forget what each part does, you can go back.")
-    $("#endSubText").css({
-        opacity: 1
-    });
+        $("#endSubText").css({
+            opacity: 1
+        });
     $(".endErrorText").css({
         opacity: 0
     });
@@ -34,7 +34,7 @@ function showMenu() {
     // Make overlay visible
     $("#overlay").css({
         'opacity': 1,
-        'z-index': 100
+    'z-index': 100
     });
     // Lock/unlock modes
     //    lockModes();
@@ -51,7 +51,7 @@ function hideMenu() {
     setTimeout(function () {
         $("#overlay").css({
             'opacity': 0,
-            'z-index': -100
+        'z-index': -100
         });
     }, 500);
     // Hide results screen
@@ -106,71 +106,71 @@ function newGame(guided, manual) {
 function loadSubMenu() {
     //  Define steps (order doesn't matter here)
     var stepText = [{
-            "id": "intro",
-            "shortText": "Introduction",
-            "steps": [{
-                "id": "introLightSwitch",
-                "shortText": "Light Switch",
-                "longText": "Click the light switch.",
-                "feedbackText": "click the light switch"
-            }, {
-                "id": "introEyepiece",
-                "shortText": "Eyepiece",
-                "longText": "Click the eyepiece.",
-                "feedbackText": "click the eyepiece"
-            }, {
-                "id": "introCoarse",
-                "shortText": "Coarse Knob",
-                "longText": "Click the coarse knobs.",
-                "feedbackText": "click the coarse knobs"
-            }, {
-                "id": "introFine",
-                "shortText": "Fine Knobs",
-                "longText": "Click the fine knobs.",
-                "feedbackText": "click the fine knobs"
-            }, {
-                "id": "introDiaphragm",
-                "shortText": "Diaphragm",
-                "longText": "Click the diaphragm.",
-                "feedbackText": "click the diaphragm"
-            }, {
-                "id": "introCaliper",
-                "shortText": "Caliper",
-                "longText": "Click the caliper.",
-                "feedbackText": "click the caliper"
-            }, {
-                "id": "introLenses",
-                "shortText": "Lenses",
-                "longText": "Click the lenses.",
-                "feedbackText": "click the lenses"
-            }]
+        "id": "intro",
+        "shortText": "Introduction",
+        "steps": [{
+            "id": "introLightSwitch",
+            "shortText": "Light Switch",
+            "longText": "Click the light switch.",
+            "feedbackText": "click the light switch"
         }, {
-            "id": "setup",
-            "shortText": "Setup",
-            "steps": [{
-                "id": "setupLightSwitch",
-                "shortText": "Light Switch",
-                "longText": "Click the light switch.",
-                "feedbackText": "click the light switch"
-            }, {
-                "id": "setupSlide",
-                "shortText": "Slide",
-                "longText": "Push in the slide.",
-                "feedbackText": "click the light switch"
-            }, {
-                "id": "setupCondenser",
-                "shortText": "Condenser",
-                "longText": "Move the aperture knob slightly to the left.",
-                "feedbackText": "Move the condensor knob."
+            "id": "introEyepiece",
+            "shortText": "Eyepiece",
+            "longText": "Click the eyepiece.",
+            "feedbackText": "click the eyepiece"
+        }, {
+            "id": "introCoarse",
+            "shortText": "Coarse Knob",
+            "longText": "Click the coarse knobs.",
+            "feedbackText": "click the coarse knobs"
+        }, {
+            "id": "introFine",
+            "shortText": "Fine Knobs",
+            "longText": "Click the fine knobs.",
+            "feedbackText": "click the fine knobs"
+        }, {
+            "id": "introDiaphragm",
+            "shortText": "Diaphragm",
+            "longText": "Click the diaphragm.",
+            "feedbackText": "click the diaphragm"
+        }, {
+            "id": "introCaliper",
+            "shortText": "Caliper",
+            "longText": "Click the caliper.",
+            "feedbackText": "click the caliper"
+        }, {
+            "id": "introLenses",
+            "shortText": "Lenses",
+            "longText": "Click the lenses.",
+            "feedbackText": "click the lenses"
+        }]
+    }, {
+        "id": "setup",
+        "shortText": "Setup",
+        "steps": [{
+            "id": "setupLightSwitch",
+            "shortText": "Light Switch",
+            "longText": "Click the light switch.",
+            "feedbackText": "click the light switch"
+        }, {
+            "id": "setupSlide",
+            "shortText": "Slide",
+            "longText": "Push in the slide.",
+            "feedbackText": "click the light switch"
+        }, {
+            "id": "setupCondenser",
+            "shortText": "Condenser",
+            "longText": "Move the aperture knob slightly to the left.",
+            "feedbackText": "Move the condensor knob."
 
-            }, {
-                "id": "setupCaliper",
-                "shortText": "Caliper Knob",
-                "longText": "Adjust the caliper knobs.",
-                "feedbackText": "Move the caliper knob."
+        }, {
+            "id": "setupCaliper",
+            "shortText": "Caliper Knob",
+            "longText": "Adjust the caliper knobs.",
+            "feedbackText": "Move the caliper knob."
 
-            }]
-        },
+        }]
+    },
 
         {
             "id": "lowMag",
@@ -199,51 +199,21 @@ function loadSubMenu() {
                 "shortText": "Lenses",
                 "longText": "Click the lenses.",
                 "feedbackText": "click the lenses"
+            },{
+                "id": "setupFine",
+                "shortText": "Fine Knobs",
+                "longText": "Click the fine knobs.",
+                "feedbackText": "click the fine knobs"
+            },{ 
+                "id": "setupDiopter",
+                "shortText": "Diopter",
+                "longText": "Adjust the diopter (left ocular)",
+                "feedbackText": "click the eyepiece"
             },{ 
                 "id": "setupEyepiece",
                 "shortText": "Eyepiece",
                 "longText": "Click the eyepiece.",
                 "feedbackText": "click the eyepiece"
-            }, {
-                "id": "lowLight",
-                "shortText": "Light",
-                "longText": "Press the space bar.",
-                "feedbackText": "press the space bar"
-            }, {
-            "id": "setupFine",
-            "shortText": "Fine Knobs",
-            "longText": "Click the fine knobs.",
-            "feedbackText": "click the fine knobs"
-        }, {
-                "id": "lowLens",
-                "shortText": "10x Lens",
-                "longText": "Press F to pay respects.",
-                "feedbackText": "press the F key"
-            }, {
-                "id": "lowSlidePlace",
-                "shortText": "Place Slide",
-                "longText": "Press F to pay respects.",
-                "feedbackText": "press the F key"
-            }, {
-                "id": "lowSlideCenter",
-                "shortText": "Center Slide",
-                "longText": "Click the lenses.",
-                "feedbackText": "click the lenses"
-            }, {
-                "id": "lowCoarse",
-                "shortText": "Coarse Knob",
-                "longText": "Click the lenses.",
-                "feedbackText": "click the lenses"
-            }, {
-                "id": "lowFine",
-                "shortText": "Fine Knob",
-                "longText": "Click the lenses.",
-                "feedbackText": "click the lenses"
-            }, {
-                "id": "lowDiaphragm",
-                "shortText": "Diaphragm",
-                "longText": "Click the lenses.",
-                "feedbackText": "click the lenses"
             }]
 
         }, {
@@ -299,10 +269,10 @@ function loadSubMenu() {
 
     //  !!! (´・ω・`)
     // Ocular adjustment should go after diaphragm + before caliper
-    
+
     // Low Magnification
     lowLenses = game.getGroupStep(2,0)
-    lowDiaphragmLight = game.getGroupStep(2, 1);
+        lowDiaphragmLight = game.getGroupStep(2, 1);
     lowCoarse = game.getGroupStep(2, 2);
     //lowDiaphragmHeight = game.getGroupStep(2, 4);
     //lowCaliper = game.getGroupStep(2, 5);
@@ -310,21 +280,22 @@ function loadSubMenu() {
 
     // Med Magnification
     medLenses = game.getGroupStep(3,0)
-    medEyepiece = game.getGroupStep(3, 1);
-    medFine = game.getGroupStep(3, 2);
+    medFine = game.getGroupStep(3, 1);
+    medDiopter = game.getGroupStep(3, 2);
+    medOcular = game.getGroupStep(3, 3);
 
 
     // High magnification
-    
+
     /* 
-    lowLight = game.getGroupStep(2, 0);
-    lowLens = game.getGroupStep(2, 2);
-    lowSlidePlace = game.getGroupStep(2, 2);
-    lowSlideCenter = game.getGroupStep(2, 3);
-    lowCoarse = game.getGroupStep(2, 4);
-    lowFine = game.getGroupStep(2, 5);
-    lowDiaphragm = game.getGroupStep(2, 6);
-    */
+       lowLight = game.getGroupStep(2, 0);
+       lowLens = game.getGroupStep(2, 2);
+       lowSlidePlace = game.getGroupStep(2, 2);
+       lowSlideCenter = game.getGroupStep(2, 3);
+       lowCoarse = game.getGroupStep(2, 4);
+       lowFine = game.getGroupStep(2, 5);
+       lowDiaphragm = game.getGroupStep(2, 6);
+       */
 
     // High Magnification
     // a1 = game.getGroupStep(3, 0);
@@ -358,49 +329,49 @@ $(function () {
     $("#rotate2").load('img/sideview.svg', function () {
 
         $("#draggableDiaphragm").addClass("knob");
-//        $("#").addClass("knob");
-//        $("#").addClass("knob");
-        
+        //        $("#").addClass("knob");
+        //        $("#").addClass("knob");
+
     })
-    
-    
-    
+
+
+
     var slideImg = $('<img id="slideContents">');
     var slideImg2 = $('<img id="slideContents2">');
-    
+
     // image paths
     var microscope = 'img/microscope.svg';
     var path = 'img/cells/'
     var cellLowMag = path + 'eyepieceCellsLow-bg.png';
-    var cellHighMag = path + 'eyepieceCellsHigh.png';
-    var eUpsidedown = path + 'e.png';
-    
-    slideImg.attr('src', cellLowMag);
-    slideImg.appendTo('#slideContentsContainer');
+var cellHighMag = path + 'eyepieceCellsHigh.png';
+var eUpsidedown = path + 'e.png';
 
-    slideImg2.attr('src', cellLowMag);
-    slideImg2.appendTo('#slideContentsContainer2');
-    
-    $('#microscope').load(microscope, function () {
-        updateAnimation();
+slideImg.attr('src', cellLowMag);
+slideImg.appendTo('#slideContentsContainer');
 
-        //$('#microscope svg').append('<filter id="blurMe"><feGaussianBlur in="SourceGraphic" stdDeviation="1" /></filter>')
+slideImg2.attr('src', cellLowMag);
+slideImg2.appendTo('#slideContentsContainer2');
 
-        resizeWindow();
-        loadStartMenu();
-        loadSubMenu();
+$('#microscope').load(microscope, function () {
+    updateAnimation();
 
-        $("#endOption1").click(function () {
-            // Start Beginner Mode
-            newGame(true, false);
-        });
-        
-        
-        resizeWindow();
+    //$('#microscope svg').append('<filter id="blurMe"><feGaussianBlur in="SourceGraphic" stdDeviation="1" /></filter>')
 
+    resizeWindow();
+    loadStartMenu();
+    loadSubMenu();
+
+    $("#endOption1").click(function () {
+        // Start Beginner Mode
+        newGame(true, false);
     });
-    
-    
+
+
+    resizeWindow();
+
+});
+
+
 
 
 

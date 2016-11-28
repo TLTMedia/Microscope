@@ -102,19 +102,20 @@ function startStep(step) {
         enableCoarseKnob();
     }
 
-    /* Med magnification
+    // Med magnification
     if (step == medLenses) {
         medAdjustLenses();
-        //enableLenses();
-    }
-    if (step == lowEyepiece) {
-        medAdjustEyepiece();
-        //enableEyepiece();
     }
     if (step == medFine) {
         medAdjustFine(); 
     }
-    */
+    if (step == medDiopter){
+        medAdjustDiopter();
+    }
+    if (step == medOcular) {
+        medAdjustEyepiece();
+        enableEyepiece();
+    }
 
     // enable freemode? (user can do whatever they want with the scope)
 

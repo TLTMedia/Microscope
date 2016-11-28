@@ -2,23 +2,9 @@
  * low.js
  *
  * Scene 3
- * Third scene that teaches student how to use the microscope.
+ * Third scene that teaches student how to use the microscope on low magnification.
  */
 
-function lowAdjustEyepiece() {
-    textSetup("Adjust the eyepiece to change the magnification.", "60%", "30%");
-    var id="#ocularRight";
-    if (lowEyepiece.isActive()) { 
-        var clonedComp = highlightComponent(id);
-        //var clonedComp2 = highlightComponent("#ocularLeft");
-        bringToFront($("#ocularRight"));
-        //bringToFront($("#ocularLeft"));
-        var handler = function(){
-            subHandler(ms.eyepiecePosition, 10, 25, lowEyepiece, document, handler, id, [clonedComp]);
-        }
-        $(document).bind("mousemove", handler);
-    }
-}
 
 // Trigger for coarse knob.
 function lowAdjustCoarse() {
@@ -29,24 +15,6 @@ function lowAdjustCoarse() {
             bringToFront($(id));
             var handler = function(){
                 subHandler(ms.knobPosition, -20, -5, lowCoarse, document, handler, id, clonedComp);
-            }
-            $(document).bind("mousemove", handler);
-        }
-}
-
-
-//  !!! (´・ω・`)
-//  fine knob shouldn't move stage.
-
-// Trigger for fine knob 
-function lowAdjustFine() {
-    textSetup("Move the stage up slightly by moving the fine knob.", "10%", "64%");
-    var id="#knobsFine"
-        if (lowFine.isActive()) {  
-            var clonedComp = highlightComponent(id);
-            bringToFront($(id));
-            var handler = function(){
-                subHandler(ms.slideBlur, -1, 1, lowFine, document, handler, id, clonedComp);
             }
             $(document).bind("mousemove", handler);
         }

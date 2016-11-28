@@ -273,32 +273,34 @@ function enableCoarseKnob() {
             if (isDown) {
                 if (prevY > event.pageY) {
                     if (ms.knobPosition < MAX_KNOB) {
-                        ms.yslide += val;
-                        ms.ycaliper += val;
-                        MAX_Y_CALIPER += val;
-                        MIN_Y_CALIPER += val;
-                        ms.yknobcaliper += val;
-                        ms.yheight += val;
                         ms.zoom += val * 0.02;
                         if (coursePart == "#knobsFine") {
                             ms.slideBlur += 0.2;
                         } else if (coursePart == "#knobsCoarse") {
+                            ms.yslide += val;
+                            ms.ycaliper += val;
+                            MAX_Y_CALIPER += val;
+                            MIN_Y_CALIPER += val;
+                            ms.yknobcaliper += val;
+                            ms.yheight += val;
+
                             ms.knobPosition += val;
                             ms.slideBlur += 0.1;
                         }
                     }
                 } else if ((prevY < event.pageY)) {
                     if (ms.knobPosition > MIN_KNOB) {
-                        ms.yslide -= val;
-                        ms.ycaliper -= val;
-                        ms.yknobcaliper -= val;
-                        MAX_Y_CALIPER -= val;
-                        MIN_Y_CALIPER -= val;
-                        ms.yheight -= val;
+
                         ms.zoom -= val * 0.02;
                         if (coursePart == "#knobsFine") {
                             ms.slideBlur -= 0.2;
                         } else if (coursePart == "#knobsCoarse") {
+                            ms.yslide -= val;
+                            ms.ycaliper -= val;
+                            ms.yknobcaliper -= val;
+                            MAX_Y_CALIPER -= val;
+                            MIN_Y_CALIPER -= val;
+                            ms.yheight -= val;
                             ms.knobPosition -= val;
                             ms.slideBlur -= 0.1;
                         }
@@ -494,19 +496,19 @@ function enableLenses() {
                     }
 
                 }
-                prevX = event.pageX;
-                if (ms.lenseStates[ms.lensePosition].includes("Red") ||
-                        ms.lenseStates[ms.lensePosition].includes("Yellow") || 
-                        ms.lenseStates[ms.lensePosition].includes("Blue") ||
-                        ms.lenseStates[ms.lensePosition].includes("White")
-                   ){
-                    ms.zoom = 1;
-                }
-                else{
-                    ms.zoomSave = ms.zoom
-                        ms.zoom = 100;
-                }
-                updateAnimation();
+        prevX = event.pageX;
+        if (ms.lenseStates[ms.lensePosition].includes("Red") ||
+                ms.lenseStates[ms.lensePosition].includes("Yellow") || 
+                ms.lenseStates[ms.lensePosition].includes("Blue") ||
+                ms.lenseStates[ms.lensePosition].includes("White")
+           ){
+            ms.zoom = 1;
+        }
+        else{
+            ms.zoomSave = ms.zoom
+                ms.zoom = 100;
+        }
+        updateAnimation();
             }
 
         })

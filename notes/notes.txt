@@ -35,7 +35,6 @@ linear:
 	> lenses- lowmag
 	> coarse
 
-
 	** cannot set diopter on low mag **
 	yellow:
 	> change lens

@@ -108,10 +108,7 @@ function knobRotate(id, delta) {
     }
     $("#" + knobs[id].divID).css({
         'transform': "rotate(" + knob.rotation + "deg)" //apply rotation to element
-    });
-
-    console.log(knob.rotation/12);
-    
+    }); 
     
 
     smAlias.diaphragmHeightPosition = knob.rotation/12;

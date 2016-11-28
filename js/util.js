@@ -79,7 +79,6 @@ function highlightComponent(id) {
     clonePart.attr("filter", "url(#blurMe)");
     clonePart.children().attr("fill", "rgba(0,0,0,0)");
     clonePart.insertBefore($(id))
-    console.log("test");
     return clonePart
 
 }
