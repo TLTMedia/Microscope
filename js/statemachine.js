@@ -97,9 +97,8 @@ class StateMachine {
     setup(){
         MAX_Y_CALIPER += MAX_KNOB;
         MIN_Y_CALIPER += MAX_KNOB;
-
         this.lightStatus = 0; // Brightness of the light ranged 0-1. 0 being off.
-        this.eyepiecePosition = 0;
+        this.eyepiecePosition = 10;
         this.knobPosition = MAX_KNOB;
         this.xslide = 0;
         this.yslide = 0+this.knobPosition;
@@ -168,6 +167,8 @@ function updateAnimation() {
     translateReduce("#adjustDHeight", 0, ms.diaphragmHeightPosition);
     translateReduce("#caliperMetal, #caliperKnob, #caliper", 0, ms.yknobcaliper);
     translateReduce("#caliperMetal, #ycaliper, #xcaliper", ms.xcaliper, ms.ycaliper);
+    translateReduce("#slideView", ms.eyepiecePosition*5, 0);
+    translateReduce("#slideView2", -ms.eyepiecePosition*5, 0);
 
 
 
@@ -192,12 +193,13 @@ function updateAnimation() {
         "-webkit-filter": "blur(" + Math.abs(chosenBlur) + "px)",
         "filter": "blur(" + Math.abs(chosenBlur) + "px)"
     });
-    chosenBlur = 10;
+    chosenBlur = ms.eyepiecePosition;
     $("#slideContents2").css({
         "-ms-filter": "blur(" + Math.abs(chosenBlur) + "px)",
         "-webkit-filter": "blur(" + Math.abs(chosenBlur) + "px)",
         "filter": "blur(" + Math.abs(chosenBlur) + "px)"
     });
+
 }
 
 
