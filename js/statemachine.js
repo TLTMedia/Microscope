@@ -34,27 +34,6 @@ var MAX_X_BOUND = 10;
 
 var last_angle = 0;
 
-/* shrn pls
- *                           _
- *   _._ _..._ .-',     _.._(`))
- *  '-. `     '  /-._.-'    ',/
- *     )         \            '.
- *    / _    _    |             \
- *   |  a    a    /              |
- *   \   .-.                     ;  
- *    '-('' ).-'       ,'       ;
- *       '-;           |      .'
- *          \           \    /
- *          | 7  .__  _.-\   \
- *          | |  |  ``/  /`  /
- *         /,_|  |   /,_/   /
- *            /,_/      '`-'
- *          
- */
-
-
-
-
 /* User global states
 */
 
@@ -116,10 +95,8 @@ class StateMachine {
 
     // Set values to setup values
     setup(){
-
         MAX_Y_CALIPER += MAX_KNOB;
         MIN_Y_CALIPER += MAX_KNOB;
-
 
         this.lightStatus = 0; // Brightness of the light ranged 0-1. 0 being off.
         this.eyepiecePosition = 0;
@@ -186,8 +163,8 @@ function updateAnimation() {
     translateReduce("#ocularLeft, #ocularLeftCopy", -1 * ms.eyepiecePosition, 0);
     translateReduce("#slideStage, #stageLight", 0, ms.knobPosition);
     translateReduce("#slide", ms.xslide, ms.yslide);
-    translateReduce("#apertureKnob", ms.diaphragmLightPosition*-1, ms.knobPosition+ms.diaphragmHeightPosition);
-    translateReduce("#diaphragm, #aperture, #diaphragmCopy", 0, ms.knobPosition+ms.diaphragmHeightPosition);
+    translateReduce("#apertureKnob", ms.diaphragmLightPosition*-1, ms.knobPosition+ms.diaphragmHeightPosition/3);
+    translateReduce("#diaphragm, #aperture, #diaphragmCopy", 0, ms.knobPosition+ms.diaphragmHeightPosition/3);
     translateReduce("#adjustDHeight", 0, ms.diaphragmHeightPosition);
     translateReduce("#caliperMetal, #caliperKnob, #caliper", 0, ms.yknobcaliper);
     translateReduce("#caliperMetal, #ycaliper, #xcaliper", ms.xcaliper, ms.ycaliper);

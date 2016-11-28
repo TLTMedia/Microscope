@@ -97,6 +97,7 @@ function angleDistance(from, to) {
 function knobRotate(id, delta) {
     var knob = knobs[id];
     // Apply rotation
+
     knob.rotation += delta;
     // Constrain knob rotation to its bounds
     if (knob.rotation < knob.bounds[0]) {
@@ -108,6 +109,11 @@ function knobRotate(id, delta) {
     $("#" + knobs[id].divID).css({
         'transform': "rotate(" + knob.rotation + "deg)" //apply rotation to element
     });
+
+    console.log(knob.rotation/12);
+    
+    
+
     smAlias.diaphragmHeightPosition = knob.rotation/12;
     updateAlias();
 }
