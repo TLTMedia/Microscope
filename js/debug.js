@@ -29,7 +29,7 @@ function debugLow(){
 
 function debugMedMag(){
     medAdjustLenses();
-    medAdjustFine.complete();
+    medAdjustFine();
     medAdjustDiopter();
     medAdjustEyepiece();
 }

@@ -78,7 +78,6 @@ function startStep(step) {
     if (step == setupCondense){ 
         setupCondenser();
         enableSideDiaphragmRotate();
-        //enableDiaphragmLight();
     }
 
     if (step == setupCaliper){ 
@@ -106,6 +105,7 @@ function startStep(step) {
     }
     if (step == medFine) {
         medAdjustFine(); 
+        enableFineKnob();
     }
     if (step == medDiopter){
         medAdjustDiopter();
@@ -128,7 +128,6 @@ function startStep(step) {
     }
     if (step == highOcular) {
         highAdjustEyepiece();
-        enableEyepiece();
     }
 
     // enable freemode? (user can do whatever they want with the scope)

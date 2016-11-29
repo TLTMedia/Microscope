@@ -108,7 +108,7 @@ class StateMachine {
         this.ycaliper = 0+this.knobPosition;
         this.yheight = 0+this.knobPosition;
         this.yknobcaliper = 0+this.knobPosition;
-        this.lensePosition = 6;
+        this.lensePosition = 5;
         this.zoom = 1;
         this.slideBlur = 0;
         this.lenseWheel = 0;
@@ -279,28 +279,28 @@ function enableCoarseKnob() {
             if (isDown) {
                 if (prevY > event.pageY) {
                     if (ms.knobPosition < MAX_KNOB) {
-                        ms.zoom += val * 0.02;
                         if (coursePart == "#knobsFine") {
                             ms.slideBlur += 0.2;
+                            console.log("Moving left");
                         } else if (coursePart == "#knobsCoarse") {
+                            ms.zoom += val * 0.02;
                             ms.yslide += val;
                             ms.ycaliper += val;
                             MAX_Y_CALIPER += val;
                             MIN_Y_CALIPER += val;
                             ms.yknobcaliper += val;
                             ms.yheight += val;
-
                             ms.knobPosition += val;
                             ms.slideBlur += 0.1;
                         }
                     }
                 } else if ((prevY < event.pageY)) {
                     if (ms.knobPosition > MIN_KNOB) {
-
-                        ms.zoom -= val * 0.02;
                         if (coursePart == "#knobsFine") {
+                            console.log("Moving right");
                             ms.slideBlur -= 0.2;
                         } else if (coursePart == "#knobsCoarse") {
+                            ms.zoom -= val * 0.02;
                             ms.yslide -= val;
                             ms.ycaliper -= val;
                             ms.yknobcaliper -= val;
@@ -326,7 +326,42 @@ function enableCoarseKnob() {
     }
 
     addCourseDrag("#knobsCoarse", 0.5);
-    addCourseDrag("#knobsFine", 0.1);
+}
+
+
+function enableFineKnob(){
+    /*Params: knob type, degree of slide*/
+    function addFineDrag(coursePart, power) {
+        var val = power;
+        $(coursePart)
+            .mousedown(function () {
+                isDown = true;
+            })
+        .mousemove(function (event) {
+            if (isDown) {
+                if (prevY > event.pageY) {
+                    if (ms.slideBlur < 10) {
+                        ms.slideBlur += 0.2;
+                    }
+                } else if ((prevY < event.pageY)) {
+                    if (ms.slideBlur > -10) {
+                        ms.slideBlur -= 0.2;
+                    }
+                }
+                //console.log(ms.knobPosition);
+                prevY = event.pageY;
+                updateAnimation();
+            }
+        })
+        .mouseup(function () {
+            isDown = false;
+        })
+        .mouseleave(function () {
+            isDown = false;
+        });
+    }
+
+    addFineDrag("#knobsFine", 0.1);
 }
 
 
@@ -483,16 +518,14 @@ function enableLenses() {
                     else{
                         ms.lenseWheel++;
                     }
-
                 }
-
                 else if ((prevX > event.pageX)) {
                     if (ms.lenseWheel%10==0){
                         $(ms.lenseStates[ms.lensePosition]).addClass("st0");
                         ms.lensePosition = ((ms.lensePosition - 1) % ms.lenseStates.length)
             if (ms.lensePosition==-1) ms.lensePosition = ms.lenseStates.length-1;
-                        $(ms.lenseStates[ms.lensePosition]).removeClass("st0");
-                        ms.lenseWheel=19; 
+        $(ms.lenseStates[ms.lensePosition]).removeClass("st0");
+        ms.lenseWheel=19; 
                     }
                     else{
                         ms.lenseWheel--;
@@ -508,7 +541,7 @@ function enableLenses() {
         else if (ms.lenseStates[ms.lensePosition].includes("Yellow") || 
                 ms.lenseStates[ms.lensePosition].includes("Blue") ||
                 ms.lenseStates[ms.lensePosition].includes("White")
-           ){
+                ){
             swapMag(2);
             ms.zoom = 1;
         }
@@ -544,10 +577,11 @@ function enableScope() {
     enableLightSwitch();
     enableEyepiece();
     enableCoarseKnob();
+    enableFineKnob();
     enableDiaphragmLight();
     enableCaliper();
     enableSideDiaphragmRotate()
-    updateAnimation();
+        updateAnimation();
 }
 
 
