@@ -15,6 +15,7 @@ function debugIntro() {
 }
 
 function debugSetup() {
+    removeHighlightCopy();
     setupLightSwitch.complete();
     setupSlide.complete();
     setupCondense.complete();
@@ -22,18 +23,21 @@ function debugSetup() {
 }
 
 function debugLow(){
+    removeHighlightCopy();
     lowLenses.complete();
     lowDiaphragmLight.complete();
     lowCoarse.complete();
 }
 
 function debugMedMag(){
+    removeHighlightCopy();
     medAdjustLenses();
     medAdjustFine();
     medAdjustDiopter();
     medAdjustEyepiece();
 }
 function debugHighMag(){
+    removeHighlightCopy();
     highAdjustLenses();
     highAdjustFine(); 
     highAdjustDiopter();
@@ -44,14 +48,10 @@ function DEBUG(state){
     var isDebug = state;
     if (isDebug){
         debugIntro();
-        debugSetup();
-        removeHighlightCopy();
-        debugLow(); 
-        removeHighlightCopy();
-        debugMedMag();
-        removeHighlightCopy();
-        debugHighMag(); 
-        removeHighlightCopy();
+        //debugSetup();
+        //debugLow(); 
+        //debugMedMag();
+        //debugHighMag(); 
     }
     return isDebug;
 }

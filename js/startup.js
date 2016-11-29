@@ -224,21 +224,16 @@ function loadSubMenu() {
                 "shortText": "Lenses",
                 "longText": "Click the lenses.",
                 "feedbackText": "click the lenses"
+            },{ 
+                "id": "setupAperture",
+                "shortText": "Highest Aperture",
+                "longText": "Adjust the diopter (left ocular)",
+                "feedbackText": "click the eyepiece"
             },{
                 "id": "setupFine",
                 "shortText": "Fine Knobs",
                 "longText": "Click the fine knobs.",
                 "feedbackText": "click the fine knobs"
-            },{ 
-                "id": "setupDiopter",
-                "shortText": "Diopter",
-                "longText": "Adjust the diopter (left ocular)",
-                "feedbackText": "click the eyepiece"
-            },{ 
-                "id": "setupEyepiece",
-                "shortText": "Eyepiece",
-                "longText": "Click the eyepiece.",
-                "feedbackText": "click the eyepiece"
             }]
         },{
 
@@ -309,10 +304,8 @@ function loadSubMenu() {
 
     // High magnification
     highLenses = game.getGroupStep(4,0)
-    highFine = game.getGroupStep(4, 1);
-    highDiopter = game.getGroupStep(4, 2);
-    highOcular = game.getGroupStep(4, 3);
-
+    highAperture = game.getGroupStep(4, 1);
+    highFine = game.getGroupStep(4, 2);
 
     updateSteps();
     //enterStepObjects();

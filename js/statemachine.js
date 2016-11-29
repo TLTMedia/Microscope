@@ -102,8 +102,8 @@ function updateAnimation() {
     translateReduce("#adjustDHeight", 0, ms.diaphragmHeightPosition);
     translateReduce("#caliperMetal, #caliperKnob, #caliper", 0, ms.yknobcaliper);
     translateReduce("#caliperMetal, #ycaliper, #xcaliper", ms.xcaliper, ms.ycaliper);
-    translateReduce("#slideView", ms.eyepiecePosition*5*W_RAT, 0);
-    translateReduce("#slideView2", -ms.eyepiecePosition*5*W_RAT, 0);
+    translateReduce("#slideView", ms.eyepiecePosition*5, 0);
+    translateReduce("#slideView2", -ms.eyepiecePosition*5, 0);
 
 
 
@@ -164,7 +164,7 @@ function enableLightSwitch() {
 function enableEyepiece() {
     function addOcularDrag(ocularPart) {
         var ocularPartOpposite = "#ocularLeft";
-        var val = 1*W_RAT;
+        var val = 1;
         //Swap logic based on which side of the component is being dragged.
 
         if (ocularPart == "#ocularLeft") {

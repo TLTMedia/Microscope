@@ -42,16 +42,16 @@ function highAdjustFine() {
 }
 
 // Trigger for fine knob 
-function highAdjustDiopter() {
-    textSetup("Adjust the diopter to make the left view clear.", "20%", "30%");
-    var id="#ocularLeft"
-        if (highDiopter.isActive()) {  
-            highDiopter.complete();
+function highAdjustAperture() {
+    textSetup("Adjust the aperture knob to make sure the maximum amount of light is received.", "20%", "30%");
+    var id="#diaphragm"
+        if (highAperture.isActive()) {  
+            highAperture.complete();
             return;
             var clonedComp = highlightComponent(id);
             bringToFront($(id));
             var handler = function(){
-                subHandler(ms.slideBlur, -0.1, 0.1, highFine, document, handler, id, clonedComp);
+                subHandler(ms.slideBlur, -0.1, 0.1, highAperture, document, handler, id, clonedComp);
             }
             $(document).bind("mousemove", handler);
         }

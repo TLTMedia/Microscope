@@ -120,14 +120,11 @@ function startStep(step) {
     if (step == highLenses) {
         highAdjustLenses();
     }
+    if (step == highAperture){
+        highAdjustAperture();
+    }
     if (step == highFine) {
         highAdjustFine(); 
-    }
-    if (step == highDiopter){
-        highAdjustDiopter();
-    }
-    if (step == highOcular) {
-        highAdjustEyepiece();
     }
 
     // enable freemode? (user can do whatever they want with the scope)
