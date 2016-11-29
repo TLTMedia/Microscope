@@ -5,64 +5,48 @@
  * Singleton design pattern (Instantiate ONLY once).
  *
  **/
-/* User global states
-*/
-
-//Globalize drag components (this is fine because there cannot be multiple drag instances unless user is not homosapien)
-var isDown = false;
-var prevX = 0;
-var prevY = 0;
-var MAX_OCULAR = 15;
-var MAX_KNOB = 20;
-var MIN_KNOB = -10;
-var MAX_DIAPHRAGM_LIGHT = 40;
-var MIN_DIAPHRAGM_HEIGHT = -15;
-var MAX_DIAPHRAGM_HEIGHT = 15;
-
-// Bounded caliper
-var MAX_X_CALIPER = 20;
-var MIN_X_CALIPER = -20;
-var MAX_Y_CALIPER = 13;
-var MIN_Y_CALIPER = -13;
-
-// Bounded specimen vision
-var MIN_Y_BOUND = -10;
-var MAX_Y_BOUND = 10;
-var MIN_X_BOUND = -10;
-var MAX_X_BOUND = 10;
 
 
-var last_angle = 0;
-
-/* User global states
-*/
+// Resize relative from base width (used for responsive and adaptive design on magic numbers)
+var W_REL = 1325;
+// Resize constant ratio
+var W_RAT = $(window).width()/W_REL; 
 
 //Globalize drag components (this is fine because there cannot be multiple drag instances unless user is not homosapien)
 var isDown = false;
 
 var prevX = 0;
 var prevY = 0;
-var MAX_OCULAR = 15;
-var MAX_KNOB = 20;
-var MIN_KNOB = -10;
-var MAX_DIAPHRAGM_LIGHT = 40;
-var MIN_DIAPHRAGM_HEIGHT = -15;
-var MAX_DIAPHRAGM_HEIGHT = 15;
 
-// Bounded caliper
-var MAX_X_CALIPER = 20;
-var MIN_X_CALIPER = -20;
-var MAX_Y_CALIPER = 13;
-var MIN_Y_CALIPER = -13;
+// State machine bounds 
+var sm_bd = {
+    "MAX_OCULAR": 15,
+    "MAX_KNOB": 20,
+    "MIN_KNOB": -10,
+    "MAX_DIAPHRAGM_LIGHT": 40,
+    "MIN_DIAPHRAGM_HEIGHT": -15,
+    "MAX_DIAPHRAGM_HEIGHT": 15,
+    // Caliper
+    "MAX_X_CALIPER": 20,
+    "MIN_X_CALIPER": -20,
+    "MAX_Y_CALIPER": 13,
+    "MIN_Y_CALIPER": -13,
+    // Slide contents
+    "MIN_Y_BOUND": -10,
+    "MAX_Y_BOUND": 10,
+    "MIN_X_BOUND": -10,
+    "MAX_X_BOUND": 10,
+    //Blur
+    "MAX_BLUR":10,
+    "MIN_BLUR":10
+}
 
-// Bounded specimen vision
-var MIN_Y_BOUND = -10;
-var MAX_Y_BOUND = 10;
-var MIN_X_BOUND = -10;
-var MAX_X_BOUND = 10;
 
+// Resize according to screen width
+for (var key in sm_bd){
+    sm_bd[key] = sm_bd[key] * W_RAT; 
+}
 
-var last_angle = 0;
 
 /*
  * We should introduce the idea of a state machine which represents the state
@@ -95,11 +79,11 @@ class StateMachine {
 
     // Set values to setup values
     setup(){
-        MAX_Y_CALIPER += MAX_KNOB;
-        MIN_Y_CALIPER += MAX_KNOB;
+        sm_bd["MAX_Y_CALIPER"] += sm_bd["MAX_KNOB"];
+        sm_bd["MIN_Y_CALIPER"] += sm_bd["MAX_KNOB"];
         this.lightStatus = 0; // Brightness of the light ranged 0-1. 0 being off.
-        this.eyepiecePosition = 10;
-        this.knobPosition = MAX_KNOB;
+        this.eyepiecePosition = 10*W_RAT;
+        this.knobPosition = sm_bd["MAX_KNOB"];
         this.xslide = 0;
         this.yslide = 0+this.knobPosition;
         this.diaphragmLightPosition = 0;
@@ -123,23 +107,6 @@ class StateMachine {
 ms = new StateMachine();
 ms.setup()
 
-
-    // Variables needed for rotating
-    var target_wp, o_x, o_y, h_x, h_y, last_angle, last_degree;
-
-    //function lowMagnification(){
-    //    $("#headerText").text("Test 2 ");
-    //}
-
-    // function highMagnification(){
-    //    $("#headerText").text("");
-    // }
-
-
-    // function sideViewOn(){}
-    // function sideViewOff(){}
-
-
     /* Translate Reduce (DRY)
      *
      * Condense all transforms into a single method and pass by argument.
@@ -148,8 +115,8 @@ ms.setup()
     function translateReduce(components, x, y) {
         $(components).css({
             "-webkit-transform": "translate(" + x + "px," + y + "px)",
-        "-ms-transform": "translate(" + x + "px," + y + "px)",
-        "transform": "translate(" + x + "px," + y + "px)"
+            "-ms-transform": "translate(" + x + "px," + y + "px)",
+            "transform": "translate(" + x + "px," + y + "px)"
         });
     }
 
@@ -229,7 +196,7 @@ function enableLightSwitch() {
 function enableEyepiece() {
     function addOcularDrag(ocularPart) {
         var ocularPartOpposite = "#ocularLeft";
-        var val = 1;
+        var val = 1*W_RAT;
         //Swap logic based on which side of the component is being dragged.
 
         if (ocularPart == "#ocularLeft") {
@@ -243,7 +210,7 @@ function enableEyepiece() {
         .mousemove(function (event) {
             if (isDown) {
                 if ((prevX < event.pageX && ocularPart == "#ocularRight") || (prevX > event.pageX && ocularPart == "#ocularLeft")) {
-                    if (ms.eyepiecePosition < MAX_OCULAR) {
+                    if (ms.eyepiecePosition < sm_bd["MAX_OCULAR"]) {
                         ms.eyepiecePosition += val;
                     }
                 } else if ((prevX > event.pageX && ocularPart == "#ocularRight") || (prevX < event.pageX && ocularPart == "#ocularLeft")) {
@@ -270,7 +237,7 @@ function enableEyepiece() {
 function enableCoarseKnob() {
     /*Params: knob type, degree of slide*/
     function addCourseDrag(coursePart, power) {
-        var val = power;
+        var val = power*W_RAT;
         $(coursePart)
             .mousedown(function () {
                 isDown = true;
@@ -278,38 +245,29 @@ function enableCoarseKnob() {
         .mousemove(function (event) {
             if (isDown) {
                 if (prevY > event.pageY) {
-                    if (ms.knobPosition < MAX_KNOB) {
-                        if (coursePart == "#knobsFine") {
-                            ms.slideBlur += 0.2;
-                            console.log("Moving left");
-                        } else if (coursePart == "#knobsCoarse") {
-                            ms.zoom += val * 0.02;
-                            ms.yslide += val;
-                            ms.ycaliper += val;
-                            MAX_Y_CALIPER += val;
-                            MIN_Y_CALIPER += val;
-                            ms.yknobcaliper += val;
-                            ms.yheight += val;
-                            ms.knobPosition += val;
-                            ms.slideBlur += 0.1;
-                        }
+                    if (ms.knobPosition < sm_bd["MAX_KNOB"]) {
+                        ms.zoom += val * 0.02;
+                        ms.yslide += val;
+                        ms.ycaliper += val;
+                        sm_bd["MAX_Y_CALIPER"] += val;
+                        sm_bd["MIN_Y_CALIPER"] += val;
+                        ms.yknobcaliper += val;
+                        ms.yheight += val;
+                        ms.knobPosition += val;
+                        ms.slideBlur += 0.1;
                     }
                 } else if ((prevY < event.pageY)) {
-                    if (ms.knobPosition > MIN_KNOB) {
-                        if (coursePart == "#knobsFine") {
-                            console.log("Moving right");
-                            ms.slideBlur -= 0.2;
-                        } else if (coursePart == "#knobsCoarse") {
-                            ms.zoom -= val * 0.02;
-                            ms.yslide -= val;
-                            ms.ycaliper -= val;
-                            ms.yknobcaliper -= val;
-                            MAX_Y_CALIPER -= val;
-                            MIN_Y_CALIPER -= val;
-                            ms.yheight -= val;
-                            ms.knobPosition -= val;
-                            ms.slideBlur -= 0.1;
-                        }
+                    if (ms.knobPosition > sm_bd["MIN_KNOB"]) {
+                        ms.zoom -= val * 0.02;
+                        ms.yslide -= val;
+                        ms.ycaliper -= val;
+                        ms.yknobcaliper -= val;
+                        sm_bd["MAX_Y_CALIPER"] -= val;
+                        sm_bd["MIN_Y_CALIPER"] -= val;
+                        ms.yheight -= val;
+                        ms.knobPosition -= val;
+                        ms.slideBlur -= 0.1;
+
                     }
                 }
                 //console.log(ms.knobPosition);
@@ -332,7 +290,7 @@ function enableCoarseKnob() {
 function enableFineKnob(){
     /*Params: knob type, degree of slide*/
     function addFineDrag(coursePart, power) {
-        var val = power;
+        var val = power*W_RAT;
         $(coursePart)
             .mousedown(function () {
                 isDown = true;
@@ -340,12 +298,12 @@ function enableFineKnob(){
         .mousemove(function (event) {
             if (isDown) {
                 if (prevY > event.pageY) {
-                    if (ms.slideBlur < 10) {
-                        ms.slideBlur += 0.2;
+                    if (ms.slideBlur < sm_bd["MAX_BLUR"]) {
+                        ms.slideBlur += val;
                     }
                 } else if ((prevY < event.pageY)) {
-                    if (ms.slideBlur > -10) {
-                        ms.slideBlur -= 0.2;
+                    if (ms.slideBlur > sm_bd["MIN_BLUR"]) {
+                        ms.slideBlur -= val;
                     }
                 }
                 //console.log(ms.knobPosition);
@@ -361,14 +319,14 @@ function enableFineKnob(){
         });
     }
 
-    addFineDrag("#knobsFine", 0.1);
+    addFineDrag("#knobsFine", 0.2);
 }
 
 
 /*Enables functionality for the eyepiece on call.*/
 function enableDiaphragmLight() {
     function addDiaphragmDrag(part) {
-        var val = 1;
+        var val = 1*W_RAT;
         $(part)
             .mousedown(function () {
                 isDown = true;
@@ -376,7 +334,7 @@ function enableDiaphragmLight() {
         .mousemove(function (event) {
             if (isDown) {
                 if ((prevX > event.pageX)) {
-                    if (ms.diaphragmLightPosition < MAX_DIAPHRAGM_LIGHT) {
+                    if (ms.diaphragmLightPosition < sm_bd["MAX_DIAPHRAGM_LIGHT"]) {
                         ms.diaphragmLightPosition += val;
                     }
                 } else if ((prevX < event.pageX)) {
@@ -403,7 +361,7 @@ function enableDiaphragmLight() {
 function enableCaliper() {
     // Low knob
     function addCaliperXDrag(part) {
-        var val = 1;
+        var val = 1*W_RAT;
 
         $(part)
             .mousedown(function () {
@@ -412,12 +370,12 @@ function enableCaliper() {
         .mousemove(function (event) {
             if (isDown) {
                 if ((prevX < event.pageX)) {
-                    if (ms.xcaliper < MAX_X_CALIPER) {
+                    if (ms.xcaliper < sm_bd["MAX_X_CALIPER"]) {
                         ms.xcaliper += val;
                         ms.xslide += val;
                     }
                 } else if ((prevX > event.pageX)) {
-                    if (ms.xcaliper > MIN_X_CALIPER) {
+                    if (ms.xcaliper > sm_bd["MIN_X_CALIPER"]) {
                         ms.xcaliper -= val;
                         ms.xslide -= val;
                     }
@@ -425,7 +383,6 @@ function enableCaliper() {
                 prevX = event.pageX;
 
                 // Blur out if out of magic bounds
-                console.log("X:" + ms.xcaliper + ", Y: " + ms.ycaliper);
                 if (ms.xcaliper > -10 && ms.xcaliper < 10 && ms.ycaliper > -10 && ms.ycaliper <10 ){
                     ms.inBounds = true;
                 }
@@ -446,7 +403,7 @@ function enableCaliper() {
     }
 
     function addCaliperYDrag(part) {
-        var val = 1;
+        var val = 1*W_RAT;
 
         $(part)
             .mousedown(function () {
@@ -455,24 +412,19 @@ function enableCaliper() {
         .mousemove(function (event) {
             if (isDown) {
                 if ((prevX < event.pageX)) {
-                    if (ms.ycaliper < MAX_Y_CALIPER) {
+                    if (ms.ycaliper < sm_bd["MAX_Y_CALIPER"]) {
                         ms.ycaliper += val;
                         ms.yslide += val;
-                        //                ms.xcaliper += (val/3);
-                        //              ms.xslide += (val/3);
                     }
                 } else if ((prevX > event.pageX)) {
-                    if (ms.ycaliper > MIN_Y_CALIPER) {
+                    if (ms.ycaliper > sm_bd["MIN_Y_CALIPER"]) {
                         ms.ycaliper -= val;
                         ms.yslide -= val;
-                        //                ms.xcaliper -= (val/3);
-                        //                ms.xslide -= (val/3);
                     }
                 }
                 prevX = event.pageX;
                 // Blur out if out of magic bounds
-                console.log("X:" + ms.xcaliper + ", Y: " + ms.ycaliper);
-                if (ms.xcaliper > -10 && ms.xcaliper < 10 && ms.ycaliper > -10 && ms.ycaliper <10 ){
+                if (ms.xcaliper > sm_bd["MIN_X_BOUND"] && ms.xcaliper < sm_bd["MAX_X_BOUND"] && ms.ycaliper > sm_bd["MIN_Y_BOUND"] && ms.ycaliper < sm_bd["MAX_Y_BOUND"] ){
                     ms.inBounds = true;
                 }
                 else{
@@ -546,8 +498,8 @@ function enableLenses() {
             ms.zoom = 1;
         }
         else{
-            ms.zoomSave = ms.zoom
-                ms.zoom = 100;
+            ms.zoomSave = ms.zoom;
+            swapMag(-1);
         }
         updateAnimation();
             }
@@ -580,8 +532,8 @@ function enableScope() {
     enableFineKnob();
     enableDiaphragmLight();
     enableCaliper();
-    enableSideDiaphragmRotate()
-        updateAnimation();
+    enableSideDiaphragmRotate();
+    updateAnimation();
 }
 
 

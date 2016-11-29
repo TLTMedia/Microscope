@@ -334,14 +334,13 @@ function initEndOptionHover(id) {
     });
 }
 
-// 0 - first occurence, 1 - low, 2 - med, 3 - high
+//-1 - no image 0 - first occurence, 1 - low, 2 - med, 3 - high
 function swapMag(n){
     var path = 'img/cells/';
     var cell = "";
     var cell2 = "";
     var slideImg = ""
     var slideImg2 = ""
-
     if (n==0){
         slideImg = $('<img id="slideContents">');
         slideImg2 = $('<img id="slideContents2">');
