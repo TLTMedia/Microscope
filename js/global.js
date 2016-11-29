@@ -1,4 +1,4 @@
-var components = [
+components = [
     "#frame",
     "#base",
     "#diaphragm",
@@ -41,11 +41,49 @@ var components = [
     "#illuminationLight"
     ];
 
+// State machine boundaries (DYNAMIC) 
+sm_bd = {
+    "MAX_OCULAR": 15,
+    "MAX_KNOB": 20,
+    "MIN_KNOB": -10,
+    "MAX_DIAPHRAGM_LIGHT": 40,
+    "MIN_DIAPHRAGM_HEIGHT": -15,
+    "MAX_DIAPHRAGM_HEIGHT": 15,
+    // Caliper
+    "MAX_X_CALIPER": 20,
+    "MIN_X_CALIPER": -20,
+    "MAX_Y_CALIPER": 13,
+    "MIN_Y_CALIPER": -13,
+    // Slide contents
+    "MIN_Y_BOUND": -10,
+    "MAX_Y_BOUND": 10,
+    "MIN_X_BOUND": -10,
+    "MAX_X_BOUND": 10,
+    //Blur
+    "MAX_BLUR":10,
+    "MIN_BLUR":-10
+}
 
-    var overlapnents = [
-    "#lenses1Red",
-    "#lenses7Blue",
-    "#lenses4Yellow",
-    "#lenses10White",
-    ];
 
+// State machine boundaries (STATIC)
+sm_orig = {
+    "MAX_OCULAR": 15,
+    "MAX_KNOB": 20,
+    "MIN_KNOB": -10,
+    "MAX_DIAPHRAGM_LIGHT": 40,
+    "MIN_DIAPHRAGM_HEIGHT": -15,
+    "MAX_DIAPHRAGM_HEIGHT": 15,
+    // Caliper
+    "MAX_X_CALIPER": 20,
+    "MIN_X_CALIPER": -20,
+    "MAX_Y_CALIPER": 13,
+    "MIN_Y_CALIPER": -13,
+    // Slide contents
+    "MIN_Y_BOUND": -10,
+    "MAX_Y_BOUND": 10,
+    "MIN_X_BOUND": -10,
+    "MAX_X_BOUND": 10,
+    //Blur
+    "MAX_BLUR":10,
+    "MIN_BLUR":-10
+}

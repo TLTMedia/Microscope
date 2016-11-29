@@ -4,6 +4,21 @@
  *
  **/
 
+
+// Resize relative from base width (used for responsive and adaptive design on magic numbers)
+W_REL = 1325;
+// Resize constant ratio
+W_RAT = $(window).width()/W_REL; 
+// Adjust the magic numbers on resize.
+
+function adjustMagic(){
+    for (var key in sm_bd){
+        sm_bd[key] = sm_orig[key] * W_RAT; 
+    }
+}
+//adjustMagic();
+
+
 // Fix aspect ratio of the stage
 $(window).resize(function() {
     resizeWindow();
@@ -14,6 +29,7 @@ function resizeWindow() {
     // Get window width and height
     var w = $(window).width();
     var h = $(window).height();
+    
     // If the aspect ratio is greater than or equal to 4:3, fix height and set width based on height
     if ((w / h) >= 4 / 3) {
         stageHeight = h;
@@ -27,6 +43,8 @@ function resizeWindow() {
     }
     // If the aspect ratio is less than 4:3, fix width and set height based on width
     else {
+        W_RAT = w/W_REL;
+        //adjustMagic();
         stageWidth = w;
         stageHeight = (3 / 4) * w;
         stageTop = (h - stageHeight) / 2;
@@ -40,9 +58,9 @@ function resizeWindow() {
     // Set "screen" object width and height to stageWidth and stageHeight, and center screen
     $(".screen").css({
         width: stageWidth + "px",
-        height: stageHeight + "px",
-        left: stageLeft + "px",
-        top: stageTop + "px"
+    height: stageHeight + "px",
+    left: stageLeft + "px",
+    top: stageTop + "px"
     });
 
     // Set "cover" object properties based on properties set above
@@ -103,21 +121,21 @@ function resizeWindow() {
     // Resize the stripes
     var stripeSize = stageHeight * .05;
     var str = stripeSize + "% " + stripeSize + "%"
-    $(".stripes").css({
-        'background-size': stripeSize
-    });
+        $(".stripes").css({
+            'background-size': stripeSize
+        });
 
     if (w>1500) w=1500;
 
     $("#rotate").css({
-       'height': w*0.2 + "px", 
+        'height': w*0.2 + "px", 
         'width': w*0.2 + "px"
     });
 
 
     //
     $("#slideView, #slideView2").css({
-         'height': w*0.15 + "px", 
+        'height': w*0.15 + "px", 
         'width': w*0.15 + "px"
     });
     //
@@ -126,7 +144,7 @@ function resizeWindow() {
         "height": w*0.55 + "px",
         "width": w + "px"
     });
-    
+
     // Calibrate knob centers
     for (var i = 0; i < knobs.length; i++) {
         var knobObject = $("#" + knobs[i].divID);
@@ -134,11 +152,11 @@ function resizeWindow() {
             'transform': ""
         });
         var offset = knobObject.offset();
-//        var w = knobObject.width();
-//        var h = knobObject.height();
+        //        var w = knobObject.width();
+        //        var h = knobObject.height();
         var w = knobObject[0].getBoundingClientRect().width;
         var h = knobObject[0].getBoundingClientRect().height;
-        
+
         knob = knobs[i];
         knob.width = w;
         knob.height = h;
