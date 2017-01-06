@@ -17,6 +17,7 @@ components = [
     "#ocularLensBase",
     "#ocularRight",
     "#ocularLeft",
+    "#ocularLeftDiopter",
     "#lenses",
     "#switch",
     "#knobsCoarse",
@@ -24,7 +25,6 @@ components = [
     "#lensesBasePath",
     "#lensesBase",
     "#slide",
-
     "#lenses1Red",
     "#lenses2",
     "#lenses3",

@@ -73,7 +73,7 @@ function triggerEyepiece() {
     textSetup("Eyepiece: View the sample through the ocular lenses. They magnify the image ten times.", "5%", "25%");
     secludePart(arr);
 
-    $("#ocularLensBase, #ocularRight, #ocularLeft")
+    $("#ocularLensBase, #ocularRight, #ocularLeft, #ocularLeftDiopter")
         .click(function () {
             if (introEyepiece.isActive()) {
                 introEyepiece.complete();
