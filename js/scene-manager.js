@@ -109,6 +109,7 @@ function startStep(step) {
     }
     if (step == medDiopter){
         medAdjustDiopter();
+        enableDiopter();
     }
     if (step == medOcular) {
         medAdjustEyepiece();

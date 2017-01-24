@@ -44,14 +44,12 @@ function medAdjustFine() {
 // Trigger for fine knob 
 function medAdjustDiopter() {
     textSetup("Adjust the diopter to make the left view clear.", "20%", "30%");
-    var id="#ocularLeft"
+    var id="#ocularLeftDiopter"
         if (medDiopter.isActive()) {  
-            medDiopter.complete();
-            return;
             var clonedComp = highlightComponent(id);
             bringToFront($(id));
             var handler = function(){
-                subHandler(ms.slideBlur, -0.1, 0.1, medFine, document, handler, id, clonedComp);
+                subHandler(ms.diopterPoisition, 5, 6, medDiopter, document, handler, id, clonedComp);
             }
             $(document).bind("mousemove", handler);
         }
