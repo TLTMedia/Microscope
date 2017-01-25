@@ -86,6 +86,7 @@ function translateReduce(components, x, y) {
     $(components).css({
         "-webkit-transform": "translate(" + x + "px," + y + "px)",
         "-ms-transform": "translate(" + x + "px," + y + "px)",
+        "-moz-transform": "translate(" + x + "px," + y + "px)",
         "transform": "translate(" + x + "px," + y + "px)"
     });
 }

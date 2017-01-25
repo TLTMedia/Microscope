@@ -106,7 +106,12 @@ function knobRotate(id, delta) {
     if (knob.rotation > knob.bounds[1]) {
         knob.rotation = knob.bounds[1];
     }
+
+    console.log($("#" + knobs[id].divID));
     $("#" + knobs[id].divID).css({
+        '-moz-transform-origin': "50% 50%",
+        '-ms-transform': "rotate(" + knob.rotation + "deg)", //apply rotation to elemen
+        '-webkit-transform': "rotate(" + knob.rotation + "deg)", //apply rotation to element
         'transform': "rotate(" + knob.rotation + "deg)" //apply rotation to element
     }); 
     

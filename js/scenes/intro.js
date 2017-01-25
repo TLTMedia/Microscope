@@ -147,7 +147,7 @@ function triggerLenses() {
     textSetup("Lenses: The lenses are rotated on the nosepiece to change the magnification. These different lenses are referred to as the objectives.", "10%", "36%");
     secludePart(arr);
 
-    $("#lenses, #lensesBlue, #lensesRed, #lensesYellow, #lensesWhite")
+    $("#lenses, #lensesBlue, #lensesRed, #lensesYellow, #lensesWhite, #lensesBasePath")
         .click(function () {
             if (introLenses.isActive()) {
                 introLenses.complete();

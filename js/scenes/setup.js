@@ -24,6 +24,7 @@ function setupEnableSlide() {
     textSetup("Now grab the slide below and put it against the caliper.", "60%", "50%");
     toggleVisibility("#slide");
 
+
     var $pseudoSlide = $("#slide").clone();
     $pseudoSlide.attr("id", "pseudo_slideCopy")
         var pos = $pseudoSlide.position()
