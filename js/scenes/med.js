@@ -49,7 +49,7 @@ function medAdjustDiopter() {
             var clonedComp = highlightComponent(id);
             bringToFront($(id));
             var handler = function(){
-                subHandler(ms.diopterPoisition, 5, 6, medDiopter, document, handler, id, clonedComp);
+                subHandler(ms.eyepiecePosition + ms.slideBlur2, -1, 1, medDiopter, document, handler, id, clonedComp);
             }
             $(document).bind("mousemove", handler);
         }
@@ -66,7 +66,7 @@ function medAdjustEyepiece() {
         bringToFront($("#ocularRight"));
         bringToFront($("#ocularLeft"));
         var handler = function(){
-            subHandler(ms.eyepiecePosition, 10, 25, medOcular, document, handler, id, [clonedComp]);
+            subHandler(ms.eyepiecePosition, -1, 1, medOcular, document, handler, id, [clonedComp]);
         }
         $(document).bind("mousemove", handler);
     }

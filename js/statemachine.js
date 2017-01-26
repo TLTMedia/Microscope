@@ -40,6 +40,7 @@ class StateMachine {
         this.lensePosition = 0;
         this.zoom = 1;
         this.slideBlur = 0;
+        this.slideBlur2 = 0;
         this.lenseWheel = 0;
         this.inBounds = true;
         this.lenseStates = ["#lenses1Red", "#lenses2", "#lenses3", "#lenses4Yellow", "#lenses5", "#lenses6", "#lenses7Blue", "#lenses8", "#lenses9", "#lenses10White", "#lenses11", "#lenses12"];
@@ -65,6 +66,7 @@ class StateMachine {
         this.lensePosition = 5;
         this.zoom = 1;
         this.slideBlur = 0;
+        this.slideBlur2 = 0;
         this.lenseWheel = 0;
         this.inBounds = true;
         this.lenseStates = ["#lenses1Red", "#lenses2", "#lenses3", "#lenses4Yellow", "#lenses5", "#lenses6", "#lenses7Blue", "#lenses8", "#lenses9", "#lenses10White", "#lenses11", "#lenses12"];
@@ -126,12 +128,16 @@ function updateAnimation() {
 
     var chosenBlur = ms.slideBlur;
     if (!ms.inBounds) {}
+
+    // Initializes both slide contents to blur
     $("#slideContents, #slideContents2").css({
         "-ms-filter": "blur(" + Math.abs(chosenBlur) + "px)",
         "-webkit-filter": "blur(" + Math.abs(chosenBlur) + "px)",
         "filter": "blur(" + Math.abs(chosenBlur) + "px)"
     });
-    chosenBlur = ms.eyepiecePosition;
+
+    // Reblurs the second slide contents (with diopter as a factor)
+    var chosenBlur = ms.eyepiecePosition + ms.slideBlur2 
     $("#slideContents2").css({
         "-ms-filter": "blur(" + Math.abs(chosenBlur) + "px)",
         "-webkit-filter": "blur(" + Math.abs(chosenBlur) + "px)",
@@ -181,6 +187,7 @@ function enableEyepiece() {
             .mousemove(function(event) {
                 if (isDown) {
                     if ((prevX < event.pageX && ocularPart == "#ocularRight") || (prevX > event.pageX && ocularPart == "#ocularLeft")) {
+
                         if (ms.eyepiecePosition < sm_orig["MAX_OCULAR"]) {
                             ms.eyepiecePosition += val;
                         }
@@ -491,10 +498,12 @@ function enableDiopter(){
                     if (prevY > event.pageY) {
                         if (ms.diopterPosition > sm_orig["MIN_DIOPTER"]) {
                             ms.diopterPosition -= power;
+                            ms.slideBlur2 -= 1; 
                         }
                     } else if ((prevY < event.pageY)) {
                         if (ms.diopterPosition < sm_orig["MAX_DIOPTER"]) {
                             ms.diopterPosition += power;
+                            ms.slideBlur2 += 1;
                         }
                     }
                     prevY = event.pageY;
@@ -508,7 +517,7 @@ function enableDiopter(){
                 isDown = false;
             });
     }
-    addDiopterDrag("#ocularLeftDiopter", 1);
+    addDiopterDrag("#ocularLeftDiopter", 0.5);
 }
 
 

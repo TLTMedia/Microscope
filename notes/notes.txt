@@ -77,3 +77,8 @@ linear:
 		> 
 
 	* warning: don’t go to oil *
+
+
+-- Known Bugs/Fixes --
+-Rotation not firefox compatible.
+-Modify Coarse Knob to complete on clarity.
