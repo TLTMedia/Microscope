@@ -344,6 +344,12 @@
 }
 
 
+#draggableDiaphragm
+{
+   -moz-transform-origin: 50% 50%;
+}
+
+
 #eyeView {
 /*
 	border-radius: 50%;
@@ -359,4 +365,4 @@
 
 
 .knob{
-    transform-origin: 50% 50%;
+}

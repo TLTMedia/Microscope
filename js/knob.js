@@ -1,5 +1,5 @@
 var APERTURE_HEIGHT_KNOB = 0;
-var CONDENSER_START = 270;
+var CONDENSER_START = 0;
 
 // If hell ever breaks loose, you can assume it's from these
 // They keep an alias to the state machine and update it externally
@@ -109,7 +109,6 @@ function knobRotate(id, delta) {
 
     console.log($("#" + knobs[id].divID));
     $("#" + knobs[id].divID).css({
-        '-moz-transform-origin': "50% 50%",
         '-ms-transform': "rotate(" + knob.rotation + "deg)", //apply rotation to elemen
         '-webkit-transform': "rotate(" + knob.rotation + "deg)", //apply rotation to element
         'transform': "rotate(" + knob.rotation + "deg)" //apply rotation to element

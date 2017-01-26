@@ -22,9 +22,9 @@ function popupOff() {
 
 function textSetup(tooltip, lt, tp) {
     popupOn(tooltip, {
-            "left": lt,
-            "top": tp
-            });
+        "left": lt,
+    "top": tp
+    });
 }
 
 
@@ -52,6 +52,21 @@ function copyAnimation(elem1,elem2, type){
 // args: 
 // property to inspect, lower bound, upper bound, engine piece, div piece, remove listener
 function subHandler(prop, low, upper, piece, doc, handler, id, cloned) {
+    // For every trigger, move the cloned position to the object position.
+    if (cloned != null){
+        target = $(id);
+        x = (parseFloat(target.attr('data-x')) || 0) + event.dx,
+        y = (parseFloat(target.attr('data-y')) || 0) + event.dy;
+        if (cloned.constructor === Array){
+            cloned.forEach(function(obj){
+                obj.attr('data-x', x);
+                obj.attr('data-y', y);
+            })
+        }
+        else{
+            cloned.position(target.position());
+        }
+    }
     if (prop > low && prop < upper) {
         removeHighlightCopy();
         piece.complete();
@@ -70,16 +85,16 @@ function bringToFront(elem) {
 function highlightComponent(id) {
     //return;
     var origPart = $(id)
-    var clonePart = $(id).clone();
+        var clonePart = $(id).clone();
     lastPart = clonePart;
     clonePart.attr("pointer-events", "none")
-    clonePart.toggleClass("highlightPart")
-    clonePart.attr("id", id.replace("#", "") + "Copy");
+        clonePart.toggleClass("highlightPart")
+        clonePart.attr("id", id.replace("#", "") + "Copy");
     clonePart.attr("style", "border:10px solid blue");
     clonePart.attr("filter", "url(#blurMe)");
     clonePart.children().attr("fill", "rgba(0,0,0,0)");
     clonePart.insertBefore($(id))
-    return clonePart
+        return clonePart
 
 }
 
@@ -93,5 +108,9 @@ function removeHighlightId(id){
 }
 
 function removeHighlightCopy(){
+    $('*[id*=Copy]:visible').each(function() {
+        $(this).remove();
+    }); 
+
     $("[id$='Copy']").remove();
 }

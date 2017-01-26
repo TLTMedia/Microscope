@@ -63,10 +63,12 @@ function medAdjustEyepiece() {
     if (medOcular.isActive()) { 
         var clonedComp = highlightComponent(id);
         var clonedComp2 = highlightComponent("#ocularLeft");
+        var clonedComp3 = highlightComponent("#ocularLeftDiopter");
         bringToFront($("#ocularRight"));
         bringToFront($("#ocularLeft"));
+        bringToFront($("#ocularLeftDiopter"));
         var handler = function(){
-            subHandler(ms.eyepiecePosition, -1, 1, medOcular, document, handler, id, [clonedComp]);
+            subHandler(ms.eyepiecePosition, -1, 1, medOcular, document, handler, id, [clonedComp, clonedComp2, clonedComp3]);
         }
         $(document).bind("mousemove", handler);
     }
