@@ -87,3 +87,4 @@ linear:
 -Slide Error when not using debug mode
 -Responsive design when reduced
 -Type error when leaving browser window form interact.js (no known breakaage).
+-Aperture precision not implemented yet.
