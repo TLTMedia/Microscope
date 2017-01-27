@@ -99,7 +99,8 @@ function translateReduce(components, x, y) {
 function updateAnimation() {
     /* Microscope animations */
     translateReduce("#ocularRight, #ocularRightCopy", ms.eyepiecePosition, 0);
-    translateReduce("#ocularLeftCopy, #ocularLeftDiopter", -1 * ms.eyepiecePosition, ms.diopterPosition);
+    translateReduce("#ocularLeftCopy", -1 * ms.eyepiecePosition, 0);
+    translateReduce("#ocularLeftDiopter", -1 * ms.eyepiecePosition, ms.diopterPosition);
     translateReduce("#ocularLeft", -1 * ms.eyepiecePosition, 0);
     translateReduce("#slideStage, #stageLight", 0, ms.knobPosition);
     translateReduce("#slide", ms.xslide, ms.yslide);

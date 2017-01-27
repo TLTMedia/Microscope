@@ -55,16 +55,13 @@ function subHandler(prop, low, upper, piece, doc, handler, id, cloned) {
     // For every trigger, move the cloned position to the object position.
     if (cloned != null){
         target = $(id);
-        x = (parseFloat(target.attr('data-x')) || 0) + event.dx,
-        y = (parseFloat(target.attr('data-y')) || 0) + event.dy;
         if (cloned.constructor === Array){
             cloned.forEach(function(obj){
-                obj.attr('data-x', x);
-                obj.attr('data-y', y);
+                obj.attr('style', target.attr('style'));
             })
         }
         else{
-            cloned.position(target.position());
+            cloned.attr('style', target.attr('style'));
         }
     }
     if (prop > low && prop < upper) {
@@ -79,23 +76,19 @@ function bringToFront(elem) {
     //elem.appendTo(elem.parent());
 }
 
-
-
 // Utility function to highlight component.
 function highlightComponent(id) {
-    //return;
-    var origPart = $(id)
-        var clonePart = $(id).clone();
+    var origPart = $(id);
+    var clonePart = $(id).clone();
     lastPart = clonePart;
     clonePart.attr("pointer-events", "none")
-        clonePart.toggleClass("highlightPart")
-        clonePart.attr("id", id.replace("#", "") + "Copy");
+    clonePart.toggleClass("highlightPart")
+    clonePart.attr("id", id.replace("#", "") + "Copy");
     clonePart.attr("style", "border:10px solid blue");
     clonePart.attr("filter", "url(#blurMe)");
     clonePart.children().attr("fill", "rgba(0,0,0,0)");
-    clonePart.insertBefore($(id))
-        return clonePart
-
+    clonePart.insertBefore($(id));
+    return clonePart;
 }
 
 // Utility function to remove highlight component.
