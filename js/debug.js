@@ -32,9 +32,9 @@ function debugLow(){
 function debugMedMag(){
     removeHighlightCopy();
     medLenses.complete();
-    //medFine.complete();
-    //medAdjustDiopter();
-    //medAdjustEyepiece();
+    medFine.complete();
+    medDiopter.complete();
+    medOcular.complete();
 }
 function debugHighMag(){
     removeHighlightCopy();
@@ -48,9 +48,9 @@ function DEBUG(state){
     var isDebug = state;
     if (isDebug){
         debugIntro();
-        debugSetup();
-        debugLow(); 
-        debugMedMag();
+        //debugSetup();
+       // debugLow(); 
+       // debugMedMag();
         //debugHighMag(); 
     }
     return isDebug;

@@ -37,9 +37,9 @@ function setupEnableSlide() {
     });
     $pseudoSlide.attr("data-x", x);
     $pseudoSlide.attr("data-y", y);
-    highlightComponent("#pseudo_slideCopy")
+    highlightComponent("#pseudo_slideCopy");
 
-        $("#microscope > svg").append($pseudoSlide);
+    $("#microscope > svg").append($pseudoSlide);
 
     toggleVisibility("#slide");
     highlightComponent("#pseudo_slideCopy")

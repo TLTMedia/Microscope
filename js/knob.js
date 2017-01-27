@@ -1,5 +1,5 @@
 var APERTURE_HEIGHT_KNOB = 0;
-var CONDENSER_START = 0;
+var CONDENSER_START = 270;
 
 // If hell ever breaks loose, you can assume it's from these
 // They keep an alias to the state machine and update it externally
@@ -107,13 +107,11 @@ function knobRotate(id, delta) {
         knob.rotation = knob.bounds[1];
     }
 
-    console.log($("#" + knobs[id].divID));
     $("#" + knobs[id].divID).css({
         '-ms-transform': "rotate(" + knob.rotation + "deg)", //apply rotation to elemen
         '-webkit-transform': "rotate(" + knob.rotation + "deg)", //apply rotation to element
         'transform': "rotate(" + knob.rotation + "deg)" //apply rotation to element
     }); 
-    
 
     smAlias.diaphragmHeightPosition = knob.rotation/12;
     updateAlias();

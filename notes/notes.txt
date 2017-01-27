@@ -81,4 +81,9 @@ linear:
 
 -- Known Bugs/Fixes --
 -Rotation not firefox compatible.
--Modify Coarse Knob to complete on clarity.
+-Modify Coarse Knob to complete on clarity (white line).
+-Replace Intro with Highlights
+-Add warnings/additional text
+-Slide Error when not using debug mode
+-Responsive design when reduced
+-Type error when leaving browser window form interact.js (no known breakaage).
