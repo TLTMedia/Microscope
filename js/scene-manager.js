@@ -22,7 +22,7 @@ function bindTooltip(){
    Use of below function is for intro.js (intro.js + gameLogic.js interdependence).
    */
 function startStep(step) {
-    var isDebug = true;
+    var isDebug = false;
     /* intro
 
        Intro doesn't necessarily have flexible choices for the user to act on.
@@ -35,7 +35,7 @@ function startStep(step) {
         introText();
         if (!isDebug) triggerLightSwitch();
         $("#light").addClass("elementOff");
-        toggleVisibility("#slide")
+        toggleVisibility("#slide");
 
     }
     if (step == introDiaphragm) {

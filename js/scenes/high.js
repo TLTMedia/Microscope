@@ -31,7 +31,6 @@ function highAdjustFine() {
     textSetup("Move the stage up slightly by moving the fine knob.", "60%", "64%");
     var id="#knobsFine"
         if (highFine.isActive()) {  
-            console.log("Fine knob");
             var clonedComp = highlightComponent(id);
             bringToFront($(id));
             var handler = function(){
