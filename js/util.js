@@ -46,13 +46,8 @@ function copyAnimation(elem1,elem2, type){
     var style = css(elem1);
     $(elem2).css(style);
 }
-
-// Creates bounds for a step within a scene to progress to next steps
-// low.js && setup.js dependant on this function
-// args: 
-// property to inspect, lower bound, upper bound, engine piece, div piece, remove listener
-function subHandler(prop, low, upper, piece, doc, handler, id, cloned) {
-    // For every trigger, move the cloned position to the object position.
+//
+function updateClonedPosition(cloned){
     if (cloned != null){
         target = $(id);
         if (cloned.constructor === Array){
@@ -64,6 +59,15 @@ function subHandler(prop, low, upper, piece, doc, handler, id, cloned) {
             cloned.attr('style', target.attr('style'));
         }
     }
+}
+
+// Creates bounds for a step within a scene to progress to next steps
+// low.js && setup.js dependant on this function
+// args: 
+// property to inspect, lower bound, upper bound, engine piece, div piece, remove listener
+function subHandler(prop, low, upper, piece, doc, handler, id, cloned) {
+    // For every trigger, move the cloned position to the object position.
+    updateClonedPosition(cloned);
     if (prop > low && prop < upper) {
         removeHighlightCopy();
         piece.complete();

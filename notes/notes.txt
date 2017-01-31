@@ -90,3 +90,5 @@ linear:
 -Aperture precision not implemented yet.
 -Implement game modes (restriction to restrictionless)
 
+-Left off on-
+In util.js, modify updateClonedPosition function and fix the parameters and make it more reliable for reuse.

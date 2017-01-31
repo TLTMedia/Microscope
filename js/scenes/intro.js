@@ -53,15 +53,36 @@ function showAllParts() {
 
 }
 
+
+function highlightArray(arr){
+    var clonedArr = [];
+    for(var pieceIndex = 0; pieceIndex < arr.length; pieceIndex++){
+        updateClonedPosition( 
+        clonedArr.push(highlightComponent(arr[pieceIndex]));
+        bringToFront($(arr[pieceIndex]));
+    }
+    return clonedArr;
+}
+
+
+function removeHighlightArray(clonedArr){
+    for(var pieceIndex = 0; pieceIndex < clonedArr.length; pieceIndex++){
+        removeHighlight(clonedArr[pieceIndex]);
+
+    }
+}
+
 // ====== Start Trigger ======= //
 function triggerLightSwitch() {
     var arr = ["#switch"];
     textSetup("Light Switch: Turns the light on and off.", "10%", "73%");
-    secludePart(arr);
+    //secludePart(arr);
+    var clonedArr = highlightArray(arr);
     $("#switch")
         .click(function () {
             if (introLightSwitch.isActive()) {
                 introLightSwitch.complete();
+                removeHighlightArray(clonedArr); 
             }
 
         });
@@ -71,12 +92,14 @@ function triggerLightSwitch() {
 function triggerEyepiece() {
     var arr = ["#eyepiece", "#ocularRight", "#ocularLeft", "#ocularLensBase"];
     textSetup("Eyepiece: View the sample through the ocular lenses. They magnify the image ten times.", "5%", "25%");
-    secludePart(arr);
+    //secludePart(arr);
+    var clonedArr = highlightArray(arr); 
 
     $("#ocularLensBase, #ocularRight, #ocularLeft, #ocularLeftDiopter")
         .click(function () {
             if (introEyepiece.isActive()) {
                 introEyepiece.complete();
+                removeHighlightArray(clonedArr);
             }
 
         });
@@ -88,12 +111,13 @@ function triggerDiaphragm() {
         "left": "15%",
         "top": "60%",
     });
-    secludePart(arr);
-
+    //secludePart(arr);
+    var clonedArr = highlightArray(arr);
     $("#diaphragm")
         .click(function () {
             if (introDiaphragm.isActive()) {
                 introDiaphragm.complete();
+                removeHighlightArray(clonedArr);
             }
 
         });
@@ -105,12 +129,13 @@ function triggerFine() {
         "left": "10%",
         "top": "64%",
     });
-    secludePart(arr);
-
+    //secludePart(arr);
+    var clonedArr = highlightArray(arr);
     $("#knobsFine")
         .click(function () {
             if (introFine.isActive()) {
                 introFine.complete();
+                removeHighlightArray(clonedArr);
             }
         });
 }
@@ -118,12 +143,13 @@ function triggerFine() {
 function triggerCoarse() {
     arr = ["#knobsCoarse"];
     textSetup("Coarse Knobs: Moves the stage up and down for focusing", "10%", "64%");
-    secludePart(arr);
-
+    //secludePart(arr);
+    var clonedArr = highlightArray(arr);
     $("#knobsCoarse")
         .click(function () {
             if (introCoarse.isActive()) {
                 introCoarse.complete();
+                removeHighlightArray(clonedArr);
             }
 
         });
@@ -132,12 +158,13 @@ function triggerCoarse() {
 function triggerCaliper() {
     arr = ["#caliper", "#xcaliper", "#ycaliper", "#caliperKnob", "#caliperMetal"];
     textSetup("Caliper: Adjusts the vertical and horizontal positions of the slide.", "55%", "55%");
-    secludePart(arr);
-
+    //secludePart(arr);
+    var clonedArr = highlightArray(arr);
     $("#caliperKnob, #caliper, #xcaliper, #ycaliper")
         .click(function () {
             if (introCaliper.isActive()) {
                 introCaliper.complete();
+                removeHighlightArray(clonedArr);
             }
         });
 }
@@ -145,12 +172,13 @@ function triggerCaliper() {
 function triggerLenses() {
     arr = ["#lenses", "#lensesBase"];
     textSetup("Lenses: The lenses are rotated on the nosepiece to change the magnification. These different lenses are referred to as the objectives.", "10%", "36%");
-    secludePart(arr);
-
+    //secludePart(arr);
+    var clonedArr = highlightArray(arr);
     $("#lenses, #lensesBlue, #lensesRed, #lensesYellow, #lensesWhite, #lensesBasePath")
         .click(function () {
             if (introLenses.isActive()) {
                 introLenses.complete();
+                removeHighlightArray(clonedArr);
                 showAllParts()
             }
         });
