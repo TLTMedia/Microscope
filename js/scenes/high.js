@@ -46,30 +46,14 @@ function highAdjustAperture() {
     textSetup("Adjust the aperture knob to make sure the maximum amount of light is received.", "20%", "30%");
     var id="#diaphragm"
         if (highAperture.isActive()) {  
-            highAperture.complete();
-            return;
             var clonedComp = highlightComponent(id);
             bringToFront($(id));
             var handler = function(){
-                subHandler(ms.slideBlur, -0.1, 0.1, highAperture, document, handler, id, clonedComp);
+                console.log(ms.diaphragmLightPosition);
+                subHandler(ms.diaphragmLightPosition, 38, 40, highAperture, document, handler, id);
             }
             $(document).bind("mousemove", handler);
         }
 }
 
 
-// Trigger for the ocular lenses
-function highAdjustEyepiece() {
-    textSetup("Adjust the eyepiece to change the magnification.", "60%", "30%");
-    var id="#ocularRight";
-    if (highOcular.isActive()) { 
-        var clonedComp = highlightComponent(id);
-        var clonedComp2 = highlightComponent("#ocularLeft");
-        bringToFront($("#ocularRight"));
-        bringToFront($("#ocularLeft"));
-        var handler = function(){
-            subHandler(ms.eyepiecePosition, 10, 25, highOcular, document, handler, id, [clonedComp]);
-        }
-        $(document).bind("mousemove", handler);
-    }
-}
