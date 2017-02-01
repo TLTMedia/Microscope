@@ -82,13 +82,10 @@ linear:
 -- Known Bugs/Fixes --
 -Rotation not firefox compatible.
 -Modify Coarse Knob to complete on clarity (white line).
--Replace Intro with Highlights
 -Add warnings/additional text
--Slide Error when not using debug mode
 -Responsive design when reduced
--Type error when leaving browser window form interact.js (no known breakaage).
 -Aperture precision not implemented yet.
 -Implement game modes (restriction to restrictionless)
+-Fine tuning values of microcsope to be as realistic as possible
+-Deviate from framework and add a feedback button before moving forward.
 
--Left off on-
-In util.js, modify updateClonedPosition function and fix the parameters and make it more reliable for reuse.

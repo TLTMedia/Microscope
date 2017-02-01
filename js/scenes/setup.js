@@ -25,24 +25,28 @@ function setupEnableSlide() {
     toggleVisibility("#slide");
 
 
+    //Moving the original slide
     var $pseudoSlide = $("#slide").clone();
     $pseudoSlide.attr("id", "pseudo_slideCopy")
-        var pos = $pseudoSlide.position()
         var x = 0.115*$(window).width();
-    var y = $(window).height()*0.05;
+        var y = $(window).height()*0.05;
+
     $pseudoSlide.css({
         "-webkit-transform": "translate(" + x + "px," + y + "px)",
         "-ms-transform": "translate(" + x + "px," + y + "px)",
         "transform": "translate(" + x + "px," + y + "px)"
     });
+
     $pseudoSlide.attr("data-x", x);
     $pseudoSlide.attr("data-y", y);
-    highlightComponent("#pseudo_slideCopy");
+
 
     $("#microscope > svg").append($pseudoSlide);
 
     toggleVisibility("#slide");
-    highlightComponent("#pseudo_slideCopy")
+
+    var cloned = highlightComponent("#pseudo_slideCopy");
+    $(cloned).attr("style", $("#slide").attr("style"));
 
         interact('#pseudo_slideCopy')
         .draggable({
