@@ -85,6 +85,7 @@ function setupEnableSlide() {
             setupSlide.complete();
             toggleVisibility("#slide");
 
+            $("#pseudo_slideCopyCopy").remove();
             $("#pseudo_slideCopy").remove();
         }
 
