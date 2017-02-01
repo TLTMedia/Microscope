@@ -115,12 +115,8 @@ function setupCondenser() {
     if (setupCondense.isActive()) {
         var clonedComp = highlightComponent(id);
         bringToFront($(id));
-        /*
-           bringToFront($("#aperture"));
-           bringToFront($("#apertureKnob"));
-           */
         var handler = function () {
-            subHandler(ms.diaphragmHeightPosition, 0, 5, setupCondense, handler, id, null);
+            subHandler(ms.diaphragmHeightPosition, 0, 4.8, setupCondense, handler, id, null);
         }
         $(document).bind("mousemove", handler);
     }
