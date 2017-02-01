@@ -116,7 +116,7 @@ function setupCondenser() {
            bringToFront($("#apertureKnob"));
            */
         var handler = function () {
-            subHandler(ms.diaphragmHeightPosition, 0, 5, setupCondense, document, handler, id, null);
+            subHandler(ms.diaphragmHeightPosition, 0, 5, setupCondense, handler, id, null);
         }
         $(document).bind("mousemove", handler);
     }
@@ -137,8 +137,8 @@ function setupAdjustCaliper() {
             bringToFront($("#yCaliperKnob"));
 
             var handler = function () {
-                subHandler(ms.xcaliper, 5, 20, setupCaliper, document, handler, id, null);
-                subHandler(ms.ycaliper, 5, 20, setupCaliper, document, handler, id, null);
+                subHandler(ms.xcaliper, 5, 20, setupCaliper, handler, id, null);
+                subHandler(ms.ycaliper, 5, 20, setupCaliper, handler, id, null);
             }
             $(document).bind("mousemove", handler);
             $("#stageLight").removeClass("st0");

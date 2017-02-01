@@ -34,7 +34,7 @@ function highAdjustFine() {
             var clonedComp = highlightComponent(id);
             bringToFront($(id));
             var handler = function(){
-                subHandler(ms.slideBlur, -0.1, 0.1, highFine, document, handler, id, clonedComp);
+                subHandler(ms.slideBlur, -0.1, 0.1, highFine, handler, id, null);
             }
             $(document).bind("mousemove", handler);
         }
@@ -49,7 +49,7 @@ function highAdjustAperture() {
             bringToFront($(id));
             var handler = function(){
                 console.log(ms.diaphragmLightPosition);
-                subHandler(ms.diaphragmLightPosition, 38, 40, highAperture, document, handler, id);
+                subHandler(ms.diaphragmLightPosition, 38, 40, highAperture, handler, id, null);
             }
             $(document).bind("mousemove", handler);
         }

@@ -46,10 +46,11 @@ function copyAnimation(elem1,elem2, type){
     var style = css(elem1);
     $(elem2).css(style);
 }
+
+
 //
-function updateClonedPosition(cloned){
+function updateClonedPosition(cloned, target){
     if (cloned != null){
-        target = $(id);
         if (cloned.constructor === Array){
             cloned.forEach(function(obj){
                 obj.attr('style', target.attr('style'));
@@ -65,13 +66,14 @@ function updateClonedPosition(cloned){
 // low.js && setup.js dependant on this function
 // args: 
 // property to inspect, lower bound, upper bound, engine piece, div piece, remove listener
-function subHandler(prop, low, upper, piece, doc, handler, id, cloned) {
+function subHandler(prop, low, upper, piece, handler, id, cloned) {
     // For every trigger, move the cloned position to the object position.
-    updateClonedPosition(cloned);
+    // Called for movable pieces
+    updateClonedPosition(cloned, $(id));
     if (prop > low && prop < upper) {
         removeHighlightCopy();
         piece.complete();
-        $(doc).unbind("mousemove", handler);
+        $(document).unbind("mousemove", handler);
     }
 }
 

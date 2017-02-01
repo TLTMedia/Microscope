@@ -14,7 +14,7 @@ function lowAdjustCoarse() {
             var clonedComp = highlightComponent(id);
             bringToFront($(id));
             var handler = function(){
-                subHandler(ms.knobPosition, -20, -5, lowCoarse, document, handler, id, clonedComp);
+                subHandler(ms.knobPosition, -20, -5, lowCoarse, handler, id, null);
             }
             $(document).bind("mousemove", handler);
         }
@@ -32,7 +32,7 @@ function lowDLight() {
             bringToFront($("#apertureKnob"));
 
             var handler = function(){
-                subHandler(ms.diaphragmLightPosition, 5, 30, lowDiaphragmLight, document, handler, id);
+                subHandler(ms.diaphragmLightPosition, 5, 30, lowDiaphragmLight, handler, id, null);
             }
             $(document).bind("mousemove", handler);
         }
@@ -46,7 +46,7 @@ function lowDHeight() {
             var clonedComp = highlightComponent(id);
             bringToFront($(id));
             var handler = function(){
-                subHandler(ms.diaphragmHeightPosition, 5, 15, lowDiaphragmHeight, document, handler, id, clonedComp);
+                subHandler(ms.diaphragmHeightPosition, 5, 15, lowDiaphragmHeight, handler, id, null);
             }
             $(document).bind("mousemove", handler);
         }
@@ -56,7 +56,6 @@ function lowDHeight() {
 //  separated components. ycaliper shouldn't move with x-Knob
 //  xcaliperKnob - "#slide", #xcaliper",  "#caliperMetal"
 //  ycaliperKnob - "#slide", #xcaliper", "#ycaliper", "#caliperMetal"
-
 function lowAdjustCaliper() {
     textSetup("Move the caliper to adjust the position of the slide.", "62%", "60%");
     var id="#caliperKnob"
@@ -69,8 +68,8 @@ function lowAdjustCaliper() {
             bringToFront($("#yCaliperKnob"));
 
             var handler = function(){
-                subHandler(ms.xcaliper, 5, 20, lowCaliper, document, handler, id);
-                subHandler(ms.ycaliper, 5, 20, lowCaliper, document, handler, id);
+                subHandler(ms.xcaliper, 5, 20, lowCaliper, handler, id, null);
+                subHandler(ms.ycaliper, 5, 20, lowCaliper, handler, id, null);
             }
             $(document).bind("mousemove", handler);
 

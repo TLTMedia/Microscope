@@ -113,36 +113,6 @@ function loadSubMenu() {
             "shortText": "Light Switch",
             "longText": "Click the light switch.",
             "feedbackText": "click the light switch"
-        }, {
-            "id": "introEyepiece",
-            "shortText": "Eyepiece",
-            "longText": "Click the eyepiece.",
-            "feedbackText": "click the eyepiece"
-        }, {
-            "id": "introCoarse",
-            "shortText": "Coarse Knob",
-            "longText": "Click the coarse knobs.",
-            "feedbackText": "click the coarse knobs"
-        }, {
-            "id": "introFine",
-            "shortText": "Fine Knobs",
-            "longText": "Click the fine knobs.",
-            "feedbackText": "click the fine knobs"
-        }, {
-            "id": "introDiaphragm",
-            "shortText": "Diaphragm",
-            "longText": "Click the diaphragm.",
-            "feedbackText": "click the diaphragm"
-        }, {
-            "id": "introCaliper",
-            "shortText": "Caliper",
-            "longText": "Click the caliper.",
-            "feedbackText": "click the caliper"
-        }, {
-            "id": "introLenses",
-            "shortText": "Lenses",
-            "longText": "Click the lenses.",
-            "feedbackText": "click the lenses"
         }]
     }, {
         "id": "setup",
@@ -274,12 +244,12 @@ function loadSubMenu() {
 
     // Intro
     introLightSwitch = game.getGroupStep(0, 0);
-    introEyepiece = game.getGroupStep(0, 1);
-    introCoarse = game.getGroupStep(0, 2);
-    introFine = game.getGroupStep(0, 3);
-    introDiaphragm = game.getGroupStep(0, 4);
-    introCaliper = game.getGroupStep(0, 5);
-    introLenses = game.getGroupStep(0, 6);
+    // introEyepiece = game.getGroupStep(0, 1);
+    // introCoarse = game.getGroupStep(0, 2);
+    // introFine = game.getGroupStep(0, 3);
+    // introDiaphragm = game.getGroupStep(0, 4);
+    // introCaliper = game.getGroupStep(0, 5);
+    // introLenses = game.getGroupStep(0, 6);
 
     // Setup
     setupLightSwitch = game.getGroupStep(1, 0);
@@ -292,19 +262,19 @@ function loadSubMenu() {
 
     // Low Magnification
     lowLenses = game.getGroupStep(2,0)
-    lowDiaphragmLight = game.getGroupStep(2, 1);
+        lowDiaphragmLight = game.getGroupStep(2, 1);
     lowCoarse = game.getGroupStep(2, 2);
 
     // Med Magnification
     medLenses = game.getGroupStep(3,0)
-    medFine = game.getGroupStep(3, 1);
+        medFine = game.getGroupStep(3, 1);
     medDiopter = game.getGroupStep(3, 2);
     medOcular = game.getGroupStep(3, 3);
 
 
     // High magnification
     highLenses = game.getGroupStep(4,0)
-    highAperture = game.getGroupStep(4, 1);
+        highAperture = game.getGroupStep(4, 1);
     highFine = game.getGroupStep(4, 2);
 
     updateSteps();
@@ -333,14 +303,14 @@ function swapMag(n){
     var cell = "";
     var cell2 = "";
     var slideImg = ""
-    var slideImg2 = ""
-    if (n==0){
-        slideImg = $('<img id="slideContents">');
-        slideImg2 = $('<img id="slideContents2">');
-        slideImg.appendTo('#slideContentsContainer');
-        slideImg2.appendTo('#slideContentsContainer2');
-        return;
-    }
+        var slideImg2 = ""
+        if (n==0){
+            slideImg = $('<img id="slideContents">');
+            slideImg2 = $('<img id="slideContents2">');
+            slideImg.appendTo('#slideContentsContainer');
+            slideImg2.appendTo('#slideContentsContainer2');
+            return;
+        }
     slideImg = $("#slideContents");
     slideImg2 = $("#slideContents2");
     if (n==1){
@@ -368,26 +338,26 @@ $(function () {
     // image paths
     var microscope = 'img/microscope.svg';
 
-$('#microscope').load(microscope, function () {
-    updateAnimation();
+    $('#microscope').load(microscope, function () {
+        updateAnimation();
 
-    //$('#microscope svg').append('<filter id="blurMe"><feGaussianBlur in="SourceGraphic" stdDeviation="1" /></filter>')
-    swapMag(0);
+        //$('#microscope svg').append('<filter id="blurMe"><feGaussianBlur in="SourceGraphic" stdDeviation="1" /></filter>')
+        swapMag(0);
 
 
-    resizeWindow();
-    loadStartMenu();
-    loadSubMenu();
+        resizeWindow();
+        loadStartMenu();
+        loadSubMenu();
 
-    $("#endOption1").click(function () {
-        // Start Beginner Mode
-        newGame(true, false);
+        $("#endOption1").click(function () {
+            // Start Beginner Mode
+            newGame(true, false);
+        });
+
+
+        resizeWindow();
+
     });
-
-
-    resizeWindow();
-
-});
 
 
 

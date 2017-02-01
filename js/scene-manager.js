@@ -36,25 +36,30 @@ function startStep(step) {
         if (!isDebug) triggerLightSwitch();
         $("#light").addClass("elementOff");
         toggleVisibility("#slide");
-
+        triggerDiaphragm();
+        triggerFine();
+        triggerCoarse();
+        triggerCaliper();
+        triggerEyepiece();
+        triggerLenses();
     }
     if (step == introDiaphragm) {
-        triggerDiaphragm();
+//        triggerDiaphragm();
     }
     if (step == introFine) {
-        triggerFine();
+  //      triggerFine();
     }
     if (step == introCoarse) {
-        triggerCoarse();
+    //    triggerCoarse();
     }
     if (step == introCaliper) {
-        triggerCaliper();
+      //  triggerCaliper();
     }
     if (step == introEyepiece) {
-        triggerEyepiece();
+        //triggerEyepiece();
     }
     if (step == introLenses) {
-        triggerLenses();  
+       // triggerLenses();  
     }
 
     /* setup
@@ -64,7 +69,6 @@ function startStep(step) {
 
 */
     if (step == setupLightSwitch) {
-        showAllParts();
         loadIntroComplete();
         bindTooltip(); 
         setupText();
