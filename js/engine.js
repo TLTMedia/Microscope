@@ -29,16 +29,56 @@ function Game(guided, manual) {
             //            });
         }
         // Make step objects
-        for (var i = 0; i < this.steps.length; i++) {
-            $("#steps").append("<div id='step" + i + "' class='step'></div>");
-            $("#step" + i).append("<div class='icon_bg'></div>");
-            $("#step" + i).append("<div id='icon" + i + "' class='icon'></div>");
-            $("#step" + i).append("<div id='panel" + i + "' class='stepPanel'></div>");
-            $("#panel" + i).append("<div id='stepText" + i + "' class='stepText fs-18'></div>");
-            //            $("#step" + i).css({
-            //                'top': (10 * i + 10) + "%"
-            //            });
-        }
+        var that = this //l ol
+            for (var i = 0; i < this.steps.length; i++) {
+                $("#steps").append("<div id='step" + i + "' class='step'></div>");
+                $("#step" + i).append("<div class='icon_bg'></div>");
+                $("#step" + i).append("<div id='icon" + i + "' class='icon'></div>");
+                $("#step" + i).append("<div id='panel" + i + "' class='stepPanel'></div>");
+                $("#panel" + i).append("<div id='stepText" + i + "' class='stepText fs-18'></div>");
+
+                var stepStr = ("#step" + i);
+                // Enable scroll down hints on steps.
+                $(stepStr).click(function(){
+                    var stepId = $(this).attr("id");
+                    //console.log(stepId);
+                    //console.log($(this).prop('style')['top']);
+                    var j=that.steps.length;
+                    var stepPerc = parseInt(($(this).prop('style')['top']).replace("%",""));
+                    
+                    // Locate Step object
+                    var expandedState = null;
+                    that.steps.forEach(function(elem){
+                        if (elem.div == stepStr) {
+                            expandedState = elem.expanded
+                            elem.expanded = !elem.expanded
+                        }
+                    });
+
+                    // Set offset value
+                    var offsetValue = "+=0";
+                    if (!expandedState) offsetValue = "+=100";
+                    else offsetValue = "-=100";
+
+                    that.groups.forEach(function(elem){
+                        var groupPerc = parseInt(($(elem.div).prop('style')['top']).replace("%",""));
+                        if (stepPerc < groupPerc){
+                            $(elem.div).css("margin-top", offsetValue);
+                            //console.log(groupPerc);
+                        }
+                    })
+
+                    that.steps.forEach(function(elem){
+                        var groupPerc = parseInt(($(elem.div).prop('style')['top']).replace("%",""));
+                        if (stepPerc < groupPerc){
+                            $(elem.div).css("margin-top", offsetValue);
+                            //console.log(groupPerc);
+                        }
+                    })
+                });
+
+            }
+
     }
     this.getSteps = function() {
         return this.steps;
@@ -99,6 +139,7 @@ function Step(id, shortText, longText, feedbackText, div, iconDiv) {
     this.div = div;
     this.iconDiv = iconDiv;
     this.successor;
+    this.expanded = false; // Toggle expansion state for extra hints
     this.state = 0; // 0 if inactive and not complete, 1 if active and not complete, 2 if complete (cannot be active anymore), 3 if failed
     this.hintTimeout = 0;
     this.hintShowing = false;
@@ -138,6 +179,8 @@ function Step(id, shortText, longText, feedbackText, div, iconDiv) {
                 }, 2000, this);
             }
         }
+
+        console.log(div);
     }
     this.reset = function() {
         this.state = 0;

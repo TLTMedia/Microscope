@@ -5,13 +5,6 @@
 
 function debugIntro() {
     introLightSwitch.complete();
-    introEyepiece.complete();
-    introCoarse.complete();
-    introFine.complete();
-    introDiaphragm.complete();
-    introCaliper.complete();
-    introLenses.complete();
-    showAllParts();
 }
 
 function debugSetup() {

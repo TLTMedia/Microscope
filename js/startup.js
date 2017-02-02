@@ -328,6 +328,7 @@ function swapMag(n){
 
 // ====== Frame setup and microscope initialization. ====== //
 $(function () {
+
     $("#rotate2").load('img/sideview.svg', function () {
         $("#draggableDiaphragm").addClass("knob");
         //        $("#").addClass("knob");
