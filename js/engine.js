@@ -36,7 +36,7 @@ function Game(guided, manual) {
                 $("#step" + i).append("<div id='icon" + i + "' class='icon'></div>");
                 $("#step" + i).append("<div id='panel" + i + "' class='stepPanel'></div>");
                 $("#panel" + i).append("<div id='stepText" + i + "' class='stepText fs-18'></div>");
-                $("#step" + i).append("<div id='stepTextHint" + i + "' class='stepTextHint'>" + this.steps[i].longText +"</div>");
+                $("#step" + i).append("<div id='stepTextHint" + i + "' class='stepTextHint fs-12'>" + this.steps[i].longText +"</div>");
 
                 var stepStr = ("#step" + i);
                 // Enable scroll down hints on steps.
@@ -56,7 +56,8 @@ function Game(guided, manual) {
                             elem.expanded = !elem.expanded
                     
                             // Toggle hint visibility
-                            $("#stepTextHint" + stepIndex).toggle();
+                            $("#stepTextHint" + stepIndex).toggle("fast", function(){
+                            });
                         }
                     });
 
@@ -68,7 +69,12 @@ function Game(guided, manual) {
                     that.groups.forEach(function(elem){
                         var groupPerc = parseInt(($(elem.div).prop('style')['top']).replace("%",""));
                         if (stepPerc < groupPerc){
-                            $(elem.div).css("margin-top", offsetValue);
+                            //$(elem.div).css("margin-top", offsetValue);
+
+                            $(elem.div).animate({
+                                "margin-top": offsetValue
+                            }, "fast", function(){});
+                            
                             //console.log(groupPerc);
                         }
                     })
@@ -76,8 +82,12 @@ function Game(guided, manual) {
                     that.steps.forEach(function(elem){
                         var groupPerc = parseInt(($(elem.div).prop('style')['top']).replace("%",""));
                         if (stepPerc < groupPerc){
-                            $(elem.div).css("margin-top", offsetValue);
+                            //$(elem.div).css("margin-top", offsetValue);
                             //console.log(groupPerc);
+                            //
+                            $(elem.div).animate({
+                                "margin-top": offsetValue
+                            }, "fast", function(){});
                         }
                     })
                 });
