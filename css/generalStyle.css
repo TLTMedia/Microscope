@@ -486,3 +486,15 @@ body {
         opacity: 0;
     }
 }
+
+.stepTextHint{
+    font-family: "Helvetica", sans-serif;
+    width: 100%;
+    height: auto;
+    background-color: rgb(70,70,70);
+    margin-top: 13%;
+    margin-left: 15%;
+    padding: 15px;
+    color: white;
+    display: none;
+}

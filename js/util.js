@@ -6,7 +6,6 @@
 
 // Misc. Functions
 function popupOn(text, props) {
-    // console.log("debug2");
     $("#popup").css("display", "inline-block");
     $("#popup").show();
     $("#popup").addClass("elementOn");
