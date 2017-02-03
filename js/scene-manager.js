@@ -23,7 +23,7 @@ function bindTooltip(){
    */
 function startStep(step) {
 
-    var isDebug = true;
+    var isDebug = false;
     /* intro
 
        Intro doesn't necessarily have flexible choices for the user to act on.
@@ -44,33 +44,11 @@ function startStep(step) {
         triggerEyepiece();
         triggerLenses();
     }
-    if (step == introDiaphragm) {
-//        triggerDiaphragm();
-    }
-    if (step == introFine) {
-  //      triggerFine();
-    }
-    if (step == introCoarse) {
-    //    triggerCoarse();
-    }
-    if (step == introCaliper) {
-      //  triggerCaliper();
-    }
-    if (step == introEyepiece) {
-        //triggerEyepiece();
-    }
-    if (step == introLenses) {
-       // triggerLenses();  
-    }
 
     /* setup
-
-       Steps now have an intermission period between each step where the user must
        act/adjust the microscope before the game proceeds onto the next step.
-
-*/
+    */
     if (step == setupLightSwitch) {
-        loadIntroComplete();
         bindTooltip(); 
         setupText();
         setupEnableSwitch();
@@ -123,6 +101,7 @@ function startStep(step) {
 
     // High magnification
     if (step == highLenses) {
+
         highAdjustLenses();
     }
     if (step == highAperture){
@@ -136,4 +115,11 @@ function startStep(step) {
 
 }
 
-function endStep(step) {}
+function endStep(step) {
+    //popupOff();
+    if (step.div == "#step0") 
+        loadIntroComplete();
+    else if (step.div == "#step14")
+        loadGameComplete();
+        console.log(step);
+}

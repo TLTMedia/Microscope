@@ -6,16 +6,14 @@
 
 // Misc. Functions
 function popupOn(text, props) {
-    $("#popup").css("display", "inline-block");
     $("#popup").show();
-    $("#popup").addClass("elementOn");
-    $("#popup").removeClass("elementOff");
-    $("#popup").css(props);
+    $("#popup").animate(props, "fast");
     $("#popupText").text(text);
 }
 
 function popupOff() {
-    $("#popup").css("display", "none");
+    //$("#popup").css("display", "none");
+    //$("#popup").toggle("fast", function(){});
 }
 
 

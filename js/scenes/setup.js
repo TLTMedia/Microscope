@@ -111,7 +111,6 @@ function setupEnableSlide() {
 function setupCondenser() {
     textSetup("Move the condenser knob all the way to the top.", "20%", "60%");
     var id="#draggableDiaphragm";
-    console.log("testing");
     if (setupCondense.isActive()) {
         var clonedComp = highlightComponent(id);
         bringToFront($(id));

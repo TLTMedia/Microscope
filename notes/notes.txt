@@ -79,6 +79,9 @@ linear:
 	* warning: don’t go to oil *
 
 
+--Fixed--
+-Fine tuning values of microcsope to be as realistic as possible
+
 -- Known Bugs/Fixes --
 -Rotation not firefox compatible.
 -Modify Coarse Knob to complete on clarity (white line).
@@ -86,6 +89,5 @@ linear:
 -Responsive design when reduced
 -Aperture precision not implemented yet.
 -Implement game modes (restriction to restrictionless)
--Fine tuning values of microcsope to be as realistic as possible
 -Deviate from framework and add a feedback button before moving forward.
 

@@ -30,6 +30,19 @@ function loadIntroComplete() {
     showMenu();
 }
 
+
+function loadGameComplete() {
+    $("#endText").text("Great job!");
+    $("#endSubText").text("You finished the game mode.")
+        $("#endSubText").css({
+            opacity: 1
+        });
+    $(".endErrorText").css({
+        opacity: 0
+    });
+    showMenu();
+}
+
 function showMenu() {
     // Make overlay visible
     $("#overlay").css({
@@ -205,23 +218,7 @@ function loadSubMenu() {
                 "longText": "Click the fine knobs.",
                 "feedbackText": "click the fine knobs"
             }]
-        },{
-
-            "id": "quiz",
-            "shortText": "Quiz",
-            "steps": [{
-                "id": "#idname",
-                "shortText": "Q1",
-                "longText": "#longText",
-                "feedbackText": "#feedbackText"
-            }, {
-                "id": "pressF",
-                "shortText": "Q2",
-                "longText": "Press F to pay respects.",
-                "feedbackText": "ty for much respects"
-            }]
         }
-
     ];
 
     game = new Game(true, true);

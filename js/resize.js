@@ -125,6 +125,11 @@ function resizeWindow() {
             'background-size': stripeSize
         });
 
+    
+    // Aspect ratio 
+    var whRat = w/h;
+    console.log(whRat);
+    
     if (w>1500) w=1500;
 
     $("#rotate").css({
@@ -132,13 +137,10 @@ function resizeWindow() {
         'width': w*0.2 + "px"
     });
 
-
-    //
     $("#slideView, #slideView2").css({
         'height': w*0.15 + "px", 
         'width': w*0.15 + "px"
     });
-    //
 
     $("#rotate2 > svg").css({
         "height": w*0.55 + "px",
@@ -164,7 +166,7 @@ function resizeWindow() {
         knob.center.y = offset.top + h / 2;
         //console.log(knob.width, knob.height, offset.left, offset.top);
         knobObject.css({
-            'transform': "rotate(" + knobs[i].rotation + "deg"
+            'transform': "rotate(" + knobs[i].rotation + "deg)"
         });
     }
 }
