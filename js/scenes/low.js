@@ -14,7 +14,7 @@ function lowAdjustCoarse() {
             var clonedComp = highlightComponent(id);
             bringToFront($(id));
             var handler = function(){
-                subHandler(ms.knobPosition, -20, -5, lowCoarse, handler, id, null);
+                subHandler(ms.slideBlur, -1, 1, lowCoarse, handler, id, null);
             }
             $(document).bind("mousemove", handler);
         }

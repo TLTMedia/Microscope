@@ -55,12 +55,12 @@ class StateMachine {
         this.eyepiecePosition = 10;
         this.knobPosition = sm_orig["MAX_KNOB"];
         this.xslide = 0;
-        this.yslide = 0 + this.knobPosition;
+        this.yslide = 5 + this.knobPosition;
         this.diaphragmLightPosition = 0;
         this.diaphragmHeightPosition = 270 / 12;
         this.diopterPosition = 0;
         this.xcaliper = 0;
-        this.ycaliper = 0 + this.knobPosition;
+        this.ycaliper = 5 + this.knobPosition;
         this.yheight = 0 + this.knobPosition;
         this.yknobcaliper = 0 + this.knobPosition;
         this.lensePosition = 5;
@@ -223,9 +223,9 @@ function enableCoarseKnob() {
             })
         .mousemove(function(event) {
             if (isDown) {
-                if (prevY > event.pageY) {
+                if (prevY < event.pageY) {
                     if (ms.knobPosition < sm_orig["MAX_KNOB"]) {
-                        ms.zoom += val * 0.02;
+                        ms.zoom -= val * 0.02;
                         ms.yslide += val;
                         ms.ycaliper += val;
                         sm_orig["MAX_Y_CALIPER"] += val;
@@ -235,9 +235,9 @@ function enableCoarseKnob() {
                         ms.knobPosition += val;
                         ms.slideBlur += 0.1;
                     }
-                } else if ((prevY < event.pageY)) {
+                } else if ((prevY > event.pageY)) {
                     if (ms.knobPosition > sm_orig["MIN_KNOB"]) {
-                        ms.zoom -= val * 0.02;
+                        ms.zoom += val * 0.02;
                         ms.yslide -= val;
                         ms.ycaliper -= val;
                         ms.yknobcaliper -= val;
@@ -460,9 +460,11 @@ function enableLenses() {
                 if (ms.lenseStates[ms.lensePosition].includes("Red")) {
                     swapMag(1);
                     ms.zoom = 1;
+                    ms.slideBlur = 4;
                 } else if (ms.lenseStates[ms.lensePosition].includes("Yellow")) {
                     swapMag(2);
                     ms.zoom = 1;
+                    ms.slideBlur = 4;
                 } 
                 else if (ms.lenseStates[ms.lensePosition].includes("White")){
                     swapMag(2);

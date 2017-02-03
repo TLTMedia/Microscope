@@ -19,7 +19,7 @@ function debugLow(){
     removeHighlightCopy();
     lowLenses.complete();
     lowDiaphragmLight.complete();
-    lowCoarse.complete();
+    //lowCoarse.complete();
 }
 
 function debugMedMag(){
@@ -42,8 +42,8 @@ function DEBUG(state){
     if (isDebug){
         debugIntro();
         debugSetup();
-        debugLow(); 
-        debugMedMag();
+        //debugLow(); 
+        //debugMedMag();
         //debugHighMag(); 
     }
     return isDebug;

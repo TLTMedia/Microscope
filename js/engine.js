@@ -195,7 +195,7 @@ function Step(id, shortText, longText, feedbackText, div, iconDiv) {
             }
         }
 
-        console.log(div);
+        //console.log(div);
     }
     this.reset = function() {
         this.state = 0;

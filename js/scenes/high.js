@@ -48,7 +48,7 @@ function highAdjustAperture() {
             var clonedComp = highlightComponent(id);
             bringToFront($(id));
             var handler = function(){
-                console.log(ms.diaphragmLightPosition);
+                //console.log(ms.diaphragmLightPosition);
                 subHandler(ms.diaphragmLightPosition, 38, 40, highAperture, handler, id, null);
             }
             $(document).bind("mousemove", handler);
