@@ -1,83 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <title>Microscope Simulator</title>
-    <script src="js/lib/jquery-2.2.0.min.js"></script>
-    <script src="js/lib/jquery-ui.js"></script>
-    <script src="js/lib/interact.min.js"></script>
-    <script src="js/knob.js"></script>
-    <script src="js/util.js"></script>
-    <script src="js/global.js"></script>
-    <script src="js/resize.js"></script>
-    <script src="js/scenes/intro.js"></script>
-    <script src="js/scenes/setup.js"></script>
-    <script src="js/scenes/low.js"></script>
-    <script src="js/scenes/med.js"></script>
-    <script src="js/scenes/high.js"></script>
-    <script src="js/scene-manager.js"></script>
-    <script src="js/statemachine.js"></script>
-    <script src="js/engine.js"></script>
-    <script src="js/startup.js"></script>
-    <script src="js/debug.js"></script>
+    <head>
+        <meta charset="utf-8">
+        <title>Microscope Simulator</title>
+        <script src="js/lib/jquery-2.2.0.min.js"></script>
+        <script src="js/lib/jquery-ui.js"></script>
+        <script src="js/lib/interact.min.js"></script>
+        <script src="js/knob.js"></script>
+        <script src="js/util.js"></script>
+        <script src="js/global.js"></script>
+        <script src="js/resize.js"></script>
+        <script src="js/scenes/intro.js"></script>
+        <script src="js/scenes/setup.js"></script>
+        <script src="js/scenes/low.js"></script>
+        <script src="js/scenes/med.js"></script>
+        <script src="js/scenes/high.js"></script>
+        <script src="js/scene-manager.js"></script>
+        <script src="js/statemachine.js"></script>
+        <script src="js/engine.js"></script>
+        <script src="js/startup.js"></script>
+        <script src="js/debug.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="css/generalStyle.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="icon" type="image/png" href="img/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="css/generalStyle.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="icon" type="image/png" href="img/favicon.ico" />
 
-</head>
+    </head>
 
 
-<body>
-    <div id="stageCover">
-        <div id="coverTop" class="cover stripes"></div>
-        <div id="coverBottom" class="cover stripes"></div>
-        <div id="coverLeft" class="cover stripes"></div>
-        <div id="coverRight" class="cover stripes"></div>
-    </div>
-
-    <div id="stage" class="screen">
-
-        <!--microscope-->
-        <div id="header" class="text fs-32">
-            <div id="headerText" class="text fs-32"></div>
+    <body>
+        <div id="stageCover">
+            <div id="coverTop" class="cover stripes"></div>
+            <div id="coverBottom" class="cover stripes"></div>
+            <div id="coverLeft" class="cover stripes"></div>
+            <div id="coverRight" class="cover stripes"></div>
         </div>
-        <div id="popup"><div id="popupText" class="text fs-18"></div></div>
-        <!-- <div id="sideView"></div> -->
-        <div id="steps"></div>
-        <div id="tool">
-            <div id="microscope"></div>
-        </div>
-        <div id="rotate" >
-            <div id="rotate2"></div>
-        </div>
-        
-        <div id="slideView" class="sview">
-            <div id="slideContentsContainer">
+
+        <div id="stage" class="screen">
+
+            <!--microscope-->
+            <div id="header" class="text fs-32">
+                <div id="headerText" class="text fs-32"></div>
             </div>
-        </div>
-
-        <div id="slideView2" class="sview">
-            <div id="slideContentsContainer2">
+            <div id="popup"><div id="popupText" class="text fs-18"></div></div>
+            <!-- <div id="sideView"></div> -->
+            <div id="steps"></div>
+            <div id="tool">
+                <div id="microscope"></div>
             </div>
-        </div>
+            <div id="rotate" >
+                <div id="rotate2"></div>
+            </div>
 
-
-    </div>
-    <div id="overlay" class="screen" draggable="false">
-        <div id="overlayBox">
-            <div id="overlayBG"></div>
-            <div id="results" class="rounded stripes" draggable="false">
-                <p id="endText" class="text fs-100" draggable="false">[Success?]</p>
-                <p id="endSubText" class="text fs-50" draggable="false">[Subtext]</p>
-                <div class="endOption rounded stripes endOptionUnlocked" id="endOption1" draggable="false">
-                    <div class="endOptionText fs-42 text">Continue</div>
+            <div id="slideView" class="sview">
+                <div id="slideContentsContainer">
                 </div>
+            </div>
 
+            <div id="slideView2" class="sview">
+                <div id="slideContentsContainer2">
+                </div>
+            </div>
+
+
+        </div>
+
+        <!-- Progression Feedback -->
+        <div id="overlay" class="screen" draggable="false">
+            <div id="overlayBox">
+                <div id="overlayBG"></div>
+                <div id="results" class="rounded stripes" draggable="false">
+                    <p id="endText" class="text fs-100" draggable="false">[Success?]</p>
+                    <p id="endSubText" class="text fs-50" draggable="false">[Subtext]</p>
+                    <div class="endOption rounded stripes endOptionUnlocked" id="endOption1" draggable="false">
+                        <div class="endOptionText fs-42 text">Continue</div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</body>
+
+        <!-- Main Menu -->
+        <div id="main-menu" class="screen" draggable="false">
+            <div id="overlayBox">
+                <div id="overlayBG"></div>
+                <div id="results" class="rounded stripes" draggable="false">
+                    <p id="endText" class="text fs-100" draggable="false">[Success?]</p>
+                    <p id="endSubText" class="text fs-50" draggable="false">[Subtext]</p>
+
+                    <div class="endOption rounded stripes endOptionUnlocked" id="endOption1" draggable="false">
+                        <div class="endOptionText fs-42 text">Beginner</div>
+                    </div>
+                    <div class="endOption rounded stripes" id="endOption2" draggable="false">
+                        <div class="endOptionText fs-42 text">Intermediate</div>
+                    </div>
+                    <div class="endOption rounded stripes" id="endOption3" draggable="false">
+                        <div class="endOptionText fs-42 text">Expert</div>
+                    </div>
+
+                    <div class="endOptionDesc" id="endOptionDesc1">
+                        <div class="endOptionDescText darkText fs-20" id="endOptionDescText1">
+                            • Hints enabled
+                            <br> • 3 dial readings
+                            <br> • You can't lose in this mode.
+                        </div>
+                    </div>
+                    <div class="endOptionDesc" id="endOptionDesc2">
+                        <div class="endOptionDescText darkText fs-20" id="endOptionDescText2">
+                            • No hints
+                            <br> • 5 dial readings
+                            <br> • You lose if you make a mistake.
+                        </div>
+                    </div>
+                    <div class="endOptionDesc" id="endOptionDesc3">
+                        <div class="endOptionDescText darkText fs-20" id="endOptionDescText3">
+                            • No hints, more controls
+                            <br> • 7 dial readings
+                            <br> • You lose if you make a mistake.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </body>
 
 </html>

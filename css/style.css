@@ -5,7 +5,7 @@
     pointer-events: none;
 }
 
-#overlay {
+#overlay, #main-menu{
     position: absolute;
     z-index: -1;
 }

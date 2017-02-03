@@ -12,7 +12,7 @@ function popupOn(text, props) {
 }
 
 function popupOff() {
-    //$("#popup").css("display", "none");
+    $("#popup").css("display", "none");
     //$("#popup").toggle("fast", function(){});
 }
 

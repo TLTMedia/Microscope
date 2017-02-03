@@ -119,7 +119,8 @@ function endStep(step) {
     //popupOff();
     if (step.div == "#step0") 
         loadIntroComplete();
-    else if (step.div == "#step14")
+    else if (step.div == "#step14"){
         loadGameComplete();
-        console.log(step);
+        popupOff();
+    }
 }

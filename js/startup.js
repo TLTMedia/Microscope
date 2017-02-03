@@ -50,7 +50,7 @@ function showMenu() {
     'z-index': 100
     });
     // Lock/unlock modes
-    //    lockModes();
+        lockModes();
     // Show results screen
     $("#results").removeClass("anim_exitResults");
     $("#results").addClass("anim_enterResults");
