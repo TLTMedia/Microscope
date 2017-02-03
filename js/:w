@@ -340,22 +340,18 @@
 
 
 #popupType{
-    padding: 5px;
-    font-size: 20px;
+    padding: 2px;
 }
 
 .popupInstruct{
-    background-color: rgba(114, 177, 191, 0.5);
-}
-
-.popupDanger{
-    background-color: rgba(114, 177, 191, 0.5);
+    background-color: rgb(114, 177, 191);
 }
 
 
 #popup {
     background-color:#ffffff;
-    border: 1px solid black;
+    border: 2px solid #000;
+    border-radius: 25px;
     left: 0%;
     top: 0%;
     display:none;
@@ -364,16 +360,13 @@
 
     max-height: 20%;
     min-height: 2%;
-    max-width: 15%;
-    min-width: 15%;
-    border-radius: 20px;
+    max-width: 20%;
+    min-width: 20%;
 
-    text-align: left;
+    text-align: center;
 }
-
 
 #popup .text{
     color:#000;
-    padding: 1%;
 }
 
