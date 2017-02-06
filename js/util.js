@@ -1,4 +1,4 @@
-/**
+/*
  * modal.js
  *
  * Functionality for popup boxes and modals.
@@ -7,7 +7,7 @@
 // Misc. Functions
 function popupOn(text, props) {
     $("#popup").show();
-    $("#popup").animate(props, "fast");
+    $("#popup").stop(true).animate(props, "fast");
     $("#popupText").text(text);
 }
 

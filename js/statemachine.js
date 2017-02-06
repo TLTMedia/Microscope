@@ -97,6 +97,8 @@ ms.setup()
    Call updateAnimation() for everytime there is a state change. The microscope animation is dependent on only ONE source, and that is the state of the machine. Thus, everytime the state of the machine changes from user input, the changes of the scope should reflect all at once. 
    */
 function updateAnimation() {
+    W_RAT = $(window).width()/$(window).height();
+    var aspectRatio = 4/3;
     /* Microscope animations */
     translateReduce("#ocularRight, #ocularRightCopy", ms.eyepiecePosition, 0);
     translateReduce("#ocularLeftCopy", -1 * ms.eyepiecePosition, 0);
@@ -104,15 +106,22 @@ function updateAnimation() {
     translateReduce("#ocularLeft", -1 * ms.eyepiecePosition, 0);
     translateReduce("#slideStage, #stageLight", 0, ms.knobPosition);
     translateReduce("#slide", ms.xslide, ms.yslide);
-    translateReduce("#apertureKnob", ms.diaphragmLightPosition * -1, ms.knobPosition + ms.diaphragmHeightPosition / 3);
+    translateReduce("#apertureKnob", ms.diaphragmLightPosition * -1, 40 + ms.knobPosition + ms.diaphragmHeightPosition / 3);
     translateReduce("#diaphragm, #aperture, #diaphragmCopy", 0, ms.knobPosition + ms.diaphragmHeightPosition / 3);
     translateReduce("#adjustDHeight", 0, ms.diaphragmHeightPosition);
     translateReduce("#caliperMetal, #caliperKnob, #caliper", 0, ms.yknobcaliper);
     translateReduce("#caliperMetal, #ycaliper, #xcaliper", ms.xcaliper, ms.ycaliper);
-    translateReduce("#slideView", ms.eyepiecePosition * 5, 0);
-    translateReduce("#slideView2", -ms.eyepiecePosition * 5, 0);
 
-
+    //
+    console.log(W_RAT);
+    if(W_RAT <aspectRatio){
+        translateReduce("#slideView", ms.eyepiecePosition * (Math.pow(4*(1/W_RAT),-1)+aspectRatio), 0);
+        translateReduce("#slideView2", -ms.eyepiecePosition * (Math.pow(3*(1/W_RAT),-1)+aspectRatio), 0);
+    } else{
+        translateReduce("#slideView", ms.eyepiecePosition * Math.pow(3*(1/W_RAT),2), 0);
+        translateReduce("#slideView2", -ms.eyepiecePosition * Math.pow(3*(1/W_RAT),2), 0);
+    }
+    //
 
     /* Slide Contents Animations */
     // Caliper movements on slide.
@@ -433,7 +442,7 @@ function enableLenses() {
         if (!dangerEnable && (ms.lensePosition+1 == 9 || ms.lensePosition-1==9)){
             rollBack = {"type": $(".popupInstruct").text(), "text": $("#popupText").text()}
 
-            console.log(rollBack);
+            //console.log(rollBack);
             updatePopup("Warning", "Stop! You risk damaging the slide by moving the lenses through the 100 magnification. Go the other way.");
 
             dangerEnable = true;
@@ -452,14 +461,14 @@ function enableLenses() {
             })
         .mousemove(function(event) {
             if (isDown) {
-                console.log(ms.lensePosition); //10,9,8
+                //console.log(ms.lensePosition); //10,9,8
                 if ((prevX < event.pageX)) {
                     if (ms.lenseWheel % 10 == 0) {
                         $(ms.lenseStates[ms.lensePosition]).addClass("st0");
                         ms.lensePosition = ((ms.lensePosition + 1) % ms.lenseStates.length);
                         testDanger();
-            $(ms.lenseStates[ms.lensePosition]).removeClass("st0");
-        ms.lenseWheel = 1;
+                        $(ms.lenseStates[ms.lensePosition]).removeClass("st0");
+                        ms.lenseWheel = 1;
                     } else {
                         ms.lenseWheel++;
                     }
@@ -467,9 +476,9 @@ function enableLenses() {
                     if (ms.lenseWheel % 10 == 0) {
                         $(ms.lenseStates[ms.lensePosition]).addClass("st0");
                         ms.lensePosition = ((ms.lensePosition - 1) % ms.lenseStates.length)
-                        testDanger();
+            testDanger();
 
-            if (ms.lensePosition == -1) ms.lensePosition = ms.lenseStates.length - 1;
+        if (ms.lensePosition == -1) ms.lensePosition = ms.lenseStates.length - 1;
         $(ms.lenseStates[ms.lensePosition]).removeClass("st0");
         ms.lenseWheel = 19;
                     } else {

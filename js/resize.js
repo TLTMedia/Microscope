@@ -22,6 +22,7 @@ function adjustMagic(){
 // Fix aspect ratio of the stage
 $(window).resize(function() {
     resizeWindow();
+    updateAnimation();
 });
 
 // Resize the window
@@ -29,7 +30,7 @@ function resizeWindow() {
     // Get window width and height
     var w = $(window).width();
     var h = $(window).height();
-    
+
     // If the aspect ratio is greater than or equal to 4:3, fix height and set width based on height
     if ((w / h) >= 4 / 3) {
         stageHeight = h;
@@ -125,27 +126,41 @@ function resizeWindow() {
             'background-size': stripeSize
         });
 
-    
+
     // Aspect ratio 
+    var aspectR = 4/3;
     var whRat = w/h;
-    console.log(whRat);
-    
-    if (w>1500) w=1500;
+    if (whRat > aspectR){
+        $("#rotate").css({
+            'height': h*0.2 + "px", 
+            'width': h*0.2 + "px"
+        });
 
-    $("#rotate").css({
-        'height': w*0.2 + "px", 
-        'width': w*0.2 + "px"
-    });
+        $("#slideView, #slideView2").css({
+            'height': h*0.15 + "px", 
+            'width': h*0.15 + "px"
+        });
 
-    $("#slideView, #slideView2").css({
-        'height': w*0.15 + "px", 
-        'width': w*0.15 + "px"
-    });
+        $("#rotate2 > svg").css({
+            "height": h*0.55 + "px",
+            "width": h*0.55 + "px"
+        });
+    }else{
+        $("#rotate").css({
+            'height': w*0.2 + "px", 
+            'width': w*0.2 + "px"
+        });
 
-    $("#rotate2 > svg").css({
-        "height": w*0.55 + "px",
-        "width": w + "px"
-    });
+        $("#slideView, #slideView2").css({
+            'height': w*0.15 + "px", 
+            'width': w*0.15 + "px"
+        });
+
+        $("#rotate2 > svg").css({
+            "height": w*0.15 + "px",
+            "width": w*0.55 + "px"
+        });
+    }
 
     // Calibrate knob centers
     for (var i = 0; i < knobs.length; i++) {
