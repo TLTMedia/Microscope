@@ -346,10 +346,16 @@
 
 .popupInstruct{
     background-color: rgba(114, 177, 191, 0.5);
+    border-top-right-radius: 1em;
+    border-top-left-radius: 1em;
+    text-align: center;
 }
 
 .popupDanger{
     background-color: rgba(114, 177, 191, 0.5);
+    border-top-right-radius: 1em;
+    border-top-left-radius: 1em;
+    text-align: center;
 }
 
 
@@ -361,19 +367,20 @@
     display:none;
     position: absolute;
     z-index: 1000000;
-
     max-height: 20%;
     min-height: 2%;
     max-width: 15%;
     min-width: 15%;
     border-radius: 20px;
-
     text-align: left;
 }
 
 
-#popup .text{
+#popupText{
     color:#000;
-    padding: 1%;
+    padding: 10px;
+}
+
+#popupTextWrapper{
 }
 
