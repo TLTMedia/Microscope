@@ -351,14 +351,6 @@
     text-align: center;
 }
 
-.popupDanger{
-    background-color: rgba(114, 177, 191, 0.5);
-    border-top-right-radius: 1em;
-    border-top-left-radius: 1em;
-    text-align: center;
-}
-
-
 #popup {
     background-color:#ffffff;
     border: 1px solid black;

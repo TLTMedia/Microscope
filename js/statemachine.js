@@ -426,7 +426,25 @@ function enableCaliper() {
 
 // Total of 8 states on the lenses
 function enableLenses() {
-    // For the sake of time, just make clicking rotate.
+    var dangerEnable = false; 
+    var rollBack = {};
+
+    function testDanger(){
+        if (!dangerEnable && (ms.lensePosition+1 == 9 || ms.lensePosition-1==9)){
+            rollBack = {"type": $(".popupInstruct").text(), "text": $("#popupText").text()}
+
+            console.log(rollBack);
+            updatePopup("Warning", "Stop! You risk damaging the slide by moving the lenses through the 100 magnification. Go the other way.");
+
+            dangerEnable = true;
+        }
+        else if (dangerEnable){
+            //console.log(rollBack);
+            dangerEnable = false;
+            updatePopup(rollBack.type, rollBack.text);
+        }
+    }
+
     function addLenseClick(part) {
         $(part)
             .mousedown(function() {
@@ -434,11 +452,12 @@ function enableLenses() {
             })
         .mousemove(function(event) {
             if (isDown) {
-
+                console.log(ms.lensePosition); //10,9,8
                 if ((prevX < event.pageX)) {
                     if (ms.lenseWheel % 10 == 0) {
                         $(ms.lenseStates[ms.lensePosition]).addClass("st0");
-                        ms.lensePosition = ((ms.lensePosition + 1) % ms.lenseStates.length)
+                        ms.lensePosition = ((ms.lensePosition + 1) % ms.lenseStates.length);
+                        testDanger();
             $(ms.lenseStates[ms.lensePosition]).removeClass("st0");
         ms.lenseWheel = 1;
                     } else {
@@ -448,6 +467,8 @@ function enableLenses() {
                     if (ms.lenseWheel % 10 == 0) {
                         $(ms.lenseStates[ms.lensePosition]).addClass("st0");
                         ms.lensePosition = ((ms.lensePosition - 1) % ms.lenseStates.length)
+                        testDanger();
+
             if (ms.lensePosition == -1) ms.lensePosition = ms.lenseStates.length - 1;
         $(ms.lenseStates[ms.lensePosition]).removeClass("st0");
         ms.lenseWheel = 19;
@@ -457,6 +478,11 @@ function enableLenses() {
 
                 }
                 prevX = event.pageX;
+
+
+                // Invoke danger of proceeding to next lense
+
+
                 if (ms.lenseStates[ms.lensePosition].includes("Red")) {
                     swapMag(1);
                     ms.zoom = 1;
@@ -482,15 +508,15 @@ function enableLenses() {
                     swapMag(-1);
                 }
                 updateAnimation();
-                }
+            }
 
-                })
-                .mouseup(function() {
-                    isDown = false;
-                })
-                .mouseleave(function() {
-                    isDown = false;
-                });
+        })
+        .mouseup(function() {
+            isDown = false;
+        })
+        .mouseleave(function() {
+            isDown = false;
+        });
     }
     addLenseClick("#lensesBasePath");
 }
