@@ -132,13 +132,13 @@ function resizeWindow() {
     var whRat = w/h;
     if (whRat > aspectR){
         $("#rotate").css({
-            'height': h*0.2 + "px", 
-            'width': h*0.2 + "px"
+            'height': h*0.3 + "px", 
+            'width': h*0.3 + "px"
         });
 
         $("#slideView, #slideView2").css({
-            'height': h*0.15 + "px", 
-            'width': h*0.15 + "px"
+            'height': h*0.20 + "px", 
+            'width': h*0.20 + "px"
         });
 
         $("#rotate2 > svg").css({
@@ -152,12 +152,12 @@ function resizeWindow() {
         });
 
         $("#slideView, #slideView2").css({
-            'height': w*0.15 + "px", 
-            'width': w*0.15 + "px"
+            'height': w*0.20 + "px", 
+            'width': w*0.20 + "px"
         });
 
         $("#rotate2 > svg").css({
-            "height": w*0.15 + "px",
+            "height": w*0.55 + "px",
             "width": w*0.55 + "px"
         });
     }
