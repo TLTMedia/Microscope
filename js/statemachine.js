@@ -79,7 +79,7 @@ class StateMachine {
 ms = new StateMachine();
 ms.setup()
 
-    /* Translate Reduce (DRY)
+    /* Translate Reduce (DRY) - HTML
      *
      * Condense all transforms into a single method and pass by argument.
      * 
@@ -93,6 +93,17 @@ ms.setup()
         });
     }
 
+
+
+    /* Translate Reduce (DRY) - SVGS
+     *
+     * Condense all transforms into a single method and pass by argument.
+     * 
+     */
+    function translateReduceSVG(components, x, y) {
+        $(components).attr("transform", "translate(" + x + " " + y + ")");
+    }
+
 /* 
    Call updateAnimation() for everytime there is a state change. The microscope animation is dependent on only ONE source, and that is the state of the machine. Thus, everytime the state of the machine changes from user input, the changes of the scope should reflect all at once. 
    */
@@ -100,17 +111,17 @@ function updateAnimation() {
     W_RAT = $(window).width()/$(window).height();
     var aspectRatio = 4/3;
     /* Microscope animations */
-    translateReduce("#ocularRight, #ocularRightCopy", ms.eyepiecePosition, 0);
-    translateReduce("#ocularLeftCopy", -1 * ms.eyepiecePosition, 0);
-    translateReduce("#ocularLeftDiopter", -1 * ms.eyepiecePosition, ms.diopterPosition);
-    translateReduce("#ocularLeft", -1 * ms.eyepiecePosition, 0);
-    translateReduce("#slideStage, #stageLight", 0, ms.knobPosition);
-    translateReduce("#slide", ms.xslide, ms.yslide);
-    translateReduce("#apertureKnob", ms.diaphragmLightPosition * -1, 40 + ms.knobPosition + ms.diaphragmHeightPosition / 3);
-    translateReduce("#diaphragm, #aperture, #diaphragmCopy", 0, ms.knobPosition + ms.diaphragmHeightPosition / 3);
-    translateReduce("#adjustDHeight", 0, ms.diaphragmHeightPosition);
-    translateReduce("#caliperMetal, #caliperKnob, #caliper", 0, ms.yknobcaliper);
-    translateReduce("#caliperMetal, #ycaliper, #xcaliper", ms.xcaliper, ms.ycaliper);
+    translateReduceSVG("#ocularRight, #ocularRightCopy", ms.eyepiecePosition, 0);
+    translateReduceSVG("#ocularLeftCopy", -1 * ms.eyepiecePosition, 0);
+    translateReduceSVG("#ocularLeftDiopter", -1 * ms.eyepiecePosition, ms.diopterPosition);
+    translateReduceSVG("#ocularLeft", -1 * ms.eyepiecePosition, 0);
+    translateReduceSVG("#slideStage, #stageLight", 0, ms.knobPosition);
+    translateReduceSVG("#slide", ms.xslide, ms.yslide);
+    translateReduceSVG("#apertureKnob", ms.diaphragmLightPosition * -1, 40 + ms.knobPosition + ms.diaphragmHeightPosition / 3);
+    translateReduceSVG("#diaphragm, #aperture, #diaphragmCopy", 0, ms.knobPosition + ms.diaphragmHeightPosition / 3);
+    translateReduceSVG("#adjustDHeight", 0, ms.diaphragmHeightPosition);
+    translateReduceSVG("#caliperMetal, #caliperKnob, #caliper", 0, ms.yknobcaliper);
+    translateReduceSVG("#caliperMetal, #ycaliper, #xcaliper", ms.xcaliper, ms.ycaliper);
 
     //
     console.log(W_RAT);
