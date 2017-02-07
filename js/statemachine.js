@@ -117,7 +117,7 @@ function updateAnimation() {
     translateReduceSVG("#ocularLeft", -1 * ms.eyepiecePosition, 0);
     translateReduceSVG("#slideStage, #stageLight", 0, ms.knobPosition);
     translateReduceSVG("#slide", ms.xslide, ms.yslide);
-    translateReduceSVG("#apertureKnob", ms.diaphragmLightPosition * -1, 40 + ms.knobPosition + ms.diaphragmHeightPosition / 3);
+    translateReduceSVG("#apertureKnob", ms.diaphragmLightPosition * -1, ms.knobPosition + ms.diaphragmHeightPosition / 3) ;
     translateReduceSVG("#diaphragm, #aperture, #diaphragmCopy", 0, ms.knobPosition + ms.diaphragmHeightPosition / 3);
     translateReduceSVG("#adjustDHeight", 0, ms.diaphragmHeightPosition);
     translateReduceSVG("#caliperMetal, #caliperKnob, #caliper", 0, ms.yknobcaliper);
