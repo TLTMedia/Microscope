@@ -123,8 +123,11 @@ function updateAnimation() {
     translateReduceSVG("#caliperMetal, #caliperKnob, #caliper", 0, ms.yknobcaliper);
     translateReduceSVG("#caliperMetal, #ycaliper, #xcaliper", ms.xcaliper, ms.ycaliper);
 
-    //
-    console.log(W_RAT);
+    // Aperture precision
+    $("#stageLight ellipse").attr("rx", 12-((sm_orig.MAX_DIAPHRAGM_HEIGHT-ms.diaphragmHeightPosition)/2));
+    $("#stageLight ellipse").attr("ry", 6-((sm_orig.MAX_DIAPHRAGM_HEIGHT-ms.diaphragmHeightPosition)/4));
+
+    //console.log(W_RAT);
     if(W_RAT <aspectRatio){
         translateReduce("#slideView", ms.eyepiecePosition * (Math.pow(4*(1/W_RAT),-1)+aspectRatio), 0);
         translateReduce("#slideView2", -ms.eyepiecePosition * (Math.pow(3*(1/W_RAT),-1)+aspectRatio), 0);

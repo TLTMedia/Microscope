@@ -2,8 +2,6 @@ Intro
 - Light Switch
 - Condenser:		y-axis diaphragm— should always be at the top
 
-diopter- bool
-
 red lens	aperture lowest good
 
 initial state:	
@@ -81,13 +79,13 @@ linear:
 
 --Fixed--
 -Fine tuning values of microcsope to be as realistic as possible
+-Responsive design when reduced
+-Aperture precision not implemented yet.
 
 -- Known Bugs/Fixes --
 -Rotation not firefox compatible.
 -Modify Coarse Knob to complete on clarity (white line).
 -Add warnings/additional text
--Responsive design when reduced
--Aperture precision not implemented yet.
 -Implement game modes (restriction to restrictionless)
 -Deviate from framework and add a feedback button before moving forward.
 
