@@ -170,7 +170,7 @@
 #slideContentsContainer{
     height: 100%;
     margin-left: -50%;
-    margin-top: -50%;
+    margin-top: -130%;
     width: 100%;
     background-color: black;
 }
@@ -178,7 +178,7 @@
 #slideContentsContainer2{
     height: 100%;
     margin-left: -50%;
-    margin-top: -50%;
+    margin-top: -130%;
     width: 100%;
     background-color: black;
 }
@@ -363,6 +363,7 @@
     border-radius: 20px;
     text-align: left;
     overflow-y: auto;
+    pointer-events: none;
 }
 
 

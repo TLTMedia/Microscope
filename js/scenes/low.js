@@ -44,7 +44,7 @@ function lowDLight() {
 
 // Trigger for coarse knob.
 function lowAdjustCoarse() {
-    textSetup("Move the stage up by moving the course knob.", "10%", "64%");
+    textSetup("Move the stage up by moving the course knob.", "60%", "64%");
     var id="#knobsCoarse"
         if (lowCoarse.isActive()) { 
             var clonedComp = highlightComponent(id);

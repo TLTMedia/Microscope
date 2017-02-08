@@ -87,6 +87,7 @@ linear:
 -Modify Coarse Knob to complete on clarity (white line).
 -Add warnings/additional text
     -Too high of aperture light will be blinding (on low mag)
+    -Too far movement of knobs may blur view. 
 -Implement game modes (restriction to restrictionless)
 -Deviate from framework and add a feedback button before moving forward.
 -Readjust position of popup as it goes step by step
