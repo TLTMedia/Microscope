@@ -145,6 +145,7 @@ function resizeWindow() {
             "height": h*0.55 + "px",
             "width": h*0.55 + "px"
         });
+
     }else{
         $("#rotate").css({
             'height': w*0.2 + "px", 

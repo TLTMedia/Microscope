@@ -1,5 +1,0 @@
-Examples:
-http://virtuallabs.nmsu.edu/micro.php
-https://apps.tlt.stonybrook.edu/spect/
-https://docs.webplatform.org/wiki/svg/tutorials/smarter_svg_filters
-

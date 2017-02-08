@@ -137,9 +137,14 @@ function updateAnimation() {
     }
     //
 
+    //console.log($(window).width());
+    //console.log(ms.xcaliper);
+        
+     
     /* Slide Contents Animations */
     // Caliper movements on slide.
     translateReduce("#slideContentsContainer, #slideContentsContainer2", (ms.xcaliper * 10), (ms.ycaliper * 10)+(10*(1*(sm_orig["MAX_KNOB"]-ms.knobPosition))));
+
     // Microscope darkness (hack is based off of a black background to darken)
     // [0,40] -> Expand to [0,60]
     $("#slideContents,#slideContents2,#stageLight").css({

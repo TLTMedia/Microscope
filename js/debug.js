@@ -45,8 +45,8 @@ function DEBUG(state){
     if (isDebug){
         debugIntro();
         debugSetup();
-        debugLow(); 
-        debugMedMag();
+        //debugLow(); 
+        //debugMedMag();
         //debugHighMag(); 
     }
     return isDebug;
