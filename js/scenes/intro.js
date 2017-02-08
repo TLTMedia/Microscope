@@ -74,7 +74,7 @@ function triggerLightSwitch(){
     var clonedArr = highlightArray(arr);
     $("#switch")
         .hover(function () {
-            textSetup("Light Switch: Turns the light on and off.", "10%", "73%");        
+            textSetup("Light Switch: Turns the light on and off.", "20%", "73%");        
 
             if (!flag){
                 introIsComplete(clonedArr);
@@ -94,7 +94,7 @@ function triggerEyepiece() {
     $("#ocularLensBase, #ocularRight, #ocularLeft, #ocularLeftDiopter")
         .hover(function () {
 
-            textSetup("Eyepiece: View the sample through the ocular lenses. They magnify the image ten times.", "5%", "25%");
+            textSetup("Eyepiece: View the sample through the ocular lenses. They magnify the image ten times.", "64%", "15%");
             if (!flag){introIsComplete(clonedArr);flag=!flag;}
         }).mouseleave(function(){popupOff()});
 }
@@ -107,7 +107,7 @@ function triggerDiaphragm() {
 
     $("#diaphragm")
         .hover(function () {
-            textSetup("Diaphragm: Adjusts the amount of light on the slide", "15%","60%");
+            textSetup("Diaphragm: Adjusts the amount of light on the slide", "25%","64%");
             if (!flag){introIsComplete(clonedArr);flag=!flag;}
         }).mouseleave(function(){popupOff()});
 }
@@ -120,7 +120,7 @@ function triggerFine() {
     $("#knobsFine")
         .hover(function () {
 
-            textSetup("Fine Knobs: Moves the stage slightly to sharpen the focus","10%","64%");
+            textSetup("Fine Knobs: Moves the stage slightly to sharpen the focus","63%","64%");
             if (!flag){introIsComplete(clonedArr);flag=!flag;}
         }).mouseleave(function(){popupOff()});
 }
@@ -133,7 +133,7 @@ function triggerCoarse() {
     $("#knobsCoarse")
         .hover(function () {
 
-            textSetup("Coarse Knobs: Moves the stage up and down for focusing", "10%", "64%");
+            textSetup("Coarse Knobs: Moves the stage up and down for focusing", "63%", "64%");
             if (!flag){introIsComplete(clonedArr);flag=!flag;}
         }).mouseleave(function(){popupOff()});
 }
@@ -148,7 +148,7 @@ function triggerCaliper() {
     $("#caliperKnob, #caliper, #xcaliper, #ycaliper")
         .hover(function () {
 
-            textSetup("Caliper: Adjusts the vertical and horizontal positions of the slide.", "55%", "55%");
+            textSetup("Caliper: Adjusts the vertical and horizontal positions of the slide.", "65%", "60%");
             if (!flag){introIsComplete(clonedArr);flag=!flag;}
         }).mouseleave(function(){popupOff()});
 }
@@ -161,7 +161,7 @@ function triggerLenses() {
     $("#lenses, #lensesBlue, #lensesRed, #lensesYellow, #lensesWhite, #lensesBasePath")
         .hover(function () {
 
-            textSetup("Lenses: The lenses are rotated on the nosepiece to change the magnification. These different lenses are referred to as the objectives.", "10%", "36%");
+            textSetup("Lenses: The lenses are rotated on the nosepiece to change the magnification. These different lenses are referred to as the objectives.", "15%", "33%");
             if (!flag){introIsComplete(clonedArr);flag=!flag;}
         }).mouseleave(function(){popupOff()});
 }
