@@ -6,6 +6,42 @@
  */
 
 
+//  See: /__image-reference/gifs/ocular.gif
+function lowAdjustLenses() {
+    textSetup("Rotate the lenses to low magnification (4X) without passing 100X magnification.", "15%", "35%"); 
+    var id="#lensesBasePath"
+        if (lowLenses.isActive()) { 
+            var clonedComp = highlightComponent(id);
+            bringToFront($(id));
+            var handler = function(){
+                if (ms.lensePosition==0){
+                    removeHighlightCopy();
+                    lowLenses.complete();
+                    $(document).unbind("mousemove", handler);
+                }
+            }
+            $(document).bind("mousemove", handler);
+        }
+}
+
+
+
+// Adjust diaphragm light
+function lowDLight() {
+    textSetup("Slowly slide the aperture knob to the left to change the lighting on the slide.", "60%", "65%");
+    var id="#diaphragm"
+        if (lowDiaphragmLight.isActive()) { 
+            var clonedComp = highlightComponent(id);
+            bringToFront($(id));
+            bringToFront($("#aperture"));
+            bringToFront($("#apertureKnob"));
+            var handler = function(){
+                subHandler(ms.diaphragmLightPosition, 5, 30, lowDiaphragmLight, handler, id, null);
+            }
+            $(document).bind("mousemove", handler);
+        }
+}
+
 // Trigger for coarse knob.
 function lowAdjustCoarse() {
     textSetup("Move the stage up by moving the course knob.", "10%", "64%");
@@ -21,22 +57,6 @@ function lowAdjustCoarse() {
 }
 
 
-// Adjust diaphragm light
-function lowDLight() {
-    textSetup("Adjust the diaphragm to change the lighting on the slide.", "10%", "60%");
-    var id="#diaphragm"
-        if (lowDiaphragmLight.isActive()) { 
-            var clonedComp = highlightComponent(id);
-            bringToFront($(id));
-            bringToFront($("#aperture"));
-            bringToFront($("#apertureKnob"));
-
-            var handler = function(){
-                subHandler(ms.diaphragmLightPosition, 5, 30, lowDiaphragmLight, handler, id, null);
-            }
-            $(document).bind("mousemove", handler);
-        }
-}
 
 
 function lowDHeight() {
@@ -77,22 +97,3 @@ function lowAdjustCaliper() {
 
 }
 
-//  !!! (´・ω・`)
-//  eyepiece position should displace cell view.
-//  See: /__image-reference/gifs/ocular.gif
-function lowAdjustLenses() {
-    textSetup("Lenses: The lenses are rotated on the nosepiece to change the magnification. These different lenses are referred to as the objectives.", "15%", "35%"); 
-    var id="#lensesBasePath"
-        if (lowLenses.isActive()) { 
-            var clonedComp = highlightComponent(id);
-            bringToFront($(id));
-            var handler = function(){
-                if (ms.lensePosition==0){
-                    removeHighlightCopy();
-                    lowLenses.complete();
-                    $(document).unbind("mousemove", handler);
-                }
-            }
-            $(document).bind("mousemove", handler);
-        }
-}

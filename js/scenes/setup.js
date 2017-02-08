@@ -21,7 +21,7 @@ function setupEnableSwitch() {
 }
 
 function setupEnableSlide() {
-    textSetup("Now grab the slide below and put it against the caliper.", "60%", "50%");
+    textSetup("Now grab the slide below and put it against the caliper.", "64%", "45%");
     toggleVisibility("#slide");
 
 
@@ -109,7 +109,7 @@ function setupEnableSlide() {
 //  knob should go <- not ->
 // hehe dwai shrin i got u
 function setupCondenser() {
-    textSetup("Move the condenser knob all the way to the top.", "20%", "60%");
+    textSetup("Rotate the condenser knob all the way to the top.", "8%", "45%");
     var id="#draggableDiaphragm";
     if (setupCondense.isActive()) {
         var clonedComp = highlightComponent(id);

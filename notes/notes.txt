@@ -86,6 +86,12 @@ linear:
 -Rotation not firefox compatible.
 -Modify Coarse Knob to complete on clarity (white line).
 -Add warnings/additional text
+    -Too high of aperture light will be blinding (on low mag)
 -Implement game modes (restriction to restrictionless)
 -Deviate from framework and add a feedback button before moving forward.
-
+-Readjust position of popup as it goes step by step
+-Rewrite the popup text (directions) to be more brief.
+-Play with timing of popup movement.
+-Adjust slide so that it triggers its activation on top of pseudoclone.
+-Play with the possibility of moving the guiding text over to the side steps (toggability).
+-Overflow x on popup box.

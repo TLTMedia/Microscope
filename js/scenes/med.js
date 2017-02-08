@@ -9,7 +9,7 @@
 //  eyepiece position should displace cell view.
 //  See: /__image-reference/gifs/ocular.gif
 function medAdjustLenses() {
-    textSetup("Rotate the lenses to medium magnification (yellow).", "15%", "35%"); 
+    textSetup("Rotate the lenses to medium magnification (10X).", "15%", "35%"); 
     var id="#lensesBasePath"
         if (medLenses.isActive()) { 
             var clonedComp = highlightComponent(id);
@@ -28,7 +28,7 @@ function medAdjustLenses() {
 
 // Trigger for fine knob 
 function medAdjustFine() {
-    textSetup("Move the stage up slightly by moving the fine knob.", "60%", "64%");
+    textSetup("Adjust the fine knobs until the slide image becomes clear.", "60%", "64%");
     var id="#knobsFine"
         if (medFine.isActive()) {  
             var clonedComp = highlightComponent(id);
@@ -43,7 +43,7 @@ function medAdjustFine() {
 
 // Trigger for fine knob 
 function medAdjustDiopter() {
-    textSetup("Adjust the diopter to make the left view clear.", "20%", "30%");
+    textSetup("Adjust the diopter until the left slide view becomes clear.", "20%", "30%");
     var id="#ocularLeftDiopter"
         if (medDiopter.isActive()) {  
             var clonedComp = highlightComponent(id);
@@ -58,7 +58,7 @@ function medAdjustDiopter() {
 
 // Trigger for the ocular lenses
 function medAdjustEyepiece() {
-    textSetup("Adjust the eyepiece to change the magnification.", "60%", "30%");
+    textSetup("Adjust the eyepiece until both slide views converge.", "60%", "30%");
     var id="#ocularRight";
     if (medOcular.isActive()) { 
         var clonedComp = highlightComponent(id);

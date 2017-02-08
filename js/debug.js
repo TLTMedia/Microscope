@@ -5,6 +5,10 @@
 
 function debugIntro() {
     introLightSwitch.complete();
+    for (var i=0; i<components.length;i++){
+        $(components[i]).off("mouseenter");
+        $(components[i]).off("mouseleave");
+    }
 }
 
 function debugSetup() {
@@ -19,7 +23,6 @@ function debugLow(){
     removeHighlightCopy();
     lowLenses.complete();
     lowDiaphragmLight.complete();
-    //lowCoarse.complete();
 }
 
 function debugMedMag(){
@@ -42,8 +45,8 @@ function DEBUG(state){
     if (isDebug){
         debugIntro();
         debugSetup();
-        //debugLow(); 
-        //debugMedMag();
+        debugLow(); 
+        debugMedMag();
         //debugHighMag(); 
     }
     return isDebug;
