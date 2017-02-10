@@ -5,6 +5,10 @@
 
 function debugIntro() {
     introLightSwitch.complete();
+    for (var i=0; i<components.length;i++){
+        $(components[i]).off("mouseenter");
+        $(components[i]).off("mouseleave");
+    }
     removeHighlightCopy();
 }
 
