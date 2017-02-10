@@ -153,50 +153,32 @@
 .sview {
     border-radius: 50%;
     border-color: black;
-    display:visible;
+    display: block;
     position: absolute;
     background-color: black;
     left: 7%; 
     top: 10%;    
-    overflow: hidden; 
     z-index: 1;
+    overflow: hidden;
 }
 
 #slideView2{
-    left: 7%;
     z-index: 0;
 }
 
-#slideContentsContainer{
-    height: 100%;
-    margin-left: -50%;
-    margin-top: -130%;
-    width: 100%;
-    background-color: black;
-}
 
-#slideContentsContainer2{
-    height: 100%;
-    margin-left: -50%;
-    margin-top: -130%;
-    width: 100%;
-    background-color: black;
-}
-
-#slideContents{
-    width: 200%;
-    height: 200%;
-    position: relative;
+#slideView img, #slideView2 img{
+    border-radius: 50%;
+    border-color: black;
     margin: 0 auto;
-}
+    display: block;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
 
 
-#slideContents2{
-    width: 200%;
-    height: 200%;
-    position: relative;
-    margin: 0 auto;
 }
+
 
 #switchTarget {
     width: 4%;

@@ -304,8 +304,8 @@ function swapMag(n){
         if (n==0){
             slideImg = $('<img id="slideContents">');
             slideImg2 = $('<img id="slideContents2">');
-            slideImg.appendTo('#slideContentsContainer');
-            slideImg2.appendTo('#slideContentsContainer2');
+            slideImg.appendTo('#slideView');
+            slideImg2.appendTo('#slideView2');
             return;
         }
     slideImg = $("#slideContents");
