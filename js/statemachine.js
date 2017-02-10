@@ -139,20 +139,31 @@ function updateAnimation() {
 
     //console.log($(window).width());
     //console.log(ms.xcaliper);
+    //console.log(ms.xslide + ", " + (ms.yslide-ms.knobPosition));
+    // We can derive the slide content offset from the position on the scope
         
      
+    //console.log(ms.knobPosition);
     /* Slide Contents Animations */
     // Caliper movements on slide.
-    translateReduce("#slideContentsContainer, #slideContentsContainer2", (ms.xcaliper * 10), (ms.ycaliper * 10)+(10*(1*(sm_orig["MAX_KNOB"]-ms.knobPosition))));
+    //translateReduce("#slideContents, #slideContents2", (ms.xcaliper * 10), (ms.ycaliper * 10)+(10*(1*(sm_orig["MAX_KNOB"]-ms.knobPosition))));
 
+    //console.log("Ycaliper: " + ms.ycaliper*10);
+    //console.log("Offset: " + 10*(sm_orig["MAX_KNOB"]-ms.knobPosition));
+    //var yCali = ((ms.ycaliper*10)+((10*(sm_orig["MAX_KNOB"]-ms.knobPosition))));
+    var yCali = (ms.yslide - ms.knobPosition) * 10;
+    var xCali = (ms.xslide) * 10;
+    //console.log(yCali);
     // Microscope darkness (hack is based off of a black background to darken)
     // [0,40] -> Expand to [0,60]
     $("#slideContents,#slideContents2,#stageLight").css({
         "opacity": (0.4) + ((1.5 * ms.diaphragmLightPosition) / 100)
     });
 
+    //console.log("scale(" + ms.zoom + ") translate(" + xCali + "px," + yCali + "px)");
+
     $("#slideContents, #slideContents2").css({
-        "transform": "scale(" + ms.zoom + ")"
+        "transform": "scale(" + ms.zoom + ") translate(" + xCali + "px," + yCali + "px)"
     });
 
     var chosenBlur = ms.slideBlur;
@@ -253,7 +264,7 @@ function enableCoarseKnob() {
             if (isDown) {
                 if (prevY < event.pageY) {
                     if (ms.knobPosition < sm_orig["MAX_KNOB"]) {
-                        ms.zoom -= val * 0.02;
+                        ms.zoom -= val * 0.1;
                         ms.yslide += val;
                         ms.ycaliper += val;
                         sm_orig["MAX_Y_CALIPER"] += val;
@@ -265,7 +276,7 @@ function enableCoarseKnob() {
                     }
                 } else if ((prevY > event.pageY)) {
                     if (ms.knobPosition > sm_orig["MIN_KNOB"]) {
-                        ms.zoom += val * 0.02;
+                        ms.zoom += val * 0.1;
                         ms.yslide -= val;
                         ms.ycaliper -= val;
                         ms.yknobcaliper -= val;
@@ -513,20 +524,16 @@ function enableLenses() {
 
                 if (ms.lenseStates[ms.lensePosition].includes("Red")) {
                     swapMag(1);
-                    ms.zoom = 1;
                     ms.slideBlur = 4;
                 } else if (ms.lenseStates[ms.lensePosition].includes("Yellow")) {
                     swapMag(2);
-                    ms.zoom = 1;
                     ms.slideBlur = 4;
                 } 
                 else if (ms.lenseStates[ms.lensePosition].includes("White")){
                     swapMag(2);
-                    ms.zoom = 1;
                 } 
                 else if (ms.lenseStates[ms.lensePosition].includes("Blue")){
                     swapMag(2);
-                    ms.zoom = 1;
                     ms.slideBlur = 4;
                 }
 
