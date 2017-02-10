@@ -5,10 +5,7 @@
 
 function debugIntro() {
     introLightSwitch.complete();
-    for (var i=0; i<components.length;i++){
-        $(components[i]).off("mouseenter");
-        $(components[i]).off("mouseleave");
-    }
+    removeHighlightCopy();
 }
 
 function debugSetup() {
@@ -44,7 +41,7 @@ function DEBUG(state){
     var isDebug = state;
     if (isDebug){
         debugIntro();
-        debugSetup();
+        //debugSetup();
         //debugLow(); 
         //debugMedMag();
         //debugHighMag(); 

@@ -124,6 +124,9 @@ linear:
 -Fine tuning values of microcsope to be as realistic as possible
 -Responsive design when reduced
 -Aperture precision not implemented yet.
+-Slide content container must adjust to window changes.
+    -Fix responsive design
+    -Find magic numbers to ensure alignment with calipers.
 
 -- Known Bugs/Fixes --
 -Rotation not firefox compatible.
@@ -139,15 +142,14 @@ linear:
 -Adjust slide so that it triggers its activation on top of pseudoclone.
 -Play with the possibility of moving the guiding text over to the side steps (toggability).
 -Overflow x on popup box.
--Slide content container must adjust to window changes.
-    -Fix responsive design
-    -Find magic numbers to ensure alignment with calipers.
 -Create a large text box below (or above) the steps to detail a particular steps (descriptions)
 -Modify header to extend use such as: returning to "Intro" scene, switching modes, etc.
 -Difficulty/Quizzing are the "Games" were are implenting.
 -Should only be one difficulty regarding how the microscope is being used.
 -Occasional bug arises where nothing loads. Test by refreshing && disabling cache.
     -resize line 17X?
+-Ensure "unsupervised" actions don't leave game unprogressable
+    -Moving lenses (with resets the blur), coarse gets stuck and fine inactive
 
 
 - Examples -

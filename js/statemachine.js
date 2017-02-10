@@ -272,7 +272,7 @@ function enableCoarseKnob() {
                         ms.yknobcaliper += val;
                         ms.yheight += val;
                         ms.knobPosition += val;
-                        ms.slideBlur += 0.1;
+                        ms.slideBlur += 0.15;
                     }
                 } else if ((prevY > event.pageY)) {
                     if (ms.knobPosition > sm_orig["MIN_KNOB"]) {
@@ -284,7 +284,7 @@ function enableCoarseKnob() {
                         sm_orig["MIN_Y_CALIPER"] -= val;
                         ms.yheight -= val;
                         ms.knobPosition -= val;
-                        ms.slideBlur -= 0.1;
+                        ms.slideBlur -= 0.15;
 
                     }
                 }
