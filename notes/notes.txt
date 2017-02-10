@@ -150,7 +150,7 @@ linear:
     -resize line 17X?
 -Ensure "unsupervised" actions don't leave game unprogressable
     -Moving lenses (with resets the blur), coarse gets stuck and fine inactive
-
+-Modify scenes/setup.js caliper positions to calibrate where x,y = 0,0. 
 
 - Examples -
 http://virtuallabs.nmsu.edu/micro.php

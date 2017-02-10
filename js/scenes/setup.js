@@ -127,7 +127,6 @@ function setupAdjustCaliper() {
     id = "#caliperKnob"
         if (setupCaliper.isActive()) {
             //var clonedComp = highlightComponent("#caliperKnob");
-
             var clonedComp2 = highlightComponent("#yCaliperKnob");
             var clonedComp2 = highlightComponent("#xCaliperKnob");
 
