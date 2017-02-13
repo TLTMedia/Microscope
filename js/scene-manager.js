@@ -6,6 +6,10 @@ function setupText() {
     $("#headerText").text("Follow the instructions to toggle the components.");
 }
 
+function toggableTab(){
+
+}
+
 // Make use of the header by making it a tooltip.
 // When user hovers over a piece, describe what it is. 
 // To improve it, use a mapping that takes a key word and redirects it into a proper tooltip.
@@ -31,7 +35,7 @@ function startStep(step) {
        */
 
     if (step == introLightSwitch) {
-        introText();
+        //introText();
         if (!isDebug) triggerLightSwitch();
         $("#light").addClass("elementOff");
         toggleVisibility("#slide");
@@ -48,8 +52,8 @@ function startStep(step) {
        act/adjust the microscope before the game proceeds onto the next step.
     */
     if (step == setupLightSwitch) {
-        bindTooltip(); 
-        setupText();
+        //bindTooltip(); 
+        //setupText();
         setupEnableSwitch();
         enableLightSwitch();
     }

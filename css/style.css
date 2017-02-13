@@ -360,15 +360,16 @@
 
 #helpBox{
     left: 83%;
-    top: 40%;
+    top: 45%;
     width: 15%;
-    height: 50%;
+    height: 43%;
     position: absolute;
     background-color: white;
     font-family: "Helvetica", sans-serif;
     z-index: 100;
 	border-radius: 10%;
     padding: 2%;
+    padding-top: 0%;
     color: white;
 
     background-image: url("../img/checkered.png");
@@ -376,7 +377,23 @@
 
 #header{
     background-image: url("../stripes/DarkStripeBG.png");
+    padding: 0.5%;
 }
 
+#header button{
+    padding: 1%;
+    margin-right: 1%;
+    font-family: "Helvetica", sans-serif;
+    background-image: url("../stripes/BlueStripe.png");
+    border-radius: 20px;
+    color: white;
+    float: left;
+    
+}
 
-
+#header p{
+    margin-right: 3%;
+    margin-top: 1%;
+    float: right;
+    color: white;
+}
