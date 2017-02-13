@@ -189,9 +189,6 @@ function updateAnimation() {
 
 /* Toggles the light switch */
 function enableLightSwitch() {
-    //$("#headerText").text("Turn on the light.");
-
-
 
     $("#switch").on('click', function() {
         ms.lightStatus = (1 + ms.lightStatus) % 2;

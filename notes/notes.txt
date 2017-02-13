@@ -1,44 +1,3 @@
-— Meetings/Discussions - 
-
-10/17/16
-Feedback:
-
-[]When y caliper moves down, everything on the view gets realistically bigger (scale x/y, slide down).
-[x]Create a side view of the scope and put it at the side of the front[]view so there are two views active simultaneously.
-[]Create 8 SVG views of the lenses. 4 for fixed pivots, 4 for intermission pivots. Add drag functionality at top of lense (Warning to not touch lenses)
-    [x]Modify SVG files to represent orientation of the scope better.
-[]Modify setup stage to include:
-    []Place slide in.
-    []Toggle aperture light.
-    []Control calipers to make sure specimen is under the aperture light (Perhaps popup view to show specimen orientation). 
-[]Aperture knob light should increase as magnification increases
-    []Low mag should have very low light.
-    []High mag should have higher aperture value (more diffraction).
-    []Change orientation of aperture knob to rightmost side.
-[]Consider the use of event targets as opposed to hardcoded div names.
-[x]Utilize bindings over setTimeout if possible.
-[]Slide view should change by state changes. 
-
-10/28/16
-[x]Debug the circular motion of the side view
-[x]Attach side view to mag view so they update synchronously
-[x]Coarse knob needs to moderately zoom on slide
-[x]Fine knob needs to blur/unblur the slide
-[]Make a middleware function between animations to translate pixel to percentage values
-[]"Learning the Ropes" should be renamed to low mag
-[]Turn old low mag into high mag scene.
-[]Debugger should destroy highlights
-[]Can we make it so that the clone blurs move with the main objects.
-
-
-11/2/16
-[]Email: meilin.chan@stonybrook.edu
-[x]Give better feedback on the slide contents (Setup)
-[]Arrows to indicate.. Might be excessive, just inline[]text of telling user to click might work.
-[]Issue of sequential steps.
-[]Try to make operations of drag smoother.
-
-
 —- Overview —
 
 Intro
@@ -120,37 +79,75 @@ linear:
 	* warning: don’t go to oil *
 
 
---Fixed--
--Fine tuning values of microcsope to be as realistic as possible
--Responsive design when reduced
--Aperture precision not implemented yet.
--Slide content container must adjust to window changes.
-    -Fix responsive design
-    -Find magic numbers to ensure alignment with calipers.
+— Meetings/Discussions - 
 
--- Known Bugs/Fixes --
--Rotation not firefox compatible.
--Modify Coarse Knob to complete on clarity (white line).
--Add warnings/additional text
-    -Too high of aperture light will be blinding (on low mag)
-    -Too far movement of knobs may blur view. 
--Implement game modes (restriction to restrictionless)
--Deviate from framework and add a feedback button before moving forward.
--Readjust position of popup as it goes step by step
--Rewrite the popup text (directions) to be more brief.
--Play with timing of popup movement.
--Adjust slide so that it triggers its activation on top of pseudoclone.
--Play with the possibility of moving the guiding text over to the side steps (toggability).
--Overflow x on popup box.
--Create a large text box below (or above) the steps to detail a particular steps (descriptions)
--Modify header to extend use such as: returning to "Intro" scene, switching modes, etc.
--Difficulty/Quizzing are the "Games" were are implenting.
--Should only be one difficulty regarding how the microscope is being used.
--Occasional bug arises where nothing loads. Test by refreshing && disabling cache.
-    -resize line 17X?
--Ensure "unsupervised" actions don't leave game unprogressable
-    -Moving lenses (with resets the blur), coarse gets stuck and fine inactive
--Modify scenes/setup.js caliper positions to calibrate where x,y = 0,0. 
+10/17/16
+Feedback:
+
+[x]When y caliper moves down, everything on the view gets realistically bigger (scale x/y, slide down).
+[x]Create a side view of the scope and put it at the side of the front[]view so there are two views active simultaneously.
+[x]Create 8 SVG views of the lenses. 4 for fixed pivots, 4 for intermission pivots. Add drag functionality at top of lense (Warning to not touch lenses)
+    [x]Modify SVG files to represent orientation of the scope better.
+[x]Modify setup stage to include:
+    [x]Place slide in.
+    [x]Toggle aperture light.
+    [x]Control calipers to make sure specimen is under the aperture light (Perhaps popup view to show specimen orientation). 
+[x]Aperture knob light should increase as magnification increases
+    [x]Low mag should have very low light.
+    [x]High mag should have higher aperture value (more diffraction).
+    [x]Change orientation of aperture knob to rightmost side.
+[x]Utilize bindings over setTimeout if possible.
+[x]Slide view should change by state changes. 
+
+10/28/16
+[x]Debug the circular motion of the side view
+[x]Attach side view to mag view so they update synchronously
+[x]Coarse knob needs to moderately zoom on slide
+[x]Fine knob needs to blur/unblur the slide
+[x]Make a middleware function between animations to translate pixel to percentage values
+[x]"Learning the Ropes" should be renamed to low mag
+[x]Turn old low mag into high mag scene.
+[x]Debugger should destroy highlights
+[x]Can we make it so that the clone blurs move with the main objects.
+
+
+11/2/16
+[]Email: meilin.chan@stonybrook.edu
+[x]Give better feedback on the slide contents (Setup)
+[]Arrows to indicate.. Might be excessive, just inline[]text of telling user to click might work.
+[]Issue of sequential steps.
+[]Try to make operations of drag smoother.
+
+
+-- To do --
+[x]Fine tuning values of microcsope to be as realistic as possible
+[x]Responsive design when reduced
+[x]Aperture precision not implemented yet.
+[x]Slide content container must adjust to window changes.
+    [x]Fix responsive design
+    [x]Find magic numbers to ensure alignment with calipers.
+[x]Readjust position of popup as it goes step by step
+[]Rotation not firefox compatible.
+[]Modify Coarse Knob to complete on clarity (white line).
+[]Add warnings/additional text
+    []Too high of aperture light will be blinding (on low mag)
+    []Too far movement of knobs may blur view. 
+[]Implement game modes (restriction to restrictionless)
+[]Deviate from framework and add a feedback button before moving forward.
+[]Rewrite the popup text (directions) to be more brief.
+[]Play with timing of popup movement.
+[]Adjust slide so that it triggers its activation on top of pseudoclone.
+[]Play with the possibility of moving the guiding text over to the side steps (toggability).
+[]Overflow x on popup box.
+[]Create a large text box below (or above) the steps to detail a particular steps (descriptions)
+[]Modify header to extend use such as: returning to "Intro" scene, switching modes, etc.
+[]Difficulty/Quizzing are the "Games" were are implenting.
+[]Should only be one difficulty regarding how the microscope is being used.
+[]Occasional bug arises where nothing loads. Test by refreshing && disabling cache.
+    []resize line 17X?
+[]Ensure "unsupervised" actions don't leave game unprogressable
+   []Moving lenses (with resets the blur), coarse gets stuck and fine inactive
+[]Modify scenes/setup.js caliper positions to calibrate where x,y = 0,0. 
 
 - Examples -
 http://virtuallabs.nmsu.edu/micro.php
