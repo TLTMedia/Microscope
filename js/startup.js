@@ -50,7 +50,7 @@ function showMenu() {
     'z-index': 100
     });
     // Lock/unlock modes
-        lockModes();
+    lockModes();
     // Show results screen
     $("#results").removeClass("anim_exitResults");
     $("#results").addClass("anim_enterResults");
@@ -325,6 +325,15 @@ function swapMag(n){
 
 // ====== Frame setup and microscope initialization. ====== //
 $(function () {
+
+
+    // Attach event listeners to buttons on header
+    $("#header button").click(function(event){
+        $("#header button").each(function(index){
+            $(this).removeClass("headerButtonActive"); 
+        });
+        var id = $(this).toggleClass("headerButtonActive");
+    });
 
     $("#rotate").load('img/sideview.svg', function () {
         $("#draggableDiaphragm").addClass("knob");

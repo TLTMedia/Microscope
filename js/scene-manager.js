@@ -10,6 +10,9 @@ function toggableTab(){
 
 }
 
+function headerButtonClick(e){
+}
+
 // Make use of the header by making it a tooltip.
 // When user hovers over a piece, describe what it is. 
 // To improve it, use a mapping that takes a key word and redirects it into a proper tooltip.
