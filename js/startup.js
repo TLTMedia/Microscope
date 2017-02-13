@@ -116,8 +116,8 @@ function newGame(guided, manual) {
     resizeWindow(); // Resize window
 }
 
-function loadSubMenu() {
-    //  Define steps (order doesn't matter here)
+
+function loadIntro(){
     var stepText = [{
         "id": "intro",
         "shortText": "Introduction",
@@ -127,7 +127,36 @@ function loadSubMenu() {
             "longText": "Click the light switch.",
             "feedbackText": "click the light switch"
         }]
-    }, {
+    }]
+
+    game = new Game(true, true);
+    var stepCount = -1;
+    var groupCount = -1;
+    for (i in stepText) {
+        groupCount++;
+        var newGroup = new StepGroup(stepText[i].id, stepText[i].shortText, "#group" + groupCount, "#groupIcon" + groupCount);
+        game.addGroup(newGroup);
+        for (j in stepText[i].steps) {
+            var cur = stepText[i].steps[j];
+            stepCount++;
+            var newStep = new Step(cur.id, cur.shortText, cur.longText, cur.feedback, "#step" + stepCount, "#icon" + stepCount);
+            game.addStep(newStep);
+            newGroup.addStep(newStep);
+        }
+    }
+    game.linkSteps();
+
+
+    /** Introduction **/
+    introLightSwitch = game.getGroupStep(0, 0);
+    updateSteps();
+    introLightSwitch.activate();
+}
+
+
+function loadTutorial() {
+    //  Define steps (order doesn't matter here)
+    var stepText = [{
         "id": "setup",
         "shortText": "Setup",
         "steps": [{
@@ -237,47 +266,32 @@ function loadSubMenu() {
         }
     }
     game.linkSteps();
-    // console.log(game);
 
-    // Intro
-    introLightSwitch = game.getGroupStep(0, 0);
-    // introEyepiece = game.getGroupStep(0, 1);
-    // introCoarse = game.getGroupStep(0, 2);
-    // introFine = game.getGroupStep(0, 3);
-    // introDiaphragm = game.getGroupStep(0, 4);
-    // introCaliper = game.getGroupStep(0, 5);
-    // introLenses = game.getGroupStep(0, 6);
 
-    // Setup
-    setupLightSwitch = game.getGroupStep(1, 0);
-    setupSlide = game.getGroupStep(1, 1);
-    setupCondense = game.getGroupStep(1, 2);
-    setupCaliper = game.getGroupStep(1, 3);
-
-    //  !!! (´・ω・`)
-    // Ocular adjustment should go after diaphragm + before caliper
-
+    /** Tutorial **/
+    setupLightSwitch = game.getGroupStep(0, 0);
+    setupSlide = game.getGroupStep(0, 1);
+    setupCondense = game.getGroupStep(0, 2);
+    setupCaliper = game.getGroupStep(0, 3);
     // Low Magnification
-    lowLenses = game.getGroupStep(2,0)
-        lowDiaphragmLight = game.getGroupStep(2, 1);
-    lowCoarse = game.getGroupStep(2, 2);
+    lowLenses = game.getGroupStep(1,0);
+    lowDiaphragmLight = game.getGroupStep(1, 1);
+    lowCoarse = game.getGroupStep(1, 2);
 
     // Med Magnification
-    medLenses = game.getGroupStep(3,0)
-        medFine = game.getGroupStep(3, 1);
-    medDiopter = game.getGroupStep(3, 2);
-    medOcular = game.getGroupStep(3, 3);
+    medLenses = game.getGroupStep(2,0)
+        medFine = game.getGroupStep(2, 1);
+    medDiopter = game.getGroupStep(2, 2);
+    medOcular = game.getGroupStep(2, 3);
 
 
     // High magnification
-    highLenses = game.getGroupStep(4,0)
-        highAperture = game.getGroupStep(4, 1);
-    highFine = game.getGroupStep(4, 2);
+    highLenses = game.getGroupStep(3,0)
+        highAperture = game.getGroupStep(3, 1);
+    highFine = game.getGroupStep(3, 2);
 
     updateSteps();
-    //enterStepObjects();
-    // console.log("Starting game");
-    introLightSwitch.activate();
+    setupLightSwitch.activate();
 }
 
 
@@ -323,18 +337,19 @@ function swapMag(n){
     slideImg2.attr('src', cell2);
 }
 
+
+var formerState = $("body").html();
+
+// Unloads everything, used to change game modes
+function destroy(){
+    $("#microscope").html("");
+    $("rotate").html("");
+    $("body").html(formerState);
+}
+
+
 // ====== Frame setup and microscope initialization. ====== //
-$(function () {
-
-
-    // Attach event listeners to buttons on header
-    $("#header button").click(function(event){
-        $("#header button").each(function(index){
-            $(this).removeClass("headerButtonActive"); 
-        });
-        var id = $(this).toggleClass("headerButtonActive");
-    });
-
+function startup(fun){
     $("#rotate").load('img/sideview.svg', function () {
         $("#draggableDiaphragm").addClass("knob");
     })
@@ -347,24 +362,43 @@ $(function () {
 
         //$('#microscope svg').append('<filter id="blurMe"><feGaussianBlur in="SourceGraphic" stdDeviation="1" /></filter>')
         swapMag(0);
-
-
         resizeWindow();
         loadStartMenu();
-        loadSubMenu();
+        fun();
+        //loadTutorial();
 
         $("#endOption1").click(function () {
             // Start Beginner Mode
             newGame(true, false);
         });
-
-
         resizeWindow();
-
     });
 
+}
 
 
+var currentMode = "Introduction"
+//Encapsulation
+$(function(){
+    // Attach event listeners to buttons on header
+    $("#header button").click(function(event){
+        $("#header button").each(function(index){
+            $(this).removeClass("headerButtonActive"); 
+        });
+        var id = $(this).toggleClass("headerButtonActive");
+        var innerText = $(this).text();
+        currentMode = innerText;
+        switch(innerText){
+            case "Introduction":
+                destroy();
+                startup(loadIntro);
+                break;
+            case "Tutorial":
+                destroy();
+                startup(loadTutorial);
+                break;
+        } 
+    });
 
-
+    startup(loadIntro);
 });

@@ -29,7 +29,7 @@ function bindTooltip(){
    Use of below function is for intro.js (intro.js + gameLogic.js interdependence).
    */
 function startStep(step) {
-    var isDebug = true;
+    var isDebug = false;
     /* intro
 
        Intro doesn't necessarily have flexible choices for the user to act on.
@@ -37,84 +37,89 @@ function startStep(step) {
        parts of the microscope.
        */
 
-    if (step == introLightSwitch) {
-        //introText();
-        if (!isDebug) triggerLightSwitch();
-        $("#light").addClass("elementOff");
-        toggleVisibility("#slide");
-        triggerDiaphragm();
-        triggerFine();
-        triggerCoarse();
-        triggerCaliper();
-        triggerEyepiece();
-        triggerLenses();
-        isDebug = DEBUG(isDebug);
+    // Intro Game mode Scenes
+    if (currentMode == "Introduction"){
+        if (step == introLightSwitch) {
+            //introText();
+            if (!isDebug) triggerLightSwitch();
+            $("#light").addClass("elementOff");
+            toggleVisibility("#slide");
+            triggerDiaphragm();
+            triggerFine();
+            triggerCoarse();
+            triggerCaliper();
+            triggerEyepiece();
+            triggerLenses();
+            isDebug = DEBUG(isDebug);
+        }
     }
 
-    /* setup
-       act/adjust the microscope before the game proceeds onto the next step.
-    */
-    if (step == setupLightSwitch) {
-        //bindTooltip(); 
-        //setupText();
-        setupEnableSwitch();
-        enableLightSwitch();
-    }
-    if (step == setupSlide){
-        setupEnableSlide(); 
-    }
-    if (step == setupCondense){ 
-        setupCondenser();
-        enableSideDiaphragmRotate();
-    }
+    else if (currentMode == "Tutorial"){
+        /* setup
+           act/adjust the microscope before the game proceeds onto the next step.
+           */
+        if (step == setupLightSwitch) {
+            $("#light").addClass("elementOff");
+            toggleVisibility("#slide");
+            setupEnableSwitch();
+            enableLightSwitch();
+        }
+        if (step == setupSlide){
+            setupEnableSlide(); 
+        }
+        if (step == setupCondense){ 
+            setupCondenser();
+            enableSideDiaphragmRotate();
+        }
 
-    if (step == setupCaliper){ 
-        setupAdjustCaliper();
-        enableCaliper(); 
-    }
+        if (step == setupCaliper){ 
+            setupAdjustCaliper();
+            enableCaliper(); 
+        }
 
-    // Low magnification
-    if (step == lowLenses) {
-        lowAdjustLenses();
-        enableLenses();
-    }
-    if (step == lowDiaphragmLight) {
-        lowDLight();
-        enableDiaphragmLight();
-    }
-    if (step == lowCoarse) {
-        lowAdjustCoarse();
-        enableCoarseKnob();
-    }
+        // Low magnification
+        if (step == lowLenses) {
+            lowAdjustLenses();
+            enableLenses();
+        }
+        if (step == lowDiaphragmLight) {
+            lowDLight();
+            enableDiaphragmLight();
+        }
+        if (step == lowCoarse) {
+            lowAdjustCoarse();
+            enableCoarseKnob();
+        }
 
-    // Med magnification
-    if (step == medLenses) {
-        medAdjustLenses();
-    }
-    if (step == medFine) {
-        medAdjustFine(); 
-        enableFineKnob();
-    }
-    if (step == medDiopter){
-        medAdjustDiopter();
-        enableDiopter();
-    }
-    if (step == medOcular) {
-        medAdjustEyepiece();
-        enableEyepiece();
-    }
+        // Med magnification
+        if (step == medLenses) {
+            medAdjustLenses();
+        }
+        if (step == medFine) {
+            medAdjustFine(); 
+            enableFineKnob();
+        }
+        if (step == medDiopter){
+            medAdjustDiopter();
+            enableDiopter();
+        }
+        if (step == medOcular) {
+            medAdjustEyepiece();
+            enableEyepiece();
+        }
 
 
-    // High magnification
-    if (step == highLenses) {
+        // High magnification
+        if (step == highLenses) {
 
-        highAdjustLenses();
-    }
-    if (step == highAperture){
-        highAdjustAperture();
-    }
-    if (step == highFine) {
-        highAdjustFine(); 
+            highAdjustLenses();
+        }
+        if (step == highAperture){
+            highAdjustAperture();
+        }
+        if (step == highFine) {
+            highAdjustFine(); 
+        }
     }
 
     // enable freemode? (user can do whatever they want with the scope)

@@ -399,9 +399,9 @@
     background-image: url("../stripes/GreenStripe3.png");
 }
 
-  #header p{
-      margin-right: 3%;
-      margin-top: 1%;
-      float: right;
-      color: white;
+#header p{
+    margin-right: 3%;
+    margin-top: 1%;
+    float: right;
+    color: white;
 }

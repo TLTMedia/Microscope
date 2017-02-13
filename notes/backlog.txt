@@ -154,4 +154,22 @@ http://virtuallabs.nmsu.edu/micro.php
 https://apps.tlt.stonybrook.edu/spect/
 https://docs.webplatform.org/wiki/svg/tutorials/smarter_svg_filters
 
+- Work Methodology - 
+Agile Development
+
+- Development Links - 
+https://en.wikipedia.org/wiki/Waterfall_model
+https://en.wikipedia.org/wiki/Timeboxing
+https://en.wikipedia.org/wiki/Scrum_(software_development)
+https://en.wikipedia.org/wiki/Agile_software_development
+https://en.wikipedia.org/wiki/Strategy_pattern
+https://en.wikipedia.org/wiki/Composition_over_inheritance
+https://en.wikipedia.org/wiki/WYSIWYG
+https://en.wikipedia.org/wiki/Design_Patterns
+http://softwareengineering.stackexchange.com/questions/7055/what-is-the-most-frequently-used-design-pattern
+http://www.javatpoint.com/factory-method-design-pattern
+
+
+
+
 
