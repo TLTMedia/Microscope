@@ -127,22 +127,22 @@ Feedback:
     [x]Fix responsive design
     [x]Find magic numbers to ensure alignment with calipers.
 [x]Readjust position of popup as it goes step by step
+[x]Play with the possibility of moving the guiding text over to the side steps (toggability).
+[x]Overflow x on popup box.
+[x]Create a large text box below (or above) the steps to detail a particular steps (descriptions)
+[x]Modify header to extend use such as: returning to "Intro" scene, switching modes, etc.
+[x]Should only be one difficulty regarding how the microscope is being used.
+[x]Adjust slide so that it triggers its activation on top of pseudoclone.
+[x]Implement game modes (restriction to restrictionless)
+[x]Rewrite the popup text (directions) to be more brief.
 []Rotation not firefox compatible.
 []Modify Coarse Knob to complete on clarity (white line).
 []Add warnings/additional text
     []Too high of aperture light will be blinding (on low mag)
     []Too far movement of knobs may blur view. 
-[]Implement game modes (restriction to restrictionless)
 []Deviate from framework and add a feedback button before moving forward.
-[]Rewrite the popup text (directions) to be more brief.
 []Play with timing of popup movement.
-[]Adjust slide so that it triggers its activation on top of pseudoclone.
-[]Play with the possibility of moving the guiding text over to the side steps (toggability).
-[]Overflow x on popup box.
-[]Create a large text box below (or above) the steps to detail a particular steps (descriptions)
-[]Modify header to extend use such as: returning to "Intro" scene, switching modes, etc.
 []Difficulty/Quizzing are the "Games" were are implenting.
-[]Should only be one difficulty regarding how the microscope is being used.
 []Occasional bug arises where nothing loads. Test by refreshing && disabling cache.
     []resize line 17X?
 []Ensure "unsupervised" actions don't leave game unprogressable

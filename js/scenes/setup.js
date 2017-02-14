@@ -81,7 +81,7 @@ function setupEnableSlide() {
             y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
 
 
-        if (setupSlide.isActive() && Math.abs(x) < 10 && Math.abs(y) < 10) {
+        if (setupSlide.isActive() && Math.abs(x) < 10 && y < 25 && y > 10) {
             setupSlide.complete();
             toggleVisibility("#slide");
 

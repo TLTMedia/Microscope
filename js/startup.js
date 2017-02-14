@@ -162,23 +162,23 @@ function loadTutorial() {
         "steps": [{
             "id": "setupLightSwitch",
             "shortText": "Light Switch",
-            "longText": "Click the light switch.",
+            "longText": "The light switch is the first thing you should turn on anytime you use a microscope.",
             "feedbackText": "click the light switch"
         }, {
             "id": "setupSlide",
             "shortText": "Slide",
-            "longText": "Push in the slide.",
+            "longText": "The slide should be wedged in place within the caliper.",
             "feedbackText": "click the light switch"
         }, {
             "id": "setupCondenser",
             "shortText": "Condenser",
-            "longText": "Move the aperture knob slightly to the left.",
-            "feedbackText": "Move the condensor knob."
+            "longText": "The condenser allows light to accurately hit the slide, rendering it viewable through the lenses.",
+            "feedbackText": "Move the condenser knob."
 
         }, {
             "id": "setupCaliper",
             "shortText": "Caliper Knob",
-            "longText": "Adjust the caliper knobs.",
+            "longText": "Adjust the caliper in both x and y directions until the slide is exactly at the center of the lenses. Otherwise you will not be able to see the specimen at all.",
             "feedbackText": "Move the caliper knob."
 
         }]
@@ -190,17 +190,17 @@ function loadTutorial() {
             "steps": [{
                 "id": "setupLenses",
                 "shortText": "Lenses",
-                "longText": "Click the lenses.",
+                "longText": "Rotating the lenses to low magnification allows you to see the specimen from a larger distance.",
                 "feedbackText": "click the lenses"
             }, {
                 "id": "setupDiaphragmLight",
                 "shortText": "Diaphragm Light",
-                "longText": "Click the diaphragm.",
+                "longText": "For low magnification, the diaphragm light should be adjusted so that the slide is visible. However, it should not be put too high, otherwise the light will be blinding. Low magnification needs less light to pass through the slide.",
                 "feedbackText": "click the diaphragm"
             },{
                 "id": "setupCoarse",
                 "shortText": "Coarse Knob",
-                "longText": "Click the coarse knobs.",
+                "longText": "The coarse knob adjusts the stage platform and lets you zoom in or out of the current slide view. You want to keep adjusting it until the view is clear. Note that the coarse knob should only be moved once, and once it is moved to the correct place it doesn't need to be touched again.",
                 "feedbackText": "click the coarse knobs"
             } ]  
         }, {
@@ -209,22 +209,22 @@ function loadTutorial() {
             "steps": [{
                 "id": "setupLenses",
                 "shortText": "Lenses",
-                "longText": "Click the lenses.",
+                "longText": "The medium magnification provided a closer view than low magnification.",
                 "feedbackText": "click the lenses"
             },{
                 "id": "setupFine",
                 "shortText": "Fine Knobs",
-                "longText": "Click the fine knobs.",
+                "longText": "Instead of adjusting the coarse knob for clarity, we adjust the fine knob because the coarse knob is already in place from low magnification. The fine knob will blur and unblur the slide view. Keep rotating it until the view becomes clear.",
                 "feedbackText": "click the fine knobs"
             },{ 
                 "id": "setupDiopter",
                 "shortText": "Diopter",
-                "longText": "Adjust the diopter (left ocular)",
+                "longText": "The diopter is responsible for the clarity of view through the left ocular lenses. Adjust it so that the left view becomes clear.",
                 "feedbackText": "click the eyepiece"
             },{ 
                 "id": "setupEyepiece",
                 "shortText": "Eyepiece",
-                "longText": "Click the eyepiece.",
+                "longText": "When you look through the microscope, you may see two different views. By adjusting the eyepiece, you can have it so that the views converge and look like a single view.",
                 "feedbackText": "click the eyepiece"
             }]
 
@@ -234,17 +234,17 @@ function loadTutorial() {
             "steps": [{
                 "id": "setupLenses",
                 "shortText": "Lenses",
-                "longText": "Click the lenses.",
+                "longText": "This will be the highest magnification that you work with on the microscope. it will give a much more detailed view of the specimen that is on the slide.",
                 "feedbackText": "click the lenses"
             },{ 
                 "id": "setupAperture",
                 "shortText": "Highest Aperture",
-                "longText": "Adjust the diopter (left ocular)",
+                "longText": "Because high magnification is so detailed, more light needs to pass through the slide to clearly show the view. High magnification will result in a loss of light due to its reflective nature.",
                 "feedbackText": "click the eyepiece"
             },{
                 "id": "setupFine",
                 "shortText": "Fine Knobs",
-                "longText": "Click the fine knobs.",
+                "longText": "Once more, adjusting the fine knobs will allow you to change the clarity of the image. Keep adjusting it until the view is completely clear.",
                 "feedbackText": "click the fine knobs"
             }]
         }
