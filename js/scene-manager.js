@@ -37,9 +37,13 @@ function startStep(step) {
        parts of the microscope.
        */
 
+
+    $("#helpBox p").text(step.longText);
+
     // Intro Game mode Scenes
     if (currentMode == "Introduction"){
         if (step == introLightSwitch) {
+            console.log(step);
             //introText();
             if (!isDebug) triggerLightSwitch();
             $("#light").addClass("elementOff");

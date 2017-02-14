@@ -124,11 +124,11 @@ function loadIntro(){
         "steps": [{
             "id": "introLightSwitch",
             "shortText": "Light Switch",
-            "longText": "Click the light switch.",
+            "longText": "Hover over the highlighted components to learn more about the parts of the microscope.",
             "feedbackText": "click the light switch"
         }]
     }]
-
+    
     game = new Game(true, true);
     var stepCount = -1;
     var groupCount = -1;
@@ -342,6 +342,10 @@ var formerState = $("body").html();
 
 // Unloads everything, used to change game modes
 function destroy(){
+    console.log(game);
+    $("#steps").html(""); 
+
+
     $("#microscope").html("");
     $("rotate").html("");
     $("body").html(formerState);
