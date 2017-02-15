@@ -135,8 +135,10 @@ function setupAdjustCaliper() {
             bringToFront($("#yCaliperKnob"));
 
             var handler = function () {
-                subHandler(ms.xcaliper, 5, 20, setupCaliper, handler, id, null);
-                subHandler(ms.ycaliper, 5, 20, setupCaliper, handler, id, null);
+                //console.log(ms.xcaliper + ", " + ms.ycaliper);
+                if(ms.xcaliper >-1 && ms.xcaliper<1)
+                subHandler(ms.ycaliper, 18, 20, setupCaliper, handler, id, null);
+                
             }
             $(document).bind("mousemove", handler);
             $("#stageLight").removeClass("st0");

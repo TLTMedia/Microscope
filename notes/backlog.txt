@@ -119,7 +119,7 @@ Feedback:
 []Try to make operations of drag smoother.
 
 
--- To do --
+-- !!!RECENT!!! Backlog (Since January 27) --
 [x]Fine tuning values of microcsope to be as realistic as possible
 [x]Responsive design when reduced
 [x]Aperture precision not implemented yet.
