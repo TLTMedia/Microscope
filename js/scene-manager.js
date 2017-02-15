@@ -1,11 +1,3 @@
-function introText() {
-    $("#headerText").html("-Introduction-");
-}
-
-function setupText() {
-    $("#headerText").text("Follow the instructions to toggle the components.");
-}
-
 function toggableTab(){
 
 }
@@ -131,11 +123,10 @@ function startStep(step) {
 }
 
 function endStep(step) {
-    //popupOff();
+    popupOff();
     if (step.div == "#step0") 
-        loadIntroComplete();
-    else if (step.div == "#step14"){
-        loadGameComplete();
-        popupOff();
+        loadMenu("introduction-end"); 
+    else if (step.div == "#step13"){
+        loadMenu("tutorial-end"); 
     }
 }

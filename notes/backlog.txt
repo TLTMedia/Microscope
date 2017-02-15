@@ -135,19 +135,20 @@ Feedback:
 [x]Adjust slide so that it triggers its activation on top of pseudoclone.
 [x]Implement game modes (restriction to restrictionless)
 [x]Rewrite the popup text (directions) to be more brief.
+[x]Difficulty/Quizzing are the "Games" were are implenting.
+[x]Unneeded completion feedback when doing Tutorial (start).
+[x]Need completion feedback when doing Tutorial (end)
+[]Modify scenes/setup.js caliper positions to calibrate where x,y = 0,0. 
 []Rotation not firefox compatible.
 []Modify Coarse Knob to complete on clarity (white line).
 []Add warnings/additional text
     []Too high of aperture light will be blinding (on low mag)
     []Too far movement of knobs may blur view. 
 []Deviate from framework and add a feedback button before moving forward.
-[]Play with timing of popup movement.
-[]Difficulty/Quizzing are the "Games" were are implenting.
 []Occasional bug arises where nothing loads. Test by refreshing && disabling cache.
     []resize line 17X?
 []Ensure "unsupervised" actions don't leave game unprogressable
    []Moving lenses (with resets the blur), coarse gets stuck and fine inactive
-[]Modify scenes/setup.js caliper positions to calibrate where x,y = 0,0. 
 
 - Examples -
 http://virtuallabs.nmsu.edu/micro.php

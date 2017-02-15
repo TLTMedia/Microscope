@@ -4,51 +4,40 @@
  *
  **/
 
-
-function loadStartMenu() {
-    $("#endText").text("Microscope Simulator");
-    $("#endSubText").text("By the end of the simulation, \nyou will know how to use a microscope.");
-    $("#endSubText").css({
-        opacity: 1
-    });
-    $(".endErrorText").css({
-        opacity: 0
-    });
-    showMenu();
+/* 
+Sets the contents of the feedback box
+*/
+function largeFeedbackBox(title, body){
+    $("#endText").text(title);
+    $("#endSubText").text(body);
 }
 
-function loadIntroComplete() {
-
-    $("#endText").text("Great job!");
-    $("#endSubText").text("The next phase will teach you how to\n set up the microscope.\n If you forget what each part does, you can go back.")
-        $("#endSubText").css({
-            opacity: 1
-        });
-    $(".endErrorText").css({
-        opacity: 0
-    });
-    showMenu();
-}
-
-
-function loadGameComplete() {
-    $("#endText").text("Great job!");
-    $("#endSubText").text("You finished the game mode.")
-        $("#endSubText").css({
-            opacity: 1
-        });
-    $(".endErrorText").css({
-        opacity: 0
-    });
+function loadMenu(scene) {
+    switch (scene){
+        case "introduction":
+            largeFeedbackBox("Introduction", "Welcome to the introduction. In this section, you will learn the parts of the microscope.")
+            break;
+        case "tutorial":
+            largeFeedbackBox("Tutorial","In this section, you will learn how to work with a microscope.");
+            break;
+        case "introduction-end":
+            largeFeedbackBox("Completed", "Go ahead and click on \"Tutorial\" on the top bar to learn how to use the microscope.")
+            break;
+        case "tutorial-end":
+            largeFeedbackBox("Completed", "Great work. You learned how to use the microscope. Click on \"Quizzes\" on the top bar to test what you have learned!")
+            break;
+    }
+    $("#endSubText").css({opacity: 1});
+    $(".endErrorText").css({opacity: 0});
     showMenu();
 }
 
 function showMenu() {
     // Make overlay visible
     $("#overlay").css({
-        'opacity': 1,
-    'z-index': 100
-    });
+            'opacity': 1,
+            'z-index': 100
+            });
     // Lock/unlock modes
     lockModes();
     // Show results screen
@@ -62,11 +51,11 @@ function showMenu() {
 function hideMenu() {
     // Make overlay invisible after it fades out
     setTimeout(function () {
-        $("#overlay").css({
-            'opacity': 0,
-        'z-index': -100
-        });
-    }, 500);
+            $("#overlay").css({
+                'opacity': 0,
+                'z-index': -100
+                });
+            }, 500);
     // Hide results screen
     $("#results").removeClass("anim_enterResults");
     $("#results").addClass("anim_exitResults");
@@ -118,17 +107,19 @@ function newGame(guided, manual) {
 
 
 function loadIntro(){
+
+    loadMenu("introduction");
     var stepText = [{
         "id": "intro",
-        "shortText": "Introduction",
-        "steps": [{
-            "id": "introLightSwitch",
-            "shortText": "Light Switch",
-            "longText": "Hover over the highlighted components to learn more about the parts of the microscope.",
-            "feedbackText": "click the light switch"
-        }]
+            "shortText": "Introduction",
+            "steps": [{
+                "id": "introLightSwitch",
+                "shortText": "Light Switch",
+                "longText": "Hover over the highlighted components to learn more about the parts of the microscope.",
+                "feedbackText": "click the light switch"
+            }]
     }]
-    
+
     game = new Game(true, true);
     var stepCount = -1;
     var groupCount = -1;
@@ -156,32 +147,34 @@ function loadIntro(){
 
 function loadTutorial() {
     //  Define steps (order doesn't matter here)
+
+    loadMenu("tutorial");
     var stepText = [{
         "id": "setup",
-        "shortText": "Setup",
-        "steps": [{
-            "id": "setupLightSwitch",
-            "shortText": "Light Switch",
-            "longText": "The light switch is the first thing you should turn on anytime you use a microscope.",
-            "feedbackText": "click the light switch"
-        }, {
-            "id": "setupSlide",
-            "shortText": "Slide",
-            "longText": "The slide should be wedged in place within the caliper.",
-            "feedbackText": "click the light switch"
-        }, {
-            "id": "setupCondenser",
-            "shortText": "Condenser",
-            "longText": "The condenser allows light to accurately hit the slide, rendering it viewable through the lenses.",
-            "feedbackText": "Move the condenser knob."
+            "shortText": "Setup",
+            "steps": [{
+                "id": "setupLightSwitch",
+                "shortText": "Light Switch",
+                "longText": "The light switch is the first thing you should turn on anytime you use a microscope.",
+                "feedbackText": "click the light switch"
+            }, {
+                "id": "setupSlide",
+                "shortText": "Slide",
+                "longText": "The slide should be wedged in place within the caliper.",
+                "feedbackText": "click the light switch"
+            }, {
+                "id": "setupCondenser",
+                "shortText": "Condenser",
+                "longText": "The condenser allows light to accurately hit the slide, rendering it viewable through the lenses.",
+                "feedbackText": "Move the condenser knob."
 
-        }, {
-            "id": "setupCaliper",
-            "shortText": "Caliper Knob",
-            "longText": "Adjust the caliper in both x and y directions until the slide is exactly at the center of the lenses. Otherwise you will not be able to see the specimen at all.",
-            "feedbackText": "Move the caliper knob."
+            }, {
+                "id": "setupCaliper",
+                "shortText": "Caliper Knob",
+                "longText": "Adjust the caliper in both x and y directions until the slide is exactly at the center of the lenses. Otherwise you will not be able to see the specimen at all.",
+                "feedbackText": "Move the caliper knob."
 
-        }]
+            }]
     },
 
         {
@@ -205,48 +198,48 @@ function loadTutorial() {
             } ]  
         }, {
             "id": "medMag",
-            "shortText": "Medium Magnification",
-            "steps": [{
-                "id": "setupLenses",
-                "shortText": "Lenses",
-                "longText": "The medium magnification provided a closer view than low magnification.",
-                "feedbackText": "click the lenses"
-            },{
-                "id": "setupFine",
-                "shortText": "Fine Knobs",
-                "longText": "Instead of adjusting the coarse knob for clarity, we adjust the fine knob because the coarse knob is already in place from low magnification. The fine knob will blur and unblur the slide view. Keep rotating it until the view becomes clear.",
-                "feedbackText": "click the fine knobs"
-            },{ 
-                "id": "setupDiopter",
-                "shortText": "Diopter",
-                "longText": "The diopter is responsible for the clarity of view through the left ocular lenses. Adjust it so that the left view becomes clear.",
-                "feedbackText": "click the eyepiece"
-            },{ 
-                "id": "setupEyepiece",
-                "shortText": "Eyepiece",
-                "longText": "When you look through the microscope, you may see two different views. By adjusting the eyepiece, you can have it so that the views converge and look like a single view.",
-                "feedbackText": "click the eyepiece"
-            }]
+                "shortText": "Medium Magnification",
+                "steps": [{
+                    "id": "setupLenses",
+                    "shortText": "Lenses",
+                    "longText": "The medium magnification provided a closer view than low magnification.",
+                    "feedbackText": "click the lenses"
+                },{
+                    "id": "setupFine",
+                    "shortText": "Fine Knobs",
+                    "longText": "Instead of adjusting the coarse knob for clarity, we adjust the fine knob because the coarse knob is already in place from low magnification. The fine knob will blur and unblur the slide view. Keep rotating it until the view becomes clear.",
+                    "feedbackText": "click the fine knobs"
+                },{ 
+                    "id": "setupDiopter",
+                    "shortText": "Diopter",
+                    "longText": "The diopter is responsible for the clarity of view through the left ocular lenses. Adjust it so that the left view becomes clear.",
+                    "feedbackText": "click the eyepiece"
+                },{ 
+                    "id": "setupEyepiece",
+                    "shortText": "Eyepiece",
+                    "longText": "When you look through the microscope, you may see two different views. By adjusting the eyepiece, you can have it so that the views converge and look like a single view.",
+                    "feedbackText": "click the eyepiece"
+                }]
 
         }, {
             "id": "highMag",
-            "shortText": "High Magnification",
-            "steps": [{
-                "id": "setupLenses",
-                "shortText": "Lenses",
-                "longText": "This will be the highest magnification that you work with on the microscope. it will give a much more detailed view of the specimen that is on the slide.",
-                "feedbackText": "click the lenses"
-            },{ 
-                "id": "setupAperture",
-                "shortText": "Highest Aperture",
-                "longText": "Because high magnification is so detailed, more light needs to pass through the slide to clearly show the view. High magnification will result in a loss of light due to its reflective nature.",
-                "feedbackText": "click the eyepiece"
-            },{
-                "id": "setupFine",
-                "shortText": "Fine Knobs",
-                "longText": "Once more, adjusting the fine knobs will allow you to change the clarity of the image. Keep adjusting it until the view is completely clear.",
-                "feedbackText": "click the fine knobs"
-            }]
+                "shortText": "High Magnification",
+                "steps": [{
+                    "id": "setupLenses",
+                    "shortText": "Lenses",
+                    "longText": "This will be the highest magnification that you work with on the microscope. it will give a much more detailed view of the specimen that is on the slide.",
+                    "feedbackText": "click the lenses"
+                },{ 
+                    "id": "setupAperture",
+                    "shortText": "Highest Aperture",
+                    "longText": "Because high magnification is so detailed, more light needs to pass through the slide to clearly show the view. High magnification will result in a loss of light due to its reflective nature.",
+                    "feedbackText": "click the eyepiece"
+                },{
+                    "id": "setupFine",
+                    "shortText": "Fine Knobs",
+                    "longText": "Once more, adjusting the fine knobs will allow you to change the clarity of the image. Keep adjusting it until the view is completely clear.",
+                    "feedbackText": "click the fine knobs"
+                }]
         }
     ];
 
@@ -297,15 +290,15 @@ function loadTutorial() {
 
 function initEndOptionHover(id) {
     $("#endOption" + id).hover(function () {
-        // Mouse over cell
-        $("#endOptionDesc" + id).removeClass("anim_exitEndOptionDesc");
-        $("#endOptionDesc" + id).addClass("anim_enterEndOptionDesc");
+            // Mouse over cell
+            $("#endOptionDesc" + id).removeClass("anim_exitEndOptionDesc");
+            $("#endOptionDesc" + id).addClass("anim_enterEndOptionDesc");
 
-    }, function () {
-        // Leave cell
-        $("#endOptionDesc" + id).removeClass("anim_enterEndOptionDesc");
-        $("#endOptionDesc" + id).addClass("anim_exitEndOptionDesc");
-    });
+            }, function () {
+            // Leave cell
+            $("#endOptionDesc" + id).removeClass("anim_enterEndOptionDesc");
+            $("#endOptionDesc" + id).addClass("anim_exitEndOptionDesc");
+            });
 }
 
 //-1 - no image 0 - first occurence, 1 - low, 2 - med, 3 - high
@@ -355,28 +348,27 @@ function destroy(){
 // ====== Frame setup and microscope initialization. ====== //
 function startup(fun){
     $("#rotate").load('img/sideview.svg', function () {
-        $("#draggableDiaphragm").addClass("knob");
-    })
+            $("#draggableDiaphragm").addClass("knob");
+            })
 
     // image paths
     var microscope = 'img/microscope.svg';
 
     $('#microscope').load(microscope, function () {
-        updateAnimation();
+            updateAnimation();
 
-        //$('#microscope svg').append('<filter id="blurMe"><feGaussianBlur in="SourceGraphic" stdDeviation="1" /></filter>')
-        swapMag(0);
-        resizeWindow();
-        loadStartMenu();
-        fun();
-        //loadTutorial();
+            //$('#microscope svg').append('<filter id="blurMe"><feGaussianBlur in="SourceGraphic" stdDeviation="1" /></filter>')
+            swapMag(0);
+            resizeWindow();
+            fun();
+            //loadTutorial();
 
-        $("#endOption1").click(function () {
-            // Start Beginner Mode
-            newGame(true, false);
-        });
-        resizeWindow();
-    });
+            $("#endOption1").click(function () {
+                // Start Beginner Mode
+                newGame(true, false);
+                });
+            resizeWindow();
+            });
 
 }
 
@@ -384,25 +376,25 @@ function startup(fun){
 var currentMode = "Introduction"
 //Encapsulation
 $(function(){
-    // Attach event listeners to buttons on header
-    $("#header button").click(function(event){
-        $("#header button").each(function(index){
-            $(this).removeClass("headerButtonActive"); 
-        });
-        var id = $(this).toggleClass("headerButtonActive");
-        var innerText = $(this).text();
-        currentMode = innerText;
-        switch(innerText){
+        // Attach event listeners to buttons on header
+        $("#header button").click(function(event){
+            $("#header button").each(function(index){
+                $(this).removeClass("headerButtonActive"); 
+                });
+            var id = $(this).toggleClass("headerButtonActive");
+            var innerText = $(this).text();
+            currentMode = innerText;
+            switch(innerText){
             case "Introduction":
-                destroy();
-                startup(loadIntro);
-                break;
+            destroy();
+            startup(loadIntro);
+            break;
             case "Tutorial":
-                destroy();
-                startup(loadTutorial);
-                break;
-        } 
-    });
+            destroy();
+            startup(loadTutorial);
+            break;
+            } 
+            });
 
-    startup(loadIntro);
+        startup(loadIntro);
 });
