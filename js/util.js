@@ -4,6 +4,15 @@
  * Functionality for popup boxes and modals.
  */
 
+
+function unbindComponentHover(){
+    // Unbind the "Introduction" stuff
+    for (var i=0; i<components.length;i++){
+        $(components[i]).off("mouseenter");
+        $(components[i]).off("mouseleave");
+    }
+}
+
 // Misc. Functions
 function popupOn(text, props) {
     $("#popup").show();
@@ -34,9 +43,9 @@ function popupOff() {
 
 function textSetup(tooltip, lt, tp) {
     popupOn(tooltip, {
-        "left": lt,
-    "top": tp
-    });
+            "left": lt,
+            "top": tp
+            });
 }
 
 
@@ -65,8 +74,8 @@ function updateClonedPosition(cloned, target){
     if (cloned != null){
         if (cloned.constructor === Array){
             cloned.forEach(function(obj){
-                obj.attr('style', target.attr('style'));
-            })
+                    obj.attr('style', target.attr('style'));
+                    })
         }
         else{
             cloned.attr('style', target.attr('style'));
@@ -100,8 +109,8 @@ function highlightComponent(id) {
     var clonePart = $(id).clone();
     lastPart = clonePart;
     clonePart.attr("pointer-events", "none")
-    clonePart.toggleClass("highlightPart")
-    clonePart.attr("id", id.replace("#", "") + "Copy");
+        clonePart.toggleClass("highlightPart")
+        clonePart.attr("id", id.replace("#", "") + "Copy");
     clonePart.attr("style", "border:10px solid blue");
     clonePart.attr("filter", "url(#blurMe)");
     clonePart.children().attr("fill", "rgba(0,0,0,0)");
@@ -120,8 +129,8 @@ function removeHighlightId(id){
 
 function removeHighlightCopy(){
     $('*[id*=Copy]:visible').each(function() {
-        $(this).remove();
-    }); 
+            $(this).remove();
+            }); 
 
     $("[id$='Copy']").remove();
 }

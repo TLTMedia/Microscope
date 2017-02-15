@@ -21,7 +21,7 @@ function loadMenu(scene) {
             largeFeedbackBox("Tutorial","In this section, you will learn how to work with a microscope.");
             break;
         case "introduction-end":
-            largeFeedbackBox("Completed", "Go ahead and click on \"Tutorial\" on the top bar to learn how to use the microscope.")
+            largeFeedbackBox("Completed", "You can review the parts by hovering over them again. When you're ready, click on \"Tutorial\" on the top bar to proceed.")
             break;
         case "tutorial-end":
             largeFeedbackBox("Completed", "Great work. You learned how to use the microscope. Click on \"Quizzes\" on the top bar to test what you have learned!")
