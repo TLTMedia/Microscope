@@ -173,13 +173,3 @@ https://en.wikipedia.org/wiki/WYSIWYG
 https://en.wikipedia.org/wiki/Design_Patterns
 http://softwareengineering.stackexchange.com/questions/7055/what-is-the-most-frequently-used-design-pattern
 http://www.javatpoint.com/factory-method-design-pattern
-
-
-
-
-if(ms.xcaliper >-1 && ms.xcaliper<1
-f view (measuring)
- 68         > low mag
- 69             > place ruler
- 70             > caliper
- 71         > high mag
