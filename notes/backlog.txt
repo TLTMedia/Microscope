@@ -139,16 +139,20 @@ Feedback:
 [x]Unneeded completion feedback when doing Tutorial (start).
 [x]Need completion feedback when doing Tutorial (end)
 [x]Deviate from framework and add a feedback button before moving forward.
-[]Modify scenes/setup.js caliper positions to calibrate where x,y = 0,0. 
-[]Rotation not firefox compatible.
+[x]Modify scenes/setup.js caliper positions to calibrate where x,y = 0,0. 
+[]Rotation not firefox compatible. (Sharin needs to look at the svg/ai file and confirm this and next backlog)
 []Modify Coarse Knob to complete on clarity (white line).
-[]Add warnings/additional text
-    []Too high of aperture light will be blinding (on low mag)
-    []Too far movement of knobs may blur view. 
 []Occasional bug arises where nothing loads. Test by refreshing && disabling cache.
     []resize line 17X?
-[]Ensure "unsupervised" actions don't leave game unprogressable
-   []Moving lenses (with resets the blur), coarse gets stuck and fine inactive
+[]Track State machine
+    []Model 1: persistent frame that updates between steps. (Model 1 is ordered)
+    []Model 2: multiple frames that checks each step in a scene (Model 2 is unordered) 
+    []Ensure "unsupervised" actions don't leave game unprogressable
+    []Moving lenses (with resets the blur), coarse gets stuck and fine inactive
+    []Too high of aperture light will be blinding (on low mag)
+    []Too far movement of knobs may blur view. 
+    []Add warnings/additional text
+
 
 - Examples -
 http://virtuallabs.nmsu.edu/micro.php
@@ -173,4 +177,9 @@ http://www.javatpoint.com/factory-method-design-pattern
 
 
 
-
+if(ms.xcaliper >-1 && ms.xcaliper<1
+f view (measuring)
+ 68         > low mag
+ 69             > place ruler
+ 70             > caliper
+ 71         > high mag
