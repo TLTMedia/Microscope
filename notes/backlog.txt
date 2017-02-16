@@ -151,7 +151,6 @@ Feedback:
 [] For low mag change description text to "rotate the lenses to the lowest objective (4X) without the 100X objective passing the slide." 
 	[]Reflect these changes on med, and high mag.
 [] For warning on 100x change text to "Stop! You risk damaging the 100X objective by moving passed the slide. Go the other way."
-
 []Slide view contents more reflective IRL:
 	[] Rectangular image, enlarge. 
 	[] On farend (bounds of caliper), show slide edge
