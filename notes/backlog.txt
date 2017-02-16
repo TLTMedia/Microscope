@@ -1,10 +1,12 @@
 —- Overview —
 
-Intro
-- Light Switch
-- Condenser:		y-axis diaphragm— should always be at the top
+-Intro Notes-
+1. Light Switch
+2. Condenser:		y-axis diaphragm— should always be at the top
 
-red lens	aperture lowest good
+-Tutorial Notes-
+red lens	
+	aperture lowest good
 
 initial state:	
 	- light off
@@ -13,8 +15,7 @@ initial state:
 	- slide off
 	- lens that is not red
 
-
-low mag/high mag	->		low/medium/high
+low mag/high mag->low/medium/high
 
 **calibrate views
 ** overexposure
@@ -42,51 +43,23 @@ linear:
 	> aperture — max
 	> fine
 
-	-> Game
-	1. change slide
-		> rotate red (not through white)
-		> lower stage
-		> reduce light
-		> remove slide
-		> add new slide
-			> caliper (x,y)
-			> coarse
-			> rotate medium
-			> fine
-			> rotate to high
-			> open aperture
-			> fine
-	
-
-	2. 	 troubleshooting (fix the scope)
-		> 
-
-	3. clean scope (3)
-		> lens paper / windex
-		-Take lens paper. apply windex to paper. and 
-		then wipe ocular lens in a circular motion, objectives, aperture light emitter, slide, and top of condensor.
-
-	4. field of view (measuring)
-		> low mag
-			> place ruler
-			> caliper
-		> high mag
-		
-	5. depth of focus
-		>
-
-	6. Orientation (e-slide)
-		> 
-	7. total magnification (1)
+- Game/Quiz Design - 
+* Sorted by priority
+	[]Total magnification (1)
 		Question that  pops up where user identifies the total
 		magnification (10*current objective)
-	8. cell count (2)
+	[]Cell count (2)
 		-Under 40X (where cells are large enough to count)
 		-Put 12-15 cells.
 		-Choose image and contact marvin for count.
-	9. Watch video and identify what person does wrong (4).
+	[]Clean scope (3)
+		> lens paper / windex
+		1. Take lens paper. 
+		2. apply windex to paper. 
+		3. then wipe ocular lens in a circular motion, objectives, aperture light emitter, slide, and top of condensor.
+	[]Watch video and identify what person does wrong (4).
 
-— Meetings/Discussions - 
+— Meetings/Discussions/Backlogs- 
 
 10/17/16
 Feedback:
@@ -147,32 +120,10 @@ Feedback:
 [x]Need completion feedback when doing Tutorial (end)
 [x]Deviate from framework and add a feedback button before moving forward.
 [x]Modify scenes/setup.js caliper positions to calibrate where x,y = 0,0. 
-
-
 []Rotation not firefox compatible. (Sharin needs to look at the svg/ai file and confirm this and next backlog)
 []Modify Coarse Knob to complete on clarity (white line).
 []Occasional bug arises where nothing loads. Test by refreshing && disabling cache.
-[]Slide placement hold by white piece
-[]Slide holder pull to place
-[](see details) for clarity
     []resize line 17X?
-[] Make the coarse and fine knobs bigger (keep blue spacing minimal)o.
-[] Add coarse knob step back to Medium magnfiication. 
-[] Once at 40X, coarse knob should trsigger warning (may damage slide)
-	****If they touch coarse focus on 40X, trigger large warning.
-[] Diopter side trigger up/down motion
-[] Rotate to 4X, using coarse focus drop the stage all the way down,oo
-remove the slide, turn off the light.
-[] the three different mags should have 3 different images.
-
-
-[]For low mag, "rotate the lenses to the lowest objective (4X) without the 100X objective passing the slide." 
-[] For warning on 100x, "Stop! You risk damaging the 100X objective by moving passed the slide. Go the other way."
-
-[]Slide view contents:
-	-Rectangular. On farend, show slide edge
-	-On uncalibrated, show gray. 
-
 []Track State machine
     []Model 1: persistent frame that updates between steps. (Model 1 is ordered)
     []Model 2: multiple frames that checks each step in a scene (Model 2 is unordered) 
@@ -182,10 +133,65 @@ remove the slide, turn off the light.
     []Too far movement of knobs may blur view. 
     []Add warnings/additional text
 
--- Wish list --
--Sideview motions and lenses to reflect 
--Leave glasses on
--Slide break animation if coarse knob pushed up.
+- 2/16/2017 Meeting (New Backlog)- 
+[]Slide placement drag by white piece when placing into calipers
+[]Slide holder pull to place (click or drag to pull), animate.
+[]"(see details)" on instruction tooltip for clarity if extra details necessary to proceed.  
+[] Make the coarse and fine knobs bigger (keep blue spacing minimal).
+[] Add coarse knob step back to Medium magnification. 
+[] Once at 40X, coarse knob should trigger warning (may damage slide)
+	****If they touch coarse focus on 40X, trigger large warning.
+[] Diopter side drag (not vertical drag) trigger up/down motion
+[] Cleaning up 
+	[]Rotate to 4X
+	[]using coarse focus drop the stage all the way down
+	[]remove the slide
+	[]turn off the light.
+[] The three different mags should have 3 different images (4X, 10X, 40X).
+[] For low mag change description text to "rotate the lenses to the lowest objective (4X) without the 100X objective passing the slide." 
+	[]Reflect these changes on med, and high mag.
+[] For warning on 100x change text to "Stop! You risk damaging the 100X objective by moving passed the slide. Go the other way."
+
+[]Slide view contents more reflective IRL:
+	[] Rectangular image, enlarge. 
+	[] On farend (bounds of caliper), show slide edge
+	[] On uncalibrated, show gray. 
+
+
+- Tutorial Wish list (Extra) -
+-Sideview motions and lenses to reflect the frontview
+	-Objective lenses change on rotate.
+	-Consider functionality on light switch/ coarse/fine knob drag 
+-Leave glasses for clear vision.
+-Slide break animation if coarse knob pushed up during (40X).
+	-(Slap user animation)
+
+- Game/Quiz Wishlist (Optional)-
+	[]Change Slide
+		> rotate red (not through white)
+		> lower stage
+		> reduce light
+		> remove slide
+		> add new slide
+			> caliper (x,y)
+			> coarse
+			> rotate medium
+			> fine
+			> rotate to high
+			> open aperture
+			> fine
+	
+
+	[]Troubleshooting (fix the scope)
+	[] field of view (measuring)
+		> low mag
+			> place ruler
+			> caliper
+		> high mag
+		
+	[]depth of focus
+	[] Orientation (e-slide)
+
 
 
 - Examples -
@@ -207,3 +213,4 @@ https://en.wikipedia.org/wiki/WYSIWYG
 https://en.wikipedia.org/wiki/Design_Patterns
 http://softwareengineering.stackexchange.com/questions/7055/what-is-the-most-frequently-used-design-pattern
 http://www.javatpoint.com/factory-method-design-pattern
+http://www.dofactory.com/javascript/prototype-design-pattern 
