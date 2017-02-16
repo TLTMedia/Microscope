@@ -61,8 +61,10 @@ linear:
 	2. 	 troubleshooting (fix the scope)
 		> 
 
-	3. clean scope
+	3. clean scope (3)
 		> lens paper / windex
+		-Take lens paper. apply windex to paper. and 
+		then wipe ocular lens in a circular motion, objectives, aperture light emitter, slide, and top of condensor.
 
 	4. field of view (measuring)
 		> low mag
@@ -75,9 +77,14 @@ linear:
 
 	6. Orientation (e-slide)
 		> 
-
-	* warning: don’t go to oil *
-
+	7. total magnification (1)
+		Question that  pops up where user identifies the total
+		magnification (10*current objective)
+	8. cell count (2)
+		-Under 40X (where cells are large enough to count)
+		-Put 12-15 cells.
+		-Choose image and contact marvin for count.
+	9. Watch video and identify what person does wrong (4).
 
 — Meetings/Discussions - 
 
@@ -140,10 +147,32 @@ Feedback:
 [x]Need completion feedback when doing Tutorial (end)
 [x]Deviate from framework and add a feedback button before moving forward.
 [x]Modify scenes/setup.js caliper positions to calibrate where x,y = 0,0. 
+
+
 []Rotation not firefox compatible. (Sharin needs to look at the svg/ai file and confirm this and next backlog)
 []Modify Coarse Knob to complete on clarity (white line).
 []Occasional bug arises where nothing loads. Test by refreshing && disabling cache.
+[]Slide placement hold by white piece
+[]Slide holder pull to place
+[](see details) for clarity
     []resize line 17X?
+[] Make the coarse and fine knobs bigger (keep blue spacing minimal)o.
+[] Add coarse knob step back to Medium magnfiication. 
+[] Once at 40X, coarse knob should trsigger warning (may damage slide)
+	****If they touch coarse focus on 40X, trigger large warning.
+[] Diopter side trigger up/down motion
+[] Rotate to 4X, using coarse focus drop the stage all the way down,oo
+remove the slide, turn off the light.
+[] the three different mags should have 3 different images.
+
+
+[]For low mag, "rotate the lenses to the lowest objective (4X) without the 100X objective passing the slide." 
+[] For warning on 100x, "Stop! You risk damaging the 100X objective by moving passed the slide. Go the other way."
+
+[]Slide view contents:
+	-Rectangular. On farend, show slide edge
+	-On uncalibrated, show gray. 
+
 []Track State machine
     []Model 1: persistent frame that updates between steps. (Model 1 is ordered)
     []Model 2: multiple frames that checks each step in a scene (Model 2 is unordered) 
@@ -152,6 +181,11 @@ Feedback:
     []Too high of aperture light will be blinding (on low mag)
     []Too far movement of knobs may blur view. 
     []Add warnings/additional text
+
+-- Wish list --
+-Sideview motions and lenses to reflect 
+-Leave glasses on
+-Slide break animation if coarse knob pushed up.
 
 
 - Examples -
