@@ -26,6 +26,21 @@ function medAdjustLenses() {
 }
 
 
+// Trigger for coarse knob.
+function medAdjustCoarse() {
+    textSetup("Move the stage up by moving the course knob.", "60%", "64%");
+    var id="#knobsCoarse"
+        if (medCoarse.isActive()) { 
+            var clonedComp = highlightComponent(id);
+            bringToFront($(id));
+            var handler = function(){
+                subHandler(ms.slideBlur, -1, 1, medCoarse, handler, id, null);
+            }
+            $(document).bind("mousemove", handler);
+        }
+}
+
+
 // Trigger for fine knob 
 function medAdjustFine() {
     textSetup("Adjust the fine knobs until the slide image becomes clear.", "60%", "64%");

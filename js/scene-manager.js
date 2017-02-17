@@ -10,24 +10,24 @@ function headerButtonClick(e){
 // To improve it, use a mapping that takes a key word and redirects it into a proper tooltip.
 function bindTooltip(){
     components.forEach(function(component){
-            $(component).hover(function(){
-                $("#headerText").text((component.replace("#","")).capitalize());
-                }); 
-            }); 
+        $(component).hover(function(){
+            $("#headerText").text((component.replace("#","")).capitalize());
+        }); 
+    }); 
 }
 
 
 /*
    Use of below function is for intro.js (intro.js + gameLogic.js interdependence).
- */
+   */
 function startStep(step) {
-    var isDebug = false;
+    var isDebug = true;
     /* intro
 
        Intro doesn't necessarily have flexible choices for the user to act on.
        The purpose of the introduction is to teach the user about the different
        parts of the microscope.
-     */
+       */
 
 
     $("#helpBox p").text(step.longText);
@@ -45,7 +45,7 @@ function startStep(step) {
             triggerCaliper();
             triggerEyepiece();
             triggerLenses();
-            isDebug = DEBUG(isDebug);
+            isDebug = DEBUG(isDebug, currentMode);
         }
     }
 
@@ -53,12 +53,13 @@ function startStep(step) {
         unbindComponentHover();
         /* setup
            act/adjust the microscope before the game proceeds onto the next step.
-         */
+           */
         if (step == setupLightSwitch) {
             $("#light").addClass("elementOff");
             toggleVisibility("#slide");
             setupEnableSwitch();
             enableLightSwitch();
+            isDebug = DEBUG(isDebug, currentMode);
         }
         if (step == setupSlide){ 
             setupEnableSlide(); 
@@ -91,6 +92,10 @@ function startStep(step) {
         if (step == medLenses) {
             medAdjustLenses();
         }
+        if (step == medCoarse) {
+            medAdjustCoarse();
+        }
+
         if (step == medFine) {
             medAdjustFine(); 
             enableFineKnob();
@@ -107,7 +112,6 @@ function startStep(step) {
 
         // High magnification
         if (step == highLenses) {
-
             highAdjustLenses();
         }
         if (step == highAperture){
@@ -116,6 +120,23 @@ function startStep(step) {
         if (step == highFine) {
             highAdjustFine(); 
         }
+
+        // Cleanup time
+        if (step == cleanupLow) {
+            cleanAdjustLenses();
+        }
+        if (step == cleanupCoarse){
+            cleanAdjustCoarse();
+        }
+        if (step == cleanupSlide) {
+            cleanRemoveSlide();
+        }
+        if (step == cleanupLight) {
+            cleanDisableSwitch();  
+        }
+
+
+
     }
 
     // enable freemode? (user can do whatever they want with the scope)
@@ -126,7 +147,7 @@ function endStep(step) {
     if (step.div == "#step0" && currentMode == "Introduction") 
         loadMenu("introduction-end"); 
     else if (step.div == "#step13"){
-        popupOff();
-        loadMenu("tutorial-end"); 
+        //popupOff();
+        //loadMenu("tutorial-end"); 
     }
 }

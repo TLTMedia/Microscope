@@ -24,31 +24,38 @@ function debugLow(){
     removeHighlightCopy();
     lowLenses.complete();
     lowDiaphragmLight.complete();
+    lowCoarse.complete();
 }
 
 function debugMedMag(){
     removeHighlightCopy();
     medLenses.complete();
+    medCoarse.complete();
     medFine.complete();
     medDiopter.complete();
     medOcular.complete();
 }
 function debugHighMag(){
     removeHighlightCopy();
-    highAdjustLenses();
-    highAdjustFine(); 
-    highAdjustDiopter();
-    highAdjustEyepiece();
+    highLenses.complete();
+    highAperture.complete(); 
+    highFine.complete();
 }
 
-function DEBUG(state){
+function debugCleanup(){
+}
+
+function DEBUG(state, mode){
     var isDebug = state;
     if (isDebug){
-        debugIntro();
-        //debugSetup();
-        //debugLow(); 
-        //debugMedMag();
-        //debugHighMag(); 
+        if (currentMode == "Introduction")
+            debugIntro();
+        else if (currentMode == "Tutorial"){
+            debugSetup();
+            debugLow(); 
+            debugMedMag();
+            debugHighMag(); 
+        }
     }
     return isDebug;
 }
