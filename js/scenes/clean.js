@@ -31,7 +31,8 @@ function cleanAdjustCoarse() {
             var clonedComp = highlightComponent(id);
             bringToFront($(id));
             var handler = function(){
-                subHandler(ms.slideBlur, -1, 1, cleanupCoarse, handler, id, null);
+                //console.log(ms.knobPosition);
+                subHandler(ms.knobPosition, 19, 21, cleanupCoarse, handler, id, null);
             }
             $(document).bind("mousemove", handler);
         }
@@ -42,29 +43,12 @@ function cleanRemoveSlide() {
     toggleVisibility("#slide");
 
     //Moving the original slide
-    var $pseudoSlide = $("#slide").clone();
-    $pseudoSlide.attr("id", "pseudo_slideCopy")
-        var x = 0.115*$(window).width();
-        var y = $(window).height()*0.05;
-
-    $pseudoSlide.css({
-        "-webkit-transform": "translate(" + x + "px," + y + "px)",
-        "-ms-transform": "translate(" + x + "px," + y + "px)",
-        "transform": "translate(" + x + "px," + y + "px)"
-    });
-
-    $pseudoSlide.attr("data-x", x);
-    $pseudoSlide.attr("data-y", y);
-
-
-    $("#microscope > svg").append($pseudoSlide);
-
     toggleVisibility("#slide");
 
-    var cloned = highlightComponent("#pseudo_slideCopy");
+    var cloned = highlightComponent("#slide");
     $(cloned).attr("style", $("#slide").attr("style"));
 
-        interact('#pseudo_slideCopy')
+    interact('#slide')
         .draggable({
             // enable inertial throwing
             inertia: true,
@@ -96,13 +80,14 @@ function cleanRemoveSlide() {
             x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
             y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
 
+        //console.log(x + ", " + y);
+        if (cleanupSlide.isActive() && Math.abs(x) > 100 || y < 0 || y > 100) {
 
-        if (cleanupSlide.isActive() && Math.abs(x) < 10 && y < 25 && y > 10) {
+            removeHighlight($("#slideCopy"));
             cleanupSlide.complete();
-            toggleVisibility("#slide");
-
             $("#pseudo_slideCopyCopy").remove();
             $("#pseudo_slideCopy").remove();
+            $("#slide").remove();
         }
 
         // translate the element

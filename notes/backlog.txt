@@ -139,16 +139,16 @@ Feedback:
 [x] For warning on 100x change text to "Stop! You risk damaging the 100X objective by moving passed the slide. Go the other way."
 [x] Diopter side drag (not vertical drag) trigger up/down motion
 [x] Add coarse knob step back to Medium magnification. 
+[x] Fix debugger
+[x] Cleaning up (Extra steps) 
+	[x]Rotate to 4X
+	[x]using coarse focus drop the stage all the way down
+	[x]remove the slide
+	[x]turn off the light.
 
-[] Fix debugger
 [] "(see details)" on instruction tooltip for clarity if extra details necessary to proceed.  
 [] Once at 40X, coarse knob should trigger warning (may damage slide)
 	****If they touch coarse focus on 40X, trigger large warning.
-[] Cleaning up (Extra steps) 
-	[]Rotate to 4X
-	[]using coarse focus drop the stage all the way down
-	[]remove the slide
-	[]turn off the light.
 [] Slide placement drag by white piece when placing into calipers
 [] Slide holder pull to place (click or drag to pull), animate.
 
@@ -159,7 +159,7 @@ Feedback:
 	[] On uncalibrated, show gray. 
 [] Make the coarse and fine knobs bigger (keep blue spacing minimal).
 [] The three different mags should have 3 different images (4X, 10X, 40X).
-
+[] Draw box pls 
 
 - Tutorial Wish list (Extra) -
 -Sideview motions and lenses to reflect the frontview

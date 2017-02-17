@@ -65,6 +65,10 @@ function startStep(step) {
             setupEnableSlide(); 
         }
         if (step == setupCondense){ 
+            if (isDebug){
+                toggleVisibility("#slide");
+                $("#slide").css({"display": "block"});
+            }
             setupCondenser();
             enableSideDiaphragmRotate();
         }
@@ -146,8 +150,8 @@ function startStep(step) {
 function endStep(step) {
     if (step.div == "#step0" && currentMode == "Introduction") 
         loadMenu("introduction-end"); 
-    else if (step.div == "#step13"){
-        //popupOff();
-        //loadMenu("tutorial-end"); 
+    else if (step.div == "#step18"){
+        popupOff();
+        loadMenu("tutorial-end"); 
     }
 }
