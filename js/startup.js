@@ -370,10 +370,8 @@ var formerState = $("body").html();
 
 // Unloads everything, used to change game modes
 function destroy(){
-    console.log(game);
+    //console.log(game);
     $("#steps").html(""); 
-
-
     $("#microscope").html("");
     $("rotate").html("");
     $("body").html(formerState);

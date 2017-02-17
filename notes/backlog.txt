@@ -151,15 +151,16 @@ Feedback:
 	****If they touch coarse focus on 40X, trigger large warning.
 [] Slide placement drag by white piece when placing into calipers
 [] Slide holder pull to place (click or drag to pull), animate.
-
--Shrn delegation-
 [] Slide view contents more reflective IRL:
 	[] Rectangular image, enlarge. 
 	[] On farend (bounds of caliper), show slide edge
 	[] On uncalibrated, show gray. 
+
+-Shrn delegation-
 [] Make the coarse and fine knobs bigger (keep blue spacing minimal).
 [] The three different mags should have 3 different images (4X, 10X, 40X).
-[] Draw box pls 
+[] Draw box to hold slide.
+[] Diopter knob id, instead of entire diopter
 
 - Tutorial Wish list (Extra) -
 -Sideview motions and lenses to reflect the frontview

@@ -605,6 +605,7 @@ function enableScope() {
     enableDiaphragmLight();
     enableCaliper();
     enableSideDiaphragmRotate();
+    enableDiopter();
     updateAnimation();
 }
 

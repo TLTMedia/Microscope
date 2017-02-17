@@ -43,6 +43,10 @@ function debugHighMag(){
 }
 
 function debugCleanup(){
+    cleanupLow.complete();
+    cleanupCoarse.complete();
+    cleanupSlide.complete();
+    cleanupLight.complete();
 }
 
 function DEBUG(state, mode){
@@ -55,6 +59,7 @@ function DEBUG(state, mode){
             debugLow(); 
             debugMedMag();
             debugHighMag(); 
+            //debugCleanup();
         }
     }
     return isDebug;
