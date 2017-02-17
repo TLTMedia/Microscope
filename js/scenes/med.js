@@ -9,7 +9,7 @@
 //  eyepiece position should displace cell view.
 //  See: /__image-reference/gifs/ocular.gif
 function medAdjustLenses() {
-    textSetup("Rotate the lenses to medium magnification (10X).", "15%", "35%"); 
+    textSetup("Rotate the lenses to the middle objective (10X) without the 100X objective passing the slide.", "15%", "35%"); 
     var id="#lensesBasePath"
         if (medLenses.isActive()) { 
             var clonedComp = highlightComponent(id);

@@ -470,7 +470,7 @@ function enableLenses() {
             rollBack = {"type": $(".popupInstruct").text(), "text": $("#popupText").text()}
 
             //console.log(rollBack);
-            updatePopup("Warning", "Stop! You risk damaging the slide by moving the lenses through the 100 magnification. Go the other way.");
+            updatePopup("Warning", "Stop! You risk damaging the 100X objective by moving passed the slide. Go the other way.");
 
             dangerEnable = true;
         }
@@ -564,18 +564,18 @@ function enableDiopter(){
             })
         .mousemove(function(event) {
             if (isDown) {
-                if (prevY > event.pageY) {
+                if (prevX > event.pageX) {
                     if (ms.diopterPosition > sm_orig["MIN_DIOPTER"]) {
                         ms.diopterPosition -= power;
                         ms.slideBlur2 -= 1; 
                     }
-                } else if ((prevY < event.pageY)) {
+                } else if ((prevX < event.pageX)) {
                     if (ms.diopterPosition < sm_orig["MAX_DIOPTER"]) {
                         ms.diopterPosition += power;
                         ms.slideBlur2 += 1;
                     }
                 }
-                prevY = event.pageY;
+                prevX = event.pageX;
                 updateAnimation();
             }
         })

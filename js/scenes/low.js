@@ -8,7 +8,7 @@
 
 //  See: /__image-reference/gifs/ocular.gif
 function lowAdjustLenses() {
-    textSetup("Rotate the lenses to low magnification (4X) without passing 100X magnification.", "15%", "35%"); 
+    textSetup("Rotate the lenses to lowest objective (4X) without the 100X objective passing the slide.", "15%", "35%"); 
     var id="#lensesBasePath"
         if (lowLenses.isActive()) { 
             var clonedComp = highlightComponent(id);

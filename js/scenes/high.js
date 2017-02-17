@@ -9,7 +9,7 @@
 //  eyepiece position should displace cell view.
 //  See: /__image-reference/gifs/ocular.gif
 function highAdjustLenses() {
-    textSetup("Rotate the lenses to high magnification (40X).", "15%", "35%"); 
+    textSetup("Rotate the lenses to highest objective (40X) without the 100X objective passing the slide.", "15%", "35%"); 
     var id="#lensesBasePath"
         if (highLenses.isActive()) { 
             var clonedComp = highlightComponent(id);

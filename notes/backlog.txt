@@ -134,27 +134,31 @@ Feedback:
     []Add warnings/additional text
 
 - 2/16/2017 Meeting (New Backlog)- 
-[]Slide placement drag by white piece when placing into calipers
-[]Slide holder pull to place (click or drag to pull), animate.
-[]"(see details)" on instruction tooltip for clarity if extra details necessary to proceed.  
-[] Make the coarse and fine knobs bigger (keep blue spacing minimal).
+[x] For low mag change description text to "rotate the lenses to the lowest objective (4X) without the 100X objective passing the slide." 
+	[x]Reflect these changes on med, and high mag.
+[x] For warning on 100x change text to "Stop! You risk damaging the 100X objective by moving passed the slide. Go the other way."
+[x] Diopter side drag (not vertical drag) trigger up/down motion
+
+[] Fix debugger
+[] "(see details)" on instruction tooltip for clarity if extra details necessary to proceed.  
 [] Add coarse knob step back to Medium magnification. 
 [] Once at 40X, coarse knob should trigger warning (may damage slide)
 	****If they touch coarse focus on 40X, trigger large warning.
-[] Diopter side drag (not vertical drag) trigger up/down motion
-[] Cleaning up 
+[] Cleaning up (Extra steps) 
 	[]Rotate to 4X
 	[]using coarse focus drop the stage all the way down
 	[]remove the slide
 	[]turn off the light.
-[] The three different mags should have 3 different images (4X, 10X, 40X).
-[] For low mag change description text to "rotate the lenses to the lowest objective (4X) without the 100X objective passing the slide." 
-	[]Reflect these changes on med, and high mag.
-[] For warning on 100x change text to "Stop! You risk damaging the 100X objective by moving passed the slide. Go the other way."
-[]Slide view contents more reflective IRL:
+[] Slide placement drag by white piece when placing into calipers
+[] Slide holder pull to place (click or drag to pull), animate.
+
+-Shrn delegation-
+[] Slide view contents more reflective IRL:
 	[] Rectangular image, enlarge. 
 	[] On farend (bounds of caliper), show slide edge
 	[] On uncalibrated, show gray. 
+[] Make the coarse and fine knobs bigger (keep blue spacing minimal).
+[] The three different mags should have 3 different images (4X, 10X, 40X).
 
 
 - Tutorial Wish list (Extra) -
