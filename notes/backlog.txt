@@ -162,6 +162,9 @@ Feedback:
 [!!] Draw box to hold slide.
 [x] Diopter knob id, instead of entire diopter
 
+!!- .svg export reminder-!!
+check classes in css (.st)
+
 - Tutorial Wish list (Extra) -
 -Sideview motions and lenses to reflect the frontview
 	-Objective lenses change on rotate.
