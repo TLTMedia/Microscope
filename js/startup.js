@@ -380,7 +380,7 @@ function destroy(){
 
 // ====== Frame setup and microscope initialization. ====== //
 function startup(fun){
-    $("#rotate").load('img/sideview.svg', function () {
+    $("#rotate").load('img/sideview2.svg', function () {
         $("#draggableDiaphragm").addClass("knob");
     })
 

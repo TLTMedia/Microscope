@@ -164,6 +164,7 @@ Feedback:
 
 !!- .svg export reminder-!!
 check classes in css (.st)
+when making changes to svg directly, do not save or export but use save as and change Font Type to Embed and CSS Properties (CSS -> Style Attributes)
 
 - Tutorial Wish list (Extra) -
 -Sideview motions and lenses to reflect the frontview

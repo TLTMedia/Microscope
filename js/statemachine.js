@@ -114,6 +114,8 @@ function updateAnimation() {
     translateReduceSVG("#ocularRight, #ocularRightCopy", ms.eyepiecePosition, 0);
     translateReduceSVG("#ocularLeftCopy", -1 * ms.eyepiecePosition, 0);
     translateReduceSVG("#ocularLeftDiopter", -1 * ms.eyepiecePosition, ms.diopterPosition);
+
+    translateReduceSVG("#friend", -1 * ms.eyepiecePosition, 0);
     translateReduceSVG("#ocularLeft", -1 * ms.eyepiecePosition, 0);
     translateReduceSVG("#slideStage, #stageLight", 0, ms.knobPosition);
     translateReduceSVG("#slide", ms.xslide, ms.yslide);
@@ -586,7 +588,7 @@ function enableDiopter(){
             isDown = false;
         });
     }
-    addDiopterDrag("#ocularLeftDiopter", 0.5);
+    addDiopterDrag("#friend", 0.5);
 }
 
 
