@@ -157,10 +157,10 @@ Feedback:
 	[] On uncalibrated, show gray. 
 
 -Shrn delegation-
-[] Make the coarse and fine knobs bigger (keep blue spacing minimal).
-[] The three different mags should have 3 different images (4X, 10X, 40X).
-[] Draw box to hold slide.
-[] Diopter knob id, instead of entire diopter
+[x] Make the coarse and fine knobs bigger (keep blue spacing minimal).
+[x] The three different mags should have 3 different images (4X, 10X, 40X).
+[!!] Draw box to hold slide.
+[x] Diopter knob id, instead of entire diopter
 
 - Tutorial Wish list (Extra) -
 -Sideview motions and lenses to reflect the frontview
