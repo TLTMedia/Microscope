@@ -113,9 +113,9 @@ function updateAnimation() {
     /* Microscope animations */
     translateReduceSVG("#ocularRight, #ocularRightCopy", ms.eyepiecePosition, 0);
     translateReduceSVG("#ocularLeftCopy", -1 * ms.eyepiecePosition, 0);
-    translateReduceSVG("#ocularLeftDiopter", -1 * ms.eyepiecePosition, ms.diopterPosition);
+    translateReduceSVG("#ocularLeftDiopter, #friend", -1 * ms.eyepiecePosition, ms.diopterPosition);
 
-    translateReduceSVG("#friend", -1 * ms.eyepiecePosition, 0);
+    translateReduceSVG("#ocularLeftStick", -1 * ms.eyepiecePosition, 0);
     translateReduceSVG("#ocularLeft", -1 * ms.eyepiecePosition, 0);
     translateReduceSVG("#slideStage, #stageLight", 0, ms.knobPosition);
     translateReduceSVG("#slide", ms.xslide, ms.yslide);

@@ -132,6 +132,7 @@ Feedback:
     []Too high of aperture light will be blinding (on low mag)
     []Too far movement of knobs may blur view. 
     []Add warnings/additional text
+[] Currently the sideview knob is unresponsive
 
 - 2/16/2017 Meeting (New Backlog)- 
 [x] For low mag change description text to "rotate the lenses to the lowest objective (4X) without the 100X objective passing the slide." 
