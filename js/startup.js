@@ -163,6 +163,11 @@ function loadTutorial() {
                 "longText": "The slide should be wedged in place within the caliper.",
                 "feedbackText": "click the light switch"
             }, {
+                "id": "setupCaliperBlade",
+                "shortText": "Caliper Blade",
+                "longText": "Click on the caliper blade to open it. This allows us to have room to put the slide in without damaging it.",
+                "feedbackText": "click the light switch"
+            },{
                 "id": "setupCondenser",
                 "shortText": "Condenser",
                 "longText": "The condenser allows light to accurately hit the slide, rendering it viewable through the lenses.",
@@ -292,9 +297,10 @@ function loadTutorial() {
 
     /** Tutorial **/
     setupLightSwitch = game.getGroupStep(0, 0);
-    setupSlide = game.getGroupStep(0, 1);
-    setupCondense = game.getGroupStep(0, 2);
-    setupCaliper = game.getGroupStep(0, 3);
+    setupCaliperBlade = game.getGroupStep(0,1)
+    setupSlide = game.getGroupStep(0, 2);
+    setupCondense = game.getGroupStep(0, 3);
+    setupCaliper = game.getGroupStep(0, 4);
     // Low Magnification
     lowLenses = game.getGroupStep(1,0);
     lowDiaphragmLight = game.getGroupStep(1, 1);

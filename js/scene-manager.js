@@ -61,6 +61,9 @@ function startStep(step) {
             enableLightSwitch();
             isDebug = DEBUG(isDebug, currentMode);
         }
+        if (step == setupCaliperBlade){
+           enableCaliperBlade(); 
+        } 
         if (step == setupSlide){ 
             setupEnableSlide(); 
         }

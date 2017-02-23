@@ -33,6 +33,7 @@ class StateMachine {
         this.diaphragmLightPosition = 0;
         this.diaphragmHeightPosition = 0;
         this.diopterPosition = 0;
+        this.caliperBlade = 0;
         this.xcaliper = 0;
         this.ycaliper = 0;
         this.yheight = 0;
@@ -59,6 +60,7 @@ class StateMachine {
         this.diaphragmLightPosition = 0;
         this.diaphragmHeightPosition = 270 / 12;
         this.diopterPosition = 0;
+        this.caliperBlade = 0;
         this.xcaliper = 0;
         this.ycaliper = 5 + this.knobPosition;
         this.yheight = 0 + this.knobPosition;
@@ -86,27 +88,34 @@ ms.setup()
      */
     function translateReduce(components, x, y) {
         $(components).css({
-            "-webkit-transform": "translate(" + x + "px," + y + "px)",
-            "-ms-transform": "translate(" + x + "px," + y + "px)",
-            "-moz-transform": "translate(" + x + "px," + y + "px)",
-            "transform": "translate(" + x + "px," + y + "px)"
-        });
+                "-webkit-transform": "translate(" + x + "px," + y + "px)",
+                "-ms-transform": "translate(" + x + "px," + y + "px)",
+                "-moz-transform": "translate(" + x + "px," + y + "px)",
+                "transform": "translate(" + x + "px," + y + "px)"
+                });
     }
 
 
 
-    /* Translate Reduce (DRY) - SVGS
-     *
-     * Condense all transforms into a single method and pass by argument.
-     * 
-     */
-    function translateReduceSVG(components, x, y) {
-        $(components).attr("transform", "translate(" + x + " " + y + ")");
-    }
+/* Translate Reduce (DRY) - SVGS
+ *
+ * Condense all transforms into a single method and pass by argument.
+ * 
+ */
+function translateReduceSVG(components, x, y) {
+    $(components).attr("transform", "translate(" + x + " " + y + ")");
+}
+
+
+//Rotate Center
+function rotateReduceSVG(components, rotate, xOff, yOff) {
+    var coord = $(components)[0].getBBox();
+    $(components).attr("transform", "rotate(" + rotate + " " + (coord.x+(coord.width/2) + xOff) +" " + (coord.y + (coord.height/2) + yOff) + ")");
+}
 
 /* 
    Call updateAnimation() for everytime there is a state change. The microscope animation is dependent on only ONE source, and that is the state of the machine. Thus, everytime the state of the machine changes from user input, the changes of the scope should reflect all at once. 
-   */
+ */
 function updateAnimation() {
     W_RAT = $(window).width()/$(window).height();
     var aspectRatio = 4/3;
@@ -124,7 +133,7 @@ function updateAnimation() {
     translateReduceSVG("#adjustDHeight", 0, ms.diaphragmHeightPosition);
     translateReduceSVG("#caliperMetal, #caliperKnob, #caliper", 0, ms.yknobcaliper);
     translateReduceSVG("#caliperMetal, #ycaliper, #xcaliper", ms.xcaliper, ms.ycaliper);
-
+    rotateReduceSVG("#caliperBlade", ms.caliperBlade, 0, -25);
     // Aperture precision
     $("#stageLight ellipse").attr("rx", 12-((sm_orig.MAX_DIAPHRAGM_HEIGHT-ms.diaphragmHeightPosition)/2));
     $("#stageLight ellipse").attr("ry", 6-((sm_orig.MAX_DIAPHRAGM_HEIGHT-ms.diaphragmHeightPosition)/4));
@@ -143,8 +152,8 @@ function updateAnimation() {
     //console.log(ms.xcaliper);
     //console.log(ms.xslide + ", " + (ms.yslide-ms.knobPosition));
     // We can derive the slide content offset from the position on the scope
-        
-     
+
+
     //console.log(ms.knobPosition);
     /* Slide Contents Animations */
     // Caliper movements on slide.
@@ -159,32 +168,32 @@ function updateAnimation() {
     // Microscope darkness (hack is based off of a black background to darken)
     // [0,40] -> Expand to [0,60]
     $("#slideContents,#slideContents2,#stageLight").css({
-        "opacity": (0.4) + ((1.5 * ms.diaphragmLightPosition) / 100)
-    });
+            "opacity": (0.4) + ((1.5 * ms.diaphragmLightPosition) / 100)
+            });
 
     //console.log("scale(" + ms.zoom + ") translate(" + xCali + "px," + yCali + "px)");
 
     $("#slideContents, #slideContents2").css({
-        "transform": "scale(" + ms.zoom + ") translate(" + xCali + "px," + yCali + "px)"
-    });
+            "transform": "scale(" + ms.zoom + ") translate(" + xCali + "px," + yCali + "px)"
+            });
 
     var chosenBlur = ms.slideBlur;
     if (!ms.inBounds) {}
 
     // Initializes both slide contents to blur
     $("#slideContents, #slideContents2").css({
-        "-ms-filter": "blur(" + Math.abs(chosenBlur) + "px)",
-        "-webkit-filter": "blur(" + Math.abs(chosenBlur) + "px)",
-        "filter": "blur(" + Math.abs(chosenBlur) + "px)"
-    });
+            "-ms-filter": "blur(" + Math.abs(chosenBlur) + "px)",
+            "-webkit-filter": "blur(" + Math.abs(chosenBlur) + "px)",
+            "filter": "blur(" + Math.abs(chosenBlur) + "px)"
+            });
 
     // Reblurs the second slide contents (with diopter as a factor)
     var chosenBlur = ms.eyepiecePosition + ms.slideBlur2 
         $("#slideContents2").css({
-            "-ms-filter": "blur(" + Math.abs(chosenBlur) + "px)",
-            "-webkit-filter": "blur(" + Math.abs(chosenBlur) + "px)",
-            "filter": "blur(" + Math.abs(chosenBlur) + "px)"
-        });
+                "-ms-filter": "blur(" + Math.abs(chosenBlur) + "px)",
+                "-webkit-filter": "blur(" + Math.abs(chosenBlur) + "px)",
+                "filter": "blur(" + Math.abs(chosenBlur) + "px)"
+                });
 
 }
 
@@ -193,16 +202,16 @@ function updateAnimation() {
 function enableLightSwitch() {
 
     $("#switch").on('click', function() {
-        ms.lightStatus = (1 + ms.lightStatus) % 2;
-        if (ms.lightStatus > 0) {
+            ms.lightStatus = (1 + ms.lightStatus) % 2;
+            if (ms.lightStatus > 0) {
             $("#illuminationLight").removeClass("elementOff");
             $("#illuminationLight").addClass("lightOn");
-        } else {
+            } else {
             $("#illuminationLight").removeClass("lightOn");
             $("#illuminationLight").addClass("elementOff");
-        }
+            }
 
-    });
+            });
 }
 
 
@@ -221,30 +230,30 @@ function enableEyepiece() {
 
         $(ocularPart)
             .mousedown(function() {
-                isDown = true;
-            })
+                    isDown = true;
+                    })
         .mousemove(function(event) {
-            if (isDown) {
+                if (isDown) {
                 if ((prevX < event.pageX && ocularPart == "#ocularRight") || (prevX > event.pageX && ocularPart == "#ocularLeft")) {
 
-                    if (ms.eyepiecePosition < sm_orig["MAX_OCULAR"]) {
-                        ms.eyepiecePosition += val;
-                    }
+                if (ms.eyepiecePosition < sm_orig["MAX_OCULAR"]) {
+                ms.eyepiecePosition += val;
+                }
                 } else if ((prevX > event.pageX && ocularPart == "#ocularRight") || (prevX < event.pageX && ocularPart == "#ocularLeft")) {
-                    if (ms.eyepiecePosition > 0) {
-                        ms.eyepiecePosition -= val;
-                    }
+                if (ms.eyepiecePosition > 0) {
+                ms.eyepiecePosition -= val;
+                }
                 }
                 prevX = event.pageX;
                 updateAnimation();
-            }
-        })
+                }
+                })
         .mouseup(function() {
-            isDown = false;
-        })
+                isDown = false;
+                })
         .mouseleave(function() {
-            isDown = false;
-        });
+                isDown = false;
+                });
     }
     addOcularDrag("#ocularRight");
     addOcularDrag("#ocularLeft");
@@ -257,46 +266,46 @@ function enableCoarseKnob() {
         var val = power;
         $(coursePart)
             .mousedown(function() {
-                isDown = true;
-            })
+                    isDown = true;
+                    })
         .mousemove(function(event) {
-            if (isDown) {
+                if (isDown) {
                 if (prevY < event.pageY) {
-                    if (ms.knobPosition < sm_orig["MAX_KNOB"]) {
-                        ms.zoom -= val * 0.1;
-                        ms.yslide += val;
-                        ms.ycaliper += val;
-                        sm_orig["MAX_Y_CALIPER"] += val;
-                        sm_orig["MIN_Y_CALIPER"] += val;
-                        ms.yknobcaliper += val;
-                        ms.yheight += val;
-                        ms.knobPosition += val;
-                        ms.slideBlur += 0.15;
-                    }
+                if (ms.knobPosition < sm_orig["MAX_KNOB"]) {
+                ms.zoom -= val * 0.1;
+                ms.yslide += val;
+                ms.ycaliper += val;
+                sm_orig["MAX_Y_CALIPER"] += val;
+                sm_orig["MIN_Y_CALIPER"] += val;
+                ms.yknobcaliper += val;
+                ms.yheight += val;
+                ms.knobPosition += val;
+                ms.slideBlur += 0.15;
+                }
                 } else if ((prevY > event.pageY)) {
-                    if (ms.knobPosition > sm_orig["MIN_KNOB"]) {
-                        ms.zoom += val * 0.1;
-                        ms.yslide -= val;
-                        ms.ycaliper -= val;
-                        ms.yknobcaliper -= val;
-                        sm_orig["MAX_Y_CALIPER"] -= val;
-                        sm_orig["MIN_Y_CALIPER"] -= val;
-                        ms.yheight -= val;
-                        ms.knobPosition -= val;
-                        ms.slideBlur -= 0.15;
+                if (ms.knobPosition > sm_orig["MIN_KNOB"]) {
+                ms.zoom += val * 0.1;
+                ms.yslide -= val;
+                ms.ycaliper -= val;
+                ms.yknobcaliper -= val;
+                sm_orig["MAX_Y_CALIPER"] -= val;
+                sm_orig["MIN_Y_CALIPER"] -= val;
+                ms.yheight -= val;
+                ms.knobPosition -= val;
+                ms.slideBlur -= 0.15;
 
-                    }
+                }
                 }
                 prevY = event.pageY;
                 updateAnimation();
-            }
+                }
         })
         .mouseup(function() {
-            isDown = false;
-        })
+                isDown = false;
+                })
         .mouseleave(function() {
-            isDown = false;
-        });
+                isDown = false;
+                });
     }
 
     addCourseDrag("#knobsCoarse", 0.5);
@@ -309,30 +318,30 @@ function enableFineKnob() {
         var val = power;
         $(coursePart)
             .mousedown(function() {
-                isDown = true;
-            })
+                    isDown = true;
+                    })
         .mousemove(function(event) {
-            if (isDown) {
+                if (isDown) {
                 if (prevY > event.pageY) {
-                    if (ms.slideBlur < sm_orig["MAX_BLUR"]) {
-                        ms.slideBlur += val;
-                    }
+                if (ms.slideBlur < sm_orig["MAX_BLUR"]) {
+                ms.slideBlur += val;
+                }
                 } else if ((prevY < event.pageY)) {
-                    if (ms.slideBlur > sm_orig["MIN_BLUR"]) {
-                        ms.slideBlur -= val;
-                    }
+                if (ms.slideBlur > sm_orig["MIN_BLUR"]) {
+                ms.slideBlur -= val;
+                }
                 }
                 //console.log(ms.knobPosition);
                 prevY = event.pageY;
                 updateAnimation();
-            }
-        })
+                }
+                })
         .mouseup(function() {
-            isDown = false;
-        })
+                isDown = false;
+                })
         .mouseleave(function() {
-            isDown = false;
-        });
+                isDown = false;
+                });
     }
 
     addFineDrag("#knobsFine", 0.2);
@@ -345,35 +354,43 @@ function enableDiaphragmLight() {
         var val = 1;
         $(part)
             .mousedown(function() {
-                isDown = true;
-            })
+                    isDown = true;
+                    })
         .mousemove(function(event) {
-            if (isDown) {
+                if (isDown) {
                 if ((prevX > event.pageX)) {
-                    if (ms.diaphragmLightPosition < sm_orig["MAX_DIAPHRAGM_LIGHT"]) {
-                        ms.diaphragmLightPosition += val;
-                    }
+                if (ms.diaphragmLightPosition < sm_orig["MAX_DIAPHRAGM_LIGHT"]) {
+                ms.diaphragmLightPosition += val;
+                }
                 } else if ((prevX < event.pageX)) {
-                    if (ms.diaphragmLightPosition > 0) {
-                        ms.diaphragmLightPosition -= val;
-                    }
+                if (ms.diaphragmLightPosition > 0) {
+                ms.diaphragmLightPosition -= val;
+                }
                 }
                 prevX = event.pageX;
                 updateAnimation();
-            }
-        })
+                }
+                })
         .mouseup(function() {
-            isDown = false;
-        })
+                isDown = false;
+                })
         .mouseleave(function() {
-            isDown = false;
-        });
+                isDown = false;
+                });
     }
     addDiaphragmDrag("#diaphragm, #apertureKnob");
 
 }
 
+function enableCaliperBlade(){
+    $("#caliperBlade").on("click", function(){
+                if (ms.caliperBlade > 0){
+                ms.caliperBlade = 0;}
+                else{ms.caliperBlade = 25;}
+                updateAnimation();
+         }); 
 
+}
 function enableCaliper() {
     // Low knob
     function addCaliperXDrag(part) {
@@ -381,40 +398,40 @@ function enableCaliper() {
 
         $(part)
             .mousedown(function() {
-                isDown = true;
-            })
+                    isDown = true;
+                    })
         .mousemove(function(event) {
-            if (isDown) {
+                if (isDown) {
                 if ((prevX < event.pageX)) {
-                    if (ms.xcaliper < sm_orig["MAX_X_CALIPER"]) {
-                        ms.xcaliper += val;
-                        ms.xslide += val;
-                    }
+                if (ms.xcaliper < sm_orig["MAX_X_CALIPER"]) {
+                ms.xcaliper += val;
+                ms.xslide += val;
+                }
                 } else if ((prevX > event.pageX)) {
-                    if (ms.xcaliper > sm_orig["MIN_X_CALIPER"]) {
-                        ms.xcaliper -= val;
-                        ms.xslide -= val;
-                    }
+                if (ms.xcaliper > sm_orig["MIN_X_CALIPER"]) {
+                ms.xcaliper -= val;
+                ms.xslide -= val;
+                }
                 }
                 prevX = event.pageX;
 
                 // Blur out if out of magic bounds
                 if (ms.xcaliper > -10 && ms.xcaliper < 10 && ms.ycaliper > -10 && ms.ycaliper < 10) {
-                    ms.inBounds = true;
+                ms.inBounds = true;
                 } else {
-                    ms.inBounds = false;
+                ms.inBounds = false;
                 }
 
                 updateAnimation();
 
-            }
+                }
         })
         .mouseup(function() {
-            isDown = false;
-        })
+                isDown = false;
+                })
         .mouseleave(function() {
-            isDown = false;
-        });
+                isDown = false;
+                });
     }
 
     function addCaliperYDrag(part) {
@@ -422,39 +439,39 @@ function enableCaliper() {
 
         $(part)
             .mousedown(function() {
-                isDown = true;
-            })
+                    isDown = true;
+                    })
         .mousemove(function(event) {
-            if (isDown) {
+                if (isDown) {
                 if ((prevX < event.pageX)) {
-                    if (ms.ycaliper < sm_orig["MAX_Y_CALIPER"]) {
-                        ms.ycaliper += val;
-                        ms.yslide += val;
-                    }
+                if (ms.ycaliper < sm_orig["MAX_Y_CALIPER"]) {
+                ms.ycaliper += val;
+                ms.yslide += val;
+                }
                 } else if ((prevX > event.pageX)) {
-                    if (ms.ycaliper > sm_orig["MIN_Y_CALIPER"]) {
-                        ms.ycaliper -= val;
-                        ms.yslide -= val;
-                    }
+                if (ms.ycaliper > sm_orig["MIN_Y_CALIPER"]) {
+                ms.ycaliper -= val;
+                ms.yslide -= val;
+                }
                 }
                 prevX = event.pageX;
                 // Blur out if out of magic bounds
                 if (ms.xcaliper > sm_orig["MIN_X_BOUND"] && ms.xcaliper < sm_orig["MAX_X_BOUND"] && ms.ycaliper > sm_orig["MIN_Y_BOUND"] && ms.ycaliper < sm_orig["MAX_Y_BOUND"]) {
-                    ms.inBounds = true;
+                ms.inBounds = true;
                 } else {
-                    ms.inBounds = false;
+                ms.inBounds = false;
                 }
 
 
                 updateAnimation();
-            }
+                }
         })
         .mouseup(function() {
-            isDown = false;
-        })
+                isDown = false;
+                })
         .mouseleave(function() {
-            isDown = false;
-        });
+                isDown = false;
+                });
     }
     addCaliperXDrag("#xCaliperKnob");
     addCaliperYDrag("#yCaliperKnob");
@@ -486,33 +503,33 @@ function enableLenses() {
     function addLenseClick(part) {
         $(part)
             .mousedown(function() {
-                isDown = true;
-            })
+                    isDown = true;
+                    })
         .mousemove(function(event) {
-            if (isDown) {
+                if (isDown) {
                 //console.log(ms.lensePosition); //10,9,8
                 if ((prevX < event.pageX)) {
-                    if (ms.lenseWheel % 10 == 0) {
-                        $(ms.lenseStates[ms.lensePosition]).addClass("st0");
-                        ms.lensePosition = ((ms.lensePosition + 1) % ms.lenseStates.length);
-                        testDanger();
-                        $(ms.lenseStates[ms.lensePosition]).removeClass("st0");
-                        ms.lenseWheel = 1;
-                    } else {
-                        ms.lenseWheel++;
-                    }
+                if (ms.lenseWheel % 10 == 0) {
+                $(ms.lenseStates[ms.lensePosition]).addClass("st0");
+                ms.lensePosition = ((ms.lensePosition + 1) % ms.lenseStates.length);
+                testDanger();
+                $(ms.lenseStates[ms.lensePosition]).removeClass("st0");
+                ms.lenseWheel = 1;
+                } else {
+                ms.lenseWheel++;
+                }
                 } else if ((prevX > event.pageX)) {
-                    if (ms.lenseWheel % 10 == 0) {
-                        $(ms.lenseStates[ms.lensePosition]).addClass("st0");
-                        ms.lensePosition = ((ms.lensePosition - 1) % ms.lenseStates.length)
-            testDanger();
+                if (ms.lenseWheel % 10 == 0) {
+                $(ms.lenseStates[ms.lensePosition]).addClass("st0");
+                ms.lensePosition = ((ms.lensePosition - 1) % ms.lenseStates.length)
+                testDanger();
 
-        if (ms.lensePosition == -1) ms.lensePosition = ms.lenseStates.length - 1;
-        $(ms.lenseStates[ms.lensePosition]).removeClass("st0");
-        ms.lenseWheel = 19;
-                    } else {
-                        ms.lenseWheel--;
-                    }
+                if (ms.lensePosition == -1) ms.lensePosition = ms.lenseStates.length - 1;
+                $(ms.lenseStates[ms.lensePosition]).removeClass("st0");
+                ms.lenseWheel = 19;
+                } else {
+                    ms.lenseWheel--;
+                }
 
                 }
                 prevX = event.pageX;
@@ -542,15 +559,15 @@ function enableLenses() {
                     swapMag(-1);
                 }
                 updateAnimation();
-            }
+                }
 
         })
         .mouseup(function() {
-            isDown = false;
-        })
+                isDown = false;
+                })
         .mouseleave(function() {
-            isDown = false;
-        });
+                isDown = false;
+                });
     }
     addLenseClick("#lensesBasePath");
 }
@@ -562,31 +579,31 @@ function enableDiopter(){
         var val = power;
         $(ocularPart)
             .mousedown(function() {
-                isDown = true;
-            })
+                    isDown = true;
+                    })
         .mousemove(function(event) {
-            if (isDown) {
+                if (isDown) {
                 if (prevX > event.pageX) {
-                    if (ms.diopterPosition > sm_orig["MIN_DIOPTER"]) {
-                        ms.diopterPosition -= power;
-                        ms.slideBlur2 -= 1; 
-                    }
+                if (ms.diopterPosition > sm_orig["MIN_DIOPTER"]) {
+                ms.diopterPosition -= power;
+                ms.slideBlur2 -= 1; 
+                }
                 } else if ((prevX < event.pageX)) {
-                    if (ms.diopterPosition < sm_orig["MAX_DIOPTER"]) {
-                        ms.diopterPosition += power;
-                        ms.slideBlur2 += 1;
-                    }
+                if (ms.diopterPosition < sm_orig["MAX_DIOPTER"]) {
+                ms.diopterPosition += power;
+                ms.slideBlur2 += 1;
+                }
                 }
                 prevX = event.pageX;
                 updateAnimation();
-            }
-        })
+                }
+                })
         .mouseup(function() {
-            isDown = false;
-        })
+                isDown = false;
+                })
         .mouseleave(function() {
-            isDown = false;
-        });
+                isDown = false;
+                });
     }
     addDiopterDrag("#friend", 0.5);
 }
