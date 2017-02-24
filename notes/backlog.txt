@@ -134,6 +134,9 @@ Feedback:
     []Too far movement of knobs may blur view. 
     []Add warnings/additional text
 
+
+
+
 - 2/16/2017 Meeting (New Backlog)- 
 [x] For low mag change description text to "rotate the lenses to the lowest objective (4X) without the 100X objective passing the slide." 
 	[x]Reflect these changes on med, and high mag.
@@ -156,9 +159,12 @@ Feedback:
 	[] Rectangular image, enlarge. 
 	[] On farend (bounds of caliper), show slide edge
 	[] On uncalibrated, show gray. 
+[] fix the lenses functionality.
+
+
 
 -Shrn delegation-
-[x] Make the coarse and fine knobs bigger (keep blue spacing minimal).
+[xx] Make the coarse and fine knobs bigger (keep blue spacing minimal).
 [x] The three different mags should have 3 different images (4X, 10X, 40X).
 [!!] Draw box to hold slide.
 [x] Diopter knob id, instead of entire diopter

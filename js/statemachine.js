@@ -511,22 +511,22 @@ function enableLenses() {
                 //console.log(ms.lensePosition); //10,9,8
                 if ((prevX < event.pageX)) {
                     if (ms.lenseWheel % 10 == 0) {
-                        $(ms.lenseStates[ms.lensePosition]).addClass("st0");
+                        $(ms.lenseStates[ms.lensePosition]).toggle();
                         ms.lensePosition = ((ms.lensePosition + 1) % ms.lenseStates.length);
                         testDanger();
-                        $(ms.lenseStates[ms.lensePosition]).removeClass("st0");
+                        $(ms.lenseStates[ms.lensePosition]).toggle();
                         ms.lenseWheel = 1;
                     } else {
                         ms.lenseWheel++;
                     }
                 } else if ((prevX > event.pageX)) {
                     if (ms.lenseWheel % 10 == 0) {
-                        $(ms.lenseStates[ms.lensePosition]).addClass("st0");
+                        $(ms.lenseStates[ms.lensePosition]).toggle();
                         ms.lensePosition = ((ms.lensePosition - 1) % ms.lenseStates.length)
             testDanger();
 
         if (ms.lensePosition == -1) ms.lensePosition = ms.lenseStates.length - 1;
-        $(ms.lenseStates[ms.lensePosition]).removeClass("st0");
+        $(ms.lenseStates[ms.lensePosition]).toggle();
         ms.lenseWheel = 19;
                     } else {
                         ms.lenseWheel--;
