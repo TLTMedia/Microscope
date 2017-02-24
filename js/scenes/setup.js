@@ -20,6 +20,19 @@ function setupEnableSwitch() {
     });
 }
 
+function setupEnableBlade(){
+    textSetup("Now pull on the caliper blade by clicking on it.", "64%", "45%");
+    id = "#caliperBlade"
+        var clonedComp = highlightComponent(id);
+    bringToFront($(id));
+    $("#caliperBlade").click(function () {
+        if (setupCaliperBlade.isActive()) {
+            removeHighlight(clonedComp);
+            setupCaliperBlade.complete();
+        }
+    });
+}
+
 function setupEnableSlide() {
     textSetup("Now grab the slide below and put it against the caliper.", "64%", "45%");
     toggleVisibility("#slide");
@@ -83,8 +96,8 @@ function setupEnableSlide() {
 
         if (setupSlide.isActive() && Math.abs(x) < 10 && y < 25 && y > 10) {
             setupSlide.complete();
+            $("#caliperBlade").trigger("click");
             toggleVisibility("#slide");
-
             $("#pseudo_slideCopyCopy").remove();
             $("#pseudo_slideCopy").remove();
         }

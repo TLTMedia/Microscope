@@ -21,7 +21,7 @@ function bindTooltip(){
    Use of below function is for intro.js (intro.js + gameLogic.js interdependence).
    */
 function startStep(step) {
-    var isDebug = true;
+    var isDebug = false;
     /* intro
 
        Intro doesn't necessarily have flexible choices for the user to act on.
@@ -63,6 +63,7 @@ function startStep(step) {
         }
         if (step == setupCaliperBlade){
            enableCaliperBlade(); 
+            setupEnableBlade();
         } 
         if (step == setupSlide){ 
             setupEnableSlide(); 

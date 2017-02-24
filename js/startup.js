@@ -158,16 +158,16 @@ function loadTutorial() {
                 "longText": "The light switch is the first thing you should turn on anytime you use a microscope.",
                 "feedbackText": "click the light switch"
             }, {
-                "id": "setupSlide",
-                "shortText": "Slide",
-                "longText": "The slide should be wedged in place within the caliper.",
-                "feedbackText": "click the light switch"
-            }, {
                 "id": "setupCaliperBlade",
                 "shortText": "Caliper Blade",
                 "longText": "Click on the caliper blade to open it. This allows us to have room to put the slide in without damaging it.",
                 "feedbackText": "click the light switch"
             },{
+                "id": "setupSlide",
+                "shortText": "Slide",
+                "longText": "The slide should be wedged in place within the caliper.",
+                "feedbackText": "click the light switch"
+            }, {
                 "id": "setupCondenser",
                 "shortText": "Condenser",
                 "longText": "The condenser allows light to accurately hit the slide, rendering it viewable through the lenses.",
@@ -301,6 +301,7 @@ function loadTutorial() {
     setupSlide = game.getGroupStep(0, 2);
     setupCondense = game.getGroupStep(0, 3);
     setupCaliper = game.getGroupStep(0, 4);
+
     // Low Magnification
     lowLenses = game.getGroupStep(1,0);
     lowDiaphragmLight = game.getGroupStep(1, 1);
@@ -424,6 +425,7 @@ $(function(){
         var innerText = $(this).text();
         currentMode = innerText;
         switch(innerText){
+
             case "Introduction":
                 destroy();
                 startup(loadIntro);
@@ -433,6 +435,7 @@ $(function(){
                 startup(loadTutorial);
                 break;
         } 
+    updateAnimation();
     });
 
     startup(loadIntro);
