@@ -79,7 +79,7 @@ class StateMachine {
 
 
 ms = new StateMachine();
-ms.setup()
+ms.setup();
 
     /* Translate Reduce (DRY) - HTML
      *
@@ -134,7 +134,7 @@ function updateAnimation() {
     translateReduceSVG("#caliperMetal, #caliperKnob, #caliper", 0, ms.yknobcaliper);
     translateReduceSVG("#caliperMetal, #ycaliper, #xcaliper", ms.xcaliper, ms.ycaliper);
     rotateReduceSVG("#caliperBlade", ms.caliperBlade, 0, -25);
-    rotateReduceSVG(".knob", ms.diaphragmHeightPosition*40, 0, 0);
+    rotateReduceSVG(".knob", ms.diaphragmHeightPosition*10, 0, 0);
     // Aperture precision
     $("#stageLight ellipse").attr("rx", 12-((sm_orig.MAX_DIAPHRAGM_HEIGHT-ms.diaphragmHeightPosition)/2));
     $("#stageLight ellipse").attr("ry", 6-((sm_orig.MAX_DIAPHRAGM_HEIGHT-ms.diaphragmHeightPosition)/4));

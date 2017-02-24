@@ -182,8 +182,9 @@ function resizeWindow() {
         knob.center.x = offset.left + w / 2;
         knob.center.y = offset.top + h / 2;
         //console.log(knob.width, knob.height, offset.left, offset.top);
-        knobObject.css({
+        /*knobObject.css({
             'transform': "rotate(" + knobs[i].rotation + "deg)"
         });
+        */
     }
 }

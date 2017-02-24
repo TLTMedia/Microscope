@@ -147,7 +147,6 @@ function loadIntro(){
 
 function loadTutorial() {
     //  Define steps (order doesn't matter here)
-
     loadMenu("tutorial");
     var stepText = [{
         "id": "setup",
@@ -425,7 +424,6 @@ $(function(){
         var innerText = $(this).text();
         currentMode = innerText;
         switch(innerText){
-
             case "Introduction":
                 destroy();
                 startup(loadIntro);
@@ -433,6 +431,7 @@ $(function(){
             case "Tutorial":
                 destroy();
                 startup(loadTutorial);
+                ms.setup();
                 break;
         } 
     updateAnimation();
