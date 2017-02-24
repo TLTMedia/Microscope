@@ -120,8 +120,9 @@ Feedback:
 [x]Need completion feedback when doing Tutorial (end)
 [x]Deviate from framework and add a feedback button before moving forward.
 [x]Modify scenes/setup.js caliper positions to calibrate where x,y = 0,0. 
-[]Rotation not firefox compatible. (Sharin needs to look at the svg/ai file and confirm this and next backlog)
-[]Modify Coarse Knob to complete on clarity (white line).
+[xxxxxxxxxx THE DEMON IS GONE]Rotation not firefox compatible. (Sharin needs to look at the svg/ai file and confirm this and next backlog)
+[x]Modify Coarse Knob to complete on clarity (white line).
+[x] Currently the sideview knob is unresponsive
 []Occasional bug arises where nothing loads. Test by refreshing && disabling cache.
     []resize line 17X?
 []Track State machine
@@ -132,7 +133,6 @@ Feedback:
     []Too high of aperture light will be blinding (on low mag)
     []Too far movement of knobs may blur view. 
     []Add warnings/additional text
-[] Currently the sideview knob is unresponsive
 
 - 2/16/2017 Meeting (New Backlog)- 
 [x] For low mag change description text to "rotate the lenses to the lowest objective (4X) without the 100X objective passing the slide." 
@@ -147,11 +147,11 @@ Feedback:
 	[x]remove the slide
 	[x]turn off the light.
 
+[x] Slide placement drag by white piece when placing into calipers
+[x] Slide holder pull to place (click or drag to pull), animate.
 [] "(see details)" on instruction tooltip for clarity if extra details necessary to proceed.  
 [] Once at 40X, coarse knob should trigger warning (may damage slide)
 	****If they touch coarse focus on 40X, trigger large warning.
-[] Slide placement drag by white piece when placing into calipers
-[] Slide holder pull to place (click or drag to pull), animate.
 [] Slide view contents more reflective IRL:
 	[] Rectangular image, enlarge. 
 	[] On farend (bounds of caliper), show slide edge
