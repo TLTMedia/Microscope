@@ -150,7 +150,7 @@ function triggerCaliper() {
 }
 
 function triggerLenses() {
-    arr = ["#lenses", "#lensesBase"];
+    arr = ["#lensesBase"];
     //secludePart(arr);
     introCountCap++;var flag=false;
     var clonedArr = highlightArray(arr);
