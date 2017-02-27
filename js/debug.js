@@ -15,6 +15,7 @@ function debugIntro() {
 function debugSetup() {
     removeHighlightCopy();
     setupLightSwitch.complete();
+    setupCaliperBlade.complete();
     setupSlide.complete();
     setupCondense.complete();
     setupCaliper.complete();

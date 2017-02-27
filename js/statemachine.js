@@ -109,8 +109,12 @@ function translateReduceSVG(components, x, y) {
 
 //Rotate Center
 function rotateReduceSVG(components, rotate, xOff, yOff) {
-    var coord = $(components)[0].getBBox();
-    $(components).attr("transform", "rotate(" + rotate + " " + (coord.x+(coord.width/2) + xOff) +" " + (coord.y + (coord.height/2) + yOff) + ")");
+    try{
+        var coord = $(components)[0].getBBox();
+        $(components).attr("transform", "rotate(" + rotate + " " + (coord.x+(coord.width/2) + xOff) +" " + (coord.y + (coord.height/2) + yOff) + ")");
+    }
+    catch(err){
+    }
 }
 
 /* 
@@ -141,11 +145,11 @@ function updateAnimation() {
 
     //console.log(W_RAT);
     if(W_RAT <aspectRatio){
-        translateReduce("#slideView", ms.eyepiecePosition * (Math.pow(4*(1/W_RAT),-1)+aspectRatio), 0);
-        translateReduce("#slideView2", -ms.eyepiecePosition * (Math.pow(3*(1/W_RAT),-1)+aspectRatio), 0);
+        translateReduce(".slideRect, #slideView", ms.eyepiecePosition * (Math.pow(4*(1/W_RAT),-1)+aspectRatio), 0);
+        translateReduce(".slideRect,#slideView2", -ms.eyepiecePosition * (Math.pow(3*(1/W_RAT),-1)+aspectRatio), 0);
     } else{
-        translateReduce("#slideView", ms.eyepiecePosition * Math.pow(3*(1/W_RAT),2), 0);
-        translateReduce("#slideView2", -ms.eyepiecePosition * Math.pow(3*(1/W_RAT),2), 0);
+        translateReduce(".slideRect,#slideView", ms.eyepiecePosition * Math.pow(3*(1/W_RAT),2), 0);
+        translateReduce(".slideRect,#slideView2", -ms.eyepiecePosition * Math.pow(3*(1/W_RAT),2), 0);
     }
     //
 
@@ -168,13 +172,13 @@ function updateAnimation() {
     //console.log(yCali);
     // Microscope darkness (hack is based off of a black background to darken)
     // [0,40] -> Expand to [0,60]
-    $("#slideContents,#slideContents2,#stageLight").css({
+    $("#slideContents,#slideContents2,#stageLight, .slideRect").css({
         "opacity": (0.4) + ((1.5 * ms.diaphragmLightPosition) / 100)
     });
 
     //console.log("scale(" + ms.zoom + ") translate(" + xCali + "px," + yCali + "px)");
 
-    $("#slideContents, #slideContents2").css({
+    $("#slideContents, #slideContents2, .slideRect").css({
         "transform": "scale(" + ms.zoom + ") translate(" + xCali + "px," + yCali + "px)"
     });
 
@@ -540,17 +544,22 @@ function enableLenses() {
 
 
                 if (ms.lenseStates[ms.lensePosition].includes("Red")) {
+                    $('.slideRect').css("display", "block");
+                    $('#slideRect2').css("display", "none");
                     swapMag(1);
                     ms.slideBlur = 4;
                 } else if (ms.lenseStates[ms.lensePosition].includes("Yellow")) {
+                    $('.slideRect').css("display", "block");
                     swapMag(2);
                     ms.slideBlur = 4;
                 } 
                 else if (ms.lenseStates[ms.lensePosition].includes("White")){
-                    swapMag(2);
+                    $('.slideRect').css("display", "block");
+                    swapMag(3);
                 } 
                 else if (ms.lenseStates[ms.lensePosition].includes("Blue")){
-                    swapMag(2);
+                    $('.slideRect').css("display", "block");
+                    swapMag(3);
                     ms.slideBlur = 4;
                 }
 
@@ -558,6 +567,7 @@ function enableLenses() {
                 else {
                     ms.zoomSave = ms.zoom;
                     swapMag(-1);
+                    $('.slideRect').css("display", "none");
                 }
                 updateAnimation();
             }

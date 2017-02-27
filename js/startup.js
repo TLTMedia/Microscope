@@ -297,7 +297,7 @@ function loadTutorial() {
     /** Tutorial **/
     setupLightSwitch = game.getGroupStep(0, 0);
     setupCaliperBlade = game.getGroupStep(0,1)
-    setupSlide = game.getGroupStep(0, 2);
+        setupSlide = game.getGroupStep(0, 2);
     setupCondense = game.getGroupStep(0, 3);
     setupCaliper = game.getGroupStep(0, 4);
 
@@ -347,21 +347,26 @@ function swapMag(n){
     var path = 'img/cells/';
     var cell = "";
     var cell2 = "";
-    var slideImg = ""
-        var slideImg2 = ""
-        if (n==0){
-            slideImg = $('<img id="slideContents">');
-            slideImg2 = $('<img id="slideContents2">');
-            slideImg.appendTo('#slideView');
-            slideImg2.appendTo('#slideView2');
-            return;
-        }
+    var slideImg = "";
+    var slideImg2 = "";
+    // setup
+    if (n==0){
+        slideImg = $('<div class="slideRect"><img id="slideContents"></div>');
+        slideImg2 = $('<div class="slideRect" id="slideRect2"><img id="slideContents2"></div>');
+        slideImg.appendTo('#slideView');
+        slideImg2.appendTo('#slideView2');
+        return;
+    }
     slideImg = $("#slideContents");
     slideImg2 = $("#slideContents2");
     if (n==1){
         cell = path + 'eyepieceCellsLow-bg.png';
     }
-    else if (n==2 || n==3){
+    else if (n==2){
+        cell = path + 'eyepieceCellsMedium.png';
+        cell2 = path + 'eyepieceCellsMedium.png';
+    }
+    else if (n==3){
         cell = path + 'eyepieceCellsHigh.png';
         cell2 = path + 'eyepieceCellsHigh.png';
     }
@@ -434,7 +439,7 @@ $(function(){
                 ms.setup();
                 break;
         } 
-    updateAnimation();
+        updateAnimation();
     });
 
     startup(loadIntro);

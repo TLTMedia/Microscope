@@ -408,3 +408,10 @@
 .st0{
     display: inline-block;
 }
+
+.slideRect{
+    width: 100%;
+    background-color: rgba(220,220,220,1);
+    padding: 0 30%;
+}
+
