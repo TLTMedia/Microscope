@@ -541,8 +541,6 @@ function enableLenses() {
 
 
                 // Invoke danger of proceeding to next lense
-
-
                 if (ms.lenseStates[ms.lensePosition].includes("Red")) {
                     $('.slideRect').css("display", "block");
                     $('#slideRect2').css("display", "none");

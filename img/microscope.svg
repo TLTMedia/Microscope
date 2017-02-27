@@ -109,6 +109,7 @@
 	<ellipse style="display:inline;fill:#FFF3C2;" cx="380.8" cy="310.9" rx="15.8" ry="8.2"/>
 </g>
 <g id="slide">
+	<rect x="333.1" y="303.8" style="opacity:0.77;fill:#FFFFFF;enable-background:new    ;" width="25" height="23"/>
 	<rect x="331.6" y="301.4" style="opacity:0.5;fill:#FFFFFF;enable-background:new    ;" width="100" height="28.2"/>
 	<path style="fill:#001359;" d="M381.6,306.6l0.1,0.7c0.5,2.5,0.5,5.1,0.1,7.6l-0.2,1c-0.2,1-0.6,0.9-0.8-0.1l-0.2-1.3
 		c-0.4-2.3-0.4-4.6,0.1-6.8l0.2-1C381,305.7,381.4,305.7,381.6,306.6z"/>
@@ -138,7 +139,7 @@
 	
 		<rect x="477.8" y="342.1" transform="matrix(0.9136 -0.4067 0.4067 0.9136 -97.8548 224.4903)" style="fill:#FFFFFF;" width="2.8" height="0.7"/>
 	
-		<rect x="472.9" y="331.3" transform="matrix(0.9136 -0.4067 0.4067 0.9136 -93.8859 221.564)" style="fill:#FFFFFF;" width="2.8" height="0.7"/>
+		<rect x="472.9" y="331.3" transform="matrix(0.9136 -0.4067 0.4067 0.9136 -93.886 221.564)" style="fill:#FFFFFF;" width="2.8" height="0.7"/>
 	
 		<rect x="468.1" y="320.4" transform="matrix(0.9136 -0.4067 0.4067 0.9136 -89.8678 218.6696)" style="fill:#FFFFFF;" width="2.8" height="0.7"/>
 	
@@ -327,7 +328,7 @@
 		
 			<rect x="476.7" y="333" transform="matrix(0.9159 -0.4015 0.4015 0.9159 -93.5915 219.8111)" style="fill:#FFFFFF;" width="1.9" height="0.4"/>
 		
-			<rect x="477.4" y="334.5" transform="matrix(0.9159 -0.4015 0.4015 0.9159 -94.1348 220.2184)" style="fill:#FFFFFF;" width="1.9" height="0.4"/>
+			<rect x="477.4" y="334.5" transform="matrix(0.9159 -0.4015 0.4015 0.9159 -94.1349 220.2184)" style="fill:#FFFFFF;" width="1.9" height="0.4"/>
 		
 			<rect x="475.9" y="331.1" transform="matrix(0.9159 -0.4015 0.4015 0.9159 -92.8244 219.6713)" style="fill:#FFFFFF;" width="3.6" height="0.4"/>
 		
@@ -554,11 +555,11 @@
 		</g>
 	</g>
 	
-		<rect x="305.2" y="461.1" transform="matrix(0.1756 -0.9845 0.9845 0.1756 -200.1059 694.4248)" style="fill:none;" width="18.7" height="11.1"/>
+		<rect x="305.2" y="461.1" transform="matrix(0.1756 -0.9845 0.9845 0.1756 -200.1291 694.4045)" style="fill:none;" width="18.7" height="11.1"/>
 	
-		<text transform="matrix(0.9845 0.1756 -0.1756 0.9845 312.6098 459.8656)" style="fill:#FFFFFF; font-family:'Avenir-Black'; font-size:3.3945px;">ON</text>
+		<text transform="matrix(0.9845 0.1756 -0.1756 0.9845 312.6098 459.8656)" style="fill:#FFFFFF; font-family:'Avenir-Black'; font-size:3.3946px;">ON</text>
 	
-		<text transform="matrix(0.9845 0.1756 -0.1756 0.9845 310.0263 470.7743)" style="fill:#FFFFFF; font-family:'Avenir-Black'; font-size:3.3945px;">OFF</text>
+		<text transform="matrix(0.9845 0.1756 -0.1756 0.9845 310.0264 470.7738)" style="fill:#FFFFFF; font-family:'Avenir-Black'; font-size:3.3946px;">OFF</text>
 </g>
 <g id="lensesBase">
 	<g>
@@ -608,25 +609,25 @@
 		<path style="fill:#FFFFFF;" d="M350.7,237.4c-8.9-6.2-15.2-4.9-15.2-4.9c-0.3,0.4-0.6,0.9-0.6,0.9s8,0.1,15.1,5.1
 			s9.9,12.4,9.9,12.4s0.3-0.5,0.6-0.9C360.5,249.9,359.6,243.6,350.7,237.4z"/>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 329.5499 246.8854)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0092px;">E.</text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 329.5499 246.8854)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0096px;">E.</text>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 335.7776 251.246)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0092px;"> </text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 335.7776 251.246)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0096px;"> </text>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 338.071 252.8519)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0092px;">100</text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 338.0714 252.8515)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0096px;">100</text>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 330.658 254.3744)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:4.6119px;">1.25 </text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 330.6591 254.3745)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:4.6121px;">1.25 </text>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 339.0954 260.2834)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0761px;">oil</text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 339.0954 260.2834)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0763px;">oil</text>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 328.9436 257.6928)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0761px;">1</text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 328.9436 257.6928)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0763px;">1</text>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 330.3347 258.6686)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0761px;">6</text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 330.3347 258.6686)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0763px;">6</text>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 331.7283 259.6426)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0761px;">0</text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 331.7294 259.6428)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0763px;">0</text>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 333.3669 260.7894)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0761px;">/</text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 333.3672 260.789)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0763px;">/</text>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 334.1858 261.3633)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0761px;">0.17</text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 334.1858 261.3633)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0763px;">0.17</text>
 	</g>
 	<g id="_x31_0_12_" style="display:inline;">
 		<g>
@@ -641,23 +642,23 @@
 				s-0.3-0.5-0.6-0.9C434,238.2,427.8,237,418.9,243.3z"/>
 		</g>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 417.3513 257.7567)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0092px;">E.</text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 417.3513 257.7567)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0096px;">E.</text>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 423.576 253.397)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0092px;"> </text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 423.576 253.397)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0096px;"> </text>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 425.8703 251.793)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0092px;">10</text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 425.8703 251.793)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0096px;">10</text>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 424.9458 257.4449)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:3.4024px;">0.25</text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 424.9458 257.4449)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:3.4026px;">0.25</text>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 426.9036 259.3692)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.2675px;">1</text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 426.9036 259.3692)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.2676px;">1</text>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 427.9688 258.6234)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.2675px;">6</text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 427.9688 258.6234)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.2676px;">6</text>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 429.0335 257.8779)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.2675px;">0</text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 429.0335 257.8779)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.2676px;">0</text>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 430.1806 257.0746)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.2675px;">/</text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 430.1806 257.0746)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.2676px;">/</text>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 430.8361 256.618)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.2675px;">-</text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 430.8361 256.618)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.2676px;">-</text>
 	</g>
 	<g id="_x34__12_" style="display:inline;">
 		<g>
@@ -701,25 +702,25 @@
 		<path style="fill:#FFFFFF;" d="M350.7,237.4c-8.9-6.2-15.2-4.9-15.2-4.9c-0.3,0.4-0.6,0.9-0.6,0.9s8,0.1,15.1,5.1
 			s9.9,12.4,9.9,12.4s0.3-0.5,0.6-0.9C360.5,249.9,359.6,243.6,350.7,237.4z"/>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 329.5499 246.8854)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0092px;">E.</text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 329.5499 246.8854)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0096px;">E.</text>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 335.7776 251.246)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0092px;"> </text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 335.7776 251.246)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0096px;"> </text>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 338.071 252.8519)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0092px;">100</text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 338.0714 252.8515)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0096px;">100</text>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 330.658 254.3744)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:4.6119px;">1.25 </text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 330.6591 254.3745)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:4.6121px;">1.25 </text>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 339.0954 260.2834)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0761px;">oil</text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 339.0954 260.2834)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0763px;">oil</text>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 328.9436 257.6928)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0761px;">1</text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 328.9436 257.6928)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0763px;">1</text>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 330.3347 258.6686)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0761px;">6</text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 330.3347 258.6686)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0763px;">6</text>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 331.7283 259.6426)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0761px;">0</text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 331.7294 259.6428)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0763px;">0</text>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 333.3669 260.7894)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0761px;">/</text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 333.3672 260.789)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0763px;">/</text>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 334.1858 261.3633)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0761px;">0.17</text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 334.1858 261.3633)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0763px;">0.17</text>
 	</g>
 	<g id="_x31_0_2_" style="display:inline;opacity:0.25;">
 		<g>
@@ -734,23 +735,23 @@
 				s-0.3-0.5-0.6-0.9C434,238.2,427.8,237,418.9,243.3z"/>
 		</g>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 417.3513 257.7567)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0092px;">E.</text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 417.3513 257.7567)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0096px;">E.</text>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 423.576 253.397)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0092px;"> </text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 423.576 253.397)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0096px;"> </text>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 425.8703 251.793)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0092px;">10</text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 425.8703 251.793)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0096px;">10</text>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 424.9458 257.4449)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:3.4024px;">0.25</text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 424.9458 257.4449)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:3.4026px;">0.25</text>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 426.9036 259.3692)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.2675px;">1</text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 426.9036 259.3692)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.2676px;">1</text>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 427.9688 258.6234)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.2675px;">6</text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 427.9688 258.6234)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.2676px;">6</text>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 429.0335 257.8779)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.2675px;">0</text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 429.0335 257.8779)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.2676px;">0</text>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 430.1806 257.0746)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.2675px;">/</text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 430.1806 257.0746)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.2676px;">/</text>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 430.8361 256.618)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.2675px;">-</text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 430.8361 256.618)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.2676px;">-</text>
 	</g>
 	<g id="_x34_0_4_" style="display:inline;opacity:0.25;">
 		<polygon style="fill:#383A3A;" points="396.7,247.1 392.1,252.6 370.2,252.6 366.2,247.1 366.2,220.2 396.7,220.2 		"/>
@@ -789,11 +790,11 @@
 	<g id="_x34__4_" style="display:inline;">
 		<g>
 			
-				<rect x="357.9" y="239.8" transform="matrix(0.4226 -0.9063 0.9063 0.4226 -18.6854 480.7041)" style="fill:#383A3A;" width="20" height="30.5"/>
+				<rect x="357.9" y="239.8" transform="matrix(0.4226 -0.9063 0.9063 0.4226 -18.7179 480.7401)" style="fill:#383A3A;" width="20" height="30.5"/>
 			<path style="fill:#585B59;" d="M358.6,239.1c0,0,15.5-4.5,28.2,11.6c-2.8,6.1-2.8,6.1-2.8,6.1s-7.8-16.6-27.6-12.9L358.6,239.1z"
 				/>
 			
-				<ellipse transform="matrix(0.4226 -0.9063 0.9063 0.4226 -29.1057 481.859)" style="fill:#545554;" cx="363.6" cy="263.8" rx="3.6" ry="15.2"/>
+				<ellipse transform="matrix(0.4226 -0.9063 0.9063 0.4226 -29.1349 481.8884)" style="fill:#545554;" cx="363.6" cy="263.8" rx="3.6" ry="15.2"/>
 			<path style="fill:#ED1F24;" d="M371.1,248.5c-9.9-4.6-15.8-2.3-15.8-2.3c-0.2,0.5-0.4,0.9-0.4,0.9s7.8-1.2,15.7,2.5
 				s11.9,10.4,11.9,10.4s0.3-0.5,0.4-0.9C382.9,259.2,381,253.1,371.1,248.5z"/>
 		</g>
@@ -901,10 +902,10 @@
 	<g id="_x34__11_" style="display:inline;">
 		<g>
 			
-				<rect x="329.2" y="232" transform="matrix(0.6428 -0.766 0.766 0.6428 -68.2398 348.1387)" style="fill:#383A3A;" width="20" height="30.5"/>
+				<rect x="329.2" y="232" transform="matrix(0.6428 -0.766 0.766 0.6428 -68.2402 348.1388)" style="fill:#383A3A;" width="20" height="30.5"/>
 			<path style="fill:#585B59;" d="M333.9,229.8c0,0,16.2-0.3,24.3,18.5c-4.3,5.1-4.3,5.1-4.3,5.1s-3.3-18-23.4-19.6L333.9,229.8z"/>
 			
-				<ellipse transform="matrix(0.6428 -0.766 0.766 0.6428 -76.4206 345.8924)" style="fill:#545554;" cx="332.7" cy="254.9" rx="3.6" ry="15.2"/>
+				<ellipse transform="matrix(0.6428 -0.766 0.766 0.6428 -76.4217 345.8928)" style="fill:#545554;" cx="332.7" cy="254.9" rx="3.6" ry="15.2"/>
 			<path style="fill:#ED1F24;" d="M343.5,242c-8.3-7-14.7-6.3-14.7-6.3c-0.3,0.4-0.6,0.8-0.6,0.8s7.9,0.9,14.5,6.5
 				c6.7,5.6,8.8,13.1,8.8,13.1s0.4-0.5,0.6-0.8C352.2,255.4,351.9,249,343.5,242z"/>
 		</g>
@@ -1017,50 +1018,50 @@
 		<polygon style="fill:#585B59;" points="427.7,229.4 402.8,246.9 405.7,251.2 418.1,242.5 430.7,233.7 		"/>
 		<polyline style="fill:#5464AE;" points="432.2,235.8 432.8,236.7 407.8,254.1 407.2,253.3 		"/>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 417.5025 260.2557)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:9.0115px;">E.</text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 417.5025 260.2557)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:9.012px;">E.</text>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 424.4653 255.3804)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:9.0115px;"> </text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 424.4653 255.3804)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:9.012px;"> </text>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 427.0872 253.5445)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:9.0115px;">40</text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 427.0872 253.5445)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:9.012px;">40</text>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 425.8996 261.0903)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:4.6119px;">0.65</text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 425.8996 261.0903)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:4.6121px;">0.65</text>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 426.5476 265.1536)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0761px;">1</text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 426.5476 265.1536)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0763px;">1</text>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 428.0233 264.1216)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0761px;">6</text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 428.0233 264.1216)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0763px;">6</text>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 429.4151 263.1458)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0761px;">0</text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 429.4151 263.1458)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0763px;">0</text>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 431.053 261.999)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0761px;">/</text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 431.053 261.999)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0763px;">/</text>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 431.8731 261.4259)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0761px;">0.17</text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 431.8731 261.4259)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0763px;">0.17</text>
 	</g>
 	<g id="_x34__3_" style="display:inline;opacity:0.25;">
 		<g>
 			
-				<rect x="332.1" y="234.6" transform="matrix(0.5736 -0.8192 0.8192 0.5736 -58.7824 386.7986)" style="fill:#383A3A;" width="20" height="30.5"/>
+				<rect x="332.1" y="234.6" transform="matrix(0.5736 -0.8192 0.8192 0.5736 -58.7863 386.8023)" style="fill:#383A3A;" width="20" height="30.5"/>
 			<path style="fill:#585B59;" d="M335.4,232.9c0,0,16.1-1.7,25.8,16.3c-3.8,5.4-3.8,5.4-3.8,5.4s-4.9-17.6-25-17.5L335.4,232.9z"/>
 			
-				<ellipse transform="matrix(0.5736 -0.8192 0.8192 0.5736 -67.7737 385.8542)" style="fill:#545554;" cx="336.7" cy="258" rx="3.6" ry="15.2"/>
+				<ellipse transform="matrix(0.5736 -0.8192 0.8192 0.5736 -67.7737 385.8459)" style="fill:#545554;" cx="336.7" cy="258" rx="3.6" ry="15.2"/>
 			<path style="fill:#ED1F24;" d="M346,244.3c-8.9-6.2-15.2-5-15.2-5c-0.3,0.4-0.6,0.9-0.6,0.9s8,0.2,15,5.1s9.9,12.4,9.9,12.4
 				s0.3-0.5,0.6-0.9C355.8,256.9,354.9,250.6,346,244.3z"/>
 		</g>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 333.5607 247.7702)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0092px;">E.</text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 333.5607 247.7702)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0096px;">E.</text>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 339.7868 252.1279)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0092px;"> </text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 339.7868 252.1279)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0096px;"> </text>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 342.08 253.7342)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0092px;">4</text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 342.0811 253.7344)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0096px;">4</text>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 336.3767 253.1605)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.3178px;">1</text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 336.377 253.1601)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.3179px;">1</text>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 337.4425 253.9062)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.3178px;">6</text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 337.4425 253.9062)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.3179px;">6</text>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 338.507 254.6521)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.3178px;">0</text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 338.507 254.6521)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.3179px;">0</text>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 339.7365 255.513)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.3178px;">/</text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 339.7368 255.5126)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.3179px;">/</text>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 340.3933 255.9729)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.3178px;">-</text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 340.3933 255.9729)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.3179px;">-</text>
 	</g>
 	<g id="_x31_00_4_" style="display:inline;opacity:0.25;">
 		<polygon style="fill:#383A3A;" points="396.7,260.8 392.1,268.8 370.3,268.9 366.3,260.9 366.2,221.3 396.6,221.3 		"/>
@@ -1190,10 +1191,10 @@
 	<g id="_x34__5_" style="display:inline;">
 		<g>
 			
-				<rect x="336.2" y="226" transform="matrix(0.6428 -0.766 0.766 0.6428 -61.1426 351.3578)" style="fill:#383A3A;" width="20" height="30.5"/>
+				<rect x="336.2" y="226" transform="matrix(0.6428 -0.766 0.766 0.6428 -61.1437 351.3585)" style="fill:#383A3A;" width="20" height="30.5"/>
 			<path style="fill:#585B59;" d="M341,223.7c0,0,16.2-0.3,24.3,18.5c-4.3,5.1-4.3,5.1-4.3,5.1s-3.3-18-23.4-19.6L341,223.7z"/>
 			
-				<ellipse transform="matrix(0.6428 -0.766 0.766 0.6428 -69.3255 349.1113)" style="fill:#545554;" cx="339.7" cy="248.9" rx="3.6" ry="15.2"/>
+				<ellipse transform="matrix(0.6428 -0.766 0.766 0.6428 -69.3258 349.1109)" style="fill:#545554;" cx="339.7" cy="248.9" rx="3.6" ry="15.2"/>
 			<path style="fill:#ED1F24;" d="M350.5,236c-8.3-7-14.7-6.3-14.7-6.3c-0.3,0.4-0.6,0.8-0.6,0.8s7.9,0.9,14.5,6.5
 				c6.7,5.6,8.8,13.1,8.8,13.1s0.4-0.5,0.6-0.8C359.3,249.4,358.8,243,350.5,236z"/>
 		</g>
@@ -1301,10 +1302,10 @@
 	<g id="_x34__10_">
 		<g>
 			
-				<rect x="357.5" y="216.8" transform="matrix(0.2588 -0.9659 0.9659 0.2588 48.2899 527.0082)" style="fill:#383A3A;" width="20" height="30.5"/>
+				<rect x="357.5" y="216.8" transform="matrix(0.2588 -0.9659 0.9659 0.2588 48.2281 527.0403)" style="fill:#383A3A;" width="20" height="30.5"/>
 			<path style="fill:#585B59;" d="M355.8,218.2c0,0,14.5-7.1,29.8,6.5c-1.7,6.5-1.7,6.5-1.7,6.5s-10.6-15-29.5-7.9L355.8,218.2z"/>
 			
-				<ellipse transform="matrix(0.2588 -0.9659 0.9659 0.2588 36.9803 531.7629)" style="fill:#545554;" cx="365" cy="241.8" rx="3.6" ry="15.2"/>
+				<ellipse transform="matrix(0.2588 -0.9659 0.9659 0.2588 36.9836 531.7719)" style="fill:#545554;" cx="365" cy="241.8" rx="3.6" ry="15.2"/>
 			<path style="fill:#ED1F24;" d="M369.7,225.4c-10.5-2.8-16,0.5-16,0.5c-0.1,0.5-0.3,1-0.3,1s7.5-2.5,15.9-0.3
 				c8.4,2.3,13.5,8.2,13.5,8.2s0.2-0.6,0.3-1C383.2,233.7,380.2,228.2,369.7,225.4z"/>
 		</g>
@@ -1350,25 +1351,25 @@
 		<path style="fill:#FFFFFF;" d="M415.2,239.6c-8.9,6.3-9.8,12.6-9.8,12.6c0.3,0.4,0.6,0.9,0.6,0.9s2.9-7.4,9.9-12.4
 			c7.1-5,15-5.1,15-5.1s-0.3-0.5-0.6-0.9C430.3,234.6,424.1,233.3,415.2,239.6z"/>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 416.9318 262.5854)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0092px;">E.</text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 416.9318 262.5854)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0096px;">E.</text>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 423.1587 258.2254)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0092px;"> </text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 423.1587 258.2254)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0096px;"> </text>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 425.4515 256.6211)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0092px;">100</text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 425.4515 256.6211)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0096px;">100</text>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 424.3464 264.1092)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:4.6119px;">1.25 </text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 424.3464 264.1092)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:4.6121px;">1.25 </text>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 432.7847 258.2007)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0761px;">oil</text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 432.7847 258.2007)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0763px;">oil</text>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 426.8777 266.8526)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0761px;">1</text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 426.8777 266.8526)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0763px;">1</text>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 428.2704 265.8774)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0761px;">6</text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 428.2704 265.8774)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0763px;">6</text>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 429.6641 264.9028)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0761px;">0</text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 429.6641 264.9028)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0763px;">0</text>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 431.3023 263.7545)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0761px;">/</text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 431.3023 263.7545)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0763px;">/</text>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 432.1216 263.1821)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0761px;">0.17</text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 432.1216 263.1821)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0763px;">0.17</text>
 	</g>
 	<g id="_x34_" style="display:inline;opacity:0.25;">
 		<g>
@@ -1401,23 +1402,23 @@
 				s10.1,12.3,10.1,12.3s0.3-0.5,0.6-0.9C356.7,255.1,355.7,248.9,346.7,242.7z"/>
 		</g>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 332.5493 246.1602)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0092px;">E.</text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 332.5496 246.1598)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0096px;">E.</text>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 338.7732 250.5193)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0092px;"> </text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 338.7732 250.5193)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0096px;"> </text>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 341.0645 252.1249)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0092px;">10</text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 341.0645 252.1249)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0096px;">10</text>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 335.4367 253.1902)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:3.4024px;">0.25</text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 335.4367 253.1902)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:3.4026px;">0.25</text>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 334.2971 255.6879)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.2675px;">1</text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 334.2971 255.6879)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.2676px;">1</text>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 335.3664 256.4355)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.2675px;">6</text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 335.3664 256.4355)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.2676px;">6</text>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 336.4284 257.1797)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.2675px;">0</text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 336.4284 257.1797)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.2676px;">0</text>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 337.5764 257.9817)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.2675px;">/</text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 337.5764 257.9817)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.2676px;">/</text>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 338.2286 258.4396)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.2675px;">-</text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 338.2286 258.4396)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.2676px;">-</text>
 	</g>
 </g>
 <g id="lenses8" style="display:none;">
@@ -1592,7 +1593,7 @@
 				<rect x="402.1" y="231.7" transform="matrix(0.766 -0.6428 0.6428 0.766 -57.7157 324.8241)" style="fill:#383A3A;" width="30.5" height="20"/>
 			<path style="fill:#585B59;" d="M399.3,243.9c0,0,2.5-16,22.5-20.7c4.3,5.1,4.3,5.1,4.3,5.1s-18.3,0.1-23.4,19.6L399.3,243.9z"/>
 			
-				<ellipse transform="matrix(0.766 -0.6428 0.6428 0.766 -61.1796 330.7075)" style="fill:#545554;" cx="423.7" cy="249.4" rx="15.2" ry="3.6"/>
+				<ellipse transform="matrix(0.766 -0.6428 0.6428 0.766 -61.1796 330.7074)" style="fill:#545554;" cx="423.7" cy="249.4" rx="15.2" ry="3.6"/>
 			<path style="fill:#ED1F24;" d="M413,236.6c-8.3,7-8.8,13.4-8.8,13.4c0.3,0.4,0.6,0.8,0.6,0.8s2.2-7.6,8.9-13.2
 				c6.7-5.6,14.5-6.4,14.5-6.4s-0.4-0.5-0.6-0.8C427.7,230.3,421.3,229.6,413,236.6z"/>
 		</g>
@@ -1653,23 +1654,23 @@
 		<polygon style="fill:#585B59;" points="363.2,245.8 338.3,228.3 335.3,232.5 347.6,241.2 360.2,250 		"/>
 		<polyline style="fill:#5464AE;" points="358.7,252.2 358.2,253 333.2,235.5 333.8,234.7 		"/>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 330.6891 246.6954)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:9.0115px;">E.</text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 330.6894 246.695)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:9.012px;">E.</text>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 337.6555 251.5726)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:9.0115px;"> </text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 337.6557 251.5722)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:9.012px;"> </text>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 340.2767 253.4068)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:9.0115px;">40</text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 340.2769 253.4064)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:9.012px;">40</text>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 332.7799 254.8718)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:4.6119px;">0.65</text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 332.7799 254.8718)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:4.6121px;">0.65</text>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 329.1818 256.8725)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0761px;">1</text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 329.1818 256.8725)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0763px;">1</text>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 330.6545 257.9037)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0761px;">6</text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 330.6548 257.9033)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0763px;">6</text>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 332.047 258.8775)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0761px;">0</text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 332.0473 258.8771)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0763px;">0</text>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 333.6853 260.0264)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0761px;">/</text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 333.6853 260.0264)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0763px;">/</text>
 		
-			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 334.5085 260.5993)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0761px;">0.17</text>
+			<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 334.5085 260.5993)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:3.0763px;">0.17</text>
 	</g>
 	<g id="_x34__1_" style="display:inline;opacity:0.25;">
 		<g>
@@ -1682,21 +1683,21 @@
 				s-0.3-0.5-0.6-0.9C434,238.2,427.8,236.9,418.9,243.1z"/>
 		</g>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 417.8502 255.9398)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0092px;">E.</text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 417.8502 255.9398)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0096px;">E.</text>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 424.075 251.5812)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0092px;"> </text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 424.075 251.5812)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0096px;"> </text>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 426.3681 249.9756)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0092px;">4</text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 426.3681 249.9756)" style="fill:#FFFFFF; font-family:'Helvetica-Bold'; font-size:8.0096px;">4</text>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 423.8786 255.1367)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.3178px;">1</text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 423.8786 255.1367)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.3179px;">1</text>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 424.9442 254.3906)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.3178px;">6</text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 424.9442 254.3906)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.3179px;">6</text>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 426.0091 253.6461)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.3178px;">0</text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 426.0091 253.6461)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.3179px;">0</text>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 427.2376 252.7847)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.3178px;">/</text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 427.2376 252.7847)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.3179px;">/</text>
 		
-			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 427.8922 252.3251)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.3178px;">-</text>
+			<text transform="matrix(0.8192 -0.5736 0.5736 0.8192 427.8922 252.3251)" style="fill:#FFFFFF; font-family:'Helvetica'; font-size:2.3179px;">-</text>
 	</g>
 	<g id="_x31_0_1_" style="display:inline;opacity:0.25;">
 		<g>

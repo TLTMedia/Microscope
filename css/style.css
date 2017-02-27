@@ -370,6 +370,7 @@
     padding-top: 0%;
     color: white;
 
+    overflow-y: auto;
     background-image: url("../img/checkered.png");
 }
 

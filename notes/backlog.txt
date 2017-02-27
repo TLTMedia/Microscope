@@ -50,6 +50,7 @@ linear:
 		magnification (10*current objective)
 	[]Cell count (2)
 		-Under 40X (where cells are large enough to count)
+p
 		-Put 12-15 cells.
 		-Choose image and contact marvin for count.
 	[]Clean scope (3)
@@ -123,6 +124,8 @@ Feedback:
 [xxxxxxxxxx THE DEMON IS GONE]Rotation not firefox compatible. (Sharin needs to look at the svg/ai file and confirm this and next backlog)
 [x]Modify Coarse Knob to complete on clarity (white line).
 [x] Currently the sideview knob is unresponsive
+
+
 []Occasional bug arises where nothing loads. Test by refreshing && disabling cache.
     []resize line 17X?
 []Track State machine
@@ -130,12 +133,10 @@ Feedback:
     []Model 2: multiple frames that checks each step in a scene (Model 2 is unordered) 
     []Ensure "unsupervised" actions don't leave game unprogressable
     []Moving lenses (with resets the blur), coarse gets stuck and fine inactive
+
+[]Add warnings/additional text
     []Too high of aperture light will be blinding (on low mag)
     []Too far movement of knobs may blur view. 
-    []Add warnings/additional text
-
-
-
 
 - 2/16/2017 Meeting (New Backlog)- 
 [x] For low mag change description text to "rotate the lenses to the lowest objective (4X) without the 100X objective passing the slide." 
@@ -153,13 +154,14 @@ Feedback:
 [x] Slide placement drag by white piece when placing into calipers
 [x] Slide holder pull to place (click or drag to pull), animate.
 [x] fix the lenses functionality.
+[x] Slide view contents more reflective IRL:
+	[x] Rectangular image, enlarge. 
+	[x] On farend (bounds of caliper), show slide edge
+	[x] On uncalibrated, show gray. 
+[x] White label on slide
 [] "(see details)" on instruction tooltip for clarity if extra details necessary to proceed.  
 [] Once at 40X, coarse knob should trigger warning (may damage slide)
 	****If they touch coarse focus on 40X, trigger large warning.
-[] Slide view contents more reflective IRL:
-	[] Rectangular image, enlarge. 
-	[] On farend (bounds of caliper), show slide edge
-	[] On uncalibrated, show gray. 
 
 
 
