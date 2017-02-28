@@ -79,21 +79,21 @@ function startStep(step) {
 
         if (step == setupCaliper){ 
             setupAdjustCaliper();
-            enableCaliper(); 
+            ms.enable("caliper");
         }
 
         // Low magnification
         if (step == lowLenses) {
             lowAdjustLenses();
-            enableLenses();
+            ms.enable("lenses");
         }
         if (step == lowDiaphragmLight) {
             lowDLight();
-            enableDiaphragmLight();
+            ms.enable("diaphragm-light");
         }
         if (step == lowCoarse) {
             lowAdjustCoarse();
-            enableCoarseKnob();
+            ms.enable("coarse-knob");
         }
 
         // Med magnification
@@ -106,15 +106,15 @@ function startStep(step) {
 
         if (step == medFine) {
             medAdjustFine(); 
-            enableFineKnob();
+            ms.enable("fine-knob");
         }
         if (step == medDiopter){
             medAdjustDiopter();
-            enableDiopter();
+            ms.enable("diopter");
         }
         if (step == medOcular) {
             medAdjustEyepiece();
-            enableEyepiece();
+            ms.enable("eyepiece");
         }
 
 
@@ -142,13 +142,8 @@ function startStep(step) {
         if (step == cleanupLight) {
             cleanDisableSwitch();  
         }
-
-
-
     }
-
     // enable freemode? (user can do whatever they want with the scope)
-
 }
 
 function endStep(step) {

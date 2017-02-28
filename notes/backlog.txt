@@ -50,7 +50,6 @@ linear:
 		magnification (10*current objective)
 	[]Cell count (2)
 		-Under 40X (where cells are large enough to count)
-p
 		-Put 12-15 cells.
 		-Choose image and contact marvin for count.
 	[]Clean scope (3)

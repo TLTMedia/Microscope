@@ -98,12 +98,12 @@ class StateMachine {
      * Condense all transforms into a single method and pass by argument.
      */
     translateReduceSVG(components, x, y) {
-            try{
-                $(components).attr("transform", "translate(" + x + " " + y + ")");
-            }
+        try{
+            $(components).attr("transform", "translate(" + x + " " + y + ")");
+        }
         catch(err){
 
-        console.log(components, x, y)
+            console.log(components, x, y)
         }
     }
 
@@ -122,7 +122,6 @@ class StateMachine {
        Call this.update() for everytime there is a state change. The microscope animation is dependent on only ONE source, and that is the state of the machine. Thus, everytime the state of the machine changes from user input, the changes of the scope should reflect all at once. 
        */
     update() {
-        console.log(this);
         W_RAT = $(window).width()/$(window).height();
         var aspectRatio = 4/3;
         /* Microscope animations */
@@ -139,7 +138,6 @@ class StateMachine {
         this.translateReduceSVG("#adjustDHeight", 0, this.diaphragmHeightPosition);
         this.translateReduceSVG("#caliperMetal, #caliperKnob, #caliper", 0, this.yknobcaliper);
         this.translateReduceSVG("#caliperMetal, #ycaliper, #xcaliper", this.xcaliper, this.ycaliper);
-        console.log(this.caliperBlade);
         this.rotateReduceSVG("#caliperBlade", this.caliperBlade, 0, -25);
         this.rotateReduceSVG(".knob", this.diaphragmHeightPosition*10, 0, 0);
         // Aperture precision
@@ -196,6 +194,9 @@ class StateMachine {
             case "caliper-blade":
                 this.enableCaliperBlade();
                 break;
+            case "lenses":
+                this.enableLenses();
+                break;
             case "eyepiece":
                 this.enableEyepiece();
                 break;
@@ -230,6 +231,7 @@ class StateMachine {
         enableDiaphragmLight();
         enableCaliper();
         enableSideDiaphragmRotate();
+        enableLenses();
         enableDiopter();
         this.update();
     }
@@ -531,18 +533,18 @@ class StateMachine {
         var rollBack = {};
 
         function testDanger(){
-            if (!dangerEnable && (_this.lensePosition+1 == 9 || this.lensePosition-1==9)){
+            if (!dangerEnable && (_this.lensePosition+1 == 9 || _this.lensePosition-1==9)){
                 rollBack = {"type": $(".popupInstruct").text(), "text": $("#popupText").text()}
 
                 //console.log(rollBack);
-                _this.updatePopup("Warning", "Stop! You risk damaging the 100X objective by moving passed the slide. Go the other way.");
+                updatePopup("Warning", "Stop! You risk damaging the 100X objective by moving passed the slide. Go the other way.");
 
                 dangerEnable = true;
             }
             else if (dangerEnable){
                 //console.log(rollBack);
                 dangerEnable = false;
-                _this.updatePopup(rollBack.type, rollBack.text);
+                updatePopup(rollBack.type, rollBack.text);
             }
         }
 
@@ -556,22 +558,22 @@ class StateMachine {
                     //console.log(ms.lensePosition); //10,9,8
                     if ((prevX < event.pageX)) {
                         if (_this.lenseWheel % 10 == 0) {
-                            $(_this.lenseStates[this.lensePosition]).toggle();
-                            _this.lensePosition = ((this.lensePosition + 1) % this.lenseStates.length);
+                            $(_this.lenseStates[_this.lensePosition]).toggle();
+                            _this.lensePosition = ((_this.lensePosition + 1) % _this.lenseStates.length);
                             testDanger();
-                            $(_this.lenseStates[this.lensePosition]).toggle();
+                            $(_this.lenseStates[_this.lensePosition]).toggle();
                             _this.lenseWheel = 1;
                         } else {
                             _this.lenseWheel++;
                         }
                     } else if ((prevX > event.pageX)) {
                         if (_this.lenseWheel % 10 == 0) {
-                            $(_this.lenseStates[this.lensePosition]).toggle();
-                            _this.lensePosition = ((this.lensePosition - 1) % this.lenseStates.length)
+                            $(_this.lenseStates[_this.lensePosition]).toggle();
+                            _this.lensePosition = ((_this.lensePosition - 1) % _this.lenseStates.length)
                 testDanger();
 
-            if (_this.lensePosition == -1) this.lensePosition = this.lenseStates.length - 1;
-            $(_this.lenseStates[this.lensePosition]).toggle();
+            if (_this.lensePosition == -1) _this.lensePosition = _this.lenseStates.length - 1;
+            $(_this.lenseStates[_this.lensePosition]).toggle();
             _this.lenseWheel = 19;
                         } else {
                             _this.lenseWheel--;
@@ -582,21 +584,21 @@ class StateMachine {
 
 
                     // Invoke danger of proceeding to next lense
-                    if (_this.lenseStates[this.lensePosition].includes("Red")) {
+                    if (_this.lenseStates[_this.lensePosition].includes("Red")) {
                         $('.slideRect').css("display", "block");
                         $('#slideRect2').css("display", "none");
                         swapMag(1);
                         _this.slideBlur = 4;
-                    } else if (_this.lenseStates[this.lensePosition].includes("Yellow")) {
+                    } else if (_this.lenseStates[_this.lensePosition].includes("Yellow")) {
                         $('.slideRect').css("display", "block");
                         swapMag(2);
                         _this.slideBlur = 4;
                     } 
-                    else if (_this.lenseStates[this.lensePosition].includes("White")){
+                    else if (_this.lenseStates[_this.lensePosition].includes("White")){
                         $('.slideRect').css("display", "block");
                         swapMag(3);
                     } 
-                    else if (_this.lenseStates[this.lensePosition].includes("Blue")){
+                    else if (_this.lenseStates[_this.lensePosition].includes("Blue")){
                         $('.slideRect').css("display", "block");
                         swapMag(3);
                         _this.slideBlur = 4;
@@ -604,7 +606,7 @@ class StateMachine {
 
                     // no viable lense state renders no images 
                     else {
-                        _this.zoomSave = this.zoom;
+                        _this.zoomSave = _this.zoom;
                         swapMag(-1);
                         $('.slideRect').css("display", "none");
                     }
@@ -621,7 +623,6 @@ class StateMachine {
         }
         addLenseClick("#lensesBasePath");
     }
-
 
     // Enable functionality for the left diopter
     enableDiopter(){

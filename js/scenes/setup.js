@@ -5,7 +5,6 @@
  * Third scene that teaches student how to setup the microscope 
  */
 
-
 // ====== Start Trigger ======= //
 function setupEnableSwitch() {
     textSetup("First, let's turn on the light switch.", "60%", "73%");
@@ -36,7 +35,6 @@ function setupEnableBlade(){
 function setupEnableSlide() {
     textSetup("Now grab the slide below and put it against the caliper.", "64%", "45%");
     toggleVisibility("#slide");
-
 
     //Moving the original slide
     var $pseudoSlide = $("#slide").clone();
@@ -139,11 +137,9 @@ function setupAdjustCaliper() {
     textSetup("Move the caliper knob so the aperture light is directly on the specimen.", "62%", "60%");
     id = "#caliperKnob"
         if (setupCaliper.isActive()) {
-            //var clonedComp = highlightComponent("#caliperKnob");
-            var clonedComp2 = highlightComponent("#yCaliperKnob");
+            var clonedComp1 = highlightComponent("#yCaliperKnob");
             var clonedComp2 = highlightComponent("#xCaliperKnob");
 
-            //bringToFront($(id));
             bringToFront($("#xCaliperKnob"));
             bringToFront($("#yCaliperKnob"));
 
@@ -151,11 +147,8 @@ function setupAdjustCaliper() {
                 //console.log(ms.xcaliper + ", " + ms.ycaliper);
                 if(ms.xcaliper >-1 && ms.xcaliper<1)
                 subHandler(ms.ycaliper, 18, 20, setupCaliper, handler, id, null);
-                
             }
             $(document).bind("mousemove", handler);
             $("#stageLight").removeClass("st0");
-
         }
-
 }

@@ -22,7 +22,7 @@ function adjustMagic(){
 // Fix aspect ratio of the stage
 $(window).resize(function() {
     resizeWindow();
-    updateAnimation();
+    ms.update();
 });
 
 // Resize the window
