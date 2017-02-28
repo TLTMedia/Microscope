@@ -23,11 +23,9 @@ var knobs = [{
 }
 ];
 
-function setupKnobs(sm, callback) {
+function setupKnobs(sm) {
     //Link em up
     smAlias = sm;
-    updateAlias = callback;
-
     $("body").mouseup(function () {
         $(".knob").off("mousemove touchmove");
     });
@@ -108,7 +106,7 @@ function knobRotate(id, delta) {
     }
 
     smAlias.diaphragmHeightPosition = knob.rotation/12;
-    updateAlias();
+    smAlias.update();
 }
 
 // Returns the angle (from 0 to 360 degrees) determined by the given offset (x, y)

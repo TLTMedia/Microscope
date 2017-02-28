@@ -206,7 +206,7 @@ when making changes to svg directly, do not save or export but use save as and c
 			> caliper
 		> high mag
 		
-	[]depth of focus
+	[] depth of focus
 	[] Orientation (e-slide)
 
 

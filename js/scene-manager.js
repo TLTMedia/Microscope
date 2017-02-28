@@ -58,11 +58,11 @@ function startStep(step) {
             $("#light").addClass("elementOff");
             toggleVisibility("#slide");
             setupEnableSwitch();
-            enableLightSwitch();
+            ms.enable("light-switch");
             isDebug = DEBUG(isDebug, currentMode);
         }
         if (step == setupCaliperBlade){
-           enableCaliperBlade(); 
+            ms.enable("caliper-blade");
             setupEnableBlade();
         } 
         if (step == setupSlide){ 
@@ -74,7 +74,7 @@ function startStep(step) {
                 $("#slide").css({"display": "block"});
             }
             setupCondenser();
-            enableSideDiaphragmRotate();
+            ms.enable("sideview");
         }
 
         if (step == setupCaliper){ 

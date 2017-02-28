@@ -22,8 +22,8 @@ function setupEnableSwitch() {
 
 function setupEnableBlade(){
     textSetup("Now pull on the caliper blade by clicking on it.", "64%", "45%");
-    id = "#caliperBlade"
-        var clonedComp = highlightComponent(id);
+    id = "#caliperBlade";
+    var clonedComp = highlightComponent(id);
     bringToFront($(id));
     $("#caliperBlade").click(function () {
         if (setupCaliperBlade.isActive()) {

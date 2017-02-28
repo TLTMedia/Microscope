@@ -399,7 +399,7 @@ function startup(fun){
     var microscope = 'img/microscope.svg';
 
     $('#microscope').load(microscope, function () {
-        updateAnimation();
+        ms.update();
 
         //$('#microscope svg').append('<filter id="blurMe"><feGaussianBlur in="SourceGraphic" stdDeviation="1" /></filter>')
         swapMag(0);
@@ -440,7 +440,7 @@ $(function(){
                 ms.setup();
                 break;
         } 
-        updateAnimation();
+       ms.update(); 
     });
 
     startup(loadIntro);
