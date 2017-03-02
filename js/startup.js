@@ -10,6 +10,7 @@
 function largeFeedbackBox(title, body){
     $("#endText").text(title);
     $("#endSubText").text(body);
+    $("#buttonContainer").html("<div class=\"endOption rounded stripes endOptionUnlocked\" id=\"endOption0\" draggable=\"false\"><div class=\"endOptionText fs-24 text\">Continue</div></div>");
 }
 
 /*
@@ -18,6 +19,19 @@ function largeFeedbackBox(title, body){
  * */
 function largeFeedbackBoxOptions(title, body){
     largeFeedbackBox(title,body);
+    var finalList = "";
+    finalList += "<div class=\"endOption rounded stripes endOptionUnlocked\" id=\"endOption1\" draggable=\"false\"><div class=\"endOptionText fs-24 text\">Total Magnification</div></div>"
+
+        finalList += "<br><br>"
+
+        finalList += "<div class=\"endOption rounded stripes endOptionUnlocked\" id=\"endOption2\" draggable=\"false\"><div class=\"endOptionText fs-24 text\">Cell Count</div></div>"
+
+
+        finalList += "<br><br>"
+
+        finalList += "<div class=\"endOption rounded stripes endOptionUnlocked\" id=\"endOption3\" draggable=\"false\"><div class=\"endOptionText fs-24 text\">Clean Scope</div></div>"
+
+        $("#buttonContainer").html(finalList);
 }
 
 function loadMenu(scene) {
@@ -36,10 +50,27 @@ function loadMenu(scene) {
                 break;
         case "quiz-start":
             largeFeedbackBoxOptions("Quizzes", "Lets test your knowledge. Select a quiz from the menu below");
+            break;
     }
     $("#endSubText").css({opacity: 1});
     $(".endErrorText").css({opacity: 0});
     showMenu();
+}
+
+
+function showOptionMenu() {
+    // Make overlay visible
+    $("#main-menu").css({
+        'opacity': 1,
+    'z-index': 100
+    });
+    // Lock/unlock modes
+    lockModes();
+    // Show results screen
+    $("#results").removeClass("anim_exitResults");
+    $("#results").addClass("anim_enterResults");
+    $("#overlayBG").removeClass("anim_fadeOutBG");
+    $("#overlayBG").addClass("anim_fadeInBG");
 }
 
 function showMenu() {
@@ -453,10 +484,19 @@ function startup(fun){
         fun();
         //loadTutorial();
 
-        $("#endOption1").click(function () {
+        $("#endOption0").click(function () {
             // Start Beginner Mode
             newGame(true, false);
         });
+
+
+        if (fun==loadQuizzes){
+            $("#endOption1, #endOption2, #endOption3").click(function () {
+                // Start Beginner Mode
+                newGame(true, false);
+            });
+        }
+
         resizeWindow();
     });
 }
@@ -487,7 +527,7 @@ $(function(){
                 startup(loadQuizzes);
                 break;
         } 
-       ms.update(); 
+        ms.update(); 
     });
     startup(loadIntro);
 });

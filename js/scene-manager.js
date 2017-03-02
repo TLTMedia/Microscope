@@ -23,9 +23,7 @@ function bindTooltip(){
 function startStep(step) {
     var isDebug = false;
     /* intro
-
-       Intro doesn't necessarily have flexible choices for the user to act on.
-       The purpose of the introduction is to teach the user about the different
+       Intro doesn't necessarily have flexible choices for the user to act on.The purpose of the introduction is to teach the user about the different
        parts of the microscope.
        */
 
@@ -143,13 +141,15 @@ function startStep(step) {
             cleanDisableSwitch();  
         }
     }
+    else if (currentMode == "Quizzes"){
+    }
     // enable freemode? (user can do whatever they want with the scope)
 }
 
 function endStep(step) {
     if (step.div == "#step0" && currentMode == "Introduction") 
         loadMenu("introduction-end"); 
-    else if (step.div == "#step18"){
+    else if (step.div == "#step19"){
         popupOff();
         loadMenu("tutorial-end"); 
     }

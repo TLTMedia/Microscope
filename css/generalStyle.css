@@ -157,14 +157,14 @@ body {
         height: 100%;
         top: 0%;
         z-index: 100;
-    }
-    100% {
-        width: 0%;
-        height: 0%;
-        top: 50%;
-        left: 7.5%;
-        z-index: 100;
-    }
+}
+100% {
+    width: 0%;
+    height: 0%;
+    top: 50%;
+    left: 7.5%;
+    z-index: 100;
+}
 }
 
 .anim_stepExit {
@@ -178,20 +178,20 @@ body {
         top: 50%;
         left: 7.5%;
         z-index: 100;
-    }
-    50% {
-        width: 22.5%;
-        height: 150%;
-        top: -25%;
-        left: -3.75%;
-        z-index: 100;
-    }
-    100% {
-        width: 15%;
-        height: 100%;
-        top: 0%;
-        z-index: 100;
-    }
+}
+50% {
+    width: 22.5%;
+    height: 150%;
+    top: -25%;
+    left: -3.75%;
+    z-index: 100;
+}
+100% {
+    width: 15%;
+    height: 100%;
+    top: 0%;
+    z-index: 100;
+}
 }
 
 .anim_stepEnter {
@@ -205,20 +205,20 @@ body {
         top: 50%;
         left: 7.5%;
         z-index: 150;
-    }
-    50% {
-        width: 30%;
-        height: 200%;
-        top: -50%;
-        left: -7.5%;
-        z-index: 150;
-    }
-    100% {
-        width: 15%;
-        height: 100%;
-        top: 0%;
-        z-index: 150;
-    }
+}
+50% {
+    width: 30%;
+    height: 200%;
+    top: -50%;
+    left: -7.5%;
+    z-index: 150;
+}
+100% {
+    width: 15%;
+    height: 100%;
+    top: 0%;
+    z-index: 150;
+}
 }
 
 .anim_stepEnterBig {
@@ -228,10 +228,10 @@ body {
 @keyframes enterStepObject {
     from {
         left: 100%;
-    }
-    to {
-        left: 0%;
-    }
+}
+to {
+    left: 0%;
+}
 }
 
 .anim_enterStepObject {
@@ -241,10 +241,10 @@ body {
 @keyframes exitStepObject {
     from {
         left: 0%;
-    }
-    to {
-        left: 100%;
-    }
+}
+to {
+    left: 100%;
+}
 }
 
 .anim_exitStepObject {
@@ -314,14 +314,20 @@ body {
     margin-top: 25%;
 }
 
+
+#buttonContainer{
+    top: 70%;
+    position: relative;
+    width: 100%;
+}
+
 .endOption {
-    padding: 3% 10%;
+    padding: 1.5% 5%;
     z-index: 50;
     position: relative;
     box-shadow: 5% 5% 5% #000000;
-    top: 70%;
+    top: 65%;
     width: 20%;
-
 }
 
 .endOptionText {
@@ -343,19 +349,26 @@ body {
     background-image: url("../stripes/LockedStripe.png");
 }
 
-#endOption1 {
-    margin: 0 auto;
+
+
+#endOption0 {
+    margin: 0 auto; 
     position: relative;
+}
+
+#endOption1 {
+    left: 2.5%;
+    position: absolute;
 }
 
 
 #endOption2 {
-    left: 37.5%;
+    left: 35%;
     position: absolute;
 }
 
 #endOption3 {
-    left: 70%;
+    left: 67.5%;
     position: absolute;
 }
 
@@ -407,11 +420,11 @@ body {
     from {
         top: 37%;
         opacity: 0;
-    }
-    to {
-        top: 40%;
-        opacity: 1;
-    }
+}
+to {
+    top: 40%;
+    opacity: 1;
+}
 }
 
 .anim_exitEndOptionDesc {
@@ -422,11 +435,11 @@ body {
     from {
         top: 40%;
         opacity: 1;
-    }
-    to {
-        top: 37%;
-        opacity: 0;
-    }
+}
+to {
+    top: 37%;
+    opacity: 0;
+}
 }
 
 
@@ -437,10 +450,10 @@ body {
 @keyframes enterResults {
     from {
         top: 1000%;
-    }
-    to {
-        top: 22.5%;
-    }
+}
+to {
+    top: 22.5%;
+}
 }
 
 .anim_exitResults {
@@ -450,10 +463,10 @@ body {
 @keyframes exitResults {
     from {
         top: 22.5%;
-    }
-    to {
-        top: 1000%;
-    }
+}
+to {
+    top: 1000%;
+}
 }
 
 
@@ -469,10 +482,10 @@ body {
 @keyframes fadeInBG {
     from {
         opacity: 0;
-    }
-    to {
-        opacity: .75;
-    }
+}
+to {
+    opacity: .75;
+}
 }
 
 .anim_fadeOutBG {
@@ -482,10 +495,10 @@ body {
 @keyframes fadeOutBG {
     from {
         opacity: .75;
-    }
-    to {
-        opacity: 0;
-    }
+}
+to {
+    opacity: 0;
+}
 }
 
 .stepTextHint{
