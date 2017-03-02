@@ -141,7 +141,17 @@ function startStep(step) {
             cleanDisableSwitch();  
         }
     }
-    else if (currentMode == "Quizzes"){
+    else if (currentMode == "Total-Magnification"){
+        console.log("Total magnification");
+        if (step == totalMagQ1) {
+            // Configure lenses at this position
+            console.log("Question 1");
+        }
+        else if (step==totalMagQ2){
+            // Configure lenses at this position
+            console.log("Question 2");
+        }
+
     }
     // enable freemode? (user can do whatever they want with the scope)
 }

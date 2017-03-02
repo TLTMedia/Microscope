@@ -8,6 +8,7 @@
    Sets the contents of the feedback box
    */
 function largeFeedbackBox(title, body){
+    $("#helpBoxHeader").text("Details");
     $("#endText").text(title);
     $("#endSubText").text(body);
     $("#buttonContainer").html("<div class=\"endOption rounded stripes endOptionUnlocked\" id=\"endOption0\" draggable=\"false\"><div class=\"endOptionText fs-24 text\">Continue</div></div>");
@@ -39,13 +40,21 @@ function largeFeedbackBoxOptions(title, body){
     // Add event listeners
     $("#endOption1").click(function(){
         destroy();
+        currentMode = "Total-Magnification";
         startup(loadTotalMag);
     });
+}
 
 
+function largeFeedbackBoxQuiz(title, body){
+    largeFeedbackBox(title,body);
+    $("#helpBoxHeader").text("Question");  
+    //$("#helpBox p").text("What is the magnification that is currently being shown on the slide?");
+    $("#answerBox").toggle();
 }
 
 function loadMenu(scene) {
+    $("#answerBox").css("display", "none");
     switch (scene){
         case "introduction":
             largeFeedbackBox("Introduction", "Welcome to the introduction. In this section, you will learn the parts of the microscope.")
@@ -61,10 +70,10 @@ function loadMenu(scene) {
                 break;
         case "quiz-start":
             largeFeedbackBoxOptions("Quizzes", "Lets test your knowledge. Select a quiz from the menu below")
-            break;
+                break;
         case "total-magnification":
-            largeFeedbackBox("Total Magnification", "In this quiz, you will be identifying the magnification for different lens positions.")
-            break;
+            largeFeedbackBoxQuiz("Total Magnification", "In this quiz, you will be identifying the magnification for different lens positions.")
+                break;
 
     }
     $("#endSubText").css({opacity: 1});
@@ -391,16 +400,19 @@ function loadQuizzes(){
 
 
 function loadTotalMag(){
-    setTimeout(function(){
-        loadMenu("total-magnification");
-    }, 1000);
+    loadMenu("total-magnification");
     var stepText = [{
-        "id": "intro",
-            "shortText": "Introduction",
+        "id": "totalMag",
+            "shortText": "Total Magnification",
             "steps": [{
-                "id": "introLightSwitch",
-                "shortText": "Light Switch",
-                "longText": "Hover over the highlighted components to learn more about the parts of the microscope.",
+                "id": "totalMagQ1",
+                "shortText": "Question 1",
+                "longText": "What is the magnification that is currently being shown on the slide?",
+                "feedbackText": "click the light switch"
+            },{
+                "id": "totalMagQ2",
+                "shortText": "Question 2",
+                "longText": "What is the magnification that is currently being shown on the slide?",
                 "feedbackText": "click the light switch"
             }]
     }]
@@ -422,11 +434,12 @@ function loadTotalMag(){
     }
     game.linkSteps();
 
-
     /** Introduction **/
-    introLightSwitch = game.getGroupStep(0, 0);
+    totalMagQ1 = game.getGroupStep(0, 0);
+    totalMagQ2 = game.getGroupStep(0, 1);
     updateSteps();
-    introLightSwitch.activate();
+    totalMagQ1.activate();
+
 }
 
 
@@ -512,12 +525,6 @@ function startup(fun){
             newGame(true, false);
         });
 
-        if (fun==loadQuizzes){
-            $("#endOption1, #endOption2, #endOption3").click(function () {
-                // Start Beginner Mode
-                newGame(true, false);
-            });
-        }
 
         resizeWindow();
     });
