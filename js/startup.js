@@ -11,6 +11,9 @@ function largeFeedbackBox(title, body){
     $("#endText").text(title);
     $("#endSubText").text(body);
     $("#buttonContainer").html("<div class=\"endOption rounded stripes endOptionUnlocked\" id=\"endOption0\" draggable=\"false\"><div class=\"endOptionText fs-24 text\">Continue</div></div>");
+    $("#endOption0").click(function(){
+        hideMenu();
+    });
 }
 
 /*
@@ -32,6 +35,14 @@ function largeFeedbackBoxOptions(title, body){
         finalList += "<div class=\"endOption rounded stripes endOptionUnlocked\" id=\"endOption3\" draggable=\"false\"><div class=\"endOptionText fs-24 text\">Clean Scope</div></div>"
 
         $("#buttonContainer").html(finalList);
+
+    // Add event listeners
+    $("#endOption1").click(function(){
+        destroy();
+        startup(loadTotalMag);
+    });
+
+
 }
 
 function loadMenu(scene) {
@@ -49,8 +60,12 @@ function loadMenu(scene) {
             largeFeedbackBox("Completed", "Great work. You learned how to use the microscope. Click on \"Quizzes\" on the top bar to test what you have learned!")
                 break;
         case "quiz-start":
-            largeFeedbackBoxOptions("Quizzes", "Lets test your knowledge. Select a quiz from the menu below");
+            largeFeedbackBoxOptions("Quizzes", "Lets test your knowledge. Select a quiz from the menu below")
             break;
+        case "total-magnification":
+            largeFeedbackBox("Total Magnification", "In this quiz, you will be identifying the magnification for different lens positions.")
+            break;
+
     }
     $("#endSubText").css({opacity: 1});
     $(".endErrorText").css({opacity: 0});
@@ -372,13 +387,20 @@ function loadTutorial() {
 
 function loadQuizzes(){
     loadMenu("quiz-start");
+}
+
+
+function loadTotalMag(){
+    setTimeout(function(){
+        loadMenu("total-magnification");
+    }, 1000);
     var stepText = [{
-        "id": "quizzes",
-            "shortText": "Quizzes",
+        "id": "intro",
+            "shortText": "Introduction",
             "steps": [{
                 "id": "introLightSwitch",
-                "shortText": "Quizzes",
-                "longText": "Select a quiz from the list",
+                "shortText": "Light Switch",
+                "longText": "Hover over the highlighted components to learn more about the parts of the microscope.",
                 "feedbackText": "click the light switch"
             }]
     }]
@@ -400,10 +422,11 @@ function loadQuizzes(){
     }
     game.linkSteps();
 
+
     /** Introduction **/
-    quizLoad = game.getGroupStep(0, 0);
+    introLightSwitch = game.getGroupStep(0, 0);
     updateSteps();
-    quizLoad.activate();
+    introLightSwitch.activate();
 }
 
 
@@ -481,14 +504,13 @@ function startup(fun){
         //$('#microscope svg').append('<filter id="blurMe"><feGaussianBlur in="SourceGraphic" stdDeviation="1" /></filter>')
         swapMag(0);
         resizeWindow();
+
         fun();
-        //loadTutorial();
 
         $("#endOption0").click(function () {
             // Start Beginner Mode
             newGame(true, false);
         });
-
 
         if (fun==loadQuizzes){
             $("#endOption1, #endOption2, #endOption3").click(function () {
