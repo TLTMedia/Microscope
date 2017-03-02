@@ -12,6 +12,14 @@ function largeFeedbackBox(title, body){
     $("#endSubText").text(body);
 }
 
+/*
+ * Sets the contents of the feedback box and gives user option to select
+ * quiz
+ * */
+function largeFeedbackBoxOptions(title, body){
+    largeFeedbackBox(title,body);
+}
+
 function loadMenu(scene) {
     switch (scene){
         case "introduction":
@@ -26,6 +34,8 @@ function loadMenu(scene) {
         case "tutorial-end":
             largeFeedbackBox("Completed", "Great work. You learned how to use the microscope. Click on \"Quizzes\" on the top bar to test what you have learned!")
                 break;
+        case "quiz-start":
+            largeFeedbackBoxOptions("Quizzes", "Lets test your knowledge. Select a quiz from the menu below");
     }
     $("#endSubText").css({opacity: 1});
     $(".endErrorText").css({opacity: 0});
@@ -296,8 +306,8 @@ function loadTutorial() {
 
     /** Tutorial **/
     setupLightSwitch = game.getGroupStep(0, 0);
-    setupCaliperBlade = game.getGroupStep(0,1)
-        setupSlide = game.getGroupStep(0, 2);
+    setupCaliperBlade = game.getGroupStep(0,1);
+    setupSlide = game.getGroupStep(0, 2);
     setupCondense = game.getGroupStep(0, 3);
     setupCaliper = game.getGroupStep(0, 4);
 
@@ -326,6 +336,43 @@ function loadTutorial() {
 
     updateSteps();
     setupLightSwitch.activate();
+}
+
+
+function loadQuizzes(){
+    loadMenu("quiz-start");
+    var stepText = [{
+        "id": "quizzes",
+            "shortText": "Quizzes",
+            "steps": [{
+                "id": "introLightSwitch",
+                "shortText": "Quizzes",
+                "longText": "Select a quiz from the list",
+                "feedbackText": "click the light switch"
+            }]
+    }]
+
+    game = new Game(true, true);
+    var stepCount = -1;
+    var groupCount = -1;
+    for (i in stepText) {
+        groupCount++;
+        var newGroup = new StepGroup(stepText[i].id, stepText[i].shortText, "#group" + groupCount, "#groupIcon" + groupCount);
+        game.addGroup(newGroup);
+        for (j in stepText[i].steps) {
+            var cur = stepText[i].steps[j];
+            stepCount++;
+            var newStep = new Step(cur.id, cur.shortText, cur.longText, cur.feedback, "#step" + stepCount, "#icon" + stepCount);
+            game.addStep(newStep);
+            newGroup.addStep(newStep);
+        }
+    }
+    game.linkSteps();
+
+    /** Introduction **/
+    quizLoad = game.getGroupStep(0, 0);
+    updateSteps();
+    quizLoad.activate();
 }
 
 
@@ -400,7 +447,6 @@ function startup(fun){
 
     $('#microscope').load(microscope, function () {
         ms.update();
-
         //$('#microscope svg').append('<filter id="blurMe"><feGaussianBlur in="SourceGraphic" stdDeviation="1" /></filter>')
         swapMag(0);
         resizeWindow();
@@ -413,10 +459,7 @@ function startup(fun){
         });
         resizeWindow();
     });
-
-
 }
-
 
 var currentMode = "Introduction"
 //Encapsulation
@@ -439,9 +482,12 @@ $(function(){
                 startup(loadTutorial);
                 ms.setup();
                 break;
+            case "Quizzes":
+                destroy();
+                startup(loadQuizzes);
+                break;
         } 
        ms.update(); 
     });
-
     startup(loadIntro);
 });

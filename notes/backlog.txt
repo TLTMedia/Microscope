@@ -125,8 +125,8 @@ Feedback:
 [x] Currently the sideview knob is unresponsive
 
 
-[]Occasional bug arises where nothing loads. Test by refreshing && disabling cache.
-    []resize line 17X?
+[x]Occasional bug arises where nothing loads. Test by refreshing && disabling cache.
+    [x]resize line 17X? - solved using try/catch... 
 []Track State machine
     []Model 1: persistent frame that updates between steps. (Model 1 is ordered)
     []Model 2: multiple frames that checks each step in a scene (Model 2 is unordered) 
