@@ -46,6 +46,7 @@ class StateMachine {
         this.inBounds = true;
         this.lenseStates = ["#lenses1Red", "#lenses2", "#lenses3", "#lenses4Yellow", "#lenses5", "#lenses6", "#lenses7Blue", "#lenses8", "#lenses9", "#lenses10White", "#lenses11", "#lenses12"];
         this.desiredFrame = this;
+        this.slideBox = 0;
     }
 
     // Set values to setup values
@@ -73,6 +74,7 @@ class StateMachine {
         this.inBounds = true;
         this.lenseStates = ["#lenses1Red", "#lenses2", "#lenses3", "#lenses4Yellow", "#lenses5", "#lenses6", "#lenses7Blue", "#lenses8", "#lenses9", "#lenses10White", "#lenses11", "#lenses12"];
         console.log("State machine is set to default values.");
+        this.slideBox = 0;
     }
 
     // Freeze frame to ensure user follows tutorial appropriately.

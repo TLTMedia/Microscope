@@ -161,7 +161,9 @@ Feedback:
 [] "(see details)" on instruction tooltip for clarity if extra details necessary to proceed.  
 [] Once at 40X, coarse knob should trigger warning (may damage slide)
 	****If they touch coarse focus on 40X, trigger large warning.
-
+[] added box placeholder. Update the box.svg layers and rename master layer to slideBox.
+[] Spawn slide on top of slide box.
+[] Strange socket bug. Halp nemo :((
 
 
 -Shrn delegation-
@@ -169,6 +171,11 @@ Feedback:
 [x] The three different mags should have 3 different images (4X, 10X, 40X).
 [!!] Draw box to hold slide.
 [x] Diopter knob id, instead of entire diopter
+[] Dirt/Dust for cleanable areas
+[] Windex and Towel Icon
+[] 
+
+
 
 !!- .svg export reminder-!!
 check classes in css (.st)

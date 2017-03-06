@@ -39,8 +39,11 @@ function setupEnableSlide() {
     //Moving the original slide
     var $pseudoSlide = $("#slide").clone();
     $pseudoSlide.attr("id", "pseudo_slideCopy")
-        var x = 0.115*$(window).width();
+        var x = parseFloat($("#slideBox").css("left"));
         var y = $(window).height()*0.05;
+        console.log();
+        console.log(x);
+        console.log(y);
 
     $pseudoSlide.css({
         "-webkit-transform": "translate(" + x + "px," + y + "px)",
@@ -50,6 +53,7 @@ function setupEnableSlide() {
 
     $pseudoSlide.attr("data-x", x);
     $pseudoSlide.attr("data-y", y);
+    $pseudoSlide.attr("left", 50%);
 
 
     $("#microscope > svg").append($pseudoSlide);

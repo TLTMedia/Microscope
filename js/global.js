@@ -36,7 +36,8 @@ components = [
     "#lenses11",
     "#lenses12",
     "#stageLight",
-    "#illuminationLight"
+    "#illuminationLight",
+    "#slideBox"
     ];
 
 // State machine boundaries (DYNAMIC) 

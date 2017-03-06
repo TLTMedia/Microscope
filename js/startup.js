@@ -512,6 +512,16 @@ function startup(fun){
     // image paths
     var microscope = 'img/microscope.svg';
 
+    var slideBox = 'img/box.svg';
+
+    $('#slideBox').load(slideBox, function(){
+
+//$('#slideBox').css("left","50%")
+
+
+    });
+
+
     $('#microscope').load(microscope, function () {
         ms.update();
         //$('#microscope svg').append('<filter id="blurMe"><feGaussianBlur in="SourceGraphic" stdDeviation="1" /></filter>')
@@ -519,7 +529,6 @@ function startup(fun){
         resizeWindow();
 
         fun();
-
         $("#endOption0").click(function () {
             // Start Beginner Mode
             newGame(true, false);
