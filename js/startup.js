@@ -512,7 +512,7 @@ function startup(fun){
     // image paths
     var microscope = 'img/microscope.svg';
 
-    var slideBox = 'img/box.svg';
+    var slideBox = 'img/box2.svg';
 
     $('#slideBox').load(slideBox, function(){
 
