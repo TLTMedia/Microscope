@@ -38,40 +38,50 @@ function setupEnableSlide() {
 
     //Moving the original slide
     var $pseudoSlide = $("#slide").clone();
-    $pseudoSlide.attr("id", "pseudo_slideCopy")
-        var x = 0.115*$(window).width();
-        var y = $(window).height()*0.05;
-        console.log(parseFloat($("#slideBox").css("left")));
-        console.log(x);
-        console.log(y);
+    $pseudoSlide.attr("id", "pseudo_slideCopy");
 
+
+    /*
+
+    var x = 0.2*$(window).width() * -1;
+    var y = $(window).height()*0.05 * -1;
+
+       $pseudoSlide.css({
+       "-webkit-transform": "translate(" + x + "px," + y + "px)",
+       "-ms-transform": "translate(" + x + "px," + y + "px)",
+       "transform": "translate(" + x + "px," + y + "px)"
+       });
+       */
+
+    var boxPos = $("#slideBox").offset();
+    console.log(boxPos);
     $pseudoSlide.css({
-        "-webkit-transform": "translate(" + x + "px," + y + "px)",
-        "-ms-transform": "translate(" + x + "px," + y + "px)",
-        "transform": "translate(" + x + "px," + y + "px)"
+        "position": "absolute",
+        "left": boxPos.left,
+        "top": boxPos.top
     });
 
-    $pseudoSlide.attr("data-x", x);
-    $pseudoSlide.attr("data-y", y);
-
+    $pseudoSlide.attr("data-x", 0);
+    $pseudoSlide.attr("data-y", 0);
 
     $("#microscope > svg").append($pseudoSlide);
-
     toggleVisibility("#slide");
 
+    // Highlight cloned slide
     var cloned = highlightComponent("#pseudo_slideCopy");
     $(cloned).attr("style", $("#slide").attr("style"));
 
-        interact('#pseudo_slideCopy')
+    interact('#pseudo_slideCopy')
         .draggable({
             // enable inertial throwing
             inertia: true,
             // keep the element within the area of it's parent
-            restrict: {
-                restriction: "parent",
-            endOnly: true,
-            elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
-            },
+             restrict: {
+               restriction: "parent",
+               endOnly: true,
+               elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
+               },
+
             // enable autoScroll
             autoScroll: true,
 
@@ -89,6 +99,8 @@ function setupEnableSlide() {
         });
 
     function dragMoveListener (event) {
+
+
         var target = event.target,
             // keep the dragged position in the data-x/data-y attributes
             x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
@@ -107,6 +119,7 @@ function setupEnableSlide() {
         target.style.webkitTransform =
             target.style.transform =
             'translate(' + x + 'px, ' + y + 'px)';
+
 
         // update the posiion attributes
         target.setAttribute('data-x', x);
@@ -149,7 +162,7 @@ function setupAdjustCaliper() {
             var handler = function () {
                 //console.log(ms.xcaliper + ", " + ms.ycaliper);
                 if(ms.xcaliper >-1 && ms.xcaliper<1)
-                subHandler(ms.ycaliper, 18, 20, setupCaliper, handler, id, null);
+                    subHandler(ms.ycaliper, 18, 20, setupCaliper, handler, id, null);
             }
             $(document).bind("mousemove", handler);
             $("#stageLight").removeClass("st0");

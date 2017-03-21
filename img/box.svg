@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 19.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 612 792" style="enable-background:new 0 0 612 792;" xml:space="preserve">
+<svg version="1.1" id="slideBox" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 208 218.7" style="enable-background:new 0 0 208 218.7;" xml:space="preserve">
 <g id="Box_Image" style="display:none;">
 	
-		<image style="display:inline;overflow:visible;" width="220" height="229" xlink:href="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxISEhUTExISFRUVFhgVFRcVFRcVFhcXFRYWFxUX
+		<image style="display:inline;overflow:visible;enable-background:new    ;" width="220" height="229" xlink:href="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxISEhUTExISFRUVFhgVFRcVFRcVFhcXFRYWFxUX
 FRUYHSggGBslHRUVITEhJSkrLi4uGCAzODMtNygtLisBCgoKDg0OGhAQGysiHyItLS0tKzItKy8v
 LS0rLS8tLSstLS4tKy0tLS0tLS0tLSstLy0tLS0tLS0tLS0rLS0tN//AABEIAOUA3AMBIgACEQED
 EQH/xAAaAAACAwEBAAAAAAAAAAAAAAAAAwECBAUG/8QARxAAAQMBAwcIBwYEBQQDAAAAAQACEQME
@@ -125,37 +125,37 @@ qDnSbpG8GII3aUlaqLQ+SSxpuzs64GMCFyNRtuXxIeZ29Nu/+ub22IotEGBF/wBFNhBq024uc/1G
 5o7Sqm3xzKbRtdyz33Lmwsa89kdGpfUIbyGsYXYAncJTHUc3nOY3eb+wLDWtdR2L3RqFw7As4C3q
 ekv75GhU1dfZH1Oi600hhnv3ckduKUbeRzGMbtjOPa5ZELep6fQh0z3NGpqNeezx2L1aznc5znbz
 d2YJYClC24wjH6Vg0pTlJ5k2wQhCkRBCEIAQhCAEIQgBCEIAQhCAEIQgBCEIAQhCAEIQsMklzBCE
-Inkw0CEIWTAIQhACEIQAhCEAIQhACEIQAhCEAIQhACEIQH//2Q==" transform="matrix(1 0 0 1 219 248)">
+Inkw0CEIWTAIQhACEIQAhCEAIQhACEIQAhCEAIQhACEIQH//2Q==" transform="matrix(1 0 0 1 -5.5 -4.5)">
 	</image>
 </g>
 <g id="Case_Top_BG">
-	<polygon style="fill:#D2A875;" points="224.5,272 371.5,252.5 375.5,257 370.8,362.5 234,391 230.2,385.2 	"/>
+	<polygon style="fill:#D2A875;" points="0,19.5 147,0 151,4.5 146.3,110 9.5,138.5 5.7,132.7 	"/>
 </g>
 <g id="Case_Top_4">
-	<polygon style="fill:#BB9760;" points="375.5,257 370.8,362.5 234,391 227.8,276 	"/>
+	<polygon style="fill:#BB9760;" points="151,4.5 146.3,110 9.5,138.5 3.3,23.5 	"/>
 </g>
 <g id="Case_White__x28_Top_x29_">
-	<polygon style="fill:#F1EDE9;" points="234.3,281 366.7,263 360.7,356.3 239.3,380.3 	"/>
+	<polygon style="fill:#F1EDE9;" points="9.8,28.5 142.2,10.5 136.2,103.8 14.8,127.8 	"/>
 </g>
 <g id="Case_Top_1">
-	<polygon style="fill:#C09E6D;" points="360.7,356.3 365.5,360.2 370.7,262.5 366.7,263 	"/>
+	<polygon style="fill:#C09E6D;" points="136.2,103.8 141,107.7 146.2,10 142.2,10.5 	"/>
 </g>
 <g id="Case_Top_2">
-	<polygon style="opacity:0.13;" points="234.5,283.6 370.6,264.8 370.7,262.5 234.3,281 	"/>
+	<polygon style="opacity:0.13;enable-background:new    ;" points="10,31.1 146.1,12.3 146.2,10 9.8,28.5 	"/>
 </g>
 <g id="Case_Top_3">
-	<polygon style="fill:#DAB285;" points="360.7,356.3 365.5,360.2 239.8,386.2 239.3,380.3 	"/>
+	<polygon style="fill:#DAB285;" points="136.2,103.8 141,107.7 15.3,133.7 14.8,127.8 	"/>
 </g>
 <g id="Case_Bottom_BG">
-	<polygon style="fill:#D3AE75;" points="279.2,471.2 432.5,431.8 432.5,413.8 370.7,365.2 235.5,394 235.5,410.2 	"/>
+	<polygon style="fill:#D3AE75;" points="54.7,218.7 208,179.3 208,161.3 146.2,112.7 11,141.5 11,157.7 	"/>
 </g>
 <g id="Case_Bottom_1">
-	<polygon style="fill:#DDAD7D;" points="235.5,394 370.7,365.2 432.5,413.8 281.1,453 	"/>
+	<polygon style="fill:#DDAD7D;" points="11,141.5 146.2,112.7 208,161.3 56.6,200.5 	"/>
 </g>
 <g id="Case_Bottom_2">
-	<polygon style="fill:#EBE8E4;" points="242.5,396 368.2,368.8 423,413.2 283.5,447.5 	"/>
+	<polygon style="fill:#EBE8E4;" points="18,143.5 143.7,116.3 198.5,160.7 59,195 	"/>
 </g>
 <g id="Case_Bottom_3">
-	<polygon style="fill:#C5AD90;" points="235.5,410.2 235.5,394 281.1,453 279.2,471.2 	"/>
+	<polygon style="fill:#C5AD90;" points="11,157.7 11,141.5 56.6,200.5 54.7,218.7 	"/>
 </g>
 </svg>
