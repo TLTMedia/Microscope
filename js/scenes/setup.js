@@ -38,37 +38,23 @@ function setupEnableSlide() {
 
     //Moving the original slide
     var $pseudoSlide = $("#slide").clone();
+    console.log($pseudoSlide.attr("style"));
     $pseudoSlide.attr("id", "pseudo_slideCopy");
 
+    var x = 0.13*$(window).width()*-1;
+    var y = $(window).height()*0.01 * -1;
 
-    /*
-
-    var x = 0.2*$(window).width() * -1;
-    var y = $(window).height()*0.05 * -1;
-
-       $pseudoSlide.css({
-       "-webkit-transform": "translate(" + x + "px," + y + "px)",
-       "-ms-transform": "translate(" + x + "px," + y + "px)",
-       "transform": "translate(" + x + "px," + y + "px)"
-       });
-       */
-
-    var boxPos = $("#slideBox").offset();
-    console.log(boxPos);
-    $pseudoSlide.css({
-        "position": "absolute",
-        "left": boxPos.left,
-        "top": boxPos.top
-    });
-
-    $pseudoSlide.attr("data-x", 0);
-    $pseudoSlide.attr("data-y", 0);
+    $pseudoSlide.attr("data-x", x);
+    $pseudoSlide.attr("data-y", y);
 
     $("#microscope > svg").append($pseudoSlide);
     toggleVisibility("#slide");
 
     // Highlight cloned slide
     var cloned = highlightComponent("#pseudo_slideCopy");
+
+    $pseudoSlide.attr("transform", "translate(" + x + " " + y + ")");
+
     $(cloned).attr("style", $("#slide").attr("style"));
 
     interact('#pseudo_slideCopy')
