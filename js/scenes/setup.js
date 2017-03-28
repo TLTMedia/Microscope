@@ -41,8 +41,8 @@ function setupEnableSlide() {
     console.log($pseudoSlide.attr("style"));
     $pseudoSlide.attr("id", "pseudo_slideCopy");
 
-    var x = 0.13*$(window).width()*-1;
-    var y = $(window).height()*0.01 * -1;
+    var x = -100//$("#stage").width()*-1;
+    var y = -100//$("#stage").height()*-1;
 
     $pseudoSlide.attr("data-x", x);
     $pseudoSlide.attr("data-y", y);
