@@ -145,12 +145,14 @@ function startStep(step) {
         console.log("Total magnification");
         if (step == totalMagQ1) {
             // Configure lenses at this position
-            quizMag1()
-            console.log("Question 1");
+            quizMag1();
         }
         else if (step==totalMagQ2){
             // Configure lenses at this position
-            console.log("Question 2");
+            quizMag2();
+        }
+        else if (step==totalMagQ3){
+            quizMag3();
         }
 
     }

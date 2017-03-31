@@ -414,6 +414,11 @@ function loadTotalMag(){
                 "shortText": "Question 2",
                 "longText": "What is the magnification that is currently being shown on the slide?",
                 "feedbackText": "click the light switch"
+            },{
+                "id": "totalMagQ3",
+                "shortText": "Question 3",
+                "longText": "What is the magnification that is currently being shown on the slide?",
+                "feedbackText": "click the light switch"
             }]
     }]
 
@@ -437,6 +442,7 @@ function loadTotalMag(){
     /** Introduction **/
     totalMagQ1 = game.getGroupStep(0, 0);
     totalMagQ2 = game.getGroupStep(0, 1);
+    totalMagQ3 = game.getGroupStep(0, 2);
     updateSteps();
     totalMagQ1.activate();
 

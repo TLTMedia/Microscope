@@ -88,11 +88,11 @@ class StateMachine {
      */
     translateReduce(components, x, y) {
         $(components).css({
-                "-webkit-transform": "translate(" + x + "px," + y + "px)",
-                "-ms-transform": "translate(" + x + "px," + y + "px)",
-                "-moz-transform": "translate(" + x + "px," + y + "px)",
-                "transform": "translate(" + x + "px," + y + "px)"
-                });
+            "-webkit-transform": "translate(" + x + "px," + y + "px)",
+        "-ms-transform": "translate(" + x + "px," + y + "px)",
+        "-moz-transform": "translate(" + x + "px," + y + "px)",
+        "transform": "translate(" + x + "px," + y + "px)"
+        });
     }
 
     /* Translate Reduce (DRY) - SVG
@@ -122,7 +122,7 @@ class StateMachine {
 
     /* 
        Call this.update() for everytime there is a state change. The microscope animation is dependent on only ONE source, and that is the state of the machine. Thus, everytime the state of the machine changes from user input, the changes of the scope should reflect all at once. 
-     */
+       */
     update() {
         W_RAT = $(window).width()/$(window).height();
         var aspectRatio = 4/3;
@@ -160,30 +160,30 @@ class StateMachine {
         // Microscope darkness (hack is based off of a black background to darken)
         // [0,40] -> Expand to [0,60]
         $("#slideContents,#slideContents2,#stageLight, .slideRect").css({
-                "opacity": (0.4) + ((1.5 * this.diaphragmLightPosition) / 100)
-                });
+            "opacity": (0.4) + ((1.5 * this.diaphragmLightPosition) / 100)
+        });
 
         $("#slideContents, #slideContents2, .slideRect").css({
-                "transform": "scale(" + this.zoom + ") translate(" + xCali + "px," + yCali + "px)"
-                });
+            "transform": "scale(" + this.zoom + ") translate(" + xCali + "px," + yCali + "px)"
+        });
 
         var chosenBlur = this.slideBlur;
         if (!this.inBounds) {}
 
         // Initializes both slide contents to blur
         $("#slideContents, #slideContents2").css({
-                "-ms-filter": "blur(" + Math.abs(chosenBlur) + "px)",
-                "-webkit-filter": "blur(" + Math.abs(chosenBlur) + "px)",
-                "filter": "blur(" + Math.abs(chosenBlur) + "px)"
-                });
+            "-ms-filter": "blur(" + Math.abs(chosenBlur) + "px)",
+            "-webkit-filter": "blur(" + Math.abs(chosenBlur) + "px)",
+            "filter": "blur(" + Math.abs(chosenBlur) + "px)"
+        });
 
         // Reblurs the second slide contents (with diopter as a factor)
         var chosenBlur = this.eyepiecePosition + this.slideBlur2 
             $("#slideContents2").css({
-                    "-ms-filter": "blur(" + Math.abs(chosenBlur) + "px)",
-                    "-webkit-filter": "blur(" + Math.abs(chosenBlur) + "px)",
-                    "filter": "blur(" + Math.abs(chosenBlur) + "px)"
-                    });
+                "-ms-filter": "blur(" + Math.abs(chosenBlur) + "px)",
+                "-webkit-filter": "blur(" + Math.abs(chosenBlur) + "px)",
+                "filter": "blur(" + Math.abs(chosenBlur) + "px)"
+            });
 
     }
 
@@ -246,16 +246,16 @@ class StateMachine {
     enableLightSwitch() {
         var _this=this;
         $("#switch").on('click', function() {
-                _this.lightStatus = (1 + _this.lightStatus) % 2;
-                if (_this.lightStatus > 0) {
+            _this.lightStatus = (1 + _this.lightStatus) % 2;
+            if (_this.lightStatus > 0) {
                 $("#illuminationLight").removeClass("elementOff");
                 $("#illuminationLight").addClass("lightOn");
-                } else {
+            } else {
                 $("#illuminationLight").removeClass("lightOn");
                 $("#illuminationLight").addClass("elementOff");
-                }
+            }
 
-                });
+        });
     }
 
 
@@ -274,30 +274,30 @@ class StateMachine {
 
             $(ocularPart)
                 .mousedown(function() {
-                        isDown = true;
-                        })
+                    isDown = true;
+                })
             .mousemove(function(event) {
-                    if (isDown) {
+                if (isDown) {
                     if ((prevX < event.pageX && ocularPart == "#ocularRight") || (prevX > event.pageX && ocularPart == "#ocularLeft")) {
 
-                    if (_this.eyepiecePosition < sm_orig["MAX_OCULAR"]) {
-                    _this.eyepiecePosition += val;
-                    }
+                        if (_this.eyepiecePosition < sm_orig["MAX_OCULAR"]) {
+                            _this.eyepiecePosition += val;
+                        }
                     } else if ((prevX > event.pageX && ocularPart == "#ocularRight") || (prevX < event.pageX && ocularPart == "#ocularLeft")) {
-                    if (_this.eyepiecePosition > 0) {
-                    _this.eyepiecePosition -= val;
-                    }
+                        if (_this.eyepiecePosition > 0) {
+                            _this.eyepiecePosition -= val;
+                        }
                     }
                     prevX = event.pageX;
                     _this.update();
-                    }
-                    })
+                }
+            })
             .mouseup(function() {
-                    isDown = false;
-                    })
+                isDown = false;
+            })
             .mouseleave(function() {
-                    isDown = false;
-                    });
+                isDown = false;
+            });
         }
         addOcularDrag("#ocularRight");
         addOcularDrag("#ocularLeft");
@@ -311,46 +311,46 @@ class StateMachine {
             var val = power;
             $(coursePart)
                 .mousedown(function() {
-                        isDown = true;
-                        })
+                    isDown = true;
+                })
             .mousemove(function(event) {
-                    if (isDown) {
+                if (isDown) {
                     if (prevY < event.pageY) {
-                    if (_this.knobPosition < sm_orig["MAX_KNOB"]) {
-                    _this.zoom -= val * 0.1;
-                    _this.yslide += val;
-                    _this.ycaliper += val;
-                    sm_orig["MAX_Y_CALIPER"] += val;
-                    sm_orig["MIN_Y_CALIPER"] += val;
-                    _this.yknobcaliper += val;
-                    _this.yheight += val;
-                    _this.knobPosition += val;
-                    _this.slideBlur += 0.15;
-                    }
+                        if (_this.knobPosition < sm_orig["MAX_KNOB"]) {
+                            _this.zoom -= val * 0.1;
+                            _this.yslide += val;
+                            _this.ycaliper += val;
+                            sm_orig["MAX_Y_CALIPER"] += val;
+                            sm_orig["MIN_Y_CALIPER"] += val;
+                            _this.yknobcaliper += val;
+                            _this.yheight += val;
+                            _this.knobPosition += val;
+                            _this.slideBlur += 0.15;
+                        }
                     } else if ((prevY > event.pageY)) {
-                    if (_this.knobPosition > sm_orig["MIN_KNOB"]) {
-                    _this.zoom += val * 0.1;
-                    _this.yslide -= val;
-                    _this.ycaliper -= val;
-                    _this.yknobcaliper -= val;
-                    sm_orig["MAX_Y_CALIPER"] -= val;
-                    sm_orig["MIN_Y_CALIPER"] -= val;
-                    _this.yheight -= val;
-                    _this.knobPosition -= val;
-                    _this.slideBlur -= 0.15;
+                        if (_this.knobPosition > sm_orig["MIN_KNOB"]) {
+                            _this.zoom += val * 0.1;
+                            _this.yslide -= val;
+                            _this.ycaliper -= val;
+                            _this.yknobcaliper -= val;
+                            sm_orig["MAX_Y_CALIPER"] -= val;
+                            sm_orig["MIN_Y_CALIPER"] -= val;
+                            _this.yheight -= val;
+                            _this.knobPosition -= val;
+                            _this.slideBlur -= 0.15;
 
-                    }
+                        }
                     }
                     prevY = event.pageY;
                     _this.update();
-                    }
+                }
             })
             .mouseup(function() {
-                    isDown = false;
-                    })
+                isDown = false;
+            })
             .mouseleave(function() {
-                    isDown = false;
-                    });
+                isDown = false;
+            });
         }
 
         addCourseDrag("#knobsCoarse", 0.5);
@@ -364,30 +364,30 @@ class StateMachine {
             var val = power;
             $(coursePart)
                 .mousedown(function() {
-                        isDown = true;
-                        })
+                    isDown = true;
+                })
             .mousemove(function(event) {
-                    if (isDown) {
+                if (isDown) {
                     if (prevY > event.pageY) {
-                    if (_this.slideBlur < sm_orig["MAX_BLUR"]) {
-                    _this.slideBlur += val;
-                    }
+                        if (_this.slideBlur < sm_orig["MAX_BLUR"]) {
+                            _this.slideBlur += val;
+                        }
                     } else if ((prevY < event.pageY)) {
-                    if (_this.slideBlur > sm_orig["MIN_BLUR"]) {
-                    _this.slideBlur -= val;
-                    }
+                        if (_this.slideBlur > sm_orig["MIN_BLUR"]) {
+                            _this.slideBlur -= val;
+                        }
                     }
                     //console.log(ms.knobPosition);
                     prevY = event.pageY;
                     _this.update();
-                    }
-                    })
+                }
+            })
             .mouseup(function() {
-                    isDown = false;
-                    })
+                isDown = false;
+            })
             .mouseleave(function() {
-                    isDown = false;
-                    });
+                isDown = false;
+            });
         }
 
         addFineDrag("#knobsFine", 0.2);
@@ -401,29 +401,29 @@ class StateMachine {
             var val = 1;
             $(part)
                 .mousedown(function() {
-                        isDown = true;
-                        })
+                    isDown = true;
+                })
             .mousemove(function(event) {
-                    if (isDown) {
+                if (isDown) {
                     if ((prevX > event.pageX)) {
-                    if (_this.diaphragmLightPosition < sm_orig["MAX_DIAPHRAGM_LIGHT"]) {
-                    _this.diaphragmLightPosition += val;
-                    }
+                        if (_this.diaphragmLightPosition < sm_orig["MAX_DIAPHRAGM_LIGHT"]) {
+                            _this.diaphragmLightPosition += val;
+                        }
                     } else if ((prevX < event.pageX)) {
-                    if (_this.diaphragmLightPosition > 0) {
-                    _this.diaphragmLightPosition -= val;
-                    }
+                        if (_this.diaphragmLightPosition > 0) {
+                            _this.diaphragmLightPosition -= val;
+                        }
                     }
                     prevX = event.pageX;
                     _this.update();
-                    }
-                    })
+                }
+            })
             .mouseup(function() {
-                    isDown = false;
-                    })
+                isDown = false;
+            })
             .mouseleave(function() {
-                    isDown = false;
-                    });
+                isDown = false;
+            });
         }
         addDiaphragmDrag("#diaphragm, #apertureKnob");
 
@@ -432,13 +432,13 @@ class StateMachine {
     enableCaliperBlade(){
         var _this = this;
         $("#caliperBlade").on("click", function(){
-                if (_this.caliperBlade > 0){
+            if (_this.caliperBlade > 0){
                 _this.caliperBlade = 0;}
-                else{
+            else{
                 _this.caliperBlade = 25;
-                }
-                _this.update();
-                }); 
+            }
+        _this.update();
+        }); 
     }
 
     enableCaliper() {
@@ -449,38 +449,38 @@ class StateMachine {
 
             $(part)
                 .mousedown(function() {
-                        isDown = true;
-                        })
+                    isDown = true;
+                })
             .mousemove(function(event) {
-                    if (isDown) {
+                if (isDown) {
                     if ((prevX < event.pageX)) {
-                    if (_this.xcaliper < sm_orig["MAX_X_CALIPER"]) {
-                    _this.xcaliper += val;
-                    _this.xslide += val;
-                    }
+                        if (_this.xcaliper < sm_orig["MAX_X_CALIPER"]) {
+                            _this.xcaliper += val;
+                            _this.xslide += val;
+                        }
                     } else if ((prevX > event.pageX)) {
-                    if (_this.xcaliper > sm_orig["MIN_X_CALIPER"]) {
-                    _this.xcaliper -= val;
-                    _this.xslide -= val;
-                    }
+                        if (_this.xcaliper > sm_orig["MIN_X_CALIPER"]) {
+                            _this.xcaliper -= val;
+                            _this.xslide -= val;
+                        }
                     }
                     prevX = event.pageX;
 
                     // Blur out if out of magic bounds
                     if (_this.xcaliper > -10 && this.xcaliper < 10 && this.ycaliper > -10 && this.ycaliper < 10) {
-                    _this.inBounds = true;
+                        _this.inBounds = true;
                     } else {
-                    _this.inBounds = false;
+                        _this.inBounds = false;
                     }
                     _this.update();
-                    }
+                }
             })
             .mouseup(function() {
-                    isDown = false;
-                    })
+                isDown = false;
+            })
             .mouseleave(function() {
-                    isDown = false;
-                    });
+                isDown = false;
+            });
         }
 
         function addCaliperYDrag(part) {
@@ -488,191 +488,207 @@ class StateMachine {
 
             $(part)
                 .mousedown(function() {
-                        isDown = true;
-                        })
+                    isDown = true;
+                })
             .mousemove(function(event) {
-                    if (isDown) {
+                if (isDown) {
                     if ((prevX < event.pageX)) {
-                    if (_this.ycaliper < sm_orig["MAX_Y_CALIPER"]) {
-                    _this.ycaliper += val;
-                    _this.yslide += val;
-                    }
+                        if (_this.ycaliper < sm_orig["MAX_Y_CALIPER"]) {
+                            _this.ycaliper += val;
+                            _this.yslide += val;
+                        }
                     } else if ((prevX > event.pageX)) {
-                    if (_this.ycaliper > sm_orig["MIN_Y_CALIPER"]) {
-                    _this.ycaliper -= val;
-                    _this.yslide -= val;
-                    }
+                        if (_this.ycaliper > sm_orig["MIN_Y_CALIPER"]) {
+                            _this.ycaliper -= val;
+                            _this.yslide -= val;
+                        }
                     }
                     prevX = event.pageX;
                     // Blur out if out of magic bounds
                     if (_this.xcaliper > sm_orig["MIN_X_BOUND"] && this.xcaliper < sm_orig["MAX_X_BOUND"] && this.ycaliper > sm_orig["MIN_Y_BOUND"] && this.ycaliper < sm_orig["MAX_Y_BOUND"]) {
-                    _this.inBounds = true;
+                        _this.inBounds = true;
                     } else {
-                    _this.inBounds = false;
+                        _this.inBounds = false;
                     }
 
 
                     _this.update();
-                    }
+                }
             })
             .mouseup(function() {
-                    isDown = false;
-                    })
+                isDown = false;
+            })
             .mouseleave(function() {
-                    isDown = false;
-                    });
+                isDown = false;
+            });
         }
         addCaliperXDrag("#xCaliperKnob");
         addCaliperYDrag("#yCaliperKnob");
 
     }
 
-
-    // Total of 8 states on the lenses
-    enableLenses() {
-        var _this=this;
-        var dangerEnable = false; 
-        var rollBack = {};
-
-        function testDanger(){
-            if (!dangerEnable && (_this.lensePosition+1 == 9 || _this.lensePosition-1==9)){
-                rollBack = {"type": $(".popupInstruct").text(), "text": $("#popupText").text()}
-
-                //console.log(rollBack);
-                updatePopup("Warning", "Stop! You risk damaging the 100X objective by moving passed the slide. Go the other way.");
-
-                dangerEnable = true;
-            }
-            else if (dangerEnable){
-                //console.log(rollBack);
-                dangerEnable = false;
-                updatePopup(rollBack.type, rollBack.text);
-            }
+    rotateLensesCount(_this, right, forced, testDanger, count){
+        for (var i=0; i<count;i++){
+            _this.rotateLenses(_this,right,forced,testDanger);
         }
+    }
 
-        function addLenseClick(part) {
-            $(part)
-                .mousedown(function() {
-                        isDown = true;
-                        })
-            .mousemove(function(event) {
-                    if (isDown) {
-                    //console.log(ms.lensePosition); //10,9,8
-                    if ((prevX < event.pageX)) {
-                    if (_this.lenseWheel % 10 == 0) {
-                    $(_this.lenseStates[_this.lensePosition]).toggle();
-                    _this.lensePosition = ((_this.lensePosition + 1) % _this.lenseStates.length);
-                    testDanger();
-                    $(_this.lenseStates[_this.lensePosition]).toggle();
-                    _this.lenseWheel = 1;
-                    } else {
-                    _this.lenseWheel++;
-                    }
-                    } else if ((prevX > event.pageX)) {
-                    if (_this.lenseWheel % 10 == 0) {
-                    $(_this.lenseStates[_this.lensePosition]).toggle();
-                    _this.lensePosition = ((_this.lensePosition - 1) % _this.lenseStates.length)
+    // Rotate the microscope objective towards specified direction
+     rotateLenses(_this, right, forced, testDanger){
+        if (right) {
+            if (_this.lenseWheel % 10 == 0 || forced) {
+                $(_this.lenseStates[_this.lensePosition]).toggle();
+                _this.lensePosition = ((_this.lensePosition + 1) % _this.lenseStates.length);
+                testDanger();
+                $(_this.lenseStates[_this.lensePosition]).toggle();
+                _this.lenseWheel = 1;
+            } else {
+                _this.lenseWheel++;
+            }
+        } else{
+            if (_this.lenseWheel % 10 == 0 || forced) {
+                $(_this.lenseStates[_this.lensePosition]).toggle();
+                _this.lensePosition = ((_this.lensePosition - 1) % _this.lenseStates.length)
                     testDanger();
 
-                    if (_this.lensePosition == -1) _this.lensePosition = _this.lenseStates.length - 1;
-                    $(_this.lenseStates[_this.lensePosition]).toggle();
-                    _this.lenseWheel = 19;
-                    } else {
-                        _this.lenseWheel--;
-                    }
+                if (_this.lensePosition == -1) _this.lensePosition = _this.lenseStates.length - 1;
+                $(_this.lenseStates[_this.lensePosition]).toggle();
+                _this.lenseWheel = 19;
+            } else {
+                _this.lenseWheel--;
+            }
 
-                    }
-                    prevX = event.pageX;
-
-
-                    // Invoke danger of proceeding to next lense
-                    if (_this.lenseStates[_this.lensePosition].includes("Red")) {
-                        $('.slideRect').css("display", "block");
-                        $('#slideRect2').css("display", "none");
-                        swapMag(1);
-                        _this.slideBlur = 4;
-                    } else if (_this.lenseStates[_this.lensePosition].includes("Yellow")) {
-                        $('.slideRect').css("display", "block");
-                        swapMag(2);
-                        _this.slideBlur = 4;
-                    } 
-                    else if (_this.lenseStates[_this.lensePosition].includes("White")){
-                        $('.slideRect').css("display", "block");
-                        swapMag(3);
-                    } 
-                    else if (_this.lenseStates[_this.lensePosition].includes("Blue")){
-                        $('.slideRect').css("display", "block");
-                        swapMag(3);
-                        _this.slideBlur = 4;
-                    }
-
-                    // no viable lense state renders no images 
-                    else {
-                        _this.zoomSave = _this.zoom;
-                        swapMag(-1);
-                        $('.slideRect').css("display", "none");
-                    }
-                    _this.update();
-                    }
-
-            })
-            .mouseup(function() {
-                    isDown = false;
-                    })
-            .mouseleave(function() {
-                    isDown = false;
-                    });
         }
-        addLenseClick("#lensesBasePath");
-    }
+        _this.update();
+     }
 
-    // Enable functionality for the left diopter
-    enableDiopter(){
-        var _this=this;
-        function addDiopterDrag(ocularPart, power) {
-            var val = power;
-            $(ocularPart)
-                .mousedown(function() {
+        // Total of 8 states on the lenses
+        enableLenses() {
+            var _this=this;
+            var dangerEnable = false; 
+            var rollBack = {};
+
+            function testDanger(){
+                if (!dangerEnable && (_this.lensePosition+1 == 9 || _this.lensePosition-1==9)){
+                    rollBack = {"type": $(".popupInstruct").text(), "text": $("#popupText").text()}
+
+                    //console.log(rollBack);
+                    updatePopup("Warning", "Stop! You risk damaging the 100X objective by moving passed the slide. Go the other way.");
+
+                    dangerEnable = true;
+                }
+                else if (dangerEnable){
+                    //console.log(rollBack);
+                    dangerEnable = false;
+                    updatePopup(rollBack.type, rollBack.text);
+                }
+            }
+
+            function addLenseClick(part) {
+                $(part)
+                    .mousedown(function() {
                         isDown = true;
-                        })
-            .mousemove(function(event) {
+                    })
+                .mousemove(function(event) {
                     if (isDown) {
-                    if (prevX > event.pageX) {
-                    if (_this.diopterPosition > sm_orig["MIN_DIOPTER"]) {
-                    _this.diopterPosition -= power;
-                    _this.slideBlur2 -= 1; 
+                        //console.log(ms.lensePosition); //10,9,8
+                        if ((prevX < event.pageX)) {
+                            _this.rotateLenses(_this, true, false, testDanger);
+                        } else if ((prevX > event.pageX)) {
+                            _this.rotateLenses(_this, false, false, testDanger);
+
+                        }
+                        prevX = event.pageX;
+
+
+                        // Invoke danger of proceeding to next lense
+                        if (_this.lenseStates[_this.lensePosition].includes("Red")) {
+                            $('.slideRect').css("display", "block");
+                            $('#slideRect2').css("display", "none");
+                            swapMag(1);
+                            _this.slideBlur = 4;
+                        } else if (_this.lenseStates[_this.lensePosition].includes("Yellow")) {
+                            $('.slideRect').css("display", "block");
+                            swapMag(2);
+                            _this.slideBlur = 4;
+                        } 
+                        else if (_this.lenseStates[_this.lensePosition].includes("White")){
+                            $('.slideRect').css("display", "block");
+                            swapMag(3);
+                        } 
+                        else if (_this.lenseStates[_this.lensePosition].includes("Blue")){
+                            $('.slideRect').css("display", "block");
+                            swapMag(3);
+                            _this.slideBlur = 4;
+                        }
+
+                        // no viable lense state renders no images 
+                        else {
+                            _this.zoomSave = _this.zoom;
+                            swapMag(-1);
+                            $('.slideRect').css("display", "none");
+                        }
+                        _this.update();
                     }
-                    } else if ((prevX < event.pageX)) {
-                    if (_this.diopterPosition < sm_orig["MAX_DIOPTER"]) {
-                    _this.diopterPosition += power;
-                    _this.slideBlur2 += 1;
-                    }
-                    }
-                    prevX = event.pageX;
-                    _this.update();
-                    }
-                    })
-            .mouseup(function() {
+
+                })
+                .mouseup(function() {
                     isDown = false;
-                    })
-            .mouseleave(function() {
+                })
+                .mouseleave(function() {
                     isDown = false;
-                    });
+                });
+            }
+            addLenseClick("#lensesBasePath");
         }
-        addDiopterDrag("#friend", 0.5);
+
+        // Enable functionality for the left diopter
+        enableDiopter(){
+            var _this=this;
+            function addDiopterDrag(ocularPart, power) {
+                var val = power;
+                $(ocularPart)
+                    .mousedown(function() {
+                        isDown = true;
+                    })
+                .mousemove(function(event) {
+                    if (isDown) {
+                        if (prevX > event.pageX) {
+                            if (_this.diopterPosition > sm_orig["MIN_DIOPTER"]) {
+                                _this.diopterPosition -= power;
+                                _this.slideBlur2 -= 1; 
+                            }
+                        } else if ((prevX < event.pageX)) {
+                            if (_this.diopterPosition < sm_orig["MAX_DIOPTER"]) {
+                                _this.diopterPosition += power;
+                                _this.slideBlur2 += 1;
+                            }
+                        }
+                        prevX = event.pageX;
+                        _this.update();
+                    }
+                })
+                .mouseup(function() {
+                    isDown = false;
+                })
+                .mouseleave(function() {
+                    isDown = false;
+                });
+            }
+            addDiopterDrag("#friend", 0.5);
+        }
+
+
+        enableSideDiaphragmRotate() {
+            // Abstracted in Jimrambe's code, passed in state machine.
+            setupKnobs(this);
+        }
+
     }
 
 
-    enableSideDiaphragmRotate() {
-        // Abstracted in Jimrambe's code, passed in state machine.
-        setupKnobs(this);
-    }
 
-}
-
-
-
-ms = new StateMachine();
-that = ms;
-ms.setup();
-ms.update();
+    ms = new StateMachine();
+    that = ms;
+    ms.setup();
+    ms.update();
