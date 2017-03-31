@@ -43,6 +43,12 @@ function largeFeedbackBoxOptions(title, body){
         currentMode = "Total-Magnification";
         startup(loadTotalMag);
     });
+
+    $("#endOption2").click(function(){
+        destroy();
+        currentMode = "Cell-Count";
+        startup(loadCellCount);
+    });
 }
 
 
@@ -72,6 +78,9 @@ function loadMenu(scene) {
             largeFeedbackBoxOptions("Quizzes", "Lets test your knowledge. Select a quiz from the menu below")
                 break;
         case "total-magnification":
+            largeFeedbackBoxQuiz("Total Magnification", "In this quiz, you will be identifying the magnification for different lens positions.")
+                break;
+        case "cell-count":
             largeFeedbackBoxQuiz("Total Magnification", "In this quiz, you will be identifying the magnification for different lens positions.")
                 break;
 
@@ -172,7 +181,6 @@ function newGame(guided, manual) {
 
 
 function loadIntro(){
-
     loadMenu("introduction");
     var stepText = [{
         "id": "intro",
@@ -445,6 +453,43 @@ function loadTotalMag(){
     totalMagQ3 = game.getGroupStep(0, 2);
     updateSteps();
     totalMagQ1.activate();
+
+}
+
+function loadCellCount(){
+    loadMenu("cell-count");
+    var stepText = [{
+        "id": "cellCount",
+            "shortText": "Cell Count",
+            "steps": [{
+                "id": "cellCountQ1",
+                "shortText": "Question 1",
+                "longText": "How many cells appear in the slide?",
+                "feedbackText": "click the light switch"
+            }]
+    }]
+
+    game = new Game(true, true);
+    var stepCount = -1;
+    var groupCount = -1;
+    for (i in stepText) {
+        groupCount++;
+        var newGroup = new StepGroup(stepText[i].id, stepText[i].shortText, "#group" + groupCount, "#groupIcon" + groupCount);
+        game.addGroup(newGroup);
+        for (j in stepText[i].steps) {
+            var cur = stepText[i].steps[j];
+            stepCount++;
+            var newStep = new Step(cur.id, cur.shortText, cur.longText, cur.feedback, "#step" + stepCount, "#icon" + stepCount);
+            game.addStep(newStep);
+            newGroup.addStep(newStep);
+        }
+    }
+    game.linkSteps();
+
+    /** Introduction **/
+    cellCountQ1 = game.getGroupStep(0, 0);
+    updateSteps();
+    cellCountQ1.activate();
 
 }
 

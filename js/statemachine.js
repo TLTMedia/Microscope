@@ -104,7 +104,6 @@ class StateMachine {
             $(components).attr("transform", "translate(" + x + " " + y + ")");
         }
         catch(err){
-
             console.log(components, x, y)
         }
     }
@@ -317,7 +316,7 @@ class StateMachine {
                 if (isDown) {
                     if (prevY < event.pageY) {
                         if (_this.knobPosition < sm_orig["MAX_KNOB"]) {
-                            _this.zoom -= val * 0.1;
+                            _this.zoom -= val * 0.01;
                             _this.yslide += val;
                             _this.ycaliper += val;
                             sm_orig["MAX_Y_CALIPER"] += val;
@@ -329,7 +328,7 @@ class StateMachine {
                         }
                     } else if ((prevY > event.pageY)) {
                         if (_this.knobPosition > sm_orig["MIN_KNOB"]) {
-                            _this.zoom += val * 0.1;
+                            _this.zoom += val * 0.01;
                             _this.yslide -= val;
                             _this.ycaliper -= val;
                             _this.yknobcaliper -= val;
@@ -604,7 +603,6 @@ class StateMachine {
         function testDanger(){
             if (!dangerEnable && (_this.lensePosition+1 == 9 || _this.lensePosition-1==9)){
                 rollBack = {"type": $(".popupInstruct").text(), "text": $("#popupText").text()}
-
                 //console.log(rollBack);
                 updatePopup("Warning", "Stop! You risk damaging the 100X objective by moving passed the slide. Go the other way.");
 

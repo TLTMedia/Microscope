@@ -156,6 +156,13 @@ function startStep(step) {
         }
 
     }
+    else if (currentMode == "Cell-Count"){
+        console.log("Cell count");
+        if (step == cellCountQ1) {
+            // Configure lenses at this position
+            quiz2Q1();
+        }
+    }
     // enable freemode? (user can do whatever they want with the scope)
 }
 
