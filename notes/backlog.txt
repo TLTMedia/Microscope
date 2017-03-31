@@ -45,7 +45,7 @@ linear:
 
 - Game/Quiz Design - 
 * Sorted by priority
-	[]Total magnification (1)
+	[x]Total magnification (1)
 		Question that pops up where user identifies the total
 		magnification (10*current objective)
 	[]Cell count (2)
