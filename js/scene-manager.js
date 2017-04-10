@@ -143,7 +143,7 @@ function startStep(step) {
     }
     else if (currentMode == "Total-Magnification"){
         console.log("Total magnification");
-        if (step == totalMagQ1) {
+/*        if (step == totalMagQ1) {
             // Configure lenses at this position
             quizMag1();
         }
@@ -152,7 +152,19 @@ function startStep(step) {
             quizMag2();
         }
         else if (step==totalMagQ3){
-            quizMag3();
+            quizMag3();*/
+
+       if (step == totalMagQ1) {
+            // Configure lenses at this position
+            quizMag(1);
+        }
+        else if (step==totalMagQ2){
+            // Configure lenses at this position
+            quizMag(2);
+        }
+        else if (step==totalMagQ3){
+            quizMag(3);
+        }
         }
 
     }

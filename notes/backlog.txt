@@ -166,6 +166,8 @@ Feedback:
     [] (try!!) Null clone attributes in s/setup.js
     [] (try) create a seperate slide svg
 [] Strange socket bug. Halp nemo :((
+[] For quizes, call the post at the very end after inputting all the answers in an array to call it once.
+[] Make the quiz clean up after itself. Picture of bug when calling quiz twice in a row in folder.
 
 
 -Shrn delegation-
