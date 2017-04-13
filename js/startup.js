@@ -551,6 +551,8 @@ function destroy(){
     $("#microscope").html("");
     $("rotate").html("");
     $("body").html(formerState);
+    swapMag(0);
+    ms.update();
 }
 
 
@@ -610,6 +612,7 @@ $(function(){
             case "Quizzes":
                 destroy();
                 startup(loadQuizzes);
+                ms.setup();
                 break;
         } 
         ms.update(); 

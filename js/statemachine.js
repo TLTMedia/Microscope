@@ -566,6 +566,7 @@ class StateMachine {
 
     // Rotate the microscope objective towards specified direction
     rotateLenses(_this, right, forced, testDanger){
+        
         if (right) {
             if (_this.lenseWheel % 10 == 0 || forced) {
                 $(_this.lenseStates[_this.lensePosition]).toggle();

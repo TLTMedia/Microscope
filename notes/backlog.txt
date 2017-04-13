@@ -161,13 +161,14 @@ Feedback:
 [] "(see details)" on instruction tooltip for clarity if extra details necessary to proceed.  
 [] Once at 40X, coarse knob should trigger warning (may damage slide)
 	****If they touch coarse focus on 40X, trigger large warning.
-[] added box placeholder. Update the box.svg layers and rename master layer to slideBox.
+[x] added box placeholder. Update the box.svg layers and rename master layer to slideBox.
 [x] Spawn slide on top of slide box.
     [] (try!!) Null clone attributes in s/setup.js
     [] (try) create a seperate slide svg
-[] Strange socket bug. Halp nemo :((
 [] For quizes, call the post at the very end after inputting all the answers in an array to call it once.
-[] Make the quiz clean up after itself. Picture of bug when calling quiz twice in a row in folder.
+[x] Make the quiz clean up after itself. Picture of bug when calling quiz twice in a row in folder.
+[] Currently unable to make questions for Cell Count. need pictures and specifically which magnification we need to use.
+	[] enable use of microscope during cell count.
 
 
 -Shrn delegation-
