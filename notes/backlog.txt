@@ -179,7 +179,7 @@ Feedback:
 [] Dirt/Dust for cleanable areas
 [] Windex and Towel Icon
 [] 
-
+[] .png scaling bug. DO NOT TOUCH :(
 
 
 !!- .svg export reminder-!!

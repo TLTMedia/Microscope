@@ -154,8 +154,8 @@ class StateMachine {
             this.translateReduce(".slideRect,#slideView2", -this.eyepiecePosition * Math.pow(3*(1/W_RAT),2), 0);
         }
 
-        var yCali = (this.yslide - this.knobPosition) * 10;
-        var xCali = (this.xslide) * 10;
+        var yCali = (this.yslide - this.knobPosition) * 10 *(Math.pow(4*(1/W_RAT),-1)+aspectRatio);
+        var xCali = (this.xslide) * 10 * (Math.pow(3*(1/W_RAT),-1)+aspectRatio);
         // Microscope darkness (hack is based off of a black background to darken)
         // [0,40] -> Expand to [0,60]
         $("#slideContents,#slideContents2,#stageLight, .slideRect").css({
