@@ -14,7 +14,7 @@ var isDown = false;
 var prevX = 0;
 var prevY = 0;
 
-//** State machine boundaries are defined in global.js 
+//** State machine boundaries are defined in global.js
 
 /*
  * We should introduce the idea of a state machine which represents the state
@@ -119,8 +119,8 @@ class StateMachine {
         }
     }
 
-    /* 
-       Call this.update() for everytime there is a state change. The microscope animation is dependent on only ONE source, and that is the state of the machine. Thus, everytime the state of the machine changes from user input, the changes of the scope should reflect all at once. 
+    /*
+       Call this.update() for everytime there is a state change. The microscope animation is dependent on only ONE source, and that is the state of the machine. Thus, everytime the state of the machine changes from user input, the changes of the scope should reflect all at once.
        */
     update() {
         W_RAT = $(window).width()/$(window).height();
@@ -154,8 +154,8 @@ class StateMachine {
             this.translateReduce(".slideRect,#slideView2", -this.eyepiecePosition * Math.pow(3*(1/W_RAT),2), 0);
         }
 
-        var yCali = (this.yslide - this.knobPosition) * 10 *(Math.pow(4*(1/W_RAT),-1)+aspectRatio);
-        var xCali = (this.xslide) * 10 * (Math.pow(3*(1/W_RAT),-1)+aspectRatio);
+        var yCali = (this.yslide - this.knobPosition) * 10;
+        var xCali = (this.xslide) * 10;
         // Microscope darkness (hack is based off of a black background to darken)
         // [0,40] -> Expand to [0,60]
         $("#slideContents,#slideContents2,#stageLight, .slideRect").css({
@@ -177,7 +177,7 @@ class StateMachine {
         });
 
         // Reblurs the second slide contents (with diopter as a factor)
-        var chosenBlur = this.eyepiecePosition + this.slideBlur2 
+        var chosenBlur = this.eyepiecePosition + this.slideBlur2
             $("#slideContents2").css({
                 "-ms-filter": "blur(" + Math.abs(chosenBlur) + "px)",
                 "-webkit-filter": "blur(" + Math.abs(chosenBlur) + "px)",
@@ -239,7 +239,7 @@ class StateMachine {
 
 
 
-    // === Functionality for the FRONT view of the Microscope ==== /// 
+    // === Functionality for the FRONT view of the Microscope ==== ///
 
     /* Toggles the light switch */
     enableLightSwitch() {
@@ -437,7 +437,7 @@ class StateMachine {
                 _this.caliperBlade = 25;
             }
         _this.update();
-        }); 
+        });
     }
 
     enableCaliper() {
@@ -543,18 +543,18 @@ class StateMachine {
             $('.slideRect').css("display", "block");
             swapMag(2);
             _this.slideBlur = 4;
-        } 
+        }
         else if (_this.lenseStates[_this.lensePosition].includes("White")){
             $('.slideRect').css("display", "block");
             swapMag(3);
-        } 
+        }
         else if (_this.lenseStates[_this.lensePosition].includes("Blue")){
             $('.slideRect').css("display", "block");
             swapMag(3);
             _this.slideBlur = 4;
         }
 
-        // no viable lense state renders no images 
+        // no viable lense state renders no images
         else {
             _this.zoomSave = _this.zoom;
             swapMag(-1);
@@ -566,7 +566,7 @@ class StateMachine {
 
     // Rotate the microscope objective towards specified direction
     rotateLenses(_this, right, forced, testDanger){
-        
+
         if (right) {
             if (_this.lenseWheel % 10 == 0 || forced) {
                 $(_this.lenseStates[_this.lensePosition]).toggle();
@@ -598,7 +598,7 @@ class StateMachine {
     // Total of 8 states on the lenses
     enableLenses() {
         var _this=this;
-        var dangerEnable = false; 
+        var dangerEnable = false;
         var rollBack = {};
 
         function testDanger(){
@@ -660,7 +660,7 @@ class StateMachine {
                     if (prevX > event.pageX) {
                         if (_this.diopterPosition > sm_orig["MIN_DIOPTER"]) {
                             _this.diopterPosition -= power;
-                            _this.slideBlur2 -= 1; 
+                            _this.slideBlur2 -= 1;
                         }
                     } else if ((prevX < event.pageX)) {
                         if (_this.diopterPosition < sm_orig["MAX_DIOPTER"]) {
