@@ -6,7 +6,7 @@
  */
 
 function quiz4Q1(){
-    answer = "400X";
+    /*answer = "400X";
     ms.rotateLensesCount(ms, true, true, function(){}, 1);
     ms.updateLensesState(ms);
     ms.diaphragmLightPosition = 40;
@@ -15,6 +15,9 @@ function quiz4Q1(){
     ms.eyepiecePosition = 0;
     ms.ycaliper = ms.yslide = 20;
     ms.update();
+    */
+
+
 
     $("#answerBox button").click(function(){
         inputAnswer = $("#answerBox input").val();
@@ -22,7 +25,7 @@ function quiz4Q1(){
         .done(function( res ) {
             if (inputAnswer == answer){
                 $("#answerBox button").unbind();
-                totalMagQ1.complete();
+                videoQ1.complete();
             }
             $("#answerBox input").val("");
         });

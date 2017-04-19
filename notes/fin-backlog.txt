@@ -1,0 +1,95 @@
+- Game/Quiz Design -
+* Sorted by priority
+	[x]Total magnification (1)
+		Question that pops up where user identifies the total
+		magnification (10*current objective)
+	[x]Watch video and identify what person does wrong (4).
+
+--10/17/16--
+[x]When y caliper moves down, everything on the view gets realistically bigger (scale x/y, slide down).
+[x]Create a side view of the scope and put it at the side of the front[]view so there are two views active simultaneously.
+[x]Create 8 SVG views of the lenses. 4 for fixed pivots, 4 for intermission pivots. Add drag functionality at top of lense (Warning to not touch lenses)
+    [x]Modify SVG files to represent orientation of the scope better.
+[x]Modify setup stage to include:
+    [x]Place slide in.
+    [x]Toggle aperture light.
+    [x]Control calipers to make sure specimen is under the aperture light (Perhaps popup view to show specimen orientation).
+[x]Aperture knob light should increase as magnification increases
+    [x]Low mag should have very low light.
+    [x]High mag should have higher aperture value (more diffraction).
+    [x]Change orientation of aperture knob to rightmost side.
+[x]Utilize bindings over setTimeout if possible.
+[x]Slide view should change by state changes.
+
+--10/28/16--
+[x]Debug the circular motion of the side view
+[x]Attach side view to mag view so they update synchronously
+[x]Coarse knob needs to moderately zoom on slide
+[x]Fine knob needs to blur/unblur the slide
+[x]Make a middleware function between animations to translate pixel to percentage values
+[x]"Learning the Ropes" should be renamed to low mag
+[x]Turn old low mag into high mag scene.
+[x]Debugger should destroy highlights
+[x]Can we make it so that the clone blurs move with the main objects.
+
+
+--11/2/16--
+[x]Email: meilin.chan@stonybrook.edu
+[x]Give better feedback on the slide contents (Setup)
+
+--1/27/17--
+[x]Fine tuning values of microcsope to be as realistic as possible
+[x]Responsive design when reduced
+[x]Aperture precision not implemented yet.
+[x]Slide content container must adjust to window changes.
+    [x]Fix responsive design
+    [x]Find magic numbers to ensure alignment with calipers.
+[x]Readjust position of popup as it goes step by step
+[x]Play with the possibility of moving the guiding text over to the side steps (toggability).
+[x]Overflow x on popup box.
+[x]Create a large text box below (or above) the steps to detail a particular steps (descriptions)
+[x]Modify header to extend use such as: returning to "Intro" scene, switching modes, etc.
+[x]Should only be one difficulty regarding how the microscope is being used.
+[x]Adjust slide so that it triggers its activation on top of pseudoclone.
+[x]Implement game modes (restriction to restrictionless)
+[x]Rewrite the popup text (directions) to be more brief.
+[x]Difficulty/Quizzing are the "Games" were are implenting.
+[x]Unneeded completion feedback when doing Tutorial (start).
+[x]Need completion feedback when doing Tutorial (end)
+[x]Deviate from framework and add a feedback button before moving forward.
+[x]Modify scenes/setup.js caliper positions to calibrate where x,y = 0,0.
+[xxxxxxxxxx THE DEMON IS GONE]Rotation not firefox compatible. (Sharin needs to look at the svg/ai file and confirm this and next backlog)
+[x]Modify Coarse Knob to complete on clarity (white line).
+[x] Currently the sideview knob is unresponsive
+[x]Occasional bug arises where nothing loads. Test by refreshing && disabling cache.
+    [x]resize line 17X? - solved using try/catch...
+
+--2/16/2017--
+[x] For low mag change description text to "rotate the lenses to the lowest objective (4X) without the 100X objective passing the slide."
+	[x]Reflect these changes on med, and high mag.
+[x] For warning on 100x change text to "Stop! You risk damaging the 100X objective by moving passed the slide. Go the other way."
+[x] Diopter side drag (not vertical drag) trigger up/down motion
+[x] Add coarse knob step back to Medium magnification.
+[x] Fix debugger
+[x] Cleaning up (Extra steps)
+	[x]Rotate to 4X
+	[x]using coarse focus drop the stage all the way down
+	[x]remove the slide
+	[x]turn off the light.
+[x] Slide placement drag by white piece when placing into calipers
+[x] Slide holder pull to place (click or drag to pull), animate.
+[x] fix the lenses functionality.
+[x] Slide view contents more reflective IRL:
+	[x] Rectangular image, enlarge.
+	[x] On farend (bounds of caliper), show slide edge
+	[x] On uncalibrated, show gray.
+[x] White label on slide
+[xx] Make the coarse and fine knobs bigger (keep blue spacing minimal).
+[x] The three different mags should have 3 different images (4X, 10X, 40X).
+[x] Diopter knob id, instead of entire diopter
+[x] added box placeholder. Update the box.svg layers and rename master layer to slideBox.
+[x] Spawn slide on top of slide box.
+[x] Make the quiz clean up after itself. Picture of bug when calling quiz twice in a row in folder.
+
+--4/19/2017-
+[x] Draw box to hold slide.

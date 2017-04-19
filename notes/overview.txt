@@ -1,0 +1,70 @@
+—- Overview —
+
+-Intro Notes-
+1. Light Switch
+2. Condenser:		y-axis diaphragm— should always be at the top
+
+-Tutorial Notes-
+red lens
+	aperture lowest good
+
+initial state:
+	- light off
+	- stage down
+	- condenser down
+	- slide off
+	- lens that is not red
+
+low mag/high mag->low/medium/high
+
+**calibrate views
+** overexposure
+__ aperture- start closed
+
+linear:
+	> turn on light
+	> condenser up— scale
+	> slide on
+	> caliper (x, y)
+--- end set up
+
+	> lenses- lowmag
+	> coarse
+
+	** cannot set diopter on low mag **
+	yellow:
+	> change lens
+	> fine
+	> diopter
+	> ocular (note: don’t set on low)
+
+	blue:
+	> change lens
+	> aperture — max
+	> fine
+
+!!- .svg export reminder-!!
+check classes in css (.st)
+when making changes to svg directly, do not save or export but use save as and change Font Type to Embed and CSS Properties (CSS -> Style Attributes)
+
+
+- Examples -
+http://virtuallabs.nmsu.edu/micro.php
+https://apps.tlt.stonybrook.edu/spect/
+https://docs.webplatform.org/wiki/svg/tutorials/smarter_svg_filters
+
+- Work Methodology -
+Agile Development
+
+- Development Links -
+https://en.wikipedia.org/wiki/Waterfall_model
+https://en.wikipedia.org/wiki/Timeboxing
+https://en.wikipedia.org/wiki/Scrum_(software_development)
+https://en.wikipedia.org/wiki/Agile_software_development
+https://en.wikipedia.org/wiki/Strategy_pattern
+https://en.wikipedia.org/wiki/Composition_over_inheritance
+https://en.wikipedia.org/wiki/WYSIWYG
+https://en.wikipedia.org/wiki/Design_Patterns
+http://softwareengineering.stackexchange.com/questions/7055/what-is-the-most-frequently-used-design-pattern
+http://www.javatpoint.com/factory-method-design-pattern
+http://www.dofactory.com/javascript/prototype-design-pattern

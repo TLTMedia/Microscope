@@ -1,0 +1,31 @@
+- Tutorial Wish list (Extra) -
+-Sideview motions and lenses to reflect the frontview
+	-Objective lenses change on rotate.
+	-Consider functionality on light switch/ coarse/fine knob drag
+-Leave glasses for clear vision.
+-Slide break animation if coarse knob pushed up during (40X).
+	-(Slap user animation)
+
+- Game/Quiz Wishlist (Optional)-
+	[]Change Slide
+		> rotate red (not through white)
+		> lower stage
+		> reduce light
+		> remove slide
+		> add new slide
+			> caliper (x,y)
+			> coarse
+			> rotate medium
+			> fine
+			> rotate to high
+			> open aperture
+			> fine
+	[]Troubleshooting (fix the scope)
+	[] field of view (measuring)
+		> low mag
+			> place ruler
+			> caliper
+		> high mag
+
+	[] depth of focus
+	[] Orientation (e-slide)
