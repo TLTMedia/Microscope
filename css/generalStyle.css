@@ -349,41 +349,46 @@ to {
     background-image: url("../stripes/LockedStripe.png");
 }
 
-
-
-#endOption0 {
-    margin: 0 auto; 
-    position: relative;
-}
-
-#endOption1 {
-    left: 2.5%;
-    position: absolute;
-}
-
-
-#endOption2 {
-    left: 35%;
-    position: absolute;
-}
-
-#endOption3 {
-    left: 67.5%;
-    position: absolute;
-}
-
 .endOptionDesc {
-    width: 25%;
+    width: 30%;
     height: 30%;
     position: absolute;
     z-index: 50;
     box-shadow: 5% 5% 5% #000000;
-    top: 40%;
+    top: 25%;
     opacity: 0;
     background-image: url("../img/bubble.svg");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+
+#endOption0 {
+    margin: 0 auto;
+    position: relative;
+}
+
+#endOption1 {
+    left: 15%;
+    position: absolute;
+}
+
+
+#endOption2 {
+    left: 55%;
+    position: absolute;
+}
+
+#endOption3 {
+    left: 15%;
+    top: 10%;
+    position: absolute;
+}
+#endOption4 {
+    left: 55%;
+    top:10%;
+    position: absolute;
 }
 
 #endOptionDesc1 {

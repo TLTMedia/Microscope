@@ -6,14 +6,14 @@ function headerButtonClick(e){
 }
 
 // Make use of the header by making it a tooltip.
-// When user hovers over a piece, describe what it is. 
+// When user hovers over a piece, describe what it is.
 // To improve it, use a mapping that takes a key word and redirects it into a proper tooltip.
 function bindTooltip(){
     components.forEach(function(component){
         $(component).hover(function(){
             $("#headerText").text((component.replace("#","")).capitalize());
-        }); 
-    }); 
+        });
+    });
 }
 
 
@@ -62,11 +62,11 @@ function startStep(step) {
         if (step == setupCaliperBlade){
             ms.enable("caliper-blade");
             setupEnableBlade();
-        } 
-        if (step == setupSlide){ 
-            setupEnableSlide(); 
         }
-        if (step == setupCondense){ 
+        if (step == setupSlide){
+            setupEnableSlide();
+        }
+        if (step == setupCondense){
             if (isDebug){
                 toggleVisibility("#slide");
                 $("#slide").css({"display": "block"});
@@ -75,7 +75,7 @@ function startStep(step) {
             ms.enable("sideview");
         }
 
-        if (step == setupCaliper){ 
+        if (step == setupCaliper){
             setupAdjustCaliper();
             ms.enable("caliper");
         }
@@ -103,7 +103,7 @@ function startStep(step) {
         }
 
         if (step == medFine) {
-            medAdjustFine(); 
+            medAdjustFine();
             ms.enable("fine-knob");
         }
         if (step == medDiopter){
@@ -124,7 +124,7 @@ function startStep(step) {
             highAdjustAperture();
         }
         if (step == highFine) {
-            highAdjustFine(); 
+            highAdjustFine();
         }
 
         // Cleanup time
@@ -138,7 +138,7 @@ function startStep(step) {
             cleanRemoveSlide();
         }
         if (step == cleanupLight) {
-            cleanDisableSwitch();  
+            cleanDisableSwitch();
         }
     }
     else if (currentMode == "Total-Magnification"){
@@ -163,14 +163,22 @@ function startStep(step) {
             quiz2Q1();
         }
     }
+
+    else if (currentMode == "Video"){
+        console.log("Video");
+        if (step == videoQ1) {
+            // Configure lenses at this position
+            quiz4Q1();
+        }
+    }
     // enable freemode? (user can do whatever they want with the scope)
 }
 
 function endStep(step) {
-    if (step.div == "#step0" && currentMode == "Introduction") 
-        loadMenu("introduction-end"); 
+    if (step.div == "#step0" && currentMode == "Introduction")
+        loadMenu("introduction-end");
     else if (step.div == "#step19"){
         popupOff();
-        loadMenu("tutorial-end"); 
+        loadMenu("tutorial-end");
     }
 }

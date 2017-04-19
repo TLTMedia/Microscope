@@ -4,17 +4,28 @@
  *
  **/
 
-/* 
+/*
    Sets the contents of the feedback box
    */
-function largeFeedbackBox(title, body){
+
+// Title module
+function largeFeedbackBox(title, body, lambdaEnd){
     $("#helpBoxHeader").text("Details");
     $("#endText").text(title);
     $("#endSubText").text(body);
     $("#buttonContainer").html("<div class=\"endOption rounded stripes endOptionUnlocked\" id=\"endOption0\" draggable=\"false\"><div class=\"endOptionText fs-24 text\">Continue</div></div>");
-    $("#endOption0").click(function(){
-        hideMenu();
-    });
+    $("#endOption0").click(lambdaEnd);
+}
+
+// Quiz Module
+function enableQuizBox(){
+    $("#helpBoxHeader").text("Question");
+    $("#answerBox").toggle();
+}
+
+// Makes  button
+function buttonMaker(id, title){
+  return "<div class=\"endOption rounded stripes endOptionUnlocked\" id=\"endOption" + id + "\" draggable=\"false\"><div class=\"endOptionText fs-24 text\">" + title + "</div></div><br><br>"
 }
 
 /*
@@ -24,16 +35,10 @@ function largeFeedbackBox(title, body){
 function largeFeedbackBoxOptions(title, body){
     largeFeedbackBox(title,body);
     var finalList = "";
-    finalList += "<div class=\"endOption rounded stripes endOptionUnlocked\" id=\"endOption1\" draggable=\"false\"><div class=\"endOptionText fs-24 text\">Total Magnification</div></div>"
-
-        finalList += "<br><br>"
-
-        finalList += "<div class=\"endOption rounded stripes endOptionUnlocked\" id=\"endOption2\" draggable=\"false\"><div class=\"endOptionText fs-24 text\">Cell Count</div></div>"
-
-
-        finalList += "<br><br>"
-
-        finalList += "<div class=\"endOption rounded stripes endOptionUnlocked\" id=\"endOption3\" draggable=\"false\"><div class=\"endOptionText fs-24 text\">Clean Scope</div></div>"
+        finalList += buttonMaker(1, "Total Magnification");
+        finalList += buttonMaker(2, "Cell Count");
+        finalList += buttonMaker(3, "Clean Scope");
+        finalList += buttonMaker(4, "Watch Nudes");
 
         $("#buttonContainer").html(finalList);
 
@@ -49,41 +54,65 @@ function largeFeedbackBoxOptions(title, body){
         currentMode = "Cell-Count";
         startup(loadCellCount);
     });
+
+    $("#endOption4").click(function(){
+        destroy();
+        currentMode = "Video";
+        startup(loadVideoQuiz);
+    });
 }
 
-
-function largeFeedbackBoxQuiz(title, body){
-    largeFeedbackBox(title,body);
-    $("#helpBoxHeader").text("Question");  
-    //$("#helpBox p").text("What is the magnification that is currently being shown on the slide?");
-    $("#answerBox").toggle();
-}
-
+/*
+Proxy function to delegate scene construction of quizzes appropriately.
+*/
 function loadMenu(scene) {
+    var hide = function(){hideMenu();}
     $("#answerBox").css("display", "none");
     switch (scene){
         case "introduction":
-            largeFeedbackBox("Introduction", "Welcome to the introduction. In this section, you will learn the parts of the microscope.")
+            largeFeedbackBox("Introduction", "Welcome to the introduction. In this section, you will learn the parts of the microscope.", hide)
                 break;
         case "tutorial":
-            largeFeedbackBox("Tutorial","In this section, you will learn how to work with a microscope.");
+            largeFeedbackBox("Tutorial","In this section, you will learn how to work with a microscope.", hide);
             break;
         case "introduction-end":
-            largeFeedbackBox("Completed", "You can review the parts by hovering over them again. When you're ready, click on \"Tutorial\" on the top bar to proceed.")
+            largeFeedbackBox("Completed", "You can review the parts by hovering over them again. When you're ready, click on \"Tutorial\" on the top bar to proceed.", hide)
                 break;
         case "tutorial-end":
-            largeFeedbackBox("Completed", "Great work. You learned how to use the microscope. Click on \"Quizzes\" on the top bar to test what you have learned!")
+            largeFeedbackBox("Completed", "Great work. You learned how to use the microscope. Click on \"Quizzes\" on the top bar to test what you have learned!", hide)
                 break;
         case "quiz-start":
-            largeFeedbackBoxOptions("Quizzes", "Lets test your knowledge. Select a quiz from the menu below")
+            largeFeedbackBoxOptions("Quizzes", "Lets test your knowledge. Select a quiz from the menu below", hide)
                 break;
         case "total-magnification":
-            largeFeedbackBoxQuiz("Total Magnification", "In this quiz, you will be identifying the magnification for different lens positions.")
+            largeFeedbackBox("Total Magnification", "In this quiz, you will be identifying the magnification for different lens positions.", hide);
+            enableQuizBox();
                 break;
         case "cell-count":
-            largeFeedbackBoxQuiz("Total Magnification", "In this quiz, you will be identifying the magnification for different lens positions.")
+            largeFeedbackBox("Total Magnification", "In this quiz, you will be identifying the magnification for different lens positions.", hide)
+            enableQuizBox();
                 break;
+        case "video":
+              largeFeedbackBox("Video Quiz", "In this quiz, you will be identifying issues in the microscope usage.",
+              function(){
+                setTimeout(function(){
+                  showMenu();
+                  $("#results").css({
+                    "left": "5%",
+                    "height": "70%"
+                  })
 
+                  $("#overlay").css({
+                    "pointer-events": "none"
+                  })
+                  
+                  $("#results").html('<iframe style="margin-top:0%;" width="100%" height="100%" src="https://www.youtube.com/embed/D-UmfqFjpl0" frameborder="0" allowfullscreen></iframe>');
+                  $("#endSubText").text('');
+                  $("#buttonContainer").html("<div class=\"endOption rounded stripes endOptionUnlocked\" id=\"endOption0\" draggable=\"false\"><div class=\"endOptionText fs-24 text\">Continue</div></div>");
+                }, 1000);
+          })
+            enableQuizBox();
+          break;
     }
     $("#endSubText").css({opacity: 1});
     $(".endErrorText").css({opacity: 0});
@@ -97,8 +126,6 @@ function showOptionMenu() {
         'opacity': 1,
     'z-index': 100
     });
-    // Lock/unlock modes
-    lockModes();
     // Show results screen
     $("#results").removeClass("anim_exitResults");
     $("#results").addClass("anim_enterResults");
@@ -112,8 +139,7 @@ function showMenu() {
         'opacity': 1,
     'z-index': 100
     });
-    // Lock/unlock modes
-    lockModes();
+
     // Show results screen
     $("#results").removeClass("anim_exitResults");
     $("#results").addClass("anim_enterResults");
@@ -138,44 +164,10 @@ function hideMenu() {
 }
 
 
-function lockModes() {
-    // Intermediate mode: lock if Beginner not yet completed
-    if (true) {
-        // Unlock
-        $("#endOptionDescText2").html("• No hints <br> • 5 dial readings <br> • You lose if you make a mistake.");
-        $("#endOption2").removeClass("endOptionLocked");
-        $("#endOption2").addClass("endOptionUnlocked");
-    } else {
-        // Lock
-        $("#endOptionDescText2").html("Locked! <br> Complete Beginner mode to unlock.");
-        $("#endOption2").removeClass("endOptionUnlocked");
-        $("#endOption2").addClass("endOptionLocked");
-    }
-    // Expert mode: lock if Intermediate not yet completed
-    if (true) {
-        // Unlock
-        $("#endOptionDescText3").html("• No hints, more controls <br> • 7 dial readings <br> • You lose if you make a mistake.");
-        $("#endOption3").removeClass("endOptionLocked");
-        $("#endOption3").addClass("endOptionUnlocked");
-    } else {
-        // Lock
-        $("#endOptionDescText3").html("Locked! <br> Complete Intermediate mode to unlock.");
-        $("#endOption3").removeClass("endOptionUnlocked");
-        $("#endOption3").addClass("endOptionLocked");
-    }
-}
-
-
 function newGame(guided, manual) {
     hideMenu(); // Hide menu
     updateSteps(); // Update steps
-
-    // Animate in step objects
     enterStepObjects();
-
-    // Record start time
-    //testGame();
-
     resizeWindow(); // Resize window
 }
 
@@ -272,7 +264,7 @@ function loadTutorial() {
                 "shortText": "Coarse Knob",
                 "longText": "The coarse knob adjusts the stage platform and lets you zoom in or out of the current slide view. You want to keep adjusting it until the view is clear. Note that the coarse knob should only be moved once, and once it is moved to the correct place it doesn't need to be touched again.",
                 "feedbackText": "click the coarse knobs"
-            } ]  
+            } ]
         }, {
             "id": "medMag",
             "shortText": "Medium Magnification",
@@ -291,12 +283,12 @@ function loadTutorial() {
                 "shortText": "Fine Knobs",
                 "longText": "Instead of adjusting the coarse knob for clarity, we adjust the fine knob because the coarse knob is already in place from low magnification. The fine knob will blur and unblur the slide view. Keep rotating it until the view becomes clear.",
                 "feedbackText": "click the fine knobs"
-            },{ 
+            },{
                 "id": "setupDiopter",
                 "shortText": "Diopter",
                 "longText": "The diopter is responsible for the clarity of view through the left ocular lenses. Adjust it so that the left view becomes clear.",
                 "feedbackText": "click the eyepiece"
-            },{ 
+            },{
                 "id": "setupEyepiece",
                 "shortText": "Eyepiece",
                 "longText": "When you look through the microscope, you may see two different views. By adjusting the eyepiece, you can have it so that the views converge and look like a single view.",
@@ -311,7 +303,7 @@ function loadTutorial() {
                 "shortText": "Lenses",
                 "longText": "This will be the highest magnification that you work with on the microscope. it will give a much more detailed view of the specimen that is on the slide.",
                 "feedbackText": "click the lenses"
-            },{ 
+            },{
                 "id": "setupAperture",
                 "shortText": "Highest Aperture",
                 "longText": "Because high magnification is so detailed, more light needs to pass through the slide to clearly show the view. High magnification will result in a loss of light due to its reflective nature.",
@@ -330,7 +322,7 @@ function loadTutorial() {
                 "shortText": "Lowest Objective",
                 "longText": "This will be the highest magnification that you work with on the microscope. it will give a much more detailed view of the specimen that is on the slide.",
                 "feedbackText": "click the lenses"
-            },{ 
+            },{
                 "id": "cleanupCoarse",
                 "shortText": "Lowest Coarse Knob",
                 "longText": "Because high magnification is so detailed, more light needs to pass through the slide to clearly show the view. High magnification will result in a loss of light due to its reflective nature.",
@@ -493,6 +485,44 @@ function loadCellCount(){
 
 }
 
+function loadVideoQuiz(){
+    loadMenu("video");
+    var stepText = [{
+      "id": "video",
+      "shortText": "Video Quiz",
+      "steps": [{
+          "id": "videoQ1",
+          "shortText": "Question 1",
+          "longText": "Placeholder question?",
+          "feedbackText": "",
+          "answers": ["A1", "A2", "A3", "A4"]
+    }]}]
+
+    game = new Game(true, true);
+    var stepCount = -1;
+    var groupCount = -1;
+    for (i in stepText) {
+        groupCount++;
+        var newGroup = new StepGroup(stepText[i].id, stepText[i].shortText, "#group" + groupCount, "#groupIcon" + groupCount);
+        game.addGroup(newGroup);
+        for (j in stepText[i].steps) {
+            var cur = stepText[i].steps[j];
+            stepCount++;
+            var newStep = new Step(cur.id, cur.shortText, cur.longText, cur.feedback, "#step" + stepCount, "#icon" + stepCount);
+            game.addStep(newStep);
+            newGroup.addStep(newStep);
+        }
+    }
+    game.linkSteps();
+
+    videoQ1 = game.getGroupStep(0, 0);
+    updateSteps();
+    videoQ1.activate();
+
+}
+
+
+
 
 function initEndOptionHover(id) {
     $("#endOption" + id).hover(function () {
@@ -547,7 +577,7 @@ var formerState = $("body").html();
 // Unloads everything, used to change game modes
 function destroy(){
     //console.log(game);
-    $("#steps").html(""); 
+    $("#steps").html("");
     $("#microscope").html("");
     $("rotate").html("");
     $("body").html(formerState);
@@ -594,7 +624,7 @@ $(function(){
     // Attach event listeners to buttons on header
     $("#header button").click(function(event){
         $("#header button").each(function(index){
-            $(this).removeClass("headerButtonActive"); 
+            $(this).removeClass("headerButtonActive");
         });
         var id = $(this).toggleClass("headerButtonActive");
         var innerText = $(this).text();
@@ -614,8 +644,8 @@ $(function(){
                 startup(loadQuizzes);
                 ms.setup();
                 break;
-        } 
-        ms.update(); 
+        }
+        ms.update();
     });
     startup(loadIntro);
 });
