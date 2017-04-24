@@ -38,7 +38,7 @@ function largeFeedbackBoxOptions(title, body){
         finalList += buttonMaker(1, "Total Magnification");
         finalList += buttonMaker(2, "Cell Count");
         finalList += buttonMaker(3, "Clean Scope");
-        finalList += buttonMaker(4, "Watch Nudes");
+        finalList += buttonMaker(4, "Watch Video");
 
         $("#buttonContainer").html(finalList);
 
