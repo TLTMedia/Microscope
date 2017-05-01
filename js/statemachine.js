@@ -249,9 +249,11 @@ class StateMachine {
             if (_this.lightStatus > 0) {
                 $("#illuminationLight").removeClass("elementOff");
                 $("#illuminationLight").addClass("lightOn");
+                $("#stageLight").css("display", "inline");
             } else {
                 $("#illuminationLight").removeClass("lightOn");
                 $("#illuminationLight").addClass("elementOff");
+                $("#stageLight").css("display", "inline");
             }
 
         });

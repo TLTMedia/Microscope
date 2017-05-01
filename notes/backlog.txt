@@ -28,6 +28,9 @@
 [] For quizzes, call the post at the very end after inputting all the answers in an array to call it once.
 [] Currently unable to make questions for Cell Count. need pictures and specifically which magnification we need to use.
 	[] enable use of microscope during cell count.
+[] Review gh-pages branch and notice the new bugs
+    [x] Circle radius feedback from aperture knob
+
 
 
 -shrn uzumaki delegation-
