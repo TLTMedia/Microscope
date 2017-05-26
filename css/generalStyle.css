@@ -228,10 +228,10 @@ body {
 @keyframes enterStepObject {
     from {
         left: 100%;
-}
-to {
-    left: 0%;
-}
+    }
+    to {
+        left: 0%;
+    }
 }
 
 .anim_enterStepObject {
@@ -241,10 +241,10 @@ to {
 @keyframes exitStepObject {
     from {
         left: 0%;
-}
-to {
-    left: 100%;
-}
+    }
+    to {
+        left: 100%;
+    }
 }
 
 .anim_exitStepObject {
@@ -425,11 +425,11 @@ to {
     from {
         top: 37%;
         opacity: 0;
-}
-to {
-    top: 40%;
-    opacity: 1;
-}
+    }
+    to {
+        top: 40%;
+        opacity: 1;
+    }
 }
 
 .anim_exitEndOptionDesc {
@@ -440,11 +440,11 @@ to {
     from {
         top: 40%;
         opacity: 1;
-}
-to {
-    top: 37%;
-    opacity: 0;
-}
+    }
+    to {
+        top: 37%;
+        opacity: 0;
+    }
 }
 
 
@@ -455,10 +455,10 @@ to {
 @keyframes enterResults {
     from {
         top: 1000%;
-}
-to {
-    top: 22.5%;
-}
+    }
+    to {
+        top: 22.5%;
+    }
 }
 
 .anim_exitResults {
@@ -468,10 +468,10 @@ to {
 @keyframes exitResults {
     from {
         top: 22.5%;
-}
-to {
-    top: 1000%;
-}
+    }
+    to {
+        top: 1000%;
+    }
 }
 
 
@@ -487,10 +487,10 @@ to {
 @keyframes fadeInBG {
     from {
         opacity: 0;
-}
-to {
-    opacity: .75;
-}
+    }
+    to {
+        opacity: .75;
+    }
 }
 
 .anim_fadeOutBG {
@@ -500,10 +500,10 @@ to {
 @keyframes fadeOutBG {
     from {
         opacity: .75;
-}
-to {
-    opacity: 0;
-}
+    }
+    to {
+        opacity: 0;
+    }
 }
 
 .stepTextHint{

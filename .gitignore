@@ -1,2 +1,3 @@
 api/
 *.swp
+.DS_Store
