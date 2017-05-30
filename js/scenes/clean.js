@@ -2,14 +2,14 @@
  * clean.js
  *
  * Scene 4
- * Fourth scene instructs user to put away the microscope. 
+ * Fourth scene instructs user to put away the microscope.
  */
 
 
 function cleanAdjustLenses() {
-    textSetup("Rotate the lenses to the lowest objective (4X) without the 100X objective passing the slide.", "15%", "35%"); 
+    textSetup("Rotate the lenses to the lowest objective (4X) without the 100X objective passing the slide.", "15%", "35%");
     var id="#lensesBasePath"
-        if (cleanupLow.isActive()) { 
+        if (cleanupLow.isActive()) {
             var clonedComp = highlightComponent(id);
             bringToFront($(id));
             var handler = function(){
@@ -27,7 +27,7 @@ function cleanAdjustLenses() {
 function cleanAdjustCoarse() {
     textSetup("Move the stage to the bottom using the coarse knob.", "60%", "64%");
     var id="#knobsCoarse"
-        if (cleanupCoarse.isActive()) { 
+        if (cleanupCoarse.isActive()) {
             var clonedComp = highlightComponent(id);
             bringToFront($(id));
             var handler = function(){
@@ -82,7 +82,6 @@ function cleanRemoveSlide() {
 
         //console.log(x + ", " + y);
         if (cleanupSlide.isActive() && Math.abs(x) > 100 || y < 0 || y > 100) {
-
             removeHighlight($("#slideCopy"));
             cleanupSlide.complete();
             $("#pseudo_slideCopyCopy").remove();

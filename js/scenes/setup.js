@@ -2,16 +2,17 @@
  * setup.js
  *
  * Scene 2
- * Third scene that teaches student how to setup the microscope 
+ * Third scene that teaches student how to setup the microscope
  */
 
 // ====== Start Trigger ======= //
 function setupEnableSwitch() {
     textSetup("First, let's turn on the light switch.", "60%", "73%");
-    id = "#switch"
-        var clonedComp = highlightComponent(id);
-    bringToFront($(id));
-    $("#switch").click(function () {
+    var id = "#switch";
+    var $el = $(id);
+    var clonedComp = highlightComponent(id);
+    bringToFront($el);
+    $el.click(function () {
         if (setupLightSwitch.isActive()) {
             removeHighlight(clonedComp);
             setupLightSwitch.complete();
@@ -21,10 +22,11 @@ function setupEnableSwitch() {
 
 function setupEnableBlade(){
     textSetup("Now pull on the caliper blade by clicking on it.", "64%", "45%");
-    id = "#caliperBlade";
+    var id = "#caliperBlade";
+    var $el = $(id);
     var clonedComp = highlightComponent(id);
-    bringToFront($(id));
-    $("#caliperBlade").click(function () {
+    bringToFront($el);
+    $el.click(function () {
         if (setupCaliperBlade.isActive()) {
             removeHighlight(clonedComp);
             setupCaliperBlade.complete();
@@ -52,8 +54,6 @@ function setupEnableSlide() {
 
     // Highlight cloned slide
     var cloned = highlightComponent("#pseudo_slideCopy");
-
-    $pseudoSlide.attr("transform", "translate(" + x + " " + y + ")");
 
     $(cloned).attr("style", $("#slide").attr("style"));
 
@@ -85,14 +85,6 @@ function setupEnableSlide() {
         });
 
     function dragMoveListener (event) {
-
-
-        var target = event.target,
-            // keep the dragged position in the data-x/data-y attributes
-            x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
-            y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
-
-
         if (setupSlide.isActive() && Math.abs(x) < 10 && y < 25 && y > 10) {
             setupSlide.complete();
             $("#caliperBlade").trigger("click");
@@ -100,21 +92,10 @@ function setupEnableSlide() {
             $("#pseudo_slideCopyCopy").remove();
             $("#pseudo_slideCopy").remove();
         }
-
-        // translate the element
-        target.style.webkitTransform =
-            target.style.transform =
-            'translate(' + x + 'px, ' + y + 'px)';
-
-
-        // update the posiion attributes
-        target.setAttribute('data-x', x);
-        target.setAttribute('data-y', y);
     }
 
     // this is used later in the resizing and gesture demos
     window.dragMoveListener = dragMoveListener;
-
 }
 
 

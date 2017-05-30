@@ -89,9 +89,9 @@ class StateMachine {
     translateReduce(components, x, y) {
         $(components).css({
             "-webkit-transform": "translate(" + x + "px," + y + "px)",
-        "-ms-transform": "translate(" + x + "px," + y + "px)",
-        "-moz-transform": "translate(" + x + "px," + y + "px)",
-        "transform": "translate(" + x + "px," + y + "px)"
+            "-ms-transform": "translate(" + x + "px," + y + "px)",
+            "-moz-transform": "translate(" + x + "px," + y + "px)",
+            "transform": "translate(" + x + "px," + y + "px)"
         });
     }
 
@@ -103,11 +103,10 @@ class StateMachine {
         try{
             $(components).attr("transform", "translate(" + x + " " + y + ")");
         }
-        catch(err){
+        catch(err) {
             console.log(components, x, y)
         }
     }
-
 
     //Rotate Center
     rotateReduceSVG(components, rotate, xOff, yOff) {

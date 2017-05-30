@@ -85,7 +85,7 @@ function updateClonedPosition(cloned, target){
 
 // Creates bounds for a step within a scene to progress to next steps
 // low.js && setup.js dependant on this function
-// args: 
+// args:
 // property to inspect, lower bound, upper bound, engine piece, div piece, remove listener
 function subHandler(prop, low, upper, piece, handler, id, cloned) {
     // For every trigger, move the cloned position to the object position.
@@ -129,8 +129,8 @@ function removeHighlightId(id){
 
 function removeHighlightCopy(){
     $('*[id*=Copy]:visible').each(function() {
-            $(this).remove();
-            }); 
+        $(this).remove();
+    });
 
     $("[id$='Copy']").remove();
 }

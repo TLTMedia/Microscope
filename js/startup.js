@@ -105,7 +105,7 @@ function loadMenu(scene) {
                   $("#overlay").css({
                     "pointer-events": "none"
                   })
-                  
+
                   $("#results").html('<iframe style="margin-top:0%;" width="100%" height="100%" src="https://www.youtube.com/embed/D-UmfqFjpl0" frameborder="0" allowfullscreen></iframe>');
                   $("#endSubText").text('');
                   $("#buttonContainer").html("<div class=\"endOption rounded stripes endOptionUnlocked\" id=\"endOption0\" draggable=\"false\"><div class=\"endOptionText fs-24 text\">Continue</div></div>");
@@ -185,22 +185,7 @@ function loadIntro(){
             }]
     }]
 
-    game = new Game(true, true);
-    var stepCount = -1;
-    var groupCount = -1;
-    for (i in stepText) {
-        groupCount++;
-        var newGroup = new StepGroup(stepText[i].id, stepText[i].shortText, "#group" + groupCount, "#groupIcon" + groupCount);
-        game.addGroup(newGroup);
-        for (j in stepText[i].steps) {
-            var cur = stepText[i].steps[j];
-            stepCount++;
-            var newStep = new Step(cur.id, cur.shortText, cur.longText, cur.feedback, "#step" + stepCount, "#icon" + stepCount);
-            game.addStep(newStep);
-            newGroup.addStep(newStep);
-        }
-    }
-    game.linkSteps();
+  game = createGame(stepText);
 
 
     /** Introduction **/
@@ -341,24 +326,9 @@ function loadTutorial() {
         }
     ];
 
-    game = new Game(true, true);
-    var stepCount = -1;
-    var groupCount = -1;
-    for (i in stepText) {
-        groupCount++;
-        var newGroup = new StepGroup(stepText[i].id, stepText[i].shortText, "#group" + groupCount, "#groupIcon" + groupCount);
-        game.addGroup(newGroup);
-        for (j in stepText[i].steps) {
-            var cur = stepText[i].steps[j];
-            stepCount++;
-            var newStep = new Step(cur.id, cur.shortText, cur.longText, cur.feedback, "#step" + stepCount, "#icon" + stepCount);
-            game.addStep(newStep);
-            newGroup.addStep(newStep);
-        }
-    }
-    game.linkSteps();
+  game = createGame(stepText);
 
-
+console.log(game)
     /** Tutorial **/
     setupLightSwitch = game.getGroupStep(0, 0);
     setupCaliperBlade = game.getGroupStep(0,1);
@@ -422,22 +392,7 @@ function loadTotalMag(){
             }]
     }]
 
-    game = new Game(true, true);
-    var stepCount = -1;
-    var groupCount = -1;
-    for (i in stepText) {
-        groupCount++;
-        var newGroup = new StepGroup(stepText[i].id, stepText[i].shortText, "#group" + groupCount, "#groupIcon" + groupCount);
-        game.addGroup(newGroup);
-        for (j in stepText[i].steps) {
-            var cur = stepText[i].steps[j];
-            stepCount++;
-            var newStep = new Step(cur.id, cur.shortText, cur.longText, cur.feedback, "#step" + stepCount, "#icon" + stepCount);
-            game.addStep(newStep);
-            newGroup.addStep(newStep);
-        }
-    }
-    game.linkSteps();
+      game = createGame(stepText);
 
     /** Introduction **/
     totalMagQ1 = game.getGroupStep(0, 0);
@@ -461,29 +416,38 @@ function loadCellCount(){
             }]
     }]
 
-    game = new Game(true, true);
-    var stepCount = -1;
-    var groupCount = -1;
-    for (i in stepText) {
-        groupCount++;
-        var newGroup = new StepGroup(stepText[i].id, stepText[i].shortText, "#group" + groupCount, "#groupIcon" + groupCount);
-        game.addGroup(newGroup);
-        for (j in stepText[i].steps) {
-            var cur = stepText[i].steps[j];
-            stepCount++;
-            var newStep = new Step(cur.id, cur.shortText, cur.longText, cur.feedback, "#step" + stepCount, "#icon" + stepCount);
-            game.addStep(newStep);
-            newGroup.addStep(newStep);
-        }
-    }
-    game.linkSteps();
-
+  game = createGame(stepText);
     /** Introduction **/
     cellCountQ1 = game.getGroupStep(0, 0);
     updateSteps();
     cellCountQ1.activate();
 
 }
+
+function createGame(stepText)
+{
+var game=  new Game(true, true);
+  var stepCount = -1;
+  var groupCount = -1;
+  for (i in stepText) {
+      groupCount++;
+      var newGroup = new StepGroup(stepText[i].id, stepText[i].shortText, "#group" + groupCount, "#groupIcon" + groupCount);
+      game.addGroup(newGroup);
+      for (j in stepText[i].steps) {
+          var cur = stepText[i].steps[j];
+          stepCount++;
+          var newStep = new Step(cur.id, cur.shortText, cur.longText, cur.feedback, "#step" + stepCount, "#icon" + stepCount);
+          game.addStep(newStep);
+          newGroup.addStep(newStep);
+      }
+  }
+  game.linkSteps();
+
+
+return game;
+
+}
+
 
 function loadVideoQuiz(){
     loadMenu("video");
@@ -498,22 +462,7 @@ function loadVideoQuiz(){
           "answers": ["A1", "A2", "A3", "A4"]
     }]}]
 
-    game = new Game(true, true);
-    var stepCount = -1;
-    var groupCount = -1;
-    for (i in stepText) {
-        groupCount++;
-        var newGroup = new StepGroup(stepText[i].id, stepText[i].shortText, "#group" + groupCount, "#groupIcon" + groupCount);
-        game.addGroup(newGroup);
-        for (j in stepText[i].steps) {
-            var cur = stepText[i].steps[j];
-            stepCount++;
-            var newStep = new Step(cur.id, cur.shortText, cur.longText, cur.feedback, "#step" + stepCount, "#icon" + stepCount);
-            game.addStep(newStep);
-            newGroup.addStep(newStep);
-        }
-    }
-    game.linkSteps();
+    game = createGame(stepText);
 
     videoQ1 = game.getGroupStep(0, 0);
     updateSteps();

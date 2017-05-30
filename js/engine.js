@@ -30,70 +30,68 @@ function Game(guided, manual) {
         }
         // Make step objects
         var that = this //l ol
-            for (var i = 0; i < this.steps.length; i++) {
-                $("#steps").append("<div id='step" + i + "' class='step'></div>");
-                $("#step" + i).append("<div class='icon_bg'></div>");
-                $("#step" + i).append("<div id='icon" + i + "' class='icon'></div>");
-                $("#step" + i).append("<div id='panel" + i + "' class='stepPanel'></div>");
-                $("#panel" + i).append("<div id='stepText" + i + "' class='stepText fs-18'></div>");
-                $("#step" + i).append("<div id='stepTextHint" + i + "' class='stepTextHint fs-12'>" + this.steps[i].longText +"</div>");
+        for (var i = 0; i < this.steps.length; i++) {
+            $("#steps").append("<div id='step" + i + "' class='step'></div>");
+            $("#step" + i).append("<div class='icon_bg'></div>");
+            $("#step" + i).append("<div id='icon" + i + "' class='icon'></div>");
+            $("#step" + i).append("<div id='panel" + i + "' class='stepPanel'></div>");
+            $("#panel" + i).append("<div id='stepText" + i + "' class='stepText fs-18'></div>");
+            $("#step" + i).append("<div id='stepTextHint" + i + "' class='stepTextHint fs-12'>" + this.steps[i].longText +"</div>");
 
-                var stepStr = ("#step" + i);
-                // Enable scroll down hints on steps.
-                $(stepStr).click(function(){
-                    var stepId = $(this).attr("id");
-                    var stepIndex = parseInt(stepId.replace("step", ""));
-                    //console.log(stepId);
-                    //console.log($(this).prop('style')['top']);
-                    var j=that.steps.length;
-                    var stepPerc = parseInt(($(this).prop('style')['top']).replace("%",""));
+            var stepStr = ("#step" + i);
+            // Enable scroll down hints on steps.
+            $(stepStr).click(function(){
+                var stepId = $(this).attr("id");
+                var stepIndex = parseInt(stepId.replace("step", ""));
+                //console.log(stepId);
+                //console.log($(this).prop('style')['top']);
+                var j=that.steps.length;
+                var stepPerc = parseInt(($(this).prop('style')['top']).replace("%",""));
 
-                    // Locate Step object
-                    var expandedState = null;
-                    that.steps.forEach(function(elem){
-                        if (elem.div == stepStr) {
-                            expandedState = elem.expanded
-                            elem.expanded = !elem.expanded
-                    
-                            // Toggle hint visibility
-                            $("#stepTextHint" + stepIndex).toggle("fast", function(){
-                            });
-                        }
-                    });
+                // Locate Step object
+                var expandedState = null;
+                that.steps.forEach(function(elem){
+                    if (elem.div == stepStr) {
+                        expandedState = elem.expanded
+                        elem.expanded = !elem.expanded
 
-                    // Set offset value
-                    var offsetValue = "+=0";
-                    if (!expandedState) offsetValue = "+=100";
-                    else offsetValue = "-=100";
-
-                    that.groups.forEach(function(elem){
-                        var groupPerc = parseInt(($(elem.div).prop('style')['top']).replace("%",""));
-                        if (stepPerc < groupPerc){
-                            //$(elem.div).css("margin-top", offsetValue);
-
-                            $(elem.div).animate({
-                                "margin-top": offsetValue
-                            }, "fast", function(){});
-                            
-                            //console.log(groupPerc);
-                        }
-                    })
-
-                    that.steps.forEach(function(elem){
-                        var groupPerc = parseInt(($(elem.div).prop('style')['top']).replace("%",""));
-                        if (stepPerc < groupPerc){
-                            //$(elem.div).css("margin-top", offsetValue);
-                            //console.log(groupPerc);
-                            //
-                            $(elem.div).animate({
-                                "margin-top": offsetValue
-                            }, "fast", function(){});
-                        }
-                    })
+                        // Toggle hint visibility
+                        $("#stepTextHint" + stepIndex).toggle("fast", function(){
+                        });
+                    }
                 });
 
-            }
+                // Set offset value
+                var offsetValue = "+=0";
+                if (!expandedState) offsetValue = "+=100";
+                else offsetValue = "-=100";
 
+                that.groups.forEach(function(elem){
+                    var groupPerc = parseInt(($(elem.div).prop('style')['top']).replace("%",""));
+                    if (stepPerc < groupPerc){
+                        //$(elem.div).css("margin-top", offsetValue);
+
+                        $(elem.div).animate({
+                            "margin-top": offsetValue
+                        }, "fast", function(){});
+
+                        //console.log(groupPerc);
+                    }
+                })
+
+                that.steps.forEach(function(elem){
+                    var groupPerc = parseInt(($(elem.div).prop('style')['top']).replace("%",""));
+                    if (stepPerc < groupPerc){
+                        //$(elem.div).css("margin-top", offsetValue);
+                        //console.log(groupPerc);
+                        //
+                        $(elem.div).animate({
+                            "margin-top": offsetValue
+                        }, "fast", function(){});
+                    }
+                })
+            });
+        }
     }
     this.getSteps = function() {
         return this.steps;

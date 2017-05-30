@@ -5,7 +5,7 @@
 
 function debugIntro() {
     introLightSwitch.complete();
-    for (var i=0; i<components.length;i++){
+    for (var i = 0; i<components.length; i++) {
         $(components[i]).off("mouseenter");
         $(components[i]).off("mouseleave");
     }
@@ -21,14 +21,14 @@ function debugSetup() {
     setupCaliper.complete();
 }
 
-function debugLow(){
+function debugLow() {
     removeHighlightCopy();
     lowLenses.complete();
     lowDiaphragmLight.complete();
     lowCoarse.complete();
 }
 
-function debugMedMag(){
+function debugMedMag() {
     removeHighlightCopy();
     medLenses.complete();
     medCoarse.complete();
@@ -36,14 +36,14 @@ function debugMedMag(){
     medDiopter.complete();
     medOcular.complete();
 }
-function debugHighMag(){
+function debugHighMag() {
     removeHighlightCopy();
     highLenses.complete();
-    highAperture.complete(); 
+    highAperture.complete();
     highFine.complete();
 }
 
-function debugCleanup(){
+function debugCleanup() {
     cleanupLow.complete();
     cleanupCoarse.complete();
     cleanupSlide.complete();
@@ -52,18 +52,16 @@ function debugCleanup(){
 
 function DEBUG(state, mode){
     var isDebug = state;
-    if (isDebug){
-        if (currentMode == "Introduction")
+    if (isDebug) {
+        if (currentMode === "Introduction") {
             debugIntro();
-        else if (currentMode == "Tutorial"){
+        } else if (currentMode === "Tutorial") {
             debugSetup();
-            debugLow(); 
+            debugLow();
             debugMedMag();
-            debugHighMag(); 
+            debugHighMag();
             //debugCleanup();
         }
     }
     return isDebug;
 }
-
-
