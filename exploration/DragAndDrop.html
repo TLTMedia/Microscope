@@ -116,7 +116,7 @@
           // find the current zoom level and pan setting, and adjust the reported
           //    mouse position accordingly
           var newScale = SVGRoot.currentScale;
-           SVGRoot.currentScale = 2;   
+           SVGRoot.currentScale = 1.3;   
           var translation = SVGRoot.currentTranslate;
           TrueCoords.x  = (evt.clientX - translation.x)/newScale;
           TrueCoords.y = (evt.clientY - translation.y)/newScale;
