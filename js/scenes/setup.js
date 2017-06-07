@@ -39,9 +39,6 @@ function setupEnableSlide() {
     toggleVisibility("#slide");
 
     registerDrag('slide', 'slideTarget', function() {
-
-        console.log("DOBF")
-
         setupSlide.complete();
         $("#caliperBlade").trigger("click");
         toggleVisibility("#slide");

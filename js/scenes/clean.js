@@ -42,6 +42,7 @@ function cleanRemoveSlide() {
     textSetup("Now grab the slide below and put it against the caliper.", "64%", "45%");
     toggleVisibility("#slide");
 
+    /*
     //Moving the original slide
     toggleVisibility("#slide");
 
@@ -83,7 +84,7 @@ function cleanRemoveSlide() {
 
     // this is used later in the resizing and gesture demos
     window.dragMoveListener = dragMoveListener;
-
+    */
 }
 function cleanDisableSwitch() {
     textSetup("Lastly, let's turn off the light switch.", "60%", "73%");

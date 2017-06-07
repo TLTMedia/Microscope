@@ -11,6 +11,7 @@ function registerDrag(item, target, onDrop) {
   draggingItem.on('dragend.namespace', function(event) {
     $(event.target).attr('pointer-events', 'all')
     if (event.detail.event.target.id === target) {
+      draggingItem.draggable(false)
       onDrop()
     }
   })
