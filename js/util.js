@@ -123,14 +123,18 @@ function removeHighlight(elem) {
     elem.remove();
 }
 
-function removeHighlightId(id){
+function removeHighlightId(id) {
     $(id).remove();
 }
 
-function removeHighlightCopy(){
+function removeHighlightCopy() {
     $('*[id*=Copy]:visible').each(function() {
         $(this).remove();
     });
 
     $("[id$='Copy']").remove();
+}
+
+function getFile(name, callback) {
+  $.get(name,callback, 'text');
 }

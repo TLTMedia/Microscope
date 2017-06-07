@@ -1,5 +1,8 @@
 /* http://www.w3schools.com/cssref/css3_pr_animation.asp*/
 
+#microscope {
+  height: 100%;
+}
 
 #light, #lensesWhite, #lensesRed, #lensesBlue, #lensesYellow, #ocularLeftStick, #ocularLeftDiopter{
     pointer-events: none;

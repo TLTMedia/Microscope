@@ -549,21 +549,19 @@ function startup(fun){
 
     });
 
-
-    $('#microscope').load(microscope, function () {
-        ms.update();
-        //$('#microscope svg').append('<filter id="blurMe"><feGaussianBlur in="SourceGraphic" stdDeviation="1" /></filter>')
-        swapMag(0);
-        resizeWindow();
-
-        fun();
-        $("#endOption0").click(function () {
-            // Start Beginner Mode
-            newGame(true, false);
-        });
-
-
-        resizeWindow();
+    var draw = SVG('microscope');
+    getFile('img/microscope.svg', function(data) {
+      draw.svg(data)
+      ms.update();
+      //$('#microscope svg').append('<filter id="blurMe"><feGaussianBlur in="SourceGraphic" stdDeviation="1" /></filter>')
+      swapMag(0);
+      resizeWindow();
+      fun();
+      $("#endOption0").click(function () {
+          // Start Beginner Mode
+          newGame(true, false);
+      });
+      resizeWindow();
     });
 }
 

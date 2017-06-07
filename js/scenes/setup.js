@@ -38,57 +38,19 @@ function setupEnableSlide() {
     textSetup("Now grab the slide below and put it against the caliper.", "64%", "45%");
     toggleVisibility("#slide");
 
-    //Moving the original slide
-    var $pseudoSlide = $("#slide").clone();
-    console.log($pseudoSlide.attr("style"));
-    $pseudoSlide.attr("id", "pseudo_slideCopy");
+    registerDrag('slide', 'slideTarget', function() {
 
-    $("#microscope > svg").append($pseudoSlide);
-    toggleVisibility("#slide");
+        console.log("DOBF")
 
-    // Highlight cloned slide
-    var cloned = highlightComponent("#pseudo_slideCopy");
-
-    $(cloned).attr("style", $("#slide").attr("style"));
-
-    interact('#pseudo_slideCopy')
-        .draggable({
-            // enable inertial throwing
-            inertia: true,
-            // keep the element within the area of it's parent
-            restrict: {
-              restriction: "parent",
-              endOnly: true,
-              elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
-            },
-            // enable autoScroll
-            autoScroll: true,
-
-            // call this function on every dragmove event
-            onmove: dragMoveListener,
-            // call this function on every dragend event
-            onend: function (event) {
-              console.log('moved a distance of '
-                  + (Math.sqrt(event.dx * event.dx +
-                          event.dy * event.dy)|0) + 'px');
-            }
-        });
-
-    function dragMoveListener (event) {
-
-        console.log(event)
-
-        if (setupSlide.isActive() && Math.abs(x) < 10 && y < 25 && y > 10) {
-            setupSlide.complete();
-            $("#caliperBlade").trigger("click");
-            toggleVisibility("#slide");
-            $("#pseudo_slideCopyCopy").remove();
-            $("#pseudo_slideCopy").remove();
-        }
-    }
+        setupSlide.complete();
+        $("#caliperBlade").trigger("click");
+        toggleVisibility("#slide");
+        $("#pseudo_slideCopyCopy").remove();
+        $("#pseudo_slideCopy").remove();
+    });
 
     // this is used later in the resizing and gesture demos
-    window.dragMoveListener = dragMoveListener;
+    //window.dragMoveListener = dragMoveListener;
 }
 
 
