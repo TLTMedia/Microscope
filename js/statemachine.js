@@ -57,7 +57,7 @@ class StateMachine {
         this.eyepiecePosition = 10;
         this.knobPosition = sm_orig["MAX_KNOB"];
         this.xslide = 0;
-        this.yslide = 5 + this.knobPosition;
+        this.yslide = this.knobPosition - 20;
         this.diaphragmLightPosition = 0;
         this.diaphragmHeightPosition = 270 / 12;
         this.diopterPosition = 0;
@@ -119,7 +119,11 @@ class StateMachine {
     }
 
     /*
-       Call this.update() for everytime there is a state change. The microscope animation is dependent on only ONE source, and that is the state of the machine. Thus, everytime the state of the machine changes from user input, the changes of the scope should reflect all at once.
+       Call this.update() for everytime there is a state change.
+       The microscope animation is dependent on only ONE source,
+       and that is the state of the machine.
+       Thus, everytime the state of the machine changes from user input,
+       the changes of the scope should reflect all at once.
        */
     update() {
         W_RAT = $(window).width()/$(window).height();
