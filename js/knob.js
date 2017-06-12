@@ -34,54 +34,52 @@ function setupKnobs(sm) {
     }
 }
 
-function knobControls(numericID) {
-    var divID = knobs[numericID].divID;
-    $("#" + divID).bind('mousedown', function (e) {
-        var knob = knobs[numericID];
-        //console.log(knob);
-        if (knob.enabled || !game.isGuided()) {
-            var x = knob.center.x - e.pageX;
-            var y = knob.center.y - e.pageY;
-            knob.angle = getAngle(x, y);
-            $("body").bind('mousemove', function (e) {
-                e.preventDefault();
-                var x = knob.center.x - e.pageX;
-                var y = knob.center.y - e.pageY;
-                //console.log(knob.center.x, knob.center.y, e.pageX, e.pageY);
-                var angle = getAngle(x, y);
-                var delta = angleDistance(knob.angle, angle);
-                var links = knob.link;
-                for (var j = 0; j < links.length; j++) {
-                    knobRotate(links[j], delta);
-                }
-                knob.angle = angle;
-                //console.log(angle);
-            });
-        }
+function getCoords(event, isTouchscreen) {
+  if (isTouchscreen) {
+    var touch = event.originalEvent.touches[0] ||
+                event.originalEvent.changedTouches[0];
+    var x = knob.center.x - touch.pageX;
+    var y = knob.center.y - touch.pageY;
+    return [x, y];
+  }
+  else {
+    var x = knob.center.x - event.pageX;
+    var y = knob.center.y - event.pageY;
+    return [x, y];
+  }
+}
 
-    });
-    $("#" + divID).bind('touchstart', function (e) {
-        var knob = knobs[i];
-        if (knob.enabled || !game.isGuided()) {
-            var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
-            var x = knob.center.x - touch.pageX;
-            var y = knob.center.y - touch.pageY;
-            knob.angle = getAngle(x, y);
-            $("body").bind('touchmove', function (e) {
-                e.preventDefault();
-                var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
-                var x = knob.center.x - touch.pageX;
-                var y = knob.center.y - touch.pageY;
-                var angle = getAngle(x, y);
-                var delta = angleDistance(knob.angle, angle);
-                var links = knob.link;
-                for (var j = 0; j < links.length; j++) {
-                    knobRotate(links[j], delta, sm, callback);
-                }
-                knob.angle = angle;
-            });
-        }
-    });
+function getAngle(event, isTouchscreen) {
+  var coords = getCoords(event, isTouchscreen);
+  var x = coords[0];
+  var y = coords[1];
+  return ((Math.atan2(y, x) * 180 / Math.PI) + 360) % 360;
+}
+
+function registerKnob(numericID, isTouchscreen) {
+  var divID = knobs[numericID].divID;
+  $("#" + divID).bind(isTouchscreen ? 'touchstart' : 'mousedown', function (e) {
+      var knob = knobs[numericID];
+      if (knob.enabled || !game.isGuided()) {
+          var angle = getAngle(e, isTouchscreen);
+          knob.angle = angle;
+          $("body").bind(isTouchscreen ? 'touchmove' : 'mousemove', function (e) {
+              e.preventDefault();
+              var angle = getAngle(e, isTouchscreen);
+              var delta = angleDistance(knob.angle, angle);
+              var links = knob.link;
+              for (var j = 0; j < links.length; j++) {
+                  knobRotate(links[j], delta);
+              }
+              knob.angle = angle;
+          });
+      }
+  });
+}
+
+function knobControls(numericID) {
+    registerKnob(numericID, true);
+    registerKnob(numericID, false);
 }
 
 // Returns the difference between two angles, accounting for 0 to 360 jump.
@@ -107,9 +105,4 @@ function knobRotate(id, delta) {
 
     smAlias.diaphragmHeightPosition = knob.rotation/12;
     smAlias.update();
-}
-
-// Returns the angle (from 0 to 360 degrees) determined by the given offset (x, y)
-function getAngle(x, y) {
-    return ((Math.atan2(y, x) * 180 / Math.PI) + 360) % 360;
 }
