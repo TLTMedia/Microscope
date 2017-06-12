@@ -38,22 +38,19 @@ function getCoords(event, isTouchscreen) {
   if (isTouchscreen) {
     var touch = event.originalEvent.touches[0] ||
                 event.originalEvent.changedTouches[0];
-    var x = knob.center.x - touch.pageX;
-    var y = knob.center.y - touch.pageY;
-    return [x, y];
+    return [touch.pageX, touch.pageY];
   }
   else {
-    var x = knob.center.x - event.pageX;
-    var y = knob.center.y - event.pageY;
-    return [x, y];
+    return [event.pageX, event.pageY];
   }
 }
 
 function getAngle(event, isTouchscreen) {
   var coords = getCoords(event, isTouchscreen);
-  var x = coords[0];
-  var y = coords[1];
+  var x = knob.center.x - coords[0];
+  var y = knob.center.y - coords[1];
   return ((Math.atan2(y, x) * 180 / Math.PI) + 360) % 360;
+  //return coords[1];
 }
 
 function registerKnob(numericID, isTouchscreen) {
@@ -61,17 +58,21 @@ function registerKnob(numericID, isTouchscreen) {
   $("#" + divID).bind(isTouchscreen ? 'touchstart' : 'mousedown', function (e) {
       var knob = knobs[numericID];
       if (knob.enabled || !game.isGuided()) {
-          var angle = getAngle(e, isTouchscreen);
-          knob.angle = angle;
-          $("body").bind(isTouchscreen ? 'touchmove' : 'mousemove', function (e) {
+          var originalAngle = getAngle(e, isTouchscreen);
+          //knob.angle = angle;
+          function moveKnob(e) {
               e.preventDefault();
               var angle = getAngle(e, isTouchscreen);
-              var delta = angleDistance(knob.angle, angle);
+              var delta = angle = originalAngle; //angleDistance(knob.angle, angle);
               var links = knob.link;
               for (var j = 0; j < links.length; j++) {
                   knobRotate(links[j], delta);
               }
               knob.angle = angle;
+          }
+          $("body").bind(isTouchscreen ? 'touchmove' : 'mousemove', moveKnob);
+          $("body").bind(isTouchscreen ? 'touchend' : 'mouseup', function (e) {
+              //$("body").unbind(isTouchscreen ? 'touchmove' : 'mousemove', moveKnob);
           });
       }
   });
@@ -103,6 +104,6 @@ function knobRotate(id, delta) {
         knob.rotation = knob.bounds[1];
     }
 
-    smAlias.diaphragmHeightPosition = knob.rotation/12;
+    smAlias.diaphragmHeightPosition = knob.rotation * DIAPHRAGM_HEIGHT_TO_ROTATION_RATIO;
     smAlias.update();
 }

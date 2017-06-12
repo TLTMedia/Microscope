@@ -59,7 +59,7 @@ class StateMachine {
         this.xslide = 0;
         this.yslide = this.knobPosition - 20;
         this.diaphragmLightPosition = 0;
-        this.diaphragmHeightPosition = 270 / 12;
+        this.diaphragmHeightPosition = 270 * DIAPHRAGM_HEIGHT_TO_ROTATION_RATIO;
         this.diopterPosition = 0;
         this.caliperBlade = 0;
         this.xcaliper = 0;
