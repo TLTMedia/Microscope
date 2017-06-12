@@ -27,7 +27,7 @@ function setupKnobs(sm) {
     //Link em up
     smAlias = sm;
     $("body").mouseup(function () {
-        $(".knob").off("mousemove touchmove");
+        $("body").off("mousemove touchmove");
     });
     for (var i = 0; i < knobs.length; i++) {
         knobControls(i);
@@ -43,7 +43,7 @@ function knobControls(numericID) {
             var x = knob.center.x - e.pageX;
             var y = knob.center.y - e.pageY;
             knob.angle = getAngle(x, y);
-            $("#" + divID).bind('mousemove', function (e) {
+            $("body").bind('mousemove', function (e) {
                 e.preventDefault();
                 var x = knob.center.x - e.pageX;
                 var y = knob.center.y - e.pageY;
@@ -67,7 +67,7 @@ function knobControls(numericID) {
             var x = knob.center.x - touch.pageX;
             var y = knob.center.y - touch.pageY;
             knob.angle = getAngle(x, y);
-            $("#" + divID).bind('touchmove', function (e) {
+            $("body").bind('touchmove', function (e) {
                 e.preventDefault();
                 var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
                 var x = knob.center.x - touch.pageX;
