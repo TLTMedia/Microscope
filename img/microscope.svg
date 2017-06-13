@@ -31,13 +31,13 @@
 	.st24{fill:#CFCECE;}
 	.st25{fill:#3F403F;}
 	.st26{fill:#252626;}
-	.st27{fill:#6B6F6B;}
-	.st28{fill:#364042;}
-	.st29{fill:#FF0000;fill-opacity:0;}
-	.st30{opacity:0.77;fill:#FFFFFF;enable-background:new    ;}
-	.st31{opacity:0.5;fill:#FFFFFF;enable-background:new    ;}
-	.st32{fill:#001359;}
-	.st33{display:inline;fill:#FFF3C2;}
+	.st27{display:inline;fill:#FFF3C2;}
+	.st28{fill:#6B6F6B;}
+	.st29{fill:#364042;}
+	.st30{fill:#FF0000;fill-opacity:0;}
+	.st31{opacity:0.77;fill:#FFFFFF;enable-background:new    ;}
+	.st32{opacity:0.5;fill:#FFFFFF;enable-background:new    ;}
+	.st33{fill:#001359;}
 	.st34{fill:#7B7B7B;}
 	.st35{fill:#303030;}
 	.st36{fill:#161616;}
@@ -201,24 +201,24 @@
 	<path class="st26" d="M438.1,425L438.1,425v-35.8l0,0c6.9,0,12.6,0,12.6,10.2v15.5C450.3,425,444.9,425,438.1,425z"/>
 	<path class="st26" d="M326.9,425L326.9,425v-35.8l0,0c-6.9,0-12.6,0-12.6,10.2v15.5C314.6,425,320,425,326.9,425z"/>
 </g>
+<g id="stageLight" class="st0">
+	<ellipse class="st27" cx="380.8" cy="310.9" rx="15.8" ry="8.2"/>
+</g>
 <g id="slideStage">
 	<g>
-		<polygon class="st27" points="475.6,342.7 289.6,342.7 314.6,279 450.6,279 		"/>
-		<rect x="289.6" y="342.7" class="st28" width="185.9" height="16.3"/>
+		<polygon class="st28" points="475.6,342.7 289.6,342.7 314.6,279 450.6,279 		"/>
+		<rect x="289.6" y="342.7" class="st29" width="185.9" height="16.3"/>
 	</g>
 	<ellipse cx="380.8" cy="310.9" rx="15.8" ry="8.2"/>
 	<g id="slideGroup">
-		<rect id="slideTarget" x="331.3" y="301.7" class="st29" width="100" height="28.2"/>
+		<rect id="slideTarget" x="331.3" y="301.7" class="st30" width="100" height="28.2"/>
 		<g id="slide">
-			<rect x="333.3" y="304.1" class="st30" width="25" height="23"/>
-			<rect x="331.8" y="301.7" class="st31" width="100" height="28.2"/>
-			<path class="st32" d="M381.8,306.9l0.1,0.7c0.5,2.5,0.5,5.1,0.1,7.6l-0.2,1c-0.2,1-0.6,0.9-0.8-0.1l-0.2-1.3
+			<rect x="333.3" y="304.1" class="st31" width="25" height="23"/>
+			<rect x="331.8" y="301.7" class="st32" width="100" height="28.2"/>
+			<path class="st33" d="M381.8,306.9l0.1,0.7c0.5,2.5,0.5,5.1,0.1,7.6l-0.2,1c-0.2,1-0.6,0.9-0.8-0.1l-0.2-1.3
 				c-0.4-2.3-0.4-4.6,0.1-6.8l0.2-1C381.2,306,381.6,306,381.8,306.9z"/>
 		</g>
 	</g>
-</g>
-<g id="stageLight" class="st0">
-	<ellipse class="st33" cx="380.8" cy="310.9" rx="15.8" ry="8.2"/>
 </g>
 <g id="caliperKnob">
 	<g id="yCaliperKnob">
