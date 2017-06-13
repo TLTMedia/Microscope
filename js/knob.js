@@ -55,6 +55,7 @@ function getAngle(event, isTouchscreen) {
   var y = coords[1];
   return ((Math.atan2(y, x) * 180 / Math.PI) + 360) % 360;
 }
+
 function getNormalRadians(event, isTouchscreen) {
   var coords = getCoords(event, isTouchscreen);
   var x = coords[0];
@@ -63,8 +64,6 @@ function getNormalRadians(event, isTouchscreen) {
   //return (Math.sin((-y)/100)+1)/2;
   return 0 - y * 100;
 }
-
-
 
 function registerKnob(numericID, isTouchscreen) {
   var divID = knobs[numericID].divID;
