@@ -55,23 +55,31 @@ function getAngle(event, isTouchscreen) {
   var y = coords[1];
   return ((Math.atan2(y, x) * 180 / Math.PI) + 360) % 360;
 }
+function getNormalRadians(event, isTouchscreen) {
+  var coords = getCoords(event, isTouchscreen);
+  var x = coords[0];
+  var y = coords[1];
+  // return (Math.atan2(y, x)+Math.PI)/(Math.PI*2);
+  return (Math.sin((-y)/100)+1)/2;
+}
+
+
 
 function registerKnob(numericID, isTouchscreen) {
   var divID = knobs[numericID].divID;
   $("#" + divID).bind(isTouchscreen ? 'touchstart' : 'mousedown', function (e) {
       var knob = knobs[numericID];
       if (knob.enabled || !game.isGuided()) {
-          var angle = getAngle(e, isTouchscreen);
-          knob.angle = angle;
+
           $("body").bind(isTouchscreen ? 'touchmove' : 'mousemove', function (e) {
               e.preventDefault();
-              var angle = getAngle(e, isTouchscreen);
-              var delta = angleDistance(knob.angle, angle);
+              var normalRads = getNormalRadians(e, isTouchscreen);
+
               var links = knob.link;
               for (var j = 0; j < links.length; j++) {
-                  knobRotate(links[j], delta);
+                  knobRotate(links[j], normalRads);
               }
-              knob.angle = angle;
+            //  knob.angle = angle;
           });
       }
   });
@@ -90,18 +98,22 @@ function angleDistance(from, to) {
     return delta;
 }
 
-function knobRotate(id, delta) {
+function knobRotate(id, normRads) {
     var knob = knobs[id];
     // Apply rotation
-
-    knob.rotation += delta;
+    var span=Math.abs(floor-ceiling);
+    var floor = knob.bounds[0];
+    var ceiling = knob.bounds[1];
+    var span=Math.abs(floor-ceiling);
+    knob.rotation =normRads*span+floor;
+    console.log(knob.rotation)
     // Constrain knob rotation to its bounds
-    if (knob.rotation < knob.bounds[0]) {
-        knob.rotation = knob.bounds[0];
-    }
-    if (knob.rotation > knob.bounds[1]) {
-        knob.rotation = knob.bounds[1];
-    }
+    // if (knob.rotation < knob.bounds[0]) {
+    //     knob.rotation = knob.bounds[0];
+    // }
+    // if (knob.rotation > knob.bounds[1]) {
+    //     knob.rotation = knob.bounds[1];
+    // }
 
     smAlias.diaphragmHeightPosition = knob.rotation/12;
     smAlias.update();
