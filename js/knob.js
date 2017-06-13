@@ -60,7 +60,8 @@ function getNormalRadians(event, isTouchscreen) {
   var x = coords[0];
   var y = coords[1];
   // return (Math.atan2(y, x)+Math.PI)/(Math.PI*2);
-  return (Math.sin((-y)/100)+1)/2;
+  //return (Math.sin((-y)/100)+1)/2;
+  return 0 - y * 100;
 }
 
 
