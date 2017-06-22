@@ -241,7 +241,6 @@ class StateMachine {
     }
 
 
-
     // === Functionality for the FRONT view of the Microscope ==== ///
 
     /* Toggles the light switch */
@@ -690,11 +689,13 @@ class StateMachine {
 
     enableSideDiaphragmRotate() {
         // Abstracted in Jimrambe's code, passed in state machine.
-        setupKnobs(this);
+        setupKnob(function(rotation) {
+          this.diaphragmHeightPosition = rotation/12;
+          this.update();
+        });
     }
 
 }
-
 
 
 ms = new StateMachine();

@@ -79,7 +79,7 @@ function setupAdjustCaliper() {
             bringToFront($("#yCaliperKnob"));
 
             var handler = function () {
-                //console.log(ms.xcaliper + ", " + ms.ycaliper);
+                console.log(ms.xcaliper + ", " + ms.ycaliper);
                 if(ms.xcaliper >-1 && ms.xcaliper<1)
                     subHandler(ms.ycaliper, 18, 20, setupCaliper, handler, id, null);
             }
