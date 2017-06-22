@@ -38,6 +38,10 @@ function setupEnableSlide() {
     textSetup("Now grab the slide below and put it against the caliper.", "64%", "45%");
     toggleVisibility("#slide");
 
+    var origSlideX = 210;
+    var origSlideY = 70;
+
+    $("#slide").attr('transform', `translate(${origSlideX} ${origSlideY})`)
     registerDrag('slide', 'slideTarget', function() {
         setupSlide.complete();
         $("#caliperBlade").trigger("click");
