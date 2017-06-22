@@ -4,7 +4,6 @@ var CONDENSER_START = 80;
 // If hell ever breaks loose, you can assume it's from these
 // They keep an alias to the state machine and update it externally
 
-var smAlias;
 var updateAlias;
 
 var knobs = [{
@@ -23,14 +22,13 @@ var knobs = [{
 }
 ];
 
-function setupKnobs(sm) {
+function setupKnob(onRotate) {
     //Link em up
-    smAlias = sm;
     $("body").mouseup(function () {
         $("body").off("mousemove touchmove");
     });
     for (var i = 0; i < knobs.length; i++) {
-        knobControls(i);
+        knobControls(i, onRotate);
     }
 }
 
@@ -49,60 +47,42 @@ function getCoords(event, isTouchscreen) {
   }
 }
 
-function getAngle(event, isTouchscreen) {
+function getNormalRadians(event, isTouchscreen) {
   var coords = getCoords(event, isTouchscreen);
   var x = coords[0];
   var y = coords[1];
-  return ((Math.atan2(y, x) * 180 / Math.PI) + 360) % 360;
+  return (Math.PI / 2 - Math.atan(y / 10)) % Math.PI;
 }
 
-function registerKnob(numericID, isTouchscreen) {
+function registerKnob(numericID, isTouchscreen, onRotate) {
   var divID = knobs[numericID].divID;
   $("#" + divID).bind(isTouchscreen ? 'touchstart' : 'mousedown', function (e) {
       var knob = knobs[numericID];
       if (knob.enabled || !game.isGuided()) {
-          var angle = getAngle(e, isTouchscreen);
-          knob.angle = angle;
           $("body").bind(isTouchscreen ? 'touchmove' : 'mousemove', function (e) {
               e.preventDefault();
-              var angle = getAngle(e, isTouchscreen);
-              var delta = angleDistance(knob.angle, angle);
+              var normalRads = getNormalRadians(e, isTouchscreen);
               var links = knob.link;
               for (var j = 0; j < links.length; j++) {
-                  knobRotate(links[j], delta);
+                  knobRotate(links[j], normalRads, onRotate);
               }
-              knob.angle = angle;
           });
       }
   });
 }
 
-function knobControls(numericID) {
-    registerKnob(numericID, true);
-    registerKnob(numericID, false);
+function knobControls(numericID, onRotate) {
+    registerKnob(numericID, true, onRotate);
+    registerKnob(numericID, false, onRotate);
 }
 
-// Returns the difference between two angles, accounting for 0 to 360 jump.
-function angleDistance(from, to) {
-    var delta = to - from;
-    if (delta < -180) delta += 360;
-    if (delta > 180) delta -= 360;
-    return delta;
-}
-
-function knobRotate(id, delta) {
+function knobRotate(id, normRads, onRotate) {
     var knob = knobs[id];
     // Apply rotation
-
-    knob.rotation += delta;
-    // Constrain knob rotation to its bounds
-    if (knob.rotation < knob.bounds[0]) {
-        knob.rotation = knob.bounds[0];
-    }
-    if (knob.rotation > knob.bounds[1]) {
-        knob.rotation = knob.bounds[1];
-    }
-
-    smAlias.diaphragmHeightPosition = knob.rotation/12;
-    smAlias.update();
+    var span=Math.abs(floor-ceiling);
+    var floor = knob.bounds[0];
+    var ceiling = knob.bounds[1];
+    var span=Math.abs(floor-ceiling);
+    knob.rotation = normRads * span + floor;
+    onRotate(knob.rotation)
 }

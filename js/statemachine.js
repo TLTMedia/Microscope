@@ -59,7 +59,7 @@ class StateMachine {
         this.xslide = 0;
         this.yslide = this.knobPosition - 20;
         this.diaphragmLightPosition = 0;
-        this.diaphragmHeightPosition = 270 / 12;
+        this.diaphragmHeightPosition = 270 * DIAPHRAGM_HEIGHT_TO_ROTATION_RATIO;
         this.diopterPosition = 0;
         this.caliperBlade = 0;
         this.xcaliper = 0;
@@ -78,7 +78,7 @@ class StateMachine {
     }
 
     // Freeze frame to ensure user follows tutorial appropriately.
-    freezeState(desiredFrame){
+    freezeState(desiredFrame) {
         this.desiredFrame = desiredFrame;
     }
 
@@ -114,7 +114,7 @@ class StateMachine {
             var coord = $(components)[0].getBBox();
             $(components).attr("transform", "rotate(" + rotate + " " + (coord.x+(coord.width/2) + xOff) +" " + (coord.y + (coord.height/2) + yOff) + ")");
         }
-        catch(err){
+        catch(err) {
         }
     }
 
@@ -149,7 +149,7 @@ class StateMachine {
         $("#stageLight ellipse").attr("ry", 6-((sm_orig.MAX_DIAPHRAGM_HEIGHT-this.diaphragmHeightPosition)/4));
 
         //console.log(W_RAT);
-        if(W_RAT <aspectRatio){
+        if(W_RAT <aspectRatio) {
             this.translateReduce(".slideRect, #slideView", this.eyepiecePosition * (Math.pow(4*(1/W_RAT),-1)+aspectRatio), 0);
             this.translateReduce(".slideRect,#slideView2", -this.eyepiecePosition * (Math.pow(3*(1/W_RAT),-1)+aspectRatio), 0);
         } else{
@@ -190,8 +190,8 @@ class StateMachine {
     }
 
     // Enables particular microscope component.
-    enable(component){
-        switch(component){
+    enable(component) {
+        switch(component) {
             case "light-switch":
                 this.enableLightSwitch();
                 break;
@@ -241,12 +241,11 @@ class StateMachine {
     }
 
 
-
     // === Functionality for the FRONT view of the Microscope ==== ///
 
     /* Toggles the light switch */
     enableLightSwitch() {
-        var _this=this;
+        var _this = this;
         $("#switch").on('click', function() {
             _this.lightStatus = (1 + _this.lightStatus) % 2;
             if (_this.lightStatus > 0) {
@@ -282,12 +281,12 @@ class StateMachine {
                 })
             .mousemove(function(event) {
                 if (isDown) {
-                    if ((prevX < event.pageX && ocularPart == "#ocularRight") || (prevX > event.pageX && ocularPart == "#ocularLeft")) {
+                    if ((prevX < event.pageX && ocularPart === "#ocularRight") || (prevX > event.pageX && ocularPart === "#ocularLeft")) {
 
                         if (_this.eyepiecePosition < sm_orig["MAX_OCULAR"]) {
                             _this.eyepiecePosition += val;
                         }
-                    } else if ((prevX > event.pageX && ocularPart == "#ocularRight") || (prevX < event.pageX && ocularPart == "#ocularLeft")) {
+                    } else if ((prevX > event.pageX && ocularPart === "#ocularRight") || (prevX < event.pageX && ocularPart === "#ocularLeft")) {
                         if (_this.eyepiecePosition > 0) {
                             _this.eyepiecePosition -= val;
                         }
@@ -433,10 +432,10 @@ class StateMachine {
 
     }
 
-    enableCaliperBlade(){
+    enableCaliperBlade() {
         var _this = this;
-        $("#caliperBlade").on("click", function(){
-            if (_this.caliperBlade > 0){
+        $("#caliperBlade").on("click", function() {
+            if (_this.caliperBlade > 0) {
                 _this.caliperBlade = 0;}
             else{
                 _this.caliperBlade = 25;
@@ -450,41 +449,40 @@ class StateMachine {
         // Low knob
         function addCaliperXDrag(part) {
             var val = 1;
-
             $(part)
                 .mousedown(function() {
                     isDown = true;
                 })
-            .mousemove(function(event) {
-                if (isDown) {
-                    if ((prevX < event.pageX)) {
-                        if (_this.xcaliper < sm_orig["MAX_X_CALIPER"]) {
-                            _this.xcaliper += val;
-                            _this.xslide += val;
+                .mousemove(function(event) {
+                    if (isDown) {
+                        if ((prevX < event.pageX)) {
+                            if (_this.xcaliper < sm_orig["MAX_X_CALIPER"]) {
+                                _this.xcaliper += val;
+                                _this.xslide += val;
+                            }
+                        } else if ((prevX > event.pageX)) {
+                            if (_this.xcaliper > sm_orig["MIN_X_CALIPER"]) {
+                                _this.xcaliper -= val;
+                                _this.xslide -= val;
+                            }
                         }
-                    } else if ((prevX > event.pageX)) {
-                        if (_this.xcaliper > sm_orig["MIN_X_CALIPER"]) {
-                            _this.xcaliper -= val;
-                            _this.xslide -= val;
-                        }
-                    }
-                    prevX = event.pageX;
+                        prevX = event.pageX;
 
-                    // Blur out if out of magic bounds
-                    if (_this.xcaliper > -10 && this.xcaliper < 10 && this.ycaliper > -10 && this.ycaliper < 10) {
-                        _this.inBounds = true;
-                    } else {
-                        _this.inBounds = false;
+                        // Blur out if out of magic bounds
+                        if (_this.xcaliper > -10 && this.xcaliper < 10 && this.ycaliper > -10 && this.ycaliper < 10) {
+                            _this.inBounds = true;
+                        } else {
+                            _this.inBounds = false;
+                        }
+                        _this.update();
                     }
-                    _this.update();
-                }
-            })
-            .mouseup(function() {
-                isDown = false;
-            })
-            .mouseleave(function() {
-                isDown = false;
-            });
+                })
+                .mouseup(function() {
+                    isDown = false;
+                })
+                .mouseleave(function() {
+                    isDown = false;
+                });
         }
 
         function addCaliperYDrag(part) {
@@ -531,13 +529,13 @@ class StateMachine {
 
     }
 
-    rotateLensesCount(_this, right, forced, testDanger, count){
-        for (var i=0; i<count;i++){
-            _this.rotateLenses(_this,right,forced,testDanger);
+    rotateLensesCount(_this, right, forced, testDanger, count) {
+        for (var i = 0; i < count; i++) {
+            _this.rotateLenses(_this, right, forced, testDanger);
         }
     }
 
-    updateLensesState(_this){
+    updateLensesState(_this) {
         // Invoke danger of proceeding to next lense
         if (_this.lenseStates[_this.lensePosition].includes("Red")) {
             $('.slideRect').css("display", "block");
@@ -549,11 +547,11 @@ class StateMachine {
             swapMag(2);
             _this.slideBlur = 4;
         }
-        else if (_this.lenseStates[_this.lensePosition].includes("White")){
+        else if (_this.lenseStates[_this.lensePosition].includes("White")) {
             $('.slideRect').css("display", "block");
             swapMag(3);
         }
-        else if (_this.lenseStates[_this.lensePosition].includes("Blue")){
+        else if (_this.lenseStates[_this.lensePosition].includes("Blue")) {
             $('.slideRect').css("display", "block");
             swapMag(3);
             _this.slideBlur = 4;
@@ -570,31 +568,29 @@ class StateMachine {
     }
 
     // Rotate the microscope objective towards specified direction
-    rotateLenses(_this, right, forced, testDanger){
-
+    rotateLenses(_this, right, forced, testDanger) {
         if (right) {
-            if (_this.lenseWheel % 10 == 0 || forced) {
+            if (_this.lenseWheel % 10 === 0 || forced) {
                 $(_this.lenseStates[_this.lensePosition]).toggle();
-                _this.lensePosition = ((_this.lensePosition + 1) % _this.lenseStates.length);
+                _this.lensePosition = (_this.lensePosition + 1) % _this.lenseStates.length;
                 testDanger();
                 $(_this.lenseStates[_this.lensePosition]).toggle();
                 _this.lenseWheel = 1;
             } else {
-                _this.lenseWheel++;
+                _this.lenseWheel += 1;
             }
-        } else{
-            if (_this.lenseWheel % 10 == 0 || forced) {
+        } else {
+            if (_this.lenseWheel % 10 === 0 || forced) {
                 $(_this.lenseStates[_this.lensePosition]).toggle();
-                _this.lensePosition = ((_this.lensePosition - 1) % _this.lenseStates.length)
+                _this.lensePosition = (_this.lensePosition - 1) % _this.lenseStates.length
                     testDanger();
 
-                if (_this.lensePosition == -1) _this.lensePosition = _this.lenseStates.length - 1;
+                if (_this.lensePosition === -1) _this.lensePosition = _this.lenseStates.length - 1;
                 $(_this.lenseStates[_this.lensePosition]).toggle();
                 _this.lenseWheel = 19;
             } else {
-                _this.lenseWheel--;
+                _this.lenseWheel -= 1;
             }
-
         }
         _this.updateLensesState(_this);
         _this.update();
@@ -602,19 +598,19 @@ class StateMachine {
 
     // Total of 8 states on the lenses
     enableLenses() {
-        var _this=this;
+        var _this = this;
         var dangerEnable = false;
         var rollBack = {};
 
-        function testDanger(){
-            if (!dangerEnable && (_this.lensePosition+1 == 9 || _this.lensePosition-1==9)){
-                rollBack = {"type": $(".popupInstruct").text(), "text": $("#popupText").text()}
+        function testDanger() {
+            if (!dangerEnable && (_this.lensePosition + 1 == 9 || _this.lensePosition-1 === 9)) {
+                rollBack = {type: $(".popupInstruct").text(), text: $("#popupText").text()}
                 //console.log(rollBack);
                 updatePopup("Warning", "Stop! You risk damaging the 100X objective by moving passed the slide. Go the other way.");
 
                 dangerEnable = true;
             }
-            else if (dangerEnable){
+            else if (dangerEnable) {
                 //console.log(rollBack);
                 dangerEnable = false;
                 updatePopup(rollBack.type, rollBack.text);
@@ -626,76 +622,73 @@ class StateMachine {
                 .mousedown(function() {
                     isDown = true;
                 })
-            .mousemove(function(event) {
-                if (isDown) {
-                    //console.log(ms.lensePosition); //10,9,8
-                    if ((prevX < event.pageX)) {
-                        _this.rotateLenses(_this, true, false, testDanger);
-                    } else if ((prevX > event.pageX)) {
-                        _this.rotateLenses(_this, false, false, testDanger);
-
+                .mousemove(function(event) {
+                    if (isDown) {
+                        //console.log(ms.lensePosition); //10,9,8
+                        if ((prevX < event.pageX)) {
+                            _this.rotateLenses(_this, true, false, testDanger);
+                        } else if ((prevX > event.pageX)) {
+                            _this.rotateLenses(_this, false, false, testDanger);
+                        }
+                        prevX = event.pageX;
+                        _this.update();
                     }
-                    prevX = event.pageX;
-
-                    _this.update();
-                }
-
-            })
-            .mouseup(function() {
-                isDown = false;
-            })
-            .mouseleave(function() {
-                isDown = false;
-            });
+                })
+                .mouseup(function() {
+                    isDown = false;
+                })
+                .mouseleave(function() {
+                    isDown = false;
+                });
         }
         addLenseClick("#lensesBasePath");
     }
 
     // Enable functionality for the left diopter
-    enableDiopter(){
-        var _this=this;
+    enableDiopter() {
+        var _this = this;
         function addDiopterDrag(ocularPart, power) {
             var val = power;
             $(ocularPart)
                 .mousedown(function() {
                     isDown = true;
                 })
-            .mousemove(function(event) {
-                if (isDown) {
-                    if (prevX > event.pageX) {
-                        if (_this.diopterPosition > sm_orig["MIN_DIOPTER"]) {
-                            _this.diopterPosition -= power;
-                            _this.slideBlur2 -= 1;
+                .mousemove(function(event) {
+                    if (isDown) {
+                        if (prevX > event.pageX) {
+                            if (_this.diopterPosition > sm_orig["MIN_DIOPTER"]) {
+                                _this.diopterPosition -= power;
+                                _this.slideBlur2 -= 1;
+                            }
+                        } else if ((prevX < event.pageX)) {
+                            if (_this.diopterPosition < sm_orig["MAX_DIOPTER"]) {
+                                _this.diopterPosition += power;
+                                _this.slideBlur2 += 1;
+                            }
                         }
-                    } else if ((prevX < event.pageX)) {
-                        if (_this.diopterPosition < sm_orig["MAX_DIOPTER"]) {
-                            _this.diopterPosition += power;
-                            _this.slideBlur2 += 1;
-                        }
+                        prevX = event.pageX;
+                        _this.update();
                     }
-                    prevX = event.pageX;
-                    _this.update();
-                }
-            })
-            .mouseup(function() {
-                isDown = false;
-            })
-            .mouseleave(function() {
-                isDown = false;
-            });
+                })
+                .mouseup(function() {
+                    isDown = false;
+                })
+                .mouseleave(function() {
+                    isDown = false;
+                });
         }
         addDiopterDrag("#friend", 0.5);
     }
 
-
     enableSideDiaphragmRotate() {
         // Abstracted in Jimrambe's code, passed in state machine.
-        setupKnobs(this);
+        setupKnob(function(rotation) {
+          this.diaphragmHeightPosition = rotation / 12;
+          this.update();
+        }.bind(this));
     }
 
 }
-
-
 
 ms = new StateMachine();
 that = ms;

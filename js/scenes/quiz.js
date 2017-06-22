@@ -11,9 +11,9 @@
                 ms.eyepiecePosition = 0;
                 ms.ycaliper = ms.yslide = 20;
                 setup(true, true, 13);
-              
+
             }}
-            ,{ 
+            ,{
                 "answer": "100X"
                 , "setup": function(){setup(false, true, 3)}
             }
@@ -26,9 +26,9 @@
 
 
 
-function setup(bool1,bool2,lensPosition){
+function setup(bool1, bool2, lensPosition){
 
-  ms.rotateLensesCount(ms, bool1, bool2, function(){}, lensPosition); 
+  ms.rotateLensesCount(ms, bool1, bool2, function(){}, lensPosition);
     ms.updateLensesState(ms);
     ms.slideBlur = 0;
     //ms.update();
@@ -37,7 +37,7 @@ function setup(bool1,bool2,lensPosition){
 
 
 function quizMag(questionNum){
- 
+
    var answer= quiz[questionNum-1].answer
    quiz[questionNum-1].setup();
     $("#answerBox button").click(function(){
@@ -48,8 +48,8 @@ function quizMag(questionNum){
             if (inputAnswer == answer){
 
                 $("#answerBox button").unbind();
-                //make totalMaqQ and array instead 
-                eval("totalMagQ"+questionNum+".complete()"); 
+                //make totalMaqQ and array instead
+                eval("totalMagQ"+questionNum+".complete()");
             }
             $("#answerBox input").val("");
         });
@@ -58,4 +58,3 @@ function quizMag(questionNum){
 
 
 }
-

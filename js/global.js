@@ -40,7 +40,7 @@ components = [
     "#slideBox"
     ];
 
-// State machine boundaries (DYNAMIC) 
+// State machine boundaries (DYNAMIC)
 sm_bd = {
     "MAX_OCULAR": 15,
     "MAX_KNOB": 20,
