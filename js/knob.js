@@ -62,7 +62,7 @@ function getNormalRadians(event, isTouchscreen) {
   var y = coords[1];
   // return (Math.atan2(y, x)+Math.PI)/(Math.PI*2);
   //return (Math.sin((-y)/100)+1)/2;
-  return 0 - y * 100;
+  return (Math.PI / 2 - Math.atan(y / 10)) % Math.PI;
 }
 
 function registerKnob(numericID, isTouchscreen) {
@@ -90,30 +90,18 @@ function knobControls(numericID) {
     registerKnob(numericID, false);
 }
 
-// Returns the difference between two angles, accounting for 0 to 360 jump.
-function angleDistance(from, to) {
-    var delta = to - from;
-    if (delta < -180) delta += 360;
-    if (delta > 180) delta -= 360;
-    return delta;
-}
-
 function knobRotate(id, normRads) {
     var knob = knobs[id];
     // Apply rotation
+
+    console.log(normRads)
+
     var span=Math.abs(floor-ceiling);
     var floor = knob.bounds[0];
     var ceiling = knob.bounds[1];
     var span=Math.abs(floor-ceiling);
     knob.rotation =normRads*span+floor;
-    console.log(knob.rotation)
-    // Constrain knob rotation to its bounds
-    // if (knob.rotation < knob.bounds[0]) {
-    //     knob.rotation = knob.bounds[0];
-    // }
-    // if (knob.rotation > knob.bounds[1]) {
-    //     knob.rotation = knob.bounds[1];
-    // }
+    //console.log(knob.rotation)
 
     smAlias.diaphragmHeightPosition = knob.rotation/12;
     smAlias.update();
