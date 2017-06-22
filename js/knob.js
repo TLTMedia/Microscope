@@ -19,16 +19,15 @@ var knobs = [{
         enabled: true,
         bounds: [0, 270],
         divID: "draggableDiaphragm"
-}
-];
+}];
 
-function setupKnob(onRotate) {
+function setupKnob(direction, onRotate) {
     //Link em up
     $("body").mouseup(function () {
         $("body").off("mousemove touchmove");
     });
     for (var i = 0; i < knobs.length; i++) {
-        knobControls(i, onRotate);
+        knobControls(i, direction, onRotate);
     }
 }
 
@@ -47,21 +46,22 @@ function getCoords(event, isTouchscreen) {
   }
 }
 
-function getNormalRadians(event, isTouchscreen) {
+function getNormalRadians(event, direction, isTouchscreen) {
   var coords = getCoords(event, isTouchscreen);
   var x = coords[0];
   var y = coords[1];
-  return (Math.PI / 2 - Math.atan(y / 10)) % Math.PI;
+  var distance = direction === Directions.HORIZONTAL ? x : y;
+  return (Math.PI / 2 - Math.atan(distance / 10)) % Math.PI;
 }
 
-function registerKnob(numericID, isTouchscreen, onRotate) {
+function registerKnob(numericID, isTouchscreen, direction, onRotate) {
   var divID = knobs[numericID].divID;
   $("#" + divID).bind(isTouchscreen ? 'touchstart' : 'mousedown', function (e) {
       var knob = knobs[numericID];
       if (knob.enabled || !game.isGuided()) {
           $("body").bind(isTouchscreen ? 'touchmove' : 'mousemove', function (e) {
               e.preventDefault();
-              var normalRads = getNormalRadians(e, isTouchscreen);
+              var normalRads = getNormalRadians(e, direction, isTouchscreen);
               var links = knob.link;
               for (var j = 0; j < links.length; j++) {
                   knobRotate(links[j], normalRads, onRotate);
@@ -71,9 +71,9 @@ function registerKnob(numericID, isTouchscreen, onRotate) {
   });
 }
 
-function knobControls(numericID, onRotate) {
-    registerKnob(numericID, true, onRotate);
-    registerKnob(numericID, false, onRotate);
+function knobControls(numericID, direction, onRotate) {
+    registerKnob(numericID, true, direction, onRotate);
+    registerKnob(numericID, false, direction, onRotate);
 }
 
 function knobRotate(id, normRads, onRotate) {
