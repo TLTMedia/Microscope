@@ -4,10 +4,10 @@ var CONDENSER_START = 80;
 // If hell ever breaks loose, you can assume it's from these
 // They keep an alias to the state machine and update it externally
 
-var updateAlias;
 var knobs = [];
 
 function saveKnob(divSelector) {
+  console.log('Adding knob', divSelector)
   var knob = {
     width: 0,
     height: 0,
@@ -22,6 +22,22 @@ function saveKnob(divSelector) {
     bounds: [0, 270],
     divSelector
   }
+
+  var knobObject = $(divSelector);
+  knobObject.css({
+      'transform': ""
+  });
+  var offset = knobObject.offset();
+  //        var w = knobObject.width();
+  //        var h = knobObject.height();
+  var w = knobObject[0].getBoundingClientRect().width;
+  var h = knobObject[0].getBoundingClientRect().height;
+
+  knob.width = w;
+  knob.height = h;
+  knob.center.x = offset.left + w / 2;
+  knob.center.y = offset.top + h / 2;
+
   knobs.push(knob);
   return knob;
 }
@@ -29,10 +45,6 @@ function saveKnob(divSelector) {
 function getKnob(divSelector) {
   return knobs.find(function(knob) {return knob.divSelector === divSelector});
 }
-
-$("body").mouseup(function () {  // TODO: Is this still needed?
-    $("body").off("mousemove touchmove");
-});
 
 function getCoords(event, knob, isTouchscreen) {
   if (isTouchscreen) {
@@ -73,6 +85,9 @@ function registerKnob(divSelector, direction, onRotate) {
                   for (var j = 0; j < links.length; j++) {
                       knobRotate(links[j], normalRads, onRotate);
                   }
+              });
+              $("body").mouseup(function () {
+                  $("body").off("mousemove touchmove");
               });
           }
       });

@@ -162,33 +162,4 @@ function resizeWindow() {
             "width": w*0.55 + "px"
         });
     }
-
-    try {
-        // Calibrate knob centers
-        for (var i = 0; i < knobs.length; i++) {
-            var knobObject = $("#" + knobs[i].divID);
-            knobObject.css({
-                'transform': ""
-            });
-            var offset = knobObject.offset();
-            //        var w = knobObject.width();
-            //        var h = knobObject.height();
-            var w = knobObject[0].getBoundingClientRect().width;
-            var h = knobObject[0].getBoundingClientRect().height;
-
-            knob = knobs[i];
-            knob.width = w;
-            knob.height = h;
-            knob.center.x = offset.left + w / 2;
-            knob.center.y = offset.top + h / 2;
-            //console.log(knob.width, knob.height, offset.left, offset.top);
-            /*knobObject.css({
-              'transform': "rotate(" + knobs[i].rotation + "deg)"
-              });
-              */
-        }
-    }
-    catch(e){
-        console.log("Resize error caught");
-    }
 }
