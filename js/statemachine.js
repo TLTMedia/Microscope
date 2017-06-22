@@ -449,41 +449,40 @@ class StateMachine {
         // Low knob
         function addCaliperXDrag(part) {
             var val = 1;
-
             $(part)
                 .mousedown(function() {
                     isDown = true;
                 })
-            .mousemove(function(event) {
-                if (isDown) {
-                    if ((prevX < event.pageX)) {
-                        if (_this.xcaliper < sm_orig["MAX_X_CALIPER"]) {
-                            _this.xcaliper += val;
-                            _this.xslide += val;
+                .mousemove(function(event) {
+                    if (isDown) {
+                        if ((prevX < event.pageX)) {
+                            if (_this.xcaliper < sm_orig["MAX_X_CALIPER"]) {
+                                _this.xcaliper += val;
+                                _this.xslide += val;
+                            }
+                        } else if ((prevX > event.pageX)) {
+                            if (_this.xcaliper > sm_orig["MIN_X_CALIPER"]) {
+                                _this.xcaliper -= val;
+                                _this.xslide -= val;
+                            }
                         }
-                    } else if ((prevX > event.pageX)) {
-                        if (_this.xcaliper > sm_orig["MIN_X_CALIPER"]) {
-                            _this.xcaliper -= val;
-                            _this.xslide -= val;
-                        }
-                    }
-                    prevX = event.pageX;
+                        prevX = event.pageX;
 
-                    // Blur out if out of magic bounds
-                    if (_this.xcaliper > -10 && this.xcaliper < 10 && this.ycaliper > -10 && this.ycaliper < 10) {
-                        _this.inBounds = true;
-                    } else {
-                        _this.inBounds = false;
+                        // Blur out if out of magic bounds
+                        if (_this.xcaliper > -10 && this.xcaliper < 10 && this.ycaliper > -10 && this.ycaliper < 10) {
+                            _this.inBounds = true;
+                        } else {
+                            _this.inBounds = false;
+                        }
+                        _this.update();
                     }
-                    _this.update();
-                }
-            })
-            .mouseup(function() {
-                isDown = false;
-            })
-            .mouseleave(function() {
-                isDown = false;
-            });
+                })
+                .mouseup(function() {
+                    isDown = false;
+                })
+                .mouseleave(function() {
+                    isDown = false;
+                });
         }
 
         function addCaliperYDrag(part) {
@@ -573,7 +572,7 @@ class StateMachine {
         if (right) {
             if (_this.lenseWheel % 10 === 0 || forced) {
                 $(_this.lenseStates[_this.lensePosition]).toggle();
-                _this.lensePosition = ((_this.lensePosition + 1) % _this.lenseStates.length);
+                _this.lensePosition = (_this.lensePosition + 1) % _this.lenseStates.length;
                 testDanger();
                 $(_this.lenseStates[_this.lensePosition]).toggle();
                 _this.lenseWheel = 1;
@@ -583,7 +582,7 @@ class StateMachine {
         } else {
             if (_this.lenseWheel % 10 === 0 || forced) {
                 $(_this.lenseStates[_this.lensePosition]).toggle();
-                _this.lensePosition = ((_this.lensePosition - 1) % _this.lenseStates.length)
+                _this.lensePosition = (_this.lensePosition - 1) % _this.lenseStates.length
                     testDanger();
 
                 if (_this.lensePosition === -1) _this.lensePosition = _this.lenseStates.length - 1;
