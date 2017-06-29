@@ -228,8 +228,15 @@
 }
 
 .highlightPart{
+animation:pulsate 3s infinite;
     stroke: rgba(255, 0, 0, 0.5);
     stroke-width: 5px;
+}
+@keyframes pulsate{
+0%{opacity:1}
+50%{opacity:0}
+100%{opacity:1}
+
 }
 
 #fineknobsTarget1{

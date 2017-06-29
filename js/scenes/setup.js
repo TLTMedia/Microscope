@@ -45,7 +45,6 @@ function setupEnableSlide() {
     registerDrag('slide', 'slideTarget', function() {
         setupSlide.complete();
         $("#caliperBlade").trigger("click");
-        toggleVisibility("#slide");
         $("#pseudo_slideCopyCopy").remove();
         $("#pseudo_slideCopy").remove();
     });

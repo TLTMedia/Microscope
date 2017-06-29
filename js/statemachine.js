@@ -100,6 +100,7 @@ class StateMachine {
      * Condense all transforms into a single method and pass by argument.
      */
     translateReduceSVG(components, x, y) {
+        console.log(components)
         try{
             $(components).attr("transform", "translate(" + x + " " + y + ")");
         }

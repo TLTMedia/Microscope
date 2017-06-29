@@ -111,7 +111,7 @@ function highlightComponent(id) {
     clonePart.attr("pointer-events", "none")
         clonePart.toggleClass("highlightPart")
         clonePart.attr("id", id.replace("#", "") + "Copy");
-    clonePart.attr("style", "border:10px solid blue");
+
     clonePart.attr("filter", "url(#blurMe)");
     clonePart.children().attr("fill", "rgba(0,0,0,0)");
     clonePart.insertBefore($(id));

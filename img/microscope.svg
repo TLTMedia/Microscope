@@ -2,7 +2,6 @@
 <!-- Generator: Adobe Illustrator 19.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="microscope" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 793 640.1" style="enable-background:new 0 0 793 640.1;" xml:space="preserve">
- <filter id="blurMe"><feGaussianBlur in="SourceGraphic" stdDeviation="2" /></filter>
 <style type="text/css">
 	.st0{display:none;}
 	.st1{display:inline;fill:#A6C5E8;}
@@ -77,20 +76,20 @@
 	.st70{fill:#121311;}
 	.st71{fill:none;stroke:#FFFFFF;stroke-width:0.5;stroke-miterlimit:10;}
 	.st72{font-family:'Avenir-Black';}
-	.st73{font-size:3.3948px;}
+	.st73{font-size:3.3949px;}
 	.st74{fill:#7D847F;}
 	.st75{fill:#ED1F24;}
 	.st76{display:inline;}
 	.st77{fill:#878986;}
 	.st78{fill:#585B59;}
 	.st79{font-family:'Helvetica-Bold';}
-	.st80{font-size:8.0104px;}
-	.st81{font-size:4.6125px;}
+	.st80{font-size:8.0108px;}
+	.st81{font-size:4.6127px;}
 	.st82{font-family:'Helvetica';}
-	.st83{font-size:3.0767px;}
+	.st83{font-size:3.0769px;}
 	.st84{fill:#F6EC13;}
-	.st85{font-size:3.403px;}
-	.st86{font-size:2.2678px;}
+	.st85{font-size:3.4032px;}
+	.st86{font-size:2.2679px;}
 	.st87{fill:#545554;}
 	.st88{font-size:8.8px;}
 	.st89{font-size:2.5471px;}
@@ -104,8 +103,8 @@
 	.st97{font-size:2.3155px;}
 	.st98{font-size:3.3978px;}
 	.st99{font-size:2.2652px;}
-	.st100{font-size:9.013px;}
-	.st101{font-size:2.3181px;}
+	.st100{font-size:9.0135px;}
+	.st101{font-size:2.3182px;}
 	.st102{font-size:3.7376px;}
 	.st103{font-size:2.4917px;}
 	.st104{font-size:9.9px;}
@@ -206,17 +205,17 @@
 </g>
 <g id="slideStage">
 	<g>
-		<polygon class="st28" points="475.6,342.7 289.6,342.7 314.6,279 450.6,279 		"/>
-		<rect x="289.6" y="342.7" class="st29" width="185.9" height="16.3"/>
+		<polygon class="st28" points="475.6,344.7 289.6,344.7 314.6,281 450.6,281 		"/>
+		<rect x="289.6" y="344.7" class="st29" width="185.9" height="16.3"/>
 	</g>
-	<ellipse cx="380.8" cy="310.9" rx="15.8" ry="8.2"/>
+	<ellipse cx="380.8" cy="312.9" rx="15.8" ry="8.2"/>
 	<g id="slideGroup">
-		<rect id="slideTarget" x="331.3" y="301.7" class="st30" width="100" height="28.2"/>
+		<rect id="slideTarget" x="331.8" y="304.9" class="st30" width="100" height="28.2"/>
 		<g id="slide">
-			<rect x="333.3" y="304.1" class="st31" width="25" height="23"/>
-			<rect x="331.8" y="301.7" class="st32" width="100" height="28.2"/>
-			<path class="st33" d="M381.8,306.9l0.1,0.7c0.5,2.5,0.5,5.1,0.1,7.6l-0.2,1c-0.2,1-0.6,0.9-0.8-0.1l-0.2-1.3
-				c-0.4-2.3-0.4-4.6,0.1-6.8l0.2-1C381.2,306,381.6,306,381.8,306.9z"/>
+			<rect x="333.3" y="308.3" class="st31" width="25" height="23"/>
+			<rect x="331.8" y="305.9" class="st32" width="100" height="28.2"/>
+			<path class="st33" d="M381.8,314.1l0.1,0.7c0.5,2.5,0.5,5.1,0.1,7.6l-0.2,1c-0.2,1-0.6,0.9-0.8-0.1l-0.2-1.3
+				c-0.4-2.3-0.4-4.6,0.1-6.8l0.2-1C381.2,313.2,381.6,313.2,381.8,314.1z"/>
 		</g>
 	</g>
 </g>
@@ -434,7 +433,7 @@
 		
 			<rect x="476.7" y="333" transform="matrix(0.9159 -0.4015 0.4015 0.9159 -93.5915 219.8111)" class="st38" width="1.9" height="0.4"/>
 		
-			<rect x="477.4" y="334.5" transform="matrix(0.9159 -0.4015 0.4015 0.9159 -94.1348 220.2183)" class="st38" width="1.9" height="0.4"/>
+			<rect x="477.4" y="334.5" transform="matrix(0.9159 -0.4015 0.4015 0.9159 -94.1348 220.2184)" class="st38" width="1.9" height="0.4"/>
 		
 			<rect x="475.9" y="331.1" transform="matrix(0.9159 -0.4015 0.4015 0.9159 -92.8244 219.6713)" class="st38" width="3.6" height="0.4"/>
 		
@@ -461,11 +460,11 @@
 	</g>
 	<g id="caliperBlade">
 		<g>
-			<path class="st44" d="M335.2,333.2l-4.4-8.8c-0.1-0.2-0.3-0.4-0.6-0.4h-0.9c-1.7,0-1.7,0-1.7-2.7l-0.8-26.9l-17,0.1l22.2,42.2
-				l1.4,2.1c0.3,0.1,0.8,0,1.2-0.2l0.8-4.2L335.2,333.2z"/>
+			<path class="st44" d="M332.3,335.2l-2.8-9.4c-0.1-0.2-0.2-0.4-0.5-0.5l-0.9-0.2c-1.7-0.3-1.7-0.3-1.2-3l3.9-26.6l-16.8-2.8
+				l14.6,45.4l1,2.3c0.3,0.2,0.8,0.1,1.2,0l1.5-4L332.3,335.2z"/>
 		</g>
-		<path class="st43" d="M335.5,335l-0.1-0.2l-0.7,3.8c-0.4,0.4-0.9,0.4-1.2,0.2l-1.4-2.1l-22-41.7h-1.7l23.6,43.5l1.7,2.1
-			c0.3,0.1,0.9,0.1,1.3-0.2c1.1-0.7,1.6-2.7,1.1-4.4L335.5,335z"/>
+		<path class="st43" d="M332.3,337l-0.1-0.2l-1.3,3.6c-0.5,0.3-1,0.2-1.2,0l-1-2.3l-14.5-44.9l-1.7-0.3l15.7,46.9l1.3,2.4
+			c0.3,0.2,0.9,0.3,1.3,0c1.2-0.5,2-2.4,1.8-4.1L332.3,337z"/>
 	</g>
 	<g id="caliperMetal_2_">
 		<path class="st44" d="M435.8,302.5c1.7,0,3.1,1.4,3.1,3c0,1-0.5,1.8-1.2,2.4l2.5,6.6h8.5l-6.7-15l-1.5-4.4H329.2v4.4v2.5h85.5
@@ -659,7 +658,7 @@
 		</g>
 	</g>
 	
-		<rect x="305.2" y="461.1" transform="matrix(0.1756 -0.9845 0.9845 0.1756 -200.0885 694.3332)" class="st41" width="18.7" height="11.1"/>
+		<rect x="305.2" y="461.1" transform="matrix(0.1756 -0.9845 0.9845 0.1756 -200.0246 694.3461)" class="st41" width="18.7" height="11.1"/>
 	<text transform="matrix(0.9845 0.1756 -0.1756 0.9845 312.6098 459.8656)" class="st38 st72 st73">ON</text>
 	<text transform="matrix(0.9845 0.1756 -0.1756 0.9845 310.0264 470.7738)" class="st38 st72 st73">OFF</text>
 </g>
@@ -850,10 +849,10 @@
 	<g id="_x34__4_" class="st76">
 		<g>
 			
-				<rect x="357.9" y="239.8" transform="matrix(0.4226 -0.9063 0.9063 0.4226 -18.7912 480.6799)" class="st5" width="20" height="30.5"/>
+				<rect x="357.8" y="239.8" transform="matrix(0.4226 -0.9063 0.9063 0.4226 -18.7571 480.6303)" class="st5" width="20" height="30.5"/>
 			<path class="st78" d="M358.6,239.1c0,0,15.5-4.5,28.2,11.6c-2.8,6.1-2.8,6.1-2.8,6.1s-7.8-16.6-27.6-12.9L358.6,239.1z"/>
 			
-				<ellipse transform="matrix(0.4226 -0.9063 0.9063 0.4226 -29.195 481.834)" class="st87" cx="363.6" cy="263.8" rx="3.6" ry="15.2"/>
+				<ellipse transform="matrix(0.4226 -0.9063 0.9063 0.4226 -29.1639 481.793)" class="st87" cx="363.5" cy="263.8" rx="3.6" ry="15.2"/>
 			<path class="st75" d="M371.1,248.5c-9.9-4.6-15.8-2.3-15.8-2.3c-0.2,0.5-0.4,0.9-0.4,0.9s7.8-1.2,15.7,2.5s11.9,10.4,11.9,10.4
 				s0.3-0.5,0.4-0.9C382.9,259.2,381,253.1,371.1,248.5z"/>
 		</g>
@@ -923,11 +922,10 @@
 <g id="lenses3" class="st0">
 	<g id="_x34__11_" class="st76">
 		<g>
-			
-				<rect x="329.2" y="232" transform="matrix(0.6428 -0.766 0.766 0.6428 -68.2402 348.1382)" class="st5" width="20" height="30.5"/>
+			<rect x="329.2" y="232" transform="matrix(0.6428 -0.766 0.766 0.6428 -68.24 348.1383)" class="st5" width="20" height="30.5"/>
 			<path class="st78" d="M333.9,229.8c0,0,16.2-0.3,24.3,18.5c-4.3,5.1-4.3,5.1-4.3,5.1s-3.3-18-23.4-19.6L333.9,229.8z"/>
 			
-				<ellipse transform="matrix(0.6428 -0.766 0.766 0.6428 -76.4221 345.8913)" class="st87" cx="332.7" cy="254.9" rx="3.6" ry="15.2"/>
+				<ellipse transform="matrix(0.6428 -0.766 0.766 0.6428 -76.4214 345.8913)" class="st87" cx="332.7" cy="254.9" rx="3.6" ry="15.2"/>
 			<path class="st75" d="M343.5,242c-8.3-7-14.7-6.3-14.7-6.3c-0.3,0.4-0.6,0.8-0.6,0.8s7.9,0.9,14.5,6.5c6.7,5.6,8.8,13.1,8.8,13.1
 				s0.4-0.5,0.6-0.8C352.2,255.4,351.9,249,343.5,242z"/>
 		</g>
@@ -1013,20 +1011,20 @@
 	<g id="_x34__3_" class="st94">
 		<g>
 			
-				<rect x="332.1" y="234.6" transform="matrix(0.5736 -0.8192 0.8192 0.5736 -58.7916 386.7961)" class="st5" width="20" height="30.5"/>
+				<rect x="332.1" y="234.6" transform="matrix(0.5736 -0.8192 0.8192 0.5736 -58.7881 386.7937)" class="st5" width="20" height="30.5"/>
 			<path class="st78" d="M335.4,232.9c0,0,16.1-1.7,25.8,16.3c-3.8,5.4-3.8,5.4-3.8,5.4s-4.9-17.6-25-17.5L335.4,232.9z"/>
 			
-				<ellipse transform="matrix(0.5736 -0.8192 0.8192 0.5736 -67.7611 385.8465)" class="st87" cx="336.7" cy="258" rx="3.6" ry="15.2"/>
+				<ellipse transform="matrix(0.5736 -0.8192 0.8192 0.5736 -67.762 385.853)" class="st87" cx="336.7" cy="258" rx="3.6" ry="15.2"/>
 			<path class="st75" d="M346,244.3c-8.9-6.2-15.2-5-15.2-5c-0.3,0.4-0.6,0.9-0.6,0.9s8,0.2,15,5.1s9.9,12.4,9.9,12.4
 				s0.3-0.5,0.6-0.9C355.8,256.9,354.9,250.6,346,244.3z"/>
 		</g>
 		<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 333.5607 247.7702)" class="st38 st79 st80">E.</text>
 		<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 339.7868 252.1279)" class="st38 st79 st80"> </text>
 		<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 342.0817 253.7336)" class="st38 st79 st80">4</text>
-		<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 336.3776 253.1593)" class="st38 st82 st101">1</text>
+		<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 336.3778 253.1589)" class="st38 st82 st101">1</text>
 		<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 337.4425 253.9062)" class="st38 st82 st101">6</text>
 		<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 338.507 254.6521)" class="st38 st82 st101">0</text>
-		<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 339.7382 255.5124)" class="st38 st82 st101">/</text>
+		<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 339.7393 255.5126)" class="st38 st82 st101">/</text>
 		<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 340.3933 255.9729)" class="st38 st82 st101">-</text>
 	</g>
 	<g id="_x31_00_4_" class="st94">
@@ -1124,10 +1122,10 @@
 	<g id="_x34__5_" class="st76">
 		<g>
 			
-				<rect x="336.2" y="226" transform="matrix(0.6428 -0.766 0.766 0.6428 -61.1445 351.357)" class="st5" width="20" height="30.5"/>
+				<rect x="336.2" y="226" transform="matrix(0.6428 -0.766 0.766 0.6428 -61.1438 351.3568)" class="st5" width="20" height="30.5"/>
 			<path class="st78" d="M341,223.7c0,0,16.2-0.3,24.3,18.5c-4.3,5.1-4.3,5.1-4.3,5.1s-3.3-18-23.4-19.6L341,223.7z"/>
 			
-				<ellipse transform="matrix(0.6428 -0.766 0.766 0.6428 -69.3253 349.1105)" class="st87" cx="339.7" cy="248.9" rx="3.6" ry="15.2"/>
+				<ellipse transform="matrix(0.6428 -0.766 0.766 0.6428 -69.3252 349.1108)" class="st87" cx="339.7" cy="248.9" rx="3.6" ry="15.2"/>
 			<path class="st75" d="M350.5,236c-8.3-7-14.7-6.3-14.7-6.3c-0.3,0.4-0.6,0.8-0.6,0.8s7.9,0.9,14.5,6.5c6.7,5.6,8.8,13.1,8.8,13.1
 				s0.4-0.5,0.6-0.8C359.3,249.4,358.8,243,350.5,236z"/>
 		</g>
@@ -1198,10 +1196,10 @@
 	<g id="_x34__10_">
 		<g>
 			
-				<rect x="357.5" y="216.9" transform="matrix(0.2588 -0.9659 0.9659 0.2588 48.1757 527.0159)" class="st5" width="20" height="30.5"/>
+				<rect x="357.5" y="216.9" transform="matrix(0.2588 -0.9659 0.9659 0.2588 48.1826 527.0482)" class="st5" width="20" height="30.5"/>
 			<path class="st78" d="M355.8,218.2c0,0,14.5-7.1,29.8,6.5c-1.7,6.5-1.7,6.5-1.7,6.5s-10.6-15-29.5-7.9L355.8,218.2z"/>
 			
-				<ellipse transform="matrix(0.2588 -0.9659 0.9659 0.2588 36.9633 531.783)" class="st87" cx="365" cy="241.8" rx="3.6" ry="15.2"/>
+				<ellipse transform="matrix(0.2588 -0.9659 0.9659 0.2588 36.9516 531.7704)" class="st87" cx="365" cy="241.8" rx="3.6" ry="15.2"/>
 			<path class="st75" d="M369.7,225.4c-10.5-2.8-16,0.5-16,0.5c-0.1,0.5-0.3,1-0.3,1s7.5-2.5,15.9-0.3c8.4,2.3,13.5,8.2,13.5,8.2
 				s0.2-0.6,0.3-1C383.2,233.7,380.2,228.2,369.7,225.4z"/>
 		</g>
@@ -1276,7 +1274,7 @@
 			<path class="st84" d="M346.7,242.7c-9-6.1-15.2-4.8-15.2-4.8c-0.3,0.4-0.6,0.9-0.6,0.9s8,0.1,15.1,5s10.1,12.3,10.1,12.3
 				s0.3-0.5,0.6-0.9C356.7,255.1,355.7,248.9,346.7,242.7z"/>
 		</g>
-		<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 332.5518 246.1601)" class="st38 st79 st80">E.</text>
+		<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 332.552 246.1597)" class="st38 st79 st80">E.</text>
 		<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 338.7732 250.5193)" class="st38 st79 st80"> </text>
 		<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 341.0645 252.1249)" class="st38 st79 st80">10</text>
 		<text transform="matrix(0.8192 0.5736 -0.5736 0.8192 335.4367 253.1902)" class="st38 st79 st85">0.25</text>
@@ -1400,7 +1398,7 @@
 				<rect x="402.1" y="231.7" transform="matrix(0.766 -0.6428 0.6428 0.766 -57.7157 324.8241)" class="st5" width="30.5" height="20"/>
 			<path class="st78" d="M399.3,243.9c0,0,2.5-16,22.5-20.7c4.3,5.1,4.3,5.1,4.3,5.1s-18.3,0.1-23.4,19.6L399.3,243.9z"/>
 			
-				<ellipse transform="matrix(0.766 -0.6428 0.6428 0.766 -61.1795 330.7075)" class="st87" cx="423.7" cy="249.4" rx="15.2" ry="3.6"/>
+				<ellipse transform="matrix(0.766 -0.6428 0.6428 0.766 -61.1796 330.7075)" class="st87" cx="423.7" cy="249.4" rx="15.2" ry="3.6"/>
 			<path class="st75" d="M413,236.6c-8.3,7-8.8,13.4-8.8,13.4c0.3,0.4,0.6,0.8,0.6,0.8s2.2-7.6,8.9-13.2c6.7-5.6,14.5-6.4,14.5-6.4
 				s-0.4-0.5-0.6-0.8C427.7,230.3,421.3,229.6,413,236.6z"/>
 		</g>
