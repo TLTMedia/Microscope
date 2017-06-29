@@ -683,7 +683,7 @@ class StateMachine {
 
     enableSideDiaphragmRotate() {
         // Abstracted in Jimrambe's code, passed in state machine.
-        setupKnob(function(rotation) {
+        registerKnob('#draggableDiaphragm', Directions.VERTICAL, function(rotation) {
           this.diaphragmHeightPosition = rotation / 12;
           this.update();
         }.bind(this));
