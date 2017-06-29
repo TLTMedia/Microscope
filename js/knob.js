@@ -19,25 +19,18 @@ function saveKnob(divSelector) {
     rotation: CONDENSER_START,
     link: [0],
     enabled: true,
-    bounds: [0, 270],
     divSelector
   }
 
   var knobObject = $(divSelector);
-  knobObject.css({
-      'transform': ""
-  });
+  knobObject.css({'transform': ''});
   var offset = knobObject.offset();
-  //        var w = knobObject.width();
-  //        var h = knobObject.height();
   var w = knobObject[0].getBoundingClientRect().width;
   var h = knobObject[0].getBoundingClientRect().height;
-
   knob.width = w;
   knob.height = h;
   knob.center.x = offset.left + w / 2;
   knob.center.y = offset.top + h / 2;
-
   knobs.push(knob);
   return knob;
 }
@@ -69,7 +62,7 @@ function getNormalRadians(event, knob, direction, isTouchscreen) {
   var x = coords[0];
   var y = coords[1];
   var distance = direction === Directions.HORIZONTAL ? x : y;
-  return (Math.PI / 2 - Math.atan(distance / 10)) % Math.PI;
+  return (Math.atan(distance / 10) + Math.PI / 2) % Math.PI;
 }
 
 function registerKnob(divSelector, direction, onRotate) {
@@ -98,11 +91,6 @@ function registerKnob(divSelector, direction, onRotate) {
 
 function knobRotate(id, normRads, onRotate) {
     var knob = knobs[id];
-    // Apply rotation
-    var span = Math.abs(floor-ceiling);
-    var floor = knob.bounds[0];
-    var ceiling = knob.bounds[1];
-    var span=Math.abs(floor-ceiling);
-    knob.rotation = normRads * span + floor;
+    knob.rotation = normRads * 360;
     onRotate(knob.rotation)
 }

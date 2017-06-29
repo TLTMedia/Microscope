@@ -100,12 +100,11 @@ class StateMachine {
      * Condense all transforms into a single method and pass by argument.
      */
     translateReduceSVG(components, x, y) {
-        console.log(components)
         try{
             $(components).attr("transform", "translate(" + x + " " + y + ")");
         }
         catch(err) {
-            console.log(components, x, y)
+            console.error(components, x, y)
         }
     }
 
@@ -449,41 +448,19 @@ class StateMachine {
         var _this=this;
         // Low knob
         function addCaliperXDrag(part) {
-            var val = 1;
-            $(part)
-                .mousedown(function() {
-                    isDown = true;
-                })
-                .mousemove(function(event) {
-                    if (isDown) {
-                        if ((prevX < event.pageX)) {
-                            if (_this.xcaliper < sm_orig["MAX_X_CALIPER"]) {
-                                _this.xcaliper += val;
-                                _this.xslide += val;
-                            }
-                        } else if ((prevX > event.pageX)) {
-                            if (_this.xcaliper > sm_orig["MIN_X_CALIPER"]) {
-                                _this.xcaliper -= val;
-                                _this.xslide -= val;
-                            }
-                        }
-                        prevX = event.pageX;
+            registerKnob(part, Directions.VERTICAL, function(rotation) {
+                _this.xcaliper = rotation / 10;
+                _this.xslide = rotation / 10;
 
-                        // Blur out if out of magic bounds
-                        if (_this.xcaliper > -10 && this.xcaliper < 10 && this.ycaliper > -10 && this.ycaliper < 10) {
-                            _this.inBounds = true;
-                        } else {
-                            _this.inBounds = false;
-                        }
-                        _this.update();
-                    }
-                })
-                .mouseup(function() {
-                    isDown = false;
-                })
-                .mouseleave(function() {
-                    isDown = false;
-                });
+                // Blur out if out of magic bounds
+                if (_this.xcaliper > -10 && _this.xcaliper < 10 &&
+                    _this.ycaliper > -10 && _this.ycaliper < 10) {
+                    _this.inBounds = true;
+                } else {
+                    _this.inBounds = false;
+                }
+                _this.update();
+            }.bind(this));
         }
 
         function addCaliperYDrag(part) {
@@ -682,13 +659,11 @@ class StateMachine {
     }
 
     enableSideDiaphragmRotate() {
-        // Abstracted in Jimrambe's code, passed in state machine.
         registerKnob('#draggableDiaphragm', Directions.VERTICAL, function(rotation) {
-          this.diaphragmHeightPosition = rotation / 12;
+          this.diaphragmHeightPosition = Math.min(rotation / 20, 36);
           this.update();
         }.bind(this));
     }
-
 }
 
 ms = new StateMachine();
