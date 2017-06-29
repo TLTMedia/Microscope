@@ -224,19 +224,18 @@
     top: 57%;
     position: absolute;
     opacity: 0;
-
 }
 
 .highlightPart{
-animation:pulsate 3s infinite;
-    stroke: rgba(255, 0, 0, 0.5);
-    stroke-width: 5px;
+    animation: pulsate 2s infinite;
+    stroke: rgba(255, 0, 0, 0.55);
+    stroke-width: 8px;
 }
-@keyframes pulsate{
-0%{opacity:1}
-50%{opacity:0}
-100%{opacity:1}
 
+@keyframes pulsate{
+    0%{opacity:1}
+    50%{opacity:0}
+    100%{opacity:1}
 }
 
 #fineknobsTarget1{
