@@ -1,13 +1,6 @@
-var APERTURE_HEIGHT_KNOB = 0;
-var CONDENSER_START = 80;
-
-// If hell ever breaks loose, you can assume it's from these
-// They keep an alias to the state machine and update it externally
-
 var knobs = [];
 
 function saveKnob(divSelector) {
-  console.log('Adding knob', divSelector)
   var knob = {
     width: 0,
     height: 0,
@@ -16,7 +9,6 @@ function saveKnob(divSelector) {
         y: 0
     },
     angle:0,
-    rotation: CONDENSER_START,
     link: [0],
     enabled: true,
     divSelector
