@@ -47,6 +47,8 @@ class StateMachine {
         this.lenseStates = ["#lenses1Red", "#lenses2", "#lenses3", "#lenses4Yellow", "#lenses5", "#lenses6", "#lenses7Blue", "#lenses8", "#lenses9", "#lenses10White", "#lenses11", "#lenses12"];
         this.desiredFrame = this;
         this.slideBox = 0;
+        this.setup();
+        this.update();
     }
 
     // Set values to setup values
@@ -100,7 +102,6 @@ class StateMachine {
      * Condense all transforms into a single method and pass by argument.
      */
     translateReduceSVG(components, x, y) {
-        console.log(components)
         try{
             $(components).attr("transform", "translate(" + x + " " + y + ")");
         }
@@ -190,42 +191,6 @@ class StateMachine {
 
     }
 
-    // Enables particular microscope component.
-    enable(component) {
-        switch(component) {
-            case "light-switch":
-                this.enableLightSwitch();
-                break;
-            case "caliper-blade":
-                this.enableCaliperBlade();
-                break;
-            case "lenses":
-                this.enableLenses();
-                break;
-            case "eyepiece":
-                this.enableEyepiece();
-                break;
-            case "coarse-knob":
-                this.enableCoarseKnob();
-                break;
-            case "fine-knob":
-                this.enableFineKnob();
-                break;
-            case "diaphragm-light":
-                this.enableDiaphragmLight();
-                break;
-            case "caliper":
-                this.enableCaliper();
-                break;
-            case "diopter":
-                this.enableDiopter();
-                break;
-            case "sideview":
-                this.enableSideDiaphragmRotate();
-                break;
-        }
-    }
-
     // Enables all the functionality of the ms.
     enableScope() {
         bindTooltip();
@@ -261,8 +226,6 @@ class StateMachine {
 
         });
     }
-
-
 
     /*Enables functionality for the eyepiece on call.*/
     enableEyepiece() {
@@ -484,6 +447,21 @@ class StateMachine {
                 .mouseleave(function() {
                     isDown = false;
                 });
+
+            registerKnob(part, Directions.VERTICAL, function(rotation) {
+                console.log(rotation);
+                _this.xcaliper = rotation / 10;
+                _this.xslide = rotation / 10;
+
+                // Blur out if out of magic bounds
+                if (_this.xcaliper > -10 && _this.xcaliper < 10 &&
+                    _this.ycaliper > -10 && _this.ycaliper < 10) {
+                    _this.inBounds = true;
+                } else {
+                    _this.inBounds = false;
+                }
+                _this.update();
+            }.bind(this));
         }
 
         function addCaliperYDrag(part) {
@@ -692,6 +670,3 @@ class StateMachine {
 }
 
 ms = new StateMachine();
-that = ms;
-ms.setup();
-ms.update();
