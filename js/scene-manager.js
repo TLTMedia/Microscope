@@ -56,11 +56,11 @@ function startStep(step) {
             $("#light").addClass("elementOff");
             toggleVisibility("#slide");
             setupEnableSwitch();
-            ms.enable("light-switch");
+            ms.enableLightSwitch();
             isDebug = DEBUG(isDebug, currentMode);
         }
         if (step == setupCaliperBlade){
-            ms.enable("caliper-blade");
+            ms.enableCaliperBlade();
             setupEnableBlade();
         }
         if (step == setupSlide){
@@ -72,26 +72,26 @@ function startStep(step) {
                 $("#slide").css({"display": "block"});
             }
             setupCondenser();
-            ms.enable("sideview");
+            ms.enableSideDiaphragmRotate();
         }
 
         if (step == setupCaliper){
             setupAdjustCaliper();
-            ms.enable("caliper");
+            ms.enableCaliper();
         }
 
         // Low magnification
         if (step == lowLenses) {
             lowAdjustLenses();
-            ms.enable("lenses");
+            ms.enableLenses();
         }
         if (step == lowDiaphragmLight) {
             lowDLight();
-            ms.enable("diaphragm-light");
+            ms.enableDiaphragmLight();
         }
         if (step == lowCoarse) {
             lowAdjustCoarse();
-            ms.enable("coarse-knob");
+            ms.enableCoarseKnob();
         }
 
         // Med magnification
@@ -104,15 +104,15 @@ function startStep(step) {
 
         if (step == medFine) {
             medAdjustFine();
-            ms.enable("fine-knob");
+            ms.enableFineKnob();
         }
         if (step == medDiopter){
             medAdjustDiopter();
-            ms.enable("diopter");
+            ms.enableDiopter();
         }
         if (step == medOcular) {
             medAdjustEyepiece();
-            ms.enable("eyepiece");
+            ms.enableEyepiece();
         }
 
 

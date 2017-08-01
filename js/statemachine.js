@@ -47,6 +47,8 @@ class StateMachine {
         this.lenseStates = ["#lenses1Red", "#lenses2", "#lenses3", "#lenses4Yellow", "#lenses5", "#lenses6", "#lenses7Blue", "#lenses8", "#lenses9", "#lenses10White", "#lenses11", "#lenses12"];
         this.desiredFrame = this;
         this.slideBox = 0;
+        this.setup();
+        this.update();
     }
 
     // Set values to setup values
@@ -187,42 +189,6 @@ class StateMachine {
                 "filter": "blur(" + Math.abs(chosenBlur) + "px)"
             });
 
-    }
-
-    // Enables particular microscope component.
-    enable(component) {
-        switch(component) {
-            case "light-switch":
-                this.enableLightSwitch();
-                break;
-            case "caliper-blade":
-                this.enableCaliperBlade();
-                break;
-            case "lenses":
-                this.enableLenses();
-                break;
-            case "eyepiece":
-                this.enableEyepiece();
-                break;
-            case "coarse-knob":
-                this.enableCoarseKnob();
-                break;
-            case "fine-knob":
-                this.enableFineKnob();
-                break;
-            case "diaphragm-light":
-                this.enableDiaphragmLight();
-                break;
-            case "caliper":
-                this.enableCaliper();
-                break;
-            case "diopter":
-                this.enableDiopter();
-                break;
-            case "sideview":
-                this.enableSideDiaphragmRotate();
-                break;
-        }
     }
 
     // Enables all the functionality of the ms.
@@ -449,6 +415,44 @@ class StateMachine {
         // Low knob
         function addCaliperXDrag(part) {
             registerKnob(part, Directions.VERTICAL, function(rotation) {
+            var val = 1;
+            $(part)
+                .mousedown(function() {
+                    isDown = true;
+                })
+                .mousemove(function(event) {
+                    if (isDown) {
+                        if ((prevX < event.pageX)) {
+                            if (_this.xcaliper < sm_orig["MAX_X_CALIPER"]) {
+                                _this.xcaliper += val;
+                                _this.xslide += val;
+                            }
+                        } else if ((prevX > event.pageX)) {
+                            if (_this.xcaliper > sm_orig["MIN_X_CALIPER"]) {
+                                _this.xcaliper -= val;
+                                _this.xslide -= val;
+                            }
+                        }
+                        prevX = event.pageX;
+
+                        // Blur out if out of magic bounds
+                        if (_this.xcaliper > -10 && this.xcaliper < 10 && this.ycaliper > -10 && this.ycaliper < 10) {
+                            _this.inBounds = true;
+                        } else {
+                            _this.inBounds = false;
+                        }
+                        _this.update();
+                    }
+                })
+                .mouseup(function() {
+                    isDown = false;
+                })
+                .mouseleave(function() {
+                    isDown = false;
+                });
+
+            registerKnob(part, Directions.VERTICAL, function(rotation) {
+                console.log(rotation);
                 _this.xcaliper = rotation / 10;
                 _this.xslide = rotation / 10;
 
@@ -667,6 +671,3 @@ class StateMachine {
 }
 
 ms = new StateMachine();
-that = ms;
-ms.setup();
-ms.update();
