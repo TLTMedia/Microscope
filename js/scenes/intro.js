@@ -46,9 +46,7 @@ function updateClonedPositionArr(clonedArr, arr){
 function highlightArray(arr){
     var clonedArr = [];
     for(var pieceIndex = 0; pieceIndex < arr.length; pieceIndex++){
-        //updateClonedPosition( 
         clonedArr.push(highlightComponent(arr[pieceIndex]));
-        bringToFront($(arr[pieceIndex]));
     }
     return clonedArr;
 }
@@ -70,7 +68,7 @@ function triggerLightSwitch(){
     var clonedArr = highlightArray(arr);
     $("#switch")
         .hover(function () {
-            textSetup("Light Switch: Turns the light on and off.", "20%", "73%");        
+            textSetup("Light Switch: Turns the light on and off.", "20%", "73%");
 
             if (!flag){
                 introIsComplete(clonedArr);
@@ -84,7 +82,7 @@ function triggerEyepiece() {
     var arr = ["#eyepiece", "#ocularRight", "#ocularLeft"];
     //secludePart(arr);
     introCountCap++;var flag=false;
-    var clonedArr = highlightArray(arr); 
+    var clonedArr = highlightArray(arr);
     updateClonedPositionArr(clonedArr,arr);
 
     $("#ocularLensBase, #ocularRight, #ocularLeft, #ocularLeftDiopter")

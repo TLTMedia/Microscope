@@ -12,7 +12,6 @@ function lowAdjustLenses() {
     var id="#lensesBasePath";
     if (lowLenses.isActive()) {
         var clonedComp = highlightComponent(id);
-        bringToFront($(id));
         var handler = function() {
             if (ms.lensePosition==0) {
                 removeHighlightCopy();
@@ -30,11 +29,8 @@ function lowDLight() {
     var id="#diaphragm";
     if (lowDiaphragmLight.isActive()) {
         var clonedComp = highlightComponent(id);
-        bringToFront($(id));
-        bringToFront($("#aperture"));
-        bringToFront($("#apertureKnob"));
         var handler = function(){
-            subHandler(ms.diaphragmLightPosition, 5, 30, lowDiaphragmLight, handler, id, null);
+            subHandler(ms.diaphragmLightPosition, 5, 30, lowDiaphragmLight, id, null);
         }
         $(document).bind("mousemove", handler);
     }
@@ -46,9 +42,8 @@ function lowAdjustCoarse() {
     var id="#knobsCoarse";
     if (lowCoarse.isActive()) {
         var clonedComp = highlightComponent(id);
-        bringToFront($(id));
         var handler = function() {
-            subHandler(ms.slideBlur, -1, 1, lowCoarse, handler, id, null);
+            subHandler(ms.slideBlur, -1, 1, lowCoarse, id, null);
         }
         $(document).bind("mousemove", handler);
     }
@@ -59,9 +54,8 @@ function lowDHeight() {
     var id="#draggableDiaphragm";
     if (lowDiaphragmHeight.isActive()) {
         var clonedComp = highlightComponent(id);
-        bringToFront($(id));
         var handler = function() {
-            subHandler(ms.diaphragmHeightPosition, 5, 15, lowDiaphragmHeight, handler, id, null);
+            subHandler(ms.diaphragmHeightPosition, 5, 15, lowDiaphragmHeight, id, null);
         }
         $(document).bind("mousemove", handler);
     }
@@ -77,14 +71,9 @@ function lowAdjustCaliper() {
     if (lowCaliper.isActive()) {
         var clonedComp2 = highlightComponent("#yCaliperKnob");
         var clonedComp2 = highlightComponent("#xCaliperKnob");
-
-        //bringToFront($(id));
-        bringToFront($("#xCaliperKnob"));
-        bringToFront($("#yCaliperKnob"));
-
         var handler = function(){
-            subHandler(ms.xcaliper, 5, 20, lowCaliper, handler, id, null);
-            subHandler(ms.ycaliper, 5, 20, lowCaliper, handler, id, null);
+            subHandler(ms.xcaliper, 5, 20, lowCaliper, id, null);
+            subHandler(ms.ycaliper, 5, 20, lowCaliper, id, null);
         }
         $(document).bind("mousemove", handler);
     }

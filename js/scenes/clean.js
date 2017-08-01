@@ -11,7 +11,6 @@ function cleanAdjustLenses() {
     var id="#lensesBasePath"
         if (cleanupLow.isActive()) {
             var clonedComp = highlightComponent(id);
-            bringToFront($(id));
             var handler = function(){
                 if (ms.lensePosition==0){
                     removeHighlightCopy();
@@ -29,10 +28,9 @@ function cleanAdjustCoarse() {
     var id="#knobsCoarse"
         if (cleanupCoarse.isActive()) {
             var clonedComp = highlightComponent(id);
-            bringToFront($(id));
             var handler = function(){
                 //console.log(ms.knobPosition);
-                subHandler(ms.knobPosition, 19, 21, cleanupCoarse, handler, id, null);
+                subHandler(ms.knobPosition, 19, 21, cleanupCoarse, id, null);
             }
             $(document).bind("mousemove", handler);
         }
@@ -90,7 +88,6 @@ function cleanDisableSwitch() {
     textSetup("Lastly, let's turn off the light switch.", "60%", "73%");
     id = "#switch";
     var clonedComp = highlightComponent(id);
-    bringToFront($(id));
     $("#switch").click(function () {
         if (cleanupLight.isActive()) {
             removeHighlight(clonedComp);

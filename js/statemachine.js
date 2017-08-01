@@ -411,7 +411,7 @@ class StateMachine {
     }
 
     enableCaliper() {
-        var _this=this;
+        var _this = this;
         // Low knob
         function addCaliperXDrag(part) {
             registerKnob(part, Directions.VERTICAL, function(rotation) {
@@ -427,51 +427,33 @@ class StateMachine {
                     _this.inBounds = false;
                 }
                 _this.update();
+
+                if(ms.xcaliper > -1 && ms.xcaliper < 1) {
+                    subHandler(ms.ycaliper, 18, 20, setupCaliper, id, null);
+                }
             }.bind(this));
         }
 
         function addCaliperYDrag(part) {
-            var val = 1;
+            registerKnob(part, Directions.HORIZONTAL, function(rotation) {
+                _this.ycaliper = rotation / 10;
+                _this.yslide = rotation / 10;
 
-            $(part)
-                .mousedown(function() {
-                    isDown = true;
-                })
-            .mousemove(function(event) {
-                if (isDown) {
-                    if ((prevX < event.pageX)) {
-                        if (_this.ycaliper < sm_orig["MAX_Y_CALIPER"]) {
-                            _this.ycaliper += val;
-                            _this.yslide += val;
-                        }
-                    } else if ((prevX > event.pageX)) {
-                        if (_this.ycaliper > sm_orig["MIN_Y_CALIPER"]) {
-                            _this.ycaliper -= val;
-                            _this.yslide -= val;
-                        }
-                    }
-                    prevX = event.pageX;
-                    // Blur out if out of magic bounds
-                    if (_this.xcaliper > sm_orig["MIN_X_BOUND"] && this.xcaliper < sm_orig["MAX_X_BOUND"] && this.ycaliper > sm_orig["MIN_Y_BOUND"] && this.ycaliper < sm_orig["MAX_Y_BOUND"]) {
-                        _this.inBounds = true;
-                    } else {
-                        _this.inBounds = false;
-                    }
-
-
-                    _this.update();
+                prevX = event.pageX;
+                // Blur out if out of magic bounds
+                if (_this.xcaliper > sm_orig["MIN_X_BOUND"] &&
+                    _this.xcaliper < sm_orig["MAX_X_BOUND"] &&
+                    _this.ycaliper > sm_orig["MIN_Y_BOUND"] &&
+                    _this.ycaliper < sm_orig["MAX_Y_BOUND"]) {
+                    _this.inBounds = true;
+                } else {
+                    _this.inBounds = false;
                 }
-            })
-            .mouseup(function() {
-                isDown = false;
-            })
-            .mouseleave(function() {
-                isDown = false;
-            });
+                _this.update();
+            }.bind(this));
         }
         addCaliperXDrag("#xCaliperKnob");
         addCaliperYDrag("#yCaliperKnob");
-
     }
 
     rotateLensesCount(_this, right, forced, testDanger, count) {
@@ -626,10 +608,13 @@ class StateMachine {
     }
 
     enableSideDiaphragmRotate() {
-        registerKnob('#draggableDiaphragm', Directions.VERTICAL, function(rotation) {
-          this.diaphragmHeightPosition = Math.min(rotation / 20, 36);
-          this.update();
-        }.bind(this));
+        var id="#draggableDiaphragm";
+        var callback = function(rotation) {
+            this.diaphragmHeightPosition = Math.min(rotation / 20, 36);
+            this.update();
+            subHandler(ms.diaphragmHeightPosition, 0, 4.8, setupCondense, id, null);
+        };
+        registerKnob(id, Directions.VERTICAL, callback.bind(this));
     }
 }
 

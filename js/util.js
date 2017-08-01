@@ -87,20 +87,14 @@ function updateClonedPosition(cloned, target){
 // low.js && setup.js dependant on this function
 // args:
 // property to inspect, lower bound, upper bound, engine piece, div piece, remove listener
-function subHandler(prop, low, upper, piece, handler, id, cloned) {
+function subHandler(prop, low, upper, piece, id, cloned) {
     // For every trigger, move the cloned position to the object position.
     // Called for movable pieces
     updateClonedPosition(cloned, $(id));
     if (prop > low && prop < upper) {
         removeHighlightCopy();
         piece.complete();
-        $(document).unbind("mousemove", handler);
     }
-}
-
-// Brings an element to the front of the page (z-index workaround)
-function bringToFront(elem) {
-    //elem.appendTo(elem.parent());
 }
 
 // Utility function to highlight component.
@@ -108,9 +102,9 @@ function highlightComponent(id) {
     var origPart = $(id);
     var clonePart = $(id).clone();
     lastPart = clonePart;
-    clonePart.attr("pointer-events", "none")
-        clonePart.toggleClass("highlightPart")
-        clonePart.attr("id", id.replace("#", "") + "Copy");
+    clonePart.attr("pointer-events", "none");
+    clonePart.toggleClass("highlightPart");
+    clonePart.attr("id", id.replace("#", "") + "Copy");
 
     clonePart.attr("filter", "url(#blurMe)");
     clonePart.children().attr("fill", "rgba(0,0,0,0)");

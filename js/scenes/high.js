@@ -13,7 +13,6 @@ function highAdjustLenses() {
     var id="#lensesBasePath";
     if (highLenses.isActive()) {
         var clonedComp = highlightComponent(id);
-        bringToFront($(id));
         var handler = function() {
             if (ms.lensePosition === 6) {
                 removeHighlightCopy();
@@ -32,10 +31,9 @@ function highAdjustAperture() {
     var id="#diaphragm";
     if (highAperture.isActive()) {
         var clonedComp = highlightComponent(id);
-        bringToFront($(id));
         var handler = function() {
             //console.log(ms.diaphragmLightPosition);
-            subHandler(ms.diaphragmLightPosition, 38, 40, highAperture, handler, id, null);
+            subHandler(ms.diaphragmLightPosition, 38, 40, highAperture, id, null);
         }
         $(document).bind("mousemove", handler);
     }
@@ -48,9 +46,8 @@ function highAdjustFine() {
     var id="#knobsFine";
     if (highFine.isActive()) {
         var clonedComp = highlightComponent(id);
-        bringToFront($(id));
         var handler = function() {
-            subHandler(ms.slideBlur, -0.1, 0.1, highFine, handler, id, null);
+            subHandler(ms.slideBlur, -0.1, 0.1, highFine, id, null);
         }
         $(document).bind("mousemove", handler);
     }
