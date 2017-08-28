@@ -160,7 +160,7 @@ class StateMachine {
         }
 
         var yCali = (this.yslide - this.knobPosition) * 10;
-        var xCali = (this.xslide) * 10;
+        var xCali = this.xslide * 10;
         // Microscope darkness (hack is based off of a black background to darken)
         // [0,40] -> Expand to [0,60]
         $("#slideContents,#slideContents2,#stageLight, .slideRect").css({
@@ -307,7 +307,6 @@ class StateMachine {
                             _this.yheight -= val;
                             _this.knobPosition -= val;
                             _this.slideBlur -= 0.15;
-
                         }
                     }
                     prevY = event.pageY;

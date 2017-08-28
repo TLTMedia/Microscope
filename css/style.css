@@ -13,7 +13,6 @@
     z-index: -1;
 }
 
-
 /*     Shows/Hides Element     */
 .elementOn  { visibility: visible; }
 .elementOff { visibility: hidden;  }
@@ -150,9 +149,7 @@
     height: 250%;
     margin-left: -70%;
     margin-top: -80%;
-
 }
-
 
 .sview {
     border-radius: 50%;
@@ -179,10 +176,7 @@
     pointer-events: none;
     width: 100%;
     height: 100%;
-
-
 }
-
 
 #slideBox {
     z-index: 2;
@@ -310,7 +304,6 @@
     z-index:100000;
 }
 
-
 #zoomTarget {
     width: 52%;
     height: 25%;
@@ -320,8 +313,6 @@
     position: absolute;
     opacity: 0;
 }
-
-
 
 #eyeView {
     /*
@@ -403,10 +394,11 @@
     padding: 0.5%;
 }
 
-#header button{
-    padding: 0.5% 1%;
-    margin-top: 0.5%;
-    margin-left: 1.5%;
+#header button {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    margin-top: 0.5rem;
+    margin-left: 1.5rem;
     font-family: "Helvetica", sans-serif;
     border-radius: 20px;
     float: left;
