@@ -404,8 +404,8 @@ class StateMachine {
         var _this = this;
         // Low knob
         function addCaliperXDrag(part) {
-            registerKnob(part, Directions.VERTICAL, function(rotation) {
-                _this.xcaliper = rotation / 10;
+            registerKnob(part, Directions.HORIZONTAL, function(rotation) {
+                _this.xcaliper = Math.min(10, Math.max(-10, rotation / 10));
                 _this.xslide = _this.xcaliper;
 
                 // Blur out if out of magic bounds
@@ -425,7 +425,7 @@ class StateMachine {
 
         function addCaliperYDrag(part) {
             registerKnob(part, Directions.HORIZONTAL, function(rotation) {
-                _this.ycaliper = rotation / 10;
+                _this.ycaliper = Math.min(35, Math.max(0, rotation / 10));
                 _this.yslide = _this.ycaliper - 25;
 
                 prevX = event.pageX;
@@ -599,7 +599,7 @@ class StateMachine {
     enableSideDiaphragmRotate() {
         var id="#draggableDiaphragm";
         var callback = function(rotation) {
-            this.diaphragmHeightPosition = Math.min(rotation / 20, 36);
+            this.diaphragmHeightPosition = Math.max(0, Math.min(rotation / 20, 36));
             this.update();
             subHandler(ms.diaphragmHeightPosition, 0, 4.8, setupCondense, id, null);
         };

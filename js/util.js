@@ -91,7 +91,7 @@ function subHandler(prop, low, upper, piece, id, cloned) {
     // For every trigger, move the cloned position to the object position.
     // Called for movable pieces
     updateClonedPosition(cloned, $(id));
-    if (prop > low && prop < upper) {
+    if (prop >= low && prop <= upper) {
         removeHighlightCopy();
         piece.complete();
     }

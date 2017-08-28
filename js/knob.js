@@ -35,13 +35,13 @@ function getCoords(event, knob, isTouchscreen) {
   if (isTouchscreen) {
     var touch = event.originalEvent.touches[0] ||
                 event.originalEvent.changedTouches[0];
-    var x = knob.center.x - touch.pageX;
-    var y = knob.center.y - touch.pageY;
+    var x = touch.pageX - knob.center.x;
+    var y = touch.pageY - knob.center.y;
     return [x, y];
   }
   else {
-    var x = knob.center.x - event.pageX;
-    var y = knob.center.y - event.pageY;
+    var x = event.pageX - knob.center.x;
+    var y = event.pageY - knob.center.y;
     return [x, y];
   }
 }
@@ -49,12 +49,13 @@ function getCoords(event, knob, isTouchscreen) {
 /**
  * direction: Directions.HORIZONTAL or Directions.VERTICAL
  */
-function getNormalRadians(event, knob, direction, isTouchscreen) {
+function getRotation(event, knob, direction, isTouchscreen) {
   var coords = getCoords(event, knob, isTouchscreen);
   var x = coords[0];
   var y = coords[1];
   var distance = direction === Directions.HORIZONTAL ? x : y;
-  return (Math.atan(distance / 10) + Math.PI / 2) % Math.PI;
+  //return (Math.atan(distance / 10) + Math.PI / 2) % Math.PI;
+  return distance;
 }
 
 function registerKnob(divSelector, direction, onRotate) {
@@ -65,10 +66,10 @@ function registerKnob(divSelector, direction, onRotate) {
           if (knob.enabled || !game.isGuided()) {
               $("body").bind(isTouchscreen ? 'touchmove' : 'mousemove', function (e) {
                   e.preventDefault();
-                  var normalRads = getNormalRadians(e, knob, direction, isTouchscreen);
+                  var rotation = getRotation(e, knob, direction, isTouchscreen);
                   var links = knob.link;
                   for (var j = 0; j < links.length; j++) {
-                      knobRotate(links[j], normalRads, onRotate);
+                      knobRotate(links[j], rotation, onRotate);
                   }
               });
               $("body").mouseup(function () {
@@ -81,8 +82,8 @@ function registerKnob(divSelector, direction, onRotate) {
     register(false);
 }
 
-function knobRotate(id, normRads, onRotate) {
+function knobRotate(id, rotation, onRotate) {
     var knob = knobs[id];
-    knob.rotation = normRads * 360;
-    onRotate(knob.rotation)
+    knob.rotation = rotation;  // TODO: Shouldn't ignore existing rotation of knob
+    onRotate(knob.rotation);
 }
