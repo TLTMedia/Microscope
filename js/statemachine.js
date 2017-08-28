@@ -603,7 +603,7 @@ class StateMachine {
             this.update();
             subHandler(ms.diaphragmHeightPosition, 0, 4.8, setupCondense, id, null);
         };
-        registerKnob(id, Directions.VERTICAL, callback.bind(this));
+        registerKnob(id, Directions.VERTICAL, callback.bind(this), 270);
     }
 }
 

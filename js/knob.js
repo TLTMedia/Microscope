@@ -58,8 +58,8 @@ function getRotation(event, knob, direction, isTouchscreen) {
   return distance;
 }
 
-function registerKnob(divSelector, direction, onRotate) {
-    saveKnob(divSelector);
+function registerKnob(divSelector, direction, onRotate, origRotation) {
+    saveKnob(divSelector).oldRotation = origRotation || 0;
     function register(isTouchscreen) {
       $(divSelector).bind(isTouchscreen ? 'touchstart' : 'mousedown', function (e) {
           var knob = getKnob(divSelector);
@@ -74,6 +74,7 @@ function registerKnob(divSelector, direction, onRotate) {
               });
               $("body").mouseup(function () {
                   $("body").off("mousemove touchmove");
+                  knob.oldRotation = knob.rotation;
               });
           }
       });
@@ -84,6 +85,6 @@ function registerKnob(divSelector, direction, onRotate) {
 
 function knobRotate(id, rotation, onRotate) {
     var knob = knobs[id];
-    knob.rotation = rotation;  // TODO: Shouldn't ignore existing rotation of knob
+    knob.rotation = knob.oldRotation + rotation;
     onRotate(knob.rotation);
 }
