@@ -13,7 +13,7 @@ function largeFeedbackBox(title, body, lambdaEnd) {
     $("#helpBoxHeader").text("Details");
     $("#endText").text(title);
     $("#endSubText").text(body);
-    $("#buttonContainer").html("<div class=\"endOption rounded stripes endOptionUnlocked\" id=\"endOption0\" draggable=\"false\"><div class=\"endOptionText fs-24 text\">Continue</div></div>");
+    $("#buttonContainer").html("<button class=\"endOption rounded stripes endOptionUnlocked\" id=\"endOption0\" draggable=\"false\">Continue</button>");
     $("#endOption0").click(lambdaEnd);
 }
 
@@ -25,7 +25,7 @@ function enableQuizBox() {
 
 // Makes  button
 function buttonMaker(id, title) {
-    return "<div class=\"endOption rounded stripes endOptionUnlocked\" id=\"endOption" + id + "\" draggable=\"false\"><div class=\"endOptionText fs-24 text\">" + title + "</div></div><br><br>"
+    return "<button class=\"endOption rounded stripes endOptionUnlocked\" id=\"endOption" + id + "\" draggable=\"false\">" + title + "</button><br><br>"
 }
 
 /*
@@ -43,19 +43,19 @@ function largeFeedbackBoxOptions(title, body) {
     $("#buttonContainer").html(finalList);
 
     // Add event listeners
-    $("#endOption1").click(function() {
+    $("#1").click(function() {
         destroy();
         currentMode = "Total-Magnification";
         startup(loadTotalMag);
     });
 
-    $("#endOption2").click(function() {
+    $("#2").click(function() {
         destroy();
         currentMode = "Cell-Count";
         startup(loadCellCount);
     });
 
-    $("#endOption4").click(function() {
+    $("#4").click(function() {
         destroy();
         currentMode = "Video";
         startup(loadVideoQuiz);
@@ -110,7 +110,7 @@ function loadMenu(scene) {
 
                         $("#results").html('<iframe style="margin-top:0%;" width="100%" height="100%" src="https://www.youtube.com/embed/D-UmfqFjpl0" frameborder="0" allowfullscreen></iframe>');
                         $("#endSubText").text('');
-                        $("#buttonContainer").html("<div class=\"endOption rounded stripes endOptionUnlocked\" id=\"endOption0\" draggable=\"false\"><div class=\"endOptionText fs-24 text\">Continue</div></div>");
+                        $("#buttonContainer").html("<button class=\" rounded stripes endOptionUnlocked\" id=\"endOption0\" draggable=\"false\">Continue</button>");
                     }, 1000);
                 })
             enableQuizBox();

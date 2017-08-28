@@ -363,7 +363,7 @@
 
 
 #popupText{
-    color:#000;
+    color: #000;
     padding: 10px;
     overflow: hidden;
 }
@@ -389,7 +389,7 @@
     background-image: url("../img/checkered.png");
 }
 
-#header{
+#header {
     background-image: url("../stripes/DarkStripeBG.png");
     padding: 0.5rem;
 }
@@ -405,6 +405,7 @@
     color: white;
 
 }
+
 .headerButtonInactive{
     background-image: url("../stripes/BlueStripe.png");
 }
@@ -414,15 +415,24 @@
     background-image: url("../stripes/GreenStripe3.png");
 }
 
-#header p{
+#header p {
     margin-right: 3%;
     margin-top: 1%;
     float: right;
     color: white;
 }
 
+button {
+  cursor: pointer;
+}
 
-.st0{
+.endOption {
+  border: none;
+  font-size: 1.5em;
+  color: white;
+}
+
+.st0 {
     display: inline-block;
 }
 
