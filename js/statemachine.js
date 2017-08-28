@@ -128,7 +128,7 @@ class StateMachine {
        the changes of the scope should reflect all at once.
        */
     update() {
-        W_RAT = $(window).width()/$(window).height();
+        W_RAT = $(window).width() / $(window).height();
         var aspectRatio = 4/3;
         /* Microscope animations */
         this.translateReduceSVG("#ocularRight, #ocularRightCopy", this.eyepiecePosition, 0);
@@ -150,8 +150,7 @@ class StateMachine {
         $("#stageLight ellipse").attr("rx", 12-((sm_orig.MAX_DIAPHRAGM_HEIGHT-this.diaphragmHeightPosition)/2));
         $("#stageLight ellipse").attr("ry", 6-((sm_orig.MAX_DIAPHRAGM_HEIGHT-this.diaphragmHeightPosition)/4));
 
-        //console.log(W_RAT);
-        if(W_RAT <aspectRatio) {
+        if (W_RAT < aspectRatio) {
             this.translateReduce(".slideRect, #slideView", this.eyepiecePosition * (Math.pow(4*(1/W_RAT),-1)+aspectRatio), 0);
             this.translateReduce(".slideRect,#slideView2", -this.eyepiecePosition * (Math.pow(3*(1/W_RAT),-1)+aspectRatio), 0);
         } else{
@@ -206,7 +205,6 @@ class StateMachine {
         this.update();
     }
 
-
     // === Functionality for the FRONT view of the Microscope ==== ///
 
     /* Toggles the light switch */
@@ -226,8 +224,6 @@ class StateMachine {
 
         });
     }
-
-
 
     /*Enables functionality for the eyepiece on call.*/
     enableEyepiece() {
@@ -320,10 +316,8 @@ class StateMachine {
                 isDown = false;
             });
         }
-
         addCourseDrag("#knobsCoarse", 0.5);
     }
-
 
     enableFineKnob() {
         var _this=this;
@@ -345,7 +339,6 @@ class StateMachine {
                             _this.slideBlur -= val;
                         }
                     }
-                    //console.log(ms.knobPosition);
                     prevY = event.pageY;
                     _this.update();
                 }
@@ -357,10 +350,8 @@ class StateMachine {
                 isDown = false;
             });
         }
-
         addFineDrag("#knobsFine", 0.2);
     }
-
 
     /*Enables functionality for the eyepiece on call.*/
     enableDiaphragmLight() {
@@ -414,9 +405,8 @@ class StateMachine {
         // Low knob
         function addCaliperXDrag(part) {
             registerKnob(part, Directions.VERTICAL, function(rotation) {
-                console.log(rotation);
                 _this.xcaliper = rotation / 10;
-                _this.xslide = rotation / 10;
+                _this.xslide = _this.xcaliper;
 
                 // Blur out if out of magic bounds
                 if (_this.xcaliper > -10 && _this.xcaliper < 10 &&
@@ -436,7 +426,7 @@ class StateMachine {
         function addCaliperYDrag(part) {
             registerKnob(part, Directions.HORIZONTAL, function(rotation) {
                 _this.ycaliper = rotation / 10;
-                _this.yslide = rotation / 10;
+                _this.yslide = _this.ycaliper - 25;
 
                 prevX = event.pageX;
                 // Blur out if out of magic bounds
