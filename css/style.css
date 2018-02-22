@@ -1,31 +1,57 @@
 /* http://www.w3schools.com/cssref/css3_pr_animation.asp*/
 
 #microscope {
-  height: 100%;
+    height: 100%;
 }
 
-#light, #lensesWhite, #lensesRed, #lensesBlue, #lensesYellow, #ocularLeftStick, #ocularLeftDiopter{
+#light,
+#lensesWhite,
+#lensesRed,
+#lensesBlue,
+#lensesYellow,
+#ocularLeftStick,
+#ocularLeftDiopter {
     pointer-events: none;
 }
 
-#overlay, #main-menu{
+#overlay,
+#main-menu {
     position: absolute;
     z-index: -1;
 }
 
 /*     Shows/Hides Element     */
-.elementOn  { visibility: visible; }
-.elementOff { visibility: hidden;  }
-.opacityLow { opacity: 0.1; }
 
-.lightOn  { opacity: 1; width: 50px; height: 50px;}
-#switch{}
+.elementOn {
+    visibility: visible;
+}
+
+.elementOff {
+    visibility: hidden;
+}
+
+.opacityLow {
+    opacity: 0.1;
+}
+
+.lightOn {
+    opacity: 1;
+    width: 50px;
+    height: 50px;
+}
+
+#switch {}
 
 
 /*     Shifts slide     */
+
 @keyframes slideshift {
-    0%    { transform: translate(0px,0px);    }
-    100%  { transform: translate(-200px,0px); }
+    0% {
+        transform: translate(0px, 0px);
+    }
+    100% {
+        transform: translate(-200px, 0px);
+    }
 }
 
 .shift {
@@ -34,10 +60,16 @@
 }
 
 /*     Rotates right clip     */
+
 @keyframes rotaterightclip {
-    0%   { transform: rotate(0deg);  }
-    100% { transform: rotate(-60deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(-60deg);
+    }
 }
+
 .rotateright {
     animation-name: rotaterightclip;
     animation-duration: 3s;
@@ -47,10 +79,16 @@
     animation-direction: alternate;
     transform-origin: top;
 }
+
 @keyframes revertrightclip {
-    0%   { transform: rotate(-60deg);  }
-    100% { transform: rotate(0deg); }
+    0% {
+        transform: rotate(-60deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
 }
+
 .revertright {
     animation-name: revertrightclip;
     animation-duration: 3s;
@@ -62,10 +100,16 @@
 }
 
 /*     Rotates left clip     */
+
 @keyframes rotateleftclip {
-    0%   { transform: rotate(0deg);  }
-    100% { transform: rotate(60deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(60deg);
+    }
 }
+
 .rotateleft {
     animation-name: rotateleftclip;
     animation-duration: 3s;
@@ -75,10 +119,16 @@
     animation-direction: alternate;
     transform-origin: top;
 }
+
 @keyframes revertleftclip {
-    0%   { transform: rotate(60deg);  }
-    100% { transform: rotate(0deg); }
+    0% {
+        transform: rotate(60deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
 }
+
 .revertleft {
     animation-name: revertleftclip;
     animation-duration: 3s;
@@ -90,9 +140,14 @@
 }
 
 /*     moves stage     */
+
 @keyframes stageshift {
-    0%    { transform: translate(0px,0px);    }
-    100%  { transform: translate(0px,50px); }
+    0% {
+        transform: translate(0px, 0px);
+    }
+    100% {
+        transform: translate(0px, 50px);
+    }
 }
 
 .stageshifter {
@@ -101,50 +156,76 @@
 }
 
 /*     Zoom     */
+
 @keyframes zooming {
-    0%   { top: 10%;  bottom: 30%; width: 80%; height:100%; right: 50%; left:10%; }
-    100% { width: 200%; height: 200%; left: -50%; top: -50%; }
+    0% {
+        top: 10%;
+        bottom: 30%;
+        width: 80%;
+        height: 100%;
+        right: 50%;
+        left: 10%;
+    }
+    100% {
+        width: 200%;
+        height: 200%;
+        left: -50%;
+        top: -50%;
+    }
 }
 
-.stageZoomIn{
-    animation-name:zooming;
-    animation-duration:1s;
-    width:200%;
-    height:200%;
+.stageZoomIn {
+    animation-name: zooming;
+    animation-duration: 1s;
+    width: 200%;
+    height: 200%;
     left: -50%;
-    top:-50%;
-    position:absolute;
+    top: -50%;
+    position: absolute;
     animation-fill-mode: forwards;
 }
 
 @keyframes unzooming {
-    0%     { width: 200%; height: 200%; left: -50%; top: -50%; }
-    100%   { top: 10%;  bottom: 30%; width: 80%; height:100%; right: 50%; left:10%; }
+    0% {
+        width: 200%;
+        height: 200%;
+        left: -50%;
+        top: -50%;
+    }
+    100% {
+        top: 10%;
+        bottom: 30%;
+        width: 80%;
+        height: 100%;
+        right: 50%;
+        left: 10%;
+    }
 }
-.stageZoomOut{
-    animation-name:unzooming;
-    animation-duration:1s;
-    width:200%;
-    height:200%;
+
+.stageZoomOut {
+    animation-name: unzooming;
+    animation-duration: 1s;
+    width: 200%;
+    height: 200%;
     left: -50%;
-    top:-50%;
-    position:absolute;
+    top: -50%;
+    position: absolute;
     animation-fill-mode: forwards;
 }
 
 #rotate {
     border-radius: 50%;
     border-color: black;
-    display:visible;
+    display: visible;
     position: absolute;
     left: 4%;
     top: 60%;
     text-align: center;
     overflow: hidden;
-    border: 1px solid rgb(90,90,90);
+    border: 1px solid rgb(90, 90, 90);
 }
 
-#rotate svg{
+#rotate svg {
     width: 250%;
     height: 250%;
     margin-left: -70%;
@@ -163,12 +244,13 @@
     overflow: hidden;
 }
 
-#slideView2{
+#slideView2 {
     z-index: 0;
 }
 
 
-#slideView img, #slideView2 img{
+#slideView img,
+#slideView2 img {
     border-radius: 50%;
     border-color: black;
     margin: 0 auto;
@@ -178,19 +260,22 @@
     height: 100%;
 }
 
+#slide {
+    z-index: 100;
+}
+
 #slideBox {
-    z-index: 2;
+    z-index: -1;
     left: 5%;
     top: 42%;
     width: 10%;
     position: absolute;
 }
 
-#slideBox svg{
+#slideBox svg {
     position: relative;
     width: 100%;
 }
-
 
 #switchTarget {
     width: 4%;
@@ -211,7 +296,7 @@
     opacity: 0;
 }
 
-#diaphragmTarget{
+#diaphragmTarget {
     width: 10%;
     height: 7%;
     left: 44%;
@@ -220,88 +305,94 @@
     opacity: 0;
 }
 
-.highlightPart{
+.highlightPart {
     animation: pulsate 2s infinite;
     stroke: rgba(255, 0, 0, 0.55);
     stroke-width: 8px;
 }
 
-@keyframes pulsate{
-    0%{opacity:1}
-    50%{opacity:0}
-    100%{opacity:1}
+@keyframes pulsate {
+    0% {
+        opacity: 1
+    }
+    50% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1
+    }
 }
 
-#fineknobsTarget1{
+#fineknobsTarget1 {
     width: 3%;
     height: 5%;
     left: 37%;
     top: 63.5%;
     position: absolute;
     opacity: 0;
-    z-index:100000;
+    z-index: 100000;
 }
 
-#fineknobsTarget2{
+#fineknobsTarget2 {
     width: 3%;
     height: 5%;
     left: 58%;
     top: 63.5%;
     position: absolute;
     opacity: 0;
-    z-index:100000;
+    z-index: 100000;
 }
 
 
-#coarseknobsTarget1{
+#coarseknobsTarget1 {
     width: 3%;
     height: 8%;
     left: 39%;
     top: 62.5%;
     position: absolute;
     /*    opacity: 0;*/
-    z-index:100000;
+    z-index: 100000;
 }
 
-#coarseknobsTarget2{
+#coarseknobsTarget2 {
     width: 3%;
     height: 8%;
     left: 56%;
     top: 62.5%;
     position: absolute;
     /*    opacity: 0;*/
-    z-index:100000;
+    z-index: 100000;
 }
 
-#lensesTarget{
+#lensesTarget {
     width: 26%;
     height: 16%;
     left: 36%;
     top: 34%;
     position: absolute;
     opacity: 0;
-    z-index:100000;
+    z-index: 100000;
 }
 
 
-#caliperTarget1{
+#caliperTarget1 {
     width: 38%;
     height: 6%;
     left: 35%;
     top: 48%;
     position: absolute;
     opacity: 0;
-    z-index:100000;
+    z-index: 100000;
 }
 
-#caliperTarget2{
+#caliperTarget2 {
     width: 7%;
     height: 20%;
     left: 62%;
     top: 48%;
     position: absolute;
     opacity: 0;
-    z-index:100000;
+    z-index: 100000;
 }
 
 #zoomTarget {
@@ -328,16 +419,15 @@
 }
 
 
-.knob{
-}
+.knob {}
 
 
-#popupType{
+#popupType {
     padding: 5px;
     font-size: 20px;
 }
 
-.popupInstruct{
+.popupInstruct {
     background-color: rgba(114, 177, 191, 0.5);
     border-top-right-radius: 0.5em;
     border-top-left-radius: 0.5em;
@@ -345,10 +435,10 @@
 }
 
 #popup {
-    background-color:#ffffff;
+    background-color: #ffffff;
     left: 0%;
     top: 0%;
-    display:none;
+    display: none;
     position: absolute;
     z-index: 1000000;
     max-height: 30%;
@@ -362,16 +452,15 @@
 }
 
 
-#popupText{
+#popupText {
     color: #000;
     padding: 10px;
     overflow: hidden;
 }
 
-#popupTextWrapper{
-}
+#popupTextWrapper {}
 
-#helpBox{
+#helpBox {
     left: 83%;
     top: 45%;
     width: 15%;
@@ -406,7 +495,7 @@
 
 }
 
-.headerButtonInactive{
+.headerButtonInactive {
     background-image: url("../stripes/BlueStripe.png");
 }
 
@@ -423,24 +512,23 @@
 }
 
 button {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .endOption {
-  border: none;
-  font-size: 1.5em;
-  color: white;
+    border: none;
+    font-size: 1.5em;
+    color: white;
 }
 
 .st0 {
     display: inline-block;
 }
 
-.slideRect{
+.slideRect {
     width: 100%;
-    background-color: rgba(220,220,220,1);
+    background-color: rgba(220, 220, 220, 1);
     padding: 0 30%;
 }
 
-#slideContents{
-}
+#slideContents {}

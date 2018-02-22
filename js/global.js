@@ -37,7 +37,9 @@ components = [
     "#lenses12",
     "#stageLight",
     "#illuminationLight",
-    "#slideBox"
+    "#slideBox",
+    "#turretLeft",
+    "#turretRight"
     ];
 
 // State machine boundaries (DYNAMIC)
@@ -59,8 +61,8 @@ sm_bd = {
     "MIN_X_BOUND": -10,
     "MAX_X_BOUND": 10,
     //Blur
-    "MAX_BLUR":10,
-    "MIN_BLUR":-10,
+    "MAX_BLUR": 10,
+    "MIN_BLUR": -10,
     //Diaphragm
     "MAX_DIOPTER": 0, // Meaning LOWER BOUND
     "MIN_DIOPTER": -10
@@ -86,9 +88,9 @@ sm_orig = {
     "MIN_X_BOUND": -10,
     "MAX_X_BOUND": 10,
     //Blur
-    "MAX_BLUR":10,
-    "MIN_BLUR":-10,
+    "MAX_BLUR": 10,
+    "MIN_BLUR": -10,
     //Diaphragm
-    "MAX_DIOPTER": 0,   // Meaning LOWER BOUND
+    "MAX_DIOPTER": 0, // Meaning LOWER BOUND
     "MIN_DIOPTER": -10
 }

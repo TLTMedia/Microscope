@@ -35,26 +35,42 @@ function setupEnableBlade(){
 function setupEnableSlide() {
     textSetup("Now grab the slide below and put it against the caliper.", "64%", "45%");
     toggleVisibility("#slide");
-
+    
     var origSlideX = 210;
     var origSlideY = 70;
-
+    
     $("#slide").attr('transform', `translate(${origSlideX} ${origSlideY})`)
+    var clonedSlider = highlightComponent("#slide");
+    var clonedSliderBoo;
+      
+    var offset = $("#slide").offset();
+    var width = $("#slide").width();
+    var height = $("#slide").height();
+    var centerX = offset.left + (width / 2);
+    var centerY = offset.top + (height / 2);
+    var cloned = false;
+    
+    // Set it so the sliderCopy disappears when the slider is grabbed
+    // and so the slide target is highlighted 
+    // clonedSliderBoo is the highlight of the slideTarget
+    $("#slide").mousedown('dragstart', function(){
+        removeHighlight(clonedSlider);
+        if(!cloned){
+        clonedSliderBoo = highlightComponent("#slideTarget");
+        cloned = true;
+        }
+    });
+   
     registerDrag('slide', 'slideTarget', function() {
         setupSlide.complete();
         $("#caliperBlade").trigger("click");
-        $("#pseudo_slideCopyCopy").remove();
-        $("#pseudo_slideCopy").remove();
+        removeHighlight(clonedSliderBoo);
     });
 
     // this is used later in the resizing and gesture demos
-    //window.dragMoveListener = dragMoveListener;
+    // window.dragMoveListener = dragMoveListener;
 }
 
-
-//  (´・ω・`) broke this
-//  knob should go <- not ->
-// hehe dwai shrin i got u
 function setupCondenser() {
     textSetup("Rotate the condenser knob all the way to the top.", "8%", "45%");
     var id="#draggableDiaphragm";
@@ -63,13 +79,15 @@ function setupCondenser() {
     }
 }
 
-
 function setupAdjustCaliper() {
     textSetup("Move the caliper knob so the aperture light is directly on the specimen.", "62%", "60%");
-    id = "#caliperKnob"
+    var idX = "#xCaliperKnob";
+    var idY = "#yCaliperKnob";
+
+    // THE COMPONENT IS ACTIVE, NOT SURE WHY IT ISN'T HIGHLIGHTING
     if (setupCaliper.isActive()) {
-        highlightComponent("#yCaliperKnob");
-        highlightComponent("#xCaliperKnob");
+        highlightComponent(idX);
+        highlightComponent(idY);
         $("#stageLight").removeClass("st0");
     }
 }

@@ -8,37 +8,45 @@
 
 function cleanAdjustLenses() {
     textSetup("Rotate the lenses to the lowest objective (4X) without the 100X objective passing the slide.", "15%", "35%");
-    var id="#lensesBasePath"
-        if (cleanupLow.isActive()) {
-            var clonedComp = highlightComponent(id);
-            var handler = function(){
-                if (ms.lensePosition==0){
-                    removeHighlightCopy();
-                    cleanupLow.complete();
-                    $(document).unbind("mousemove", handler);
-                }
+    var id = "#lensesBasePath"
+    if (cleanupLow.isActive()) {
+        var clonedComp = highlightComponent(id);
+        var handler = function () {
+            if (ms.lensePosition == 0) {
+                removeHighlightCopy();
+                cleanupLow.complete();
+                $(document).unbind("mousemove", handler);
             }
-            $(document).bind("mousemove", handler);
         }
+        $(document).bind("click", handler);
+    }
 }
 
 // Trigger for coarse knob.
 function cleanAdjustCoarse() {
     textSetup("Move the stage to the bottom using the coarse knob.", "60%", "64%");
-    var id="#knobsCoarse"
-        if (cleanupCoarse.isActive()) {
-            var clonedComp = highlightComponent(id);
-            var handler = function(){
-                //console.log(ms.knobPosition);
-                subHandler(ms.knobPosition, 19, 21, cleanupCoarse, id, null);
-            }
-            $(document).bind("mousemove", handler);
+    var id = "#knobsCoarse"
+    if (cleanupCoarse.isActive()) {
+        var clonedComp = highlightComponent(id);
+        var handler = function () {
+            //console.log(ms.knobPosition);
+            subHandler(ms.knobPosition, 19, 21, cleanupCoarse, id, null);
         }
+        $(document).bind("mousemove", handler);
+    }
 }
 
 function cleanRemoveSlide() {
-    textSetup("Now grab the slide below and put it against the caliper.", "64%", "45%");
-    toggleVisibility("#slide");
+    textSetup("Remove the slide and put it back in the case.", "64%", "45%");
+    //    toggleVisibility("#slide");
+    //    console.log("DONE");
+
+    registerDrag('slide', 'slideBox', function () {
+        console.log("DONE");
+        cleanupSlide.complete();
+        removeHighlightCopy();
+        //        toggleVisiblity("#slide");
+    });
 }
 
 function cleanDisableSwitch() {

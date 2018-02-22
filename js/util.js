@@ -5,9 +5,9 @@
  */
 
 
-function unbindComponentHover(){
+function unbindComponentHover() {
     // Unbind the "Introduction" stuff
-    for (var i=0; i<components.length;i++){
+    for (var i = 0; i < components.length; i++) {
         $(components[i]).off("mouseenter");
         $(components[i]).off("mouseleave");
     }
@@ -22,13 +22,13 @@ function popupOn(text, props) {
 
 // Takes arg string, type, where type is type of popup to convert to.
 // As of now, there should be a unique popup box.
-function updatePopup(type, text){
-    if (type=="Instruction"){
+function updatePopup(type, text) {
+    if (type == "Instruction") {
         $(".popupInstruct").text("Instruction");
         $(".popupInstruct").css("background-color", "rgba(114, 177, 191, 0.5)");
         $("#popupText").text(text);
     }
-    if (type=="Warning"){
+    if (type == "Warning") {
         $(".popupInstruct").text("Warning");
         $(".popupInstruct").css("background-color", "rgba(191, 114, 126, 0.8)");
         $("#popupText").text(text);
@@ -43,13 +43,13 @@ function popupOff() {
 
 function textSetup(tooltip, lt, tp) {
     popupOn(tooltip, {
-            "left": lt,
-            "top": tp
-            });
+        "left": lt,
+        "top": tp
+    });
 }
 
 
-function toggleVisibility(id){
+function toggleVisibility(id) {
     $(id).toggleClass("elementOff");
     $(id).toggleClass("elementOn");
 }
@@ -63,21 +63,20 @@ String.prototype.capitalize = function () {
 
 // Copies the style of one function and applies it to another.
 // Args are jquery elements
-function copyAnimation(elem1,elem2, type){
+function copyAnimation(elem1, elem2, type) {
     var style = css(elem1);
     $(elem2).css(style);
 }
 
 
 //
-function updateClonedPosition(cloned, target){
-    if (cloned != null){
-        if (cloned.constructor === Array){
-            cloned.forEach(function(obj){
-                    obj.attr('style', target.attr('style'));
-                    })
-        }
-        else{
+function updateClonedPosition(cloned, target) {
+    if (cloned != null) {
+        if (cloned.constructor === Array) {
+            cloned.forEach(function (obj) {
+                obj.attr('style', target.attr('style'));
+            })
+        } else {
             cloned.attr('style', target.attr('style'));
         }
     }
@@ -92,8 +91,14 @@ function subHandler(prop, low, upper, piece, id, cloned) {
     // Called for movable pieces
     updateClonedPosition(cloned, $(id));
     if (prop >= low && prop <= upper) {
-        removeHighlightCopy();
+        removeHighlightId(id + "Copy");
         piece.complete();
+
+        //SURROUND WITH AN IF STATEMENT
+        //        if (handler != null) {
+        //            $(document).unbind("mousemove", handler);
+        //        }
+
     }
 }
 
@@ -107,6 +112,7 @@ function highlightComponent(id) {
     clonePart.attr("id", id.replace("#", "") + "Copy");
 
     clonePart.attr("filter", "url(#blurMe)");
+    clonePart.attr("transform", $(id).attr("transform"));
     clonePart.children().attr("fill", "rgba(0,0,0,0)");
     clonePart.insertBefore($(id));
     return clonePart;
@@ -122,7 +128,8 @@ function removeHighlightId(id) {
 }
 
 function removeHighlightCopy() {
-    $('*[id*=Copy]:visible').each(function() {
+    // FOR EVERY OBJECT WITH AN ID THAT CONTAINS THE WORD "COPY", REMOVE THE OBJECT
+    $('*[id*=Copy]:visible').each(function () {
         $(this).remove();
     });
 
@@ -130,5 +137,5 @@ function removeHighlightCopy() {
 }
 
 function getFile(name, callback) {
-  $.get(name,callback, 'text');
+    $.get(name, callback, 'text');
 }

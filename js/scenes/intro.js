@@ -55,7 +55,6 @@ function highlightArray(arr){
 function removeHighlightArray(clonedArr){
     for(var pieceIndex = 0; pieceIndex < clonedArr.length; pieceIndex++){
         removeHighlight(clonedArr[pieceIndex]);
-
     }
 }
 

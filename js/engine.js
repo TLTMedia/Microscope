@@ -3,19 +3,19 @@ function Game(guided, manual) {
     this.manual = manual;
     this.steps = [];
     this.groups = [];
-    this.addStep = function(step) {
+    this.addStep = function (step) {
         this.steps.push(step);
     }
-    this.addGroup = function(group) {
+    this.addGroup = function (group) {
         this.groups.push(group);
     }
-    this.linkSteps = function() {
+    this.linkSteps = function () {
         for (var i = 0; i < this.steps.length - 1; i++) {
             this.steps[i].successor = this.steps[i + 1];
         }
         this.makeStepObjects();
     }
-    this.makeStepObjects = function() {
+    this.makeStepObjects = function () {
         // console.log("Making steps");
         // Make group objects
         for (var i = 0; i < this.groups.length; i++) {
@@ -36,28 +36,27 @@ function Game(guided, manual) {
             $("#step" + i).append("<div id='icon" + i + "' class='icon'></div>");
             $("#step" + i).append("<div id='panel" + i + "' class='stepPanel'></div>");
             $("#panel" + i).append("<div id='stepText" + i + "' class='stepText fs-18'></div>");
-            $("#step" + i).append("<div id='stepTextHint" + i + "' class='stepTextHint fs-12'>" + this.steps[i].longText +"</div>");
+            $("#step" + i).append("<div id='stepTextHint" + i + "' class='stepTextHint fs-12'>" + this.steps[i].longText + "</div>");
 
             var stepStr = ("#step" + i);
             // Enable scroll down hints on steps.
-            $(stepStr).click(function(){
+            $(stepStr).click(function () {
                 var stepId = $(this).attr("id");
                 var stepIndex = parseInt(stepId.replace("step", ""));
                 //console.log(stepId);
                 //console.log($(this).prop('style')['top']);
-                var j=that.steps.length;
-                var stepPerc = parseInt(($(this).prop('style')['top']).replace("%",""));
+                var j = that.steps.length;
+                var stepPerc = parseInt(($(this).prop('style')['top']).replace("%", ""));
 
                 // Locate Step object
                 var expandedState = null;
-                that.steps.forEach(function(elem){
+                that.steps.forEach(function (elem) {
                     if (elem.div == stepStr) {
                         expandedState = elem.expanded
                         elem.expanded = !elem.expanded
 
                         // Toggle hint visibility
-                        $("#stepTextHint" + stepIndex).toggle("fast", function(){
-                        });
+                        $("#stepTextHint" + stepIndex).toggle("fast", function () {});
                     }
                 });
 
@@ -66,57 +65,57 @@ function Game(guided, manual) {
                 if (!expandedState) offsetValue = "+=100";
                 else offsetValue = "-=100";
 
-                that.groups.forEach(function(elem){
-                    var groupPerc = parseInt(($(elem.div).prop('style')['top']).replace("%",""));
-                    if (stepPerc < groupPerc){
+                that.groups.forEach(function (elem) {
+                    var groupPerc = parseInt(($(elem.div).prop('style')['top']).replace("%", ""));
+                    if (stepPerc < groupPerc) {
                         //$(elem.div).css("margin-top", offsetValue);
 
                         $(elem.div).animate({
                             "margin-top": offsetValue
-                        }, "fast", function(){});
+                        }, "fast", function () {});
 
                         //console.log(groupPerc);
                     }
                 })
 
-                that.steps.forEach(function(elem){
-                    var groupPerc = parseInt(($(elem.div).prop('style')['top']).replace("%",""));
-                    if (stepPerc < groupPerc){
+                that.steps.forEach(function (elem) {
+                    var groupPerc = parseInt(($(elem.div).prop('style')['top']).replace("%", ""));
+                    if (stepPerc < groupPerc) {
                         //$(elem.div).css("margin-top", offsetValue);
                         //console.log(groupPerc);
                         //
                         $(elem.div).animate({
                             "margin-top": offsetValue
-                        }, "fast", function(){});
+                        }, "fast", function () {});
                     }
                 })
             });
         }
     }
-    this.getSteps = function() {
+    this.getSteps = function () {
         return this.steps;
     }
-    this.getGroups = function() {
+    this.getGroups = function () {
         return this.groups;
     }
-    this.getGroupStep = function(i, j) {
+    this.getGroupStep = function (i, j) {
         return this.groups[i].steps[j];
     }
-    this.getCurrentStep = function() {
+    this.getCurrentStep = function () {
         for (var i = 0; i < this.getSteps().length; i++) {
             if (this.getSteps()[i].state == 1)
                 return this.getSteps()[i];
         }
     }
-    this.isGuided = function() {
+    this.isGuided = function () {
         return this.guided;
     }
-    this.isManual = function() {
+    this.isManual = function () {
         return this.manual;
     }
 
     // Expands/collapses the appropriate step objects
-    this.updateStepExpansion = function() {
+    this.updateStepExpansion = function () {
         // Assign a base to each of the steps
         var currentLine = 0;
         for (var i = 0; i < this.getGroups().length; i++) {
@@ -144,8 +143,9 @@ function Game(guided, manual) {
     }
 }
 
-function Step(id, shortText, longText, feedbackText, div, iconDiv) {
+function Step(id, shortText, longText, feedbackText, div, iconDiv, logic) {
     this.id = id;
+    this.logic = logic || {};
     this.shortText = shortText;
     this.longText = longText;
     this.feedbackText = feedbackText;
@@ -157,16 +157,16 @@ function Step(id, shortText, longText, feedbackText, div, iconDiv) {
     this.hintTimeout = 0;
     this.hintShowing = false;
     this.position = 0;
-    this.isActive = function() {
+    this.isActive = function () {
         return this.state == 1;
     };
-    this.isComplete = function() {
+    this.isComplete = function () {
         return this.state == 2;
     };
-    this.isFailed = function() {
+    this.isFailed = function () {
         return this.state == 3;
     }
-    this.complete = function() {
+    this.complete = function () {
         if (this.state == 1) {
             endStep(this);
             this.state = 2;
@@ -178,14 +178,14 @@ function Step(id, shortText, longText, feedbackText, div, iconDiv) {
             updateSteps();
         }
     };
-    this.activate = function() {
+    this.activate = function () {
         if (this.state == 0) {
             this.state = 1;
             animateActivateObject(this, false);
             startStep(this);
             // Start timer to show hint
             if (game.isGuided()) {
-                this.hintTimeout = setTimeout(function(t) {
+                this.hintTimeout = setTimeout(function (t) {
                     t.hintShowing = true;
                     $("#box_" + t.id).removeClass("anim_hintFadeOut")
                     $("#box_" + t.id).addClass("anim_hintFadeIn")
@@ -195,29 +195,35 @@ function Step(id, shortText, longText, feedbackText, div, iconDiv) {
 
         //console.log(div);
     }
-    this.reset = function() {
+
+    this.skip = function () {
+        this.activate();
+        this.complete();
+    };
+
+    this.reset = function () {
         this.state = 0;
     };
-    this.setSuccessor = function(successor) {
+    this.setSuccessor = function (successor) {
         this.successor = successor;
     };
-    this.fail = function() {
+    this.fail = function () {
         this.state = 3;
         animateFailObject(this);
         updateSteps();
-        setTimeout(function() {
+        setTimeout(function () {
             endGame("lose");
         }, 1000);
     }
-    this.getFeedbackText = function() {
+    this.getFeedbackText = function () {
         return this.feedbackText;
     }
-    this.prepComplete = function() {
+    this.prepComplete = function () {
         // Hide hint
         if (this.hintShowing) {
             $("#box_" + this.id).removeClass("anim_hintFadeIn");
             $("#box_" + this.id).addClass("anim_hintFadeOut");
-            setTimeout(function() {
+            setTimeout(function () {
                 $("#box_" + this.id).removeClass("anim_hintFadeOut");
             }, 250);
             this.hintShowing = false;
@@ -225,7 +231,7 @@ function Step(id, shortText, longText, feedbackText, div, iconDiv) {
         clearTimeout(this.hintTimeout);
         this.hintTimeout = 0;
     }
-    this.animateToPosition = function(line) {
+    this.animateToPosition = function (line) {
         this.position = line;
         $(this.div).animate({
             'top': (10 * line) + "%"
@@ -238,14 +244,14 @@ function StepGroup(id, shortText, div, iconDiv) {
     this.id = id;
     this.shortText = shortText;
     this.div = div;
-    this.iconDiv = iconDiv;
+    this.icon = iconDiv;
     this.steps = [];
     this.position = 0;
     this.state = 0; // 0 = inactive, 1 = active, 2 = complete
-    this.addStep = function(newStep) {
+    this.addStep = function (newStep) {
         this.steps.push(newStep);
     }
-    this.checkState = function() {
+    this.checkState = function () {
         var newState = 2;
         for (var i = 0; i < this.steps.length; i++) {
             // console.log(this.steps[i].state);
@@ -264,38 +270,38 @@ function StepGroup(id, shortText, div, iconDiv) {
         }
         this.state = newState;
     }
-    this.animateToPosition = function(line) {
+    this.animateToPosition = function (line) {
         this.position = line;
         $(this.div).animate({
             'top': (10 * line) + "%"
         }, 250);
     }
-    this.isActive = function() {
+    this.isActive = function () {
         return this.state == 1;
     };
-    this.isComplete = function() {
+    this.isComplete = function () {
         return this.state == 2;
     };
-    this.isFailed = function() {
+    this.isFailed = function () {
         return this.state == 3;
     }
-    this.complete = function() {
+    this.complete = function () {
         if (this.state == 1) {
             this.state = 2;
             animateCompleteObject(this);
         }
     };
-    this.activate = function() {
+    this.activate = function () {
         if (this.state == 0) {
             this.state = 1;
             animateActivateObject(this, true);
         }
     }
-    this.fail = function() {
+    this.fail = function () {
         this.state = 3;
         animateFailObject(this);
     }
-    this.reset = function() {
+    this.reset = function () {
         this.state = 0;
     };
 }
@@ -339,14 +345,14 @@ function updateSteps() {
 function enterStepObjects() {
     for (var i = 0; i < game.groups.length; i++) {
         var cur = game.groups[i];
-        setTimeout(function(cur) {
+        setTimeout(function (cur) {
             $(cur.div).removeClass("anim_exitStepObject");
             $(cur.div).addClass("anim_enterStepObject");
         }, 40 * cur.position, cur);
     }
     for (var i = 0; i < game.steps.length; i++) {
         var cur = game.steps[i];
-        setTimeout(function(cur) {
+        setTimeout(function (cur) {
             $(cur.div).removeClass("anim_exitStepObject");
             $(cur.div).addClass("anim_enterStepObject");
         }, 40 * cur.position, cur);
@@ -356,14 +362,14 @@ function enterStepObjects() {
 function exitStepObjects() {
     for (var i = game.groups.length - 1; i >= 0; i--) {
         var cur = game.groups[i];
-        setTimeout(function(cur) {
+        setTimeout(function (cur) {
             $(cur.div).removeClass("anim_enterStepObject");
             $(cur.div).addClass("anim_exitStepObject");
         }, 40 * cur.position, cur);
     }
     for (var i = game.steps.length - 1; i >= 0; i--) {
         var cur = game.steps[i];
-        setTimeout(function(cur) {
+        setTimeout(function (cur) {
             $(cur.div).removeClass("anim_enterStepObject");
             $(cur.div).addClass("anim_exitStepObject");
         }, 40 * cur.position, cur);
@@ -375,7 +381,7 @@ function animateActivateObject(obj, isGroup) {
     // console.log(div);
     $(div).addClass("inactiveIcon");
     $(div).addClass("anim_stepExit");
-    setTimeout(function() {
+    setTimeout(function () {
         $(div).removeClass("anim_stepExit");
         $(div).removeClass("inactiveIcon");
         $(div).addClass("anim_stepEnter");
@@ -385,7 +391,7 @@ function animateActivateObject(obj, isGroup) {
             $(div).addClass("activeIcon");
         }
     }, 125);
-    setTimeout(function() {
+    setTimeout(function () {
         $(div).removeClass("anim_stepEnter");
     }, 500);
 }
@@ -396,30 +402,30 @@ function animateCompleteObject(obj) {
     $(div).removeClass("inactiveIcon");
     $(div).addClass("activeIcon");
     $(div).addClass("anim_stepExit");
-    setTimeout(function() {
+    setTimeout(function () {
         $(div).removeClass("anim_stepExit");
         $(div).removeClass("activeIcon");
         $(div).addClass("anim_stepEnterBig");
         $(div).addClass("completeIcon");
     }, 125);
-    setTimeout(function() {
+    setTimeout(function () {
         $(div).removeClass("anim_stepEnterBig");
     }, 500);
 }
 
 function animateFailObject(obj) {
     var div = obj.iconDiv;
-    console.log(div);
+    //    console.log(div);
     $(div).removeClass("inactiveIcon");
     $(div).addClass("activeIcon");
     $(div).addClass("anim_stepExit");
-    setTimeout(function() {
+    setTimeout(function () {
         $(div).removeClass("anim_stepExit");
         $(div).removeClass("activeIcon");
         $(div).addClass("anim_stepEnterBig");
         $(div).addClass("failIcon");
     }, 125);
-    setTimeout(function() {
+    setTimeout(function () {
         $(div).removeClass("anim_stepEnterBig");
     }, 500);
 }
