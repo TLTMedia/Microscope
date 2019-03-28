@@ -208,9 +208,7 @@ function loadTutorial() {
             "shortText": "Setup",
             "steps": [{
                     "id": "setupLightSwitch",
-                    "shortText": helpText["setupLightSwitch"].shortText,
-                    "longText": helpText["setupLightSwitch"].longText,
-                    "feedbackText": helpText["setupLightSwitch"].feedbackText,
+
                     "logic": function () {
                       console.log(this)
                         $("#light").addClass("elementOff");
@@ -244,9 +242,7 @@ function loadTutorial() {
             },
                 {
                     "id": "setupCaliperBlade",
-                    "shortText": helpText["setupCaliperBlade"].shortText,
-                    "longText": helpText["setupCaliperBlade"].feedbackText,
-                    "feedbackText": helpText["setupCaliperBlade"].feedbackText,
+              
                     "logic": function () {
                         //$("#popupType").html(stepText[0].steps[2].shortText);
                         textSetup(stepText[0].steps[2].longText, "64%", "45%");
