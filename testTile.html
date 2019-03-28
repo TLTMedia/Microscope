@@ -1,0 +1,204 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Untitled Document</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <!-- Place favicon.ico in the root directory -->
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <script>
+    var state = {
+      zoom: 0,
+      row: 0,
+      col: 0,
+      index: 0,
+      brightness: 0,
+      focus: 0
+    }
+    var slideTableSize = 4;
+    var tileSize = 128;
+    $(function() {
+      $("input").on("input", function(evt) {
+        var whichRange = $(evt.target).attr("name")
+        var value = $(evt.target).val() / 100;
+        console.log("state.zoom = ", state.zoom)
+        //console.log(whichRange, value)
+        state[whichRange] = value;
+        //console.log(state)
+        //  state.index = 1 - state.index;
+        showSlide(state)
+      });
+      drawTable(0);
+      drawTable(1)
+      $("input").trigger("input")
+
+    });
+
+
+
+    function drawTable(index) {
+
+      var table = $("<table/>", {
+        id: "id_" + index
+      });
+      for (rowOffset = 0; rowOffset < slideTableSize; rowOffset++) {
+        var tr = $("<tr/>");
+        for (colOffset = 0; colOffset < slideTableSize; colOffset++) {
+          var quadIndex = (colOffset + (rowOffset * slideTableSize));
+          var td = $("<td/>");
+          var img = $("<img/>", {
+            "id": "d_" + index + "_" + quadIndex,
+            "class": "slideTile"
+          });
+          td.append(img);
+          tr.append(td);
+        }
+        table.append(tr)
+      }
+      $("#slide").append(table)
+    }
+
+    function showSlide(state) {
+
+
+      var numberOfColumns = Math.pow(2, Math.floor(state.zoom * 4) + 1);
+      //            var slideOffsetRow = (state.row * tileSize) % tileSize;
+      //            var slideOffsetColumn = (state.col * tileSize) % tileSize;
+      var folder = numberOfColumns / 2;
+      var currentRowRaw = numberOfColumns * state.row;
+      var currentColumnRaw = numberOfColumns * state.col;
+
+      var currentRow = Math.floor(currentRowRaw);
+      var currentColumn = Math.floor(currentColumnRaw);
+      var slideOffsetRow = tileSize * (currentRow - currentRowRaw);
+      var slideOffsetColumn = tileSize * (currentColumn - currentColumnRaw);
+
+      var illuminationBrightness = state.brightness;
+
+      var illumination = `rgba(${Math.min(232, 232* illuminationBrightness)}, ${Math.min(224, 224*illuminationBrightness)}, ${Math.min(152, 152*illuminationBrightness)}, 1)`;
+
+      var focus = state.focus;
+      //  console.log(slideOffsetRow, slideOffsetColumn)
+
+
+      $("#slide table").attr("style", `left: ${slideOffsetColumn}px;top: ${slideOffsetRow}px`);
+      //$(".slideTile").attr("src", "")
+      for (rowOffset = 0; rowOffset < slideTableSize; rowOffset++) {
+
+        for (colOffset = 0; colOffset < slideTableSize; colOffset++) {
+          var image;
+          var rowWithOffset = currentRow + rowOffset - 1;
+          var colWithOffset = currentColumn + colOffset - 1;
+          var quadIndex = (colOffset + (rowOffset * slideTableSize));
+          var imgIndex = colWithOffset + (rowWithOffset * numberOfColumns);
+
+
+
+          image = "img/cells/" + folder + "/cell" + imgIndex.toString().padStart(4, "0") + ".png"
+          if (rowWithOffset >= numberOfColumns || colWithOffset >= numberOfColumns || colWithOffset < 0 || rowWithOffset < 0) {
+            image = "img/blankImage.png"
+          }
+
+          $("#d_" + state.index + "_" + quadIndex).attr("src", image)
+          $("#background").css("background-color", illumination)
+          $(".slideTile").css({
+            "filter": "blur(" + focus + "rem) brightness(" + (illuminationBrightness * 100) + "%) ",
+
+          });
+
+          console.log($("#background").css("fill"));
+
+          //                    $("##id_0").on("change", function() { // $("#id_0").css("fill", illumination); // });
+        }
+
+      }
+
+
+    }
+  </script>
+
+  <style>
+    /*
+ #slide img { border: 1px solid black; }*/
+
+    #slide td {
+      /* border: 1px solid black; */
+      padding: 0;
+      margin: 0;
+    }
+
+    #slide {
+
+      position: absolute;
+      top: 280px;
+      left: 80px;
+    }
+
+    #window {
+
+      left: -200px;
+      top: 90px;
+
+      position: absolute;
+    }
+
+    input {
+      width: 1200px;
+
+    }
+
+    #window img {}
+
+    #slide table {
+      position: absolute;
+      font-size: 0px;
+      border-spacing: 0;
+      border: 0px;
+      padding: 0;
+      margin: 0;
+      border-collapse: collapse;
+
+    }
+
+    #slideBed {
+      position: absolute;
+      top: 25%;
+    }
+
+    #background {
+      position: absolute;
+      z-index: -100;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+
+  <input type=range value="0" name="col" />
+  <input type=range value="0" name="row" />
+  <input type=range value="0" name="zoom" />
+  <input type=range value="0" name="brightness" />
+  <input type=range value="0" name="focus" />
+  <div id="slideBed">
+    <div id="slide">
+
+
+
+
+    </div>
+    <div id="window">
+      <img src="img/cells/window.png" /> </div>
+  </div>
+  <div id="background"> </div>
+</body>
+
+</html>

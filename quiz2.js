@@ -7,9 +7,9 @@
 
 function quiz2Q1(){
     answer = "400X";
-    ms.rotateLensesCount(ms, true, true, function(){}, 1); 
+    ms.rotateLensesCount(ms, true, true, function(){}, 1);
     ms.updateLensesState(ms);
-    ms.diaphragmLightPosition = 40;
+    state.brightness = 40;
     ms.slideBlur = 0;
     ms.xcaliper = ms.xslide = -4;
     ms.eyepiecePosition = 0;
@@ -22,12 +22,10 @@ function quiz2Q1(){
         .done(function( res ) {
             if (inputAnswer == answer){
                 $("#answerBox button").unbind();
-                totalMagQ1.complete(); 
+                totalMagQ1.complete();
             }
             $("#answerBox input").val("");
         });
 
     });
 }
-
-

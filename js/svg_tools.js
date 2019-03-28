@@ -12,11 +12,18 @@ function registerDrag(item, target, onDrop) {
     })
     draggingItem.on('dragend.namespace', function (event) {
         $(event.target).attr('pointer-events', 'all')
-        console.log(event.detail.event.target.id)
+        console.log(event.detail.event.target)
         if (event.detail.event.target.id === target) {
             console.log("eeeeeee")
             draggingItem.draggable(false)
             onDrop()
         }
     })
+}
+
+
+function deregisterDrag(item) {
+
+    var draggingItem = SVG.get(item)
+    draggingItem.off();
 }

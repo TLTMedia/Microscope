@@ -1,35 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-    <meta charset="utf-8">
-    <title>Microscope Simulator</title>
-    <script src="lib/jquery-2.2.0.min.js"></script>
-    <script type="text/javascript" src="lib/svg.min.js"></script>
-    <script type="text/javascript" src="lib/svg.draggable.min.js"></script>
-    <script type="text/javascript" src="js/constants.js"></script>
-    <script type="text/javascript" src="js/svg_tools.js"></script>
-    <script src="js/knob.js"></script>
-    <script src="js/util.js"></script>
-    <script src="js/global.js"></script>
-    <script src="js/resize.js"></script>
-    <script src="js/scenes/intro.js"></script>
-    <script src="js/scenes/setup.js"></script>
-    <script src="js/scenes/low.js"></script>
-    <script src="js/scenes/med.js"></script>
-    <script src="js/scenes/high.js"></script>
-    <script src="js/scenes/clean.js"></script>
-    <script src="js/scenes/quiz.js"></script>
-    <script src="js/scenes/quiz2.js"></script>
-    <script src="js/scenes/quiz4.js"></script>
-    <script src="js/statemachine.js"></script>
-    <script src="js/scene-manager.js"></script>
-    <script src="js/engine.js"></script>
-    <script src="js/startup.js"></script>
-    <script src="js/debug.js"></script>
-
-    <link rel="stylesheet" type="text/css" href="css/generalStyle.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="icon" type="image/png" href="img/favicon.ico" />
+<html lang="en" <head>
+<meta charset="utf-8">
+<title>Microscope Simulator</title>
+<script src="lib/jquery-2.2.0.min.js"></script>
+<script type="text/javascript" src="lib/svg.min.js"></script>
+<script type="text/javascript" src="lib/svg.draggable.min.js"></script>
+<script type="text/javascript" src="js/constants.js"></script>
+<script type="text/javascript" src="js/svg_tools.js"></script>
+<script src="js/knob.js"></script>
+<script src="js/util.js"></script>
+<script src="js/global.js"></script>
+<script src="js/resize.js"></script>
+<script src="js/scenes/intro.js"></script>
+<script src="js/scenes/setup.js"></script>
+<script src="js/scenes/low.js"></script>
+<script src="js/scenes/med.js"></script>
+<script src="js/scenes/high.js"></script>
+<script src="js/scenes/clean.js"></script>
+<script src="js/scenes/quiz.js"></script>
+<script src="js/scenes/quiz2.js"></script>
+<script src="js/scenes/quiz4.js"></script>
+<script src="js/statemachine.js"></script>
+<script src="js/scene-manager.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/jquery.csv.js"></script>
+<script src="js/data.js"></script>
+<script src="js/startup.js"></script>
+<script src="js/debug.js"></script>
+<script src="js/slideZoom.js"> </script>
+<link rel="stylesheet" type="text/css" href="css/generalStyle.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="icon" type="image/png" href="img/favicon.ico" />
 </head>
 
 <body>
@@ -50,14 +51,15 @@
             <p class="fs-20">Microscope</p>
         </div>
         <div id="popup">
-            <div id="popupType" class="popupInstruct text fs-22">Instruction</div>
+            <div id="popupType" class="popupInstruct text">Instruction</div>
             <div id="popupTextWrapper">
-                <div id="popupText" class="text fs-18">
+                <div id="popupText" class="text">
                 </div>
             </div>
         </div>
         <!-- <div id="sideView"></div> -->
         <div id="steps"></div>
+
 
         <div id="tool">
             <div id="microscope"></div>
@@ -65,15 +67,14 @@
 
         <div id="rotate">
             <div id="rotate2"></div>
+
+        </div>
+
+        <div id="slideViewContainer" class="sviewContainer">
+
         </div>
 
 
-        <div id="slideView" class="sview">
-        </div>
-
-        <div id="slideView2" class="sview">
-        </div>
-        <div id="slideBox"> </div>
         <div id="helpBox">
             <h1 id="helpBoxHeader" class="fs-30" style="text-align: right; padding-right: 10px;">Details</h3>
                 <hr>
@@ -148,4 +149,5 @@
         </div>
     </div>
 </body>
+
 </html>

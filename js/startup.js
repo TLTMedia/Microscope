@@ -9,6 +9,11 @@
    */
 
 // Title module
+
+var helpText;
+var slideZoomInstance
+var state;
+ms = new StateMachine();
 function largeFeedbackBox(title, body, lambdaEnd) {
     $("#helpBoxHeader").text("Details");
     $("#endText").text(title);
@@ -43,22 +48,25 @@ function largeFeedbackBoxOptions(title, body) {
     $("#buttonContainer").html(finalList);
 
     // Add event listeners
-    $("#1").click(function () {
+    $("#endOption1").click(function () {
         destroy();
         currentMode = "Total-Magnification";
-        startup(loadTotalMag);
+        loadMicroscope();
+        loadTotalMag();
     });
 
-    $("#2").click(function () {
+    $("#endOption2").click(function () {
         destroy();
         currentMode = "Cell-Count";
-        startup(loadCellCount);
+        loadMicroscope();
+        loadCellCount();
     });
 
-    $("#4").click(function () {
+    $("#endOption4").click(function () {
         destroy();
         currentMode = "Video";
-        startup(loadVideoQuiz);
+        loadMicroscope();
+        loadVideoQuiz();
     });
 }
 
@@ -69,13 +77,14 @@ function loadMenu(scene) {
     var hide = function () {
         hideMenu();
     }
+
     $("#answerBox").css("display", "none");
     switch (scene) {
         case "introduction":
             largeFeedbackBox("Introduction", "Welcome to the introduction. In this section, you will learn the parts of the microscope.", hide)
             break;
         case "tutorial":
-            largeFeedbackBox("Tutorial", "In this section, you will learn how to work with a microscope.", hide);
+            largeFeedbackBox("Tutorial", "In this section, you will learn how to use a compound microscope.", hide);
             break;
         case "introduction-end":
             largeFeedbackBox("Completed", "You can review the parts by hovering over them again. When you're ready, click on \"Tutorial\" on the top bar to proceed.", hide)
@@ -125,20 +134,6 @@ function loadMenu(scene) {
     showMenu();
 }
 
-
-function showOptionMenu() {
-    // Make overlay visible
-    $("#main-menu").css({
-        'opacity': 1,
-        'z-index': 100
-    });
-    // Show results screen
-    $("#results").removeClass("anim_exitResults");
-    $("#results").addClass("anim_enterResults");
-    $("#overlayBG").removeClass("anim_fadeOutBG");
-    $("#overlayBG").addClass("anim_fadeInBG");
-}
-
 function showMenu() {
     // Make overlay visible
     $("#overlay").css({
@@ -151,6 +146,7 @@ function showMenu() {
     $("#results").addClass("anim_enterResults");
     $("#overlayBG").removeClass("anim_fadeOutBG");
     $("#overlayBG").addClass("anim_fadeInBG");
+    // console.log("Show Menu")
 }
 
 
@@ -174,6 +170,8 @@ function newGame(guided, manual) {
     hideMenu(); // Hide menu
     updateSteps(); // Update steps
     enterStepObjects();
+    // console.log("aa")
+
     resizeWindow(); // Resize window
 }
 
@@ -204,57 +202,111 @@ function loadIntro() {
 function loadTutorial() {
     //  Define steps (order doesn't matter here)
     loadMenu("tutorial");
+
     var stepText = [{
             "id": "setup",
             "shortText": "Setup",
             "steps": [{
-                "id": "setupLightSwitch",
-                "shortText": "Light Switch",
-                "longText": "The light switch is the first thing you should turn on anytime you use a microscope.",
-                "feedbackText": "click the light switch",
-                "logic": function () {
-                    $("#light").addClass("elementOff");
-                    toggleVisibility("#slide");
-                    setupEnableSwitch();
-                    ms.enableLightSwitch();
-                    // isDebug = DEBUG(isDebug, currentMode)
-                }
-            }, {
-                "id": "setupCaliperBlade",
-                "shortText": "Caliper Blade",
-                "longText": "Click on the caliper blade to open it. This allows us to have room to put the slide in without damaging it.",
-                "feedbackText": "click the light switch",
-                "logic": function () {
-                    ms.enableCaliperBlade();
-                    setupEnableBlade();
-                }
-            }, {
-                "id": "setupSlide",
-                "shortText": "Slide",
-                "longText": "The slide should be wedged in place within the caliper.",
-                "feedbackText": "click the light switch",
-                "logic": function () {
-                    setupEnableSlide();
-                }
-            }, {
-                "id": "setupCondenser",
-                "shortText": "Condenser",
-                "longText": "The condenser allows light to accurately hit the slide, rendering it viewable through the lenses.",
-                "feedbackText": "Move the condenser knob.",
-                "logic": function () {
-                    setupCondenser();
-                    ms.enableSideDiaphragmRotate();
-                }
+                    "id": "setupLightSwitch",
+                    "shortText": helpText["setupLightSwitch"].shortText,
+                    "longText": helpText["setupLightSwitch"].longText,
+                    "feedbackText": helpText["setupLightSwitch"].feedbackText,
+                    "logic": function () {
+                        $("#light").addClass("elementOff");
+                        toggleVisibility("#slide");
+                        $("#popupType").html(stepText[0].steps[0].shortText);
+                        textSetup(stepText[0].steps[0].feedbackText, "60%", "60%")
+                        $("#helpBox p").html(stepText[0].steps[0].longText);
+                        setupEnableSwitch();
+                        ms.enableLightSwitch();
+                    },
+                    "completeSettings": function () {
+                        // $("#switch").off();
+                    }
 
             }, {
-                "id": "setupCaliper",
-                "shortText": "Caliper Knob",
-                "longText": "Adjust the caliper in both x and y directions until the slide is exactly at the center of the lenses. Otherwise you will not be able to see the specimen at all.",
-                "feedbackText": "Move the caliper knob.",
-                "logic": function () {
-                    setupAdjustCaliper();
-                    ms.enableCaliper();
-                }
+                    "id": "setupStage",
+                    "shortText": helpText["setupStage"].shortText,
+                    "longText": helpText["setupStage"].longText,
+                    "feedbackText": helpText["setupStage"].feedbackText,
+                    "logic": function () {
+                        $("#popupType").html(stepText[0].steps[1].shortText);
+                        textSetup(stepText[0].steps[1].feedbackText, "66%", "58%")
+                        $("#helpBox p").html(stepText[0].steps[1].longText);
+                        setupEnableStage();
+                        ms.enableCoarseKnob();
+
+                    },
+                    "completeSettings": function () {
+                      // $("#knobsCoarse").off();
+                    }
+            },
+                {
+                    "id": "setupCaliperBlade",
+                    "shortText": helpText["setupCaliperBlade"].shortText,
+                    "longText": helpText["setupCaliperBlade"].feedbackText,
+                    "feedbackText": helpText["setupCaliperBlade"].feedbackText,
+                    "logic": function () {
+                        //$("#popupType").html(stepText[0].steps[2].shortText);
+                        textSetup(stepText[0].steps[2].longText, "64%", "45%");
+                        //$("#helpBox p").html(stepText[0].steps[2].feedbackText);
+                        ms.enableCaliperBlade();
+                        setupEnableBlade();
+                    },
+                    "completeSettings": function () {
+                        // $("#caliperBlade").off();
+                    }
+
+            }, {
+                    "id": "setupSlide",
+                    "shortText": helpText["setupSlide"].shortText,
+                    "longText": helpText["setupSlide"].longText,
+                    "feedbackText": helpText["setupSlide"].feedbackText,
+                    "logic": function () {
+                        //$("#popupType").html(stepText[0].steps[3].shortText)
+                        textSetup(stepText[0].steps[3].longText, "64%", "45%");
+                        //$("#helpBox p").html(stepText[0].steps[3].feedbackText);
+                        setupEnableSlide();
+                    },
+                    "completeSettings": function () {
+                        // ms.enableCaliperBlade();
+                    }
+
+            }, {
+                    "id": "setupCondenser",
+                    "shortText": helpText["setupCondenser"].shortText,
+                    "longText": helpText["setupCondenser"].longText,
+                    "feedbackText": helpText["setupCondenser"].feedbackText,
+                    "logic": function () {
+                        $("#frameSide").show();
+                        //$("#popupType").html(stepText[0].steps[4].shortText)
+                        textSetup(stepText[0].steps[4].longText, "8%", "45%");
+                        //$("#helpBox p").html(stepText[0].steps[4].feedbackText);
+                        setupCondenser();
+                        ms.enableSideDiaphragmRotate();
+                    },
+                    "completeSettings": function () {
+                        // $("#caliperBlade").off();
+                        // $("#draggableDiaphragm").off();
+                        $("#frameSide").hide();
+                    }
+
+            }, {
+                    "id": "setupCaliper",
+                    "shortText": helpText["setupCaliper"].shortText,
+                    "longText": helpText["setupCaliper"].longText,
+                    "feedbackText": helpText["setupCaliper"].feedbackText,
+                    "logic": function () {
+                        //$("#popupType").html(stepText[0].steps[5].shortText)
+                        textSetup(stepText[0].steps[5].longText, "62%", "60%");
+                        //$("#helpBox p").html(stepText[0].steps[5].feedbackText);
+                        setupAdjustCaliper();
+                        ms.enableCaliper();
+                    },
+                    "completeSettings": function () {
+                        // $("#xCaliperKnob").off();
+                        // $("#yCaliperKnob").off();
+                    }
 
             }]
         },
@@ -264,107 +316,193 @@ function loadTutorial() {
             "shortText": "Low Magnification",
             "steps": [{
                 "id": "setupLenses",
-                "shortText": "Lenses",
-                "longText": "Rotating the lenses to low magnification allows you to see the specimen from a larger distance.",
-                "feedbackText": "click the lenses",
+                "shortText": helpText["setupLenses"].shortText,
+                "longText": helpText["setupLenses"].longText,
+                "feedbackText": helpText["setupLenses"].feedbackText,
                 "logic": function () {
+                    //$("#popupType").html(stepText[1].steps[0].shortText);
+                    textSetup(stepText[1].steps[0].longText, "15%", "35%");
+                    //$("#helpBox p").html(stepText[1].steps[0].feedbackText);
                     lowAdjustLenses();
                     ms.enableLenses();
+                },
+                "completeSettings": function () {
+                    // $("#turretLeft").off();
+                    // $("#turretRight").off();
                 }
+
             }, {
                 "id": "setupDiaphragmLight",
-                "shortText": "Diaphragm Light",
-                "longText": "For low magnification, the diaphragm light should be adjusted so that the slide is visible. However, it should not be put too high, otherwise the light will be blinding. Low magnification needs less light to pass through the slide.",
-                "feedbackText": "click the diaphragm",
+                "shortText": helpText["setupDiaphragmLight"].shortText,
+                "longText": helpText["setupDiaphragmLight"].longText,
+                "feedbackText": helpText["setupDiaphragmLight"].feedbackText,
                 "logic": function () {
+                    //$("#popupType").html(stepText[1].steps[1].shortText);
+                    textSetup(stepText[1].steps[1].longText, "18%", "70%");
+                    //$("#helpBox p").html(stepText[1].steps[1].feedbackText);
                     lowDLight();
                     ms.enableDiaphragmLight();
+                },
+                "completeSettings": function () {
+                    var knob = getKnob("#knobsCoarse")
+                    console.log(knob.rotation)
+                    prevRotation = knob.rotation;
+                    $("#diaphragm").off();
+                    $("#apertureKnob").off();
                 }
+
             }, {
                 "id": "setupCoarse",
-                "shortText": "Coarse Knob",
-                "longText": "The coarse knob adjusts the stage platform and lets you zoom in or out of the current slide view. You want to keep adjusting it until the view is clear. Note that the coarse knob should only be moved once, and once it is moved to the correct place it doesn't need to be touched again.",
-                "feedbackText": "click the coarse knobs",
+                "shortText": helpText["setupCoarse"].shortText,
+                "longText": helpText["setupCoarse"].longText,
+                "feedbackText": helpText["setupCoarse"].feedbackText,
                 "logic": function () {
+                    //$("#popupType").html(stepText[1].steps[2].shortText);
+                    textSetup(stepText[1].steps[2].longText, "60%", "64%");
+                    //$("#helpBox p").html(stepText[1].steps[2].feedbackText);
                     lowAdjustCoarse();
-                    ms.enableCoarseKnob();
+                    // ms.enableCoarseKnob();
+                },
+                "completeSettings": function () {
+                    // $("#knobsCoarse").off();
                 }
+
             }]
         }, {
             "id": "medMag",
             "shortText": "Medium Magnification",
             "steps": [{
-                "id": "setupLenses",
-                "shortText": "Lenses",
-                "longText": "The medium magnification provided a closer view than low magnification.",
-                "feedbackText": "click the lenses",
-                "logic": function () {
-                    medAdjustLenses();
-                }
+                    "id": "setupLenses2",
+                    "shortText": helpText["setupLenses2"].shortText,
+                    "longText": helpText["setupLenses2"].longText,
+                    "feedbackText": helpText["setupLenses2"].feedbackText,
+                    "logic": function () {
+                        //$("#popupType").html(stepText[2].steps[0].shortText);
+                        textSetup(stepText[2].steps[0].longText, "15%", "35%");
+                        //$("#helpBox p").html(stepText[2].steps[0].feedbackText);
+                        medAdjustLenses();
+                        // ms.enableLenses();
+                    },
+                    "completeSettings": function () {
+                      // $("#turretLeft").off();
+                      // $("#turretRight").off();
+                    }
 
             }, {
-                "id": "setupCoarse",
-                "shortText": "Coarse Knob",
-                "longText": "The coarse knob adjusts the stage platform and lets you zoom in or out of the current slide view. You want to keep adjusting it until the view is clear. Note that the coarse knob should only be moved once, and once it is moved to the correct place it doesn't need to be touched again.",
-                "feedbackText": "click the coarse knobs",
-                "logic": function () {
-                    medAdjustCoarse();
-                }
+                    "id": "setupAperture",
+                    "shortText": helpText["setupAperture"].shortText,
+                    "longText": helpText["setupAperture"].longText,
+                    "feedbackText": helpText["setupAperture"].feedbackText,
+                    "logic": function () {
+                        //$("#popupType").html(stepText[2].steps[1].shortText);
+                        textSetup(stepText[2].steps[1].longText, "60%", "60%");
+                        //$("#helpBox p").html(stepText[2].steps[1].feedbackText);
+                        medAdjustAperture();
+                        ms.enableDiaphragmLight();
+                    },
+                    "completeSettings": function() {
+                      // $("#diaphragm").off();
+                      // $("#apertureKnob").off();
+                    }
             }, {
-                "id": "setupFine",
-                "shortText": "Fine Knobs",
-                "longText": "Instead of adjusting the coarse knob for clarity, we adjust the fine knob because the coarse knob is already in place from low magnification. The fine knob will blur and unblur the slide view. Keep rotating it until the view becomes clear.",
-                "feedbackText": "click the fine knobs",
-                "logic": function () {
-                    medAdjustFine();
-                    ms.enableFineKnob();
-                }
+                    "id": "setupCoarse",
+                    "shortText": helpText["setupCoarse"].shortText,
+                    "longText": helpText["setupCoarse"].longText,
+                    "feedbackText": helpText["setupCoarse"].feedbackText,
+                    "logic": function () {
+                        //$("#popupType").html(stepText[2].steps[2].shortText);
+                        textSetup(stepText[2].steps[2].longText, "60%", "64%");
+                        //$("#helpBox p").html(stepText[2].steps[2].feedbackText);
+                        medAdjustCoarse();
+                        // ms.enableCoarseKnob();
+                    },
+                    "completeSettings": function () {
+                      // $("#knobsCoarse").off();
+                    }
+            },
+                {
+                    "id": "setupDiopter",
+                    "shortText": helpText["setupDiopter"].shortText,
+                    "longText": helpText["setupDiopter"].longText,
+                    "feedbackText": helpText["setupDiopter"].feedbackText,
+                    "logic": function () {
+                        //$("#popupType").html(stepText[2].steps[3].shortText);
+                        textSetup(stepText[2].steps[3].longText, "20%", "30%");
+                        //$("#helpBox p").html(stepText[2].steps[3].feedbackText);
+                        medAdjustDiopter();
+                        ms.enableDiopter();
+                    },
+                    "completeSettings": function () {
+                        // $("#friend").off();
+                    }
             }, {
-                "id": "setupDiopter",
-                "shortText": "Diopter",
-                "longText": "The diopter is responsible for the clarity of view through the left ocular lenses. Adjust it so that the left view becomes clear.",
-                "feedbackText": "click the eyepiece",
-                "logic": function () {
-                    medAdjustDiopter();
-                    ms.enableDiopter();
-                }
-            }, {
-                "id": "setupEyepiece",
-                "shortText": "Eyepiece",
-                "longText": "When you look through the microscope, you may see two different views. By adjusting the eyepiece, you can have it so that the views converge and look like a single view.",
-                "feedbackText": "click the eyepiece",
-                "logic": function () {
-                    medAdjustEyepiece();
-                    ms.enableEyepiece();
-                }
+                    "id": "setupEyepiece",
+                    "shortText": helpText["setupEyepiece"].shortText,
+                    "longText": helpText["setupEyepiece"].longText,
+                    "feedbackText": helpText["setupEyepiece"].feedbackText,
+                    "logic": function () {
+                        //$("#popupType").html(stepText[2].steps[4].shortText);
+                        textSetup(stepText[2].steps[4].longText, "60%", "30%");
+                        //$("#helpBox p").html(stepText[2].steps[4].feedbackText);
+                        medAdjustEyepiece();
+                        ms.enableEyepiece();
+                    },
+                    "completeSettings": function () {
+                        // $("#ocularRight").off();
+                        // $("#ocularLeft").off();
+                    }
             }]
 
         }, {
             "id": "highMag",
             "shortText": "High Magnification",
             "steps": [{
-                "id": "setupLenses",
-                "shortText": "Lenses",
-                "longText": "This will be the highest magnification that you work with on the microscope. it will give a much more detailed view of the specimen that is on the slide.",
-                "feedbackText": "click the lenses",
+                "id": "setupLenses3",
+                "shortText": helpText["setupLenses3"].shortText,
+                "longText": helpText["setupLenses3"].longText,
+                "feedbackText": helpText["setupLenses3"].feedbackText,
                 "logic": function () {
+                    //$("#popupType").html(stepText[3].steps[0].shortText);
+                    textSetup(stepText[3].steps[0].longText, "15%", "35%");
+                    //$("#helpBox p").html(stepText[3].steps[0].feedbackText);
                     highAdjustLenses();
+                    // ms.enableLenses();
+                },
+                "completeSettings": function () {
+                  // $("#turretLeft").off();
+                  // $("#turretRight").off();
                 }
+
             }, {
-                "id": "setupAperture",
-                "shortText": "Highest Aperture",
-                "longText": "Because high magnification is so detailed, more light needs to pass through the slide to clearly show the view. High magnification will result in a loss of light due to its reflective nature.",
-                "feedbackText": "click the eyepiece",
+                "id": "setupAperture2",
+                "shortText": helpText["setupAperture2"].shortText,
+                "longText": helpText["setupAperture2"].longText,
+                "feedbackText": helpText["setupAperture2"].feedbackText,
                 "logic": function () {
+                    //$("#popupType").html(stepText[3].steps[1].shortText);
+                    textSetup(stepText[3].steps[1].longText, "60%", "60%");
+                    //$("#helpBox p").html(stepText[3].steps[1].feedbackText);
                     highAdjustAperture();
+                    // ms.enableDiaphragmLight();
+                },
+                "completeSettings": function () {
+                  // $("#diaphragm").off();
+                  // $("#apertureKnob").off();
                 }
             }, {
                 "id": "setupFine",
-                "shortText": "Fine Knobs",
-                "longText": "Once more, adjusting the fine knobs will allow you to change the clarity of the image. Keep adjusting it until the view is completely clear.",
-                "feedbackText": "click the fine knobs",
+                "shortText": helpText["setupFine"].shortText,
+                "longText": helpText["setupFine"].longText,
+                "feedbackText": helpText["setupFine"].feedbackText,
                 "logic": function () {
+                    //$("#popupType").html(stepText[3].steps[2].shortText);
+                    textSetup(stepText[3].steps[2].longText, "60%", "64%");
+                    //$("#helpBox p").html(stepText[3].steps[2].feedbackText);
                     highAdjustFine();
+                    ms.enableFineKnob();
+                },
+                "completeSettings": function () {
+                    // $("#knobsFine").off();
                 }
             }]
         }, {
@@ -372,35 +510,62 @@ function loadTutorial() {
             "shortText": "Clean Up",
             "steps": [{
                 "id": "cleanupLow",
-                "shortText": "Lowest Objective",
-                "longText": "This will be the highest magnification that you work with on the microscope. it will give a much more detailed view of the specimen that is on the slide.",
-                "feedbackText": "click the lenses",
+                "shortText": helpText["cleanupLow"].shortText,
+                "longText": helpText["cleanupLow"].longText,
+                "feedbackText": helpText["cleanupLow"].feedbackText,
                 "logic": function () {
+                    //$("#popupType").html(stepText[4].steps[0].shortText);
+                    textSetup(stepText[4].steps[0].longText, "15%", "35%");
                     cleanAdjustLenses();
+                    // ms.enableLenses();
+                },
+                "completeSettings": function () {
+                    // $("#turretLeft").off();
+                    // $("#turretRight").off();
                 }
             }, {
                 "id": "cleanupCoarse",
-                "shortText": "Lowest Coarse Knob",
-                "longText": "Because high magnification is so detailed, more light needs to pass through the slide to clearly show the view. High magnification will result in a loss of light due to its reflective nature.",
-                "feedbackText": "click the eyepiece",
+                "shortText": helpText["cleanupCoarse"].shortText,
+                "longText": helpText["cleanupCoarse"].longText,
+                "feedbackText": helpText["cleanupCoarse"].feedbackText,
                 "logic": function () {
+                    //$("#popupType").html(stepText[4].steps[1].shortText);
+                    textSetup(stepText[4].steps[1].longText, "60%", "64%");
+                    //$("#helpBox p").html(stepText[4].steps[1].feedbackText);
                     cleanAdjustCoarse();
+                    // ms.enableCoarseKnob();
+                },
+                "completeSettings": function () {
+                    // $("#knobsCoarse").off();
                 }
             }, {
                 "id": "cleanupSlide",
-                "shortText": "Return Slide",
-                "longText": "Once more, adjusting the fine knobs will allow you to change the clarity of the image. Keep adjusting it until the view is completely clear.",
-                "feedbackText": "click the fine knobs",
+                "shortText": helpText["cleanupSlide"].shortText,
+                "longText": helpText["cleanupSlide"].longText,
+                "feedbackText": helpText["cleanupSlide"].feedbackText,
                 "logic": function () {
+                    //$("#popupType").html(stepText[4].steps[2].shortText);
+                    textSetup(stepText[4].steps[2].longText, "64%", "45%");
+                    //$("#helpBox p").html(stepText[4].steps[2].feedbackText);
                     cleanRemoveSlide();
+                },
+                "completeSettings": function () {
+
                 }
             }, {
                 "id": "cleanupLight",
-                "shortText": "Lights Off",
-                "longText": "Once more, adjusting the fine knobs will allow you to change the clarity of the image. Keep adjusting it until the view is completely clear.",
-                "feedbackText": "click the fine knobs",
+                "shortText": helpText["cleanupLight"].shortText,
+                "longText": helpText["cleanupLight"].longText,
+                "feedbackText": helpText["cleanupLight"].feedbackText,
                 "logic": function () {
+                    //$("#popupType").html(stepText[4].steps[3].shortText);
+                    textSetup(stepText[4].steps[3].longText, "60%", "73%");
+                    //$("#helpBox p").html(stepText[4].steps[3].feedbackText);
                     cleanDisableSwitch();
+                    // ms.enableLightSwitch();
+                },
+                "completeSettings": function () {
+                  // $("#switch").off();
                 }
             }]
         }
@@ -408,13 +573,14 @@ function loadTutorial() {
 
     game = createGame(stepText);
 
-    //    console.log(game)
+    console.log(game)
     /** Tutorial **/
     setupLightSwitch = game.getGroupStep(0, 0);
-    setupCaliperBlade = game.getGroupStep(0, 1);
-    setupSlide = game.getGroupStep(0, 2);
-    setupCondense = game.getGroupStep(0, 3);
-    setupCaliper = game.getGroupStep(0, 4);
+    setupStage = game.getGroupStep(0, 1);
+    setupCaliperBlade = game.getGroupStep(0, 2);
+    setupSlide = game.getGroupStep(0, 3);
+    setupCondense = game.getGroupStep(0, 4);
+    setupCaliper = game.getGroupStep(0, 5);
 
     // Low Magnification
     lowLenses = game.getGroupStep(1, 0);
@@ -423,8 +589,9 @@ function loadTutorial() {
 
     // Med Magnification
     medLenses = game.getGroupStep(2, 0);
-    medCoarse = game.getGroupStep(2, 1);
-    medFine = game.getGroupStep(2, 2);
+    medAperture = game.getGroupStep(2, 1);
+    medCoarse = game.getGroupStep(2, 2);
+    //medFine = game.getGroupStep(2, 3);
     medDiopter = game.getGroupStep(2, 3);
     medOcular = game.getGroupStep(2, 4);
 
@@ -443,17 +610,13 @@ function loadTutorial() {
     setupLightSwitch.activate();
 
     jumpToStep();
-    //    debugSetup(); //    debugLow();
-    //    debugMedMag();
-    //    debugHighMag();
-    //    debugTemp();
+
 }
 
 
 function loadQuizzes() {
     loadMenu("quiz-start");
 }
-
 
 function loadTotalMag() {
     loadMenu("total-magnification");
@@ -528,12 +691,13 @@ function createGame(stepText) {
     var groupCount = -1;
     for (i in stepText) {
         groupCount++;
+        var stepID = stepText[i].id;
         var newGroup = new StepGroup(stepText[i].id, stepText[i].shortText, "#group" + groupCount, "#groupIcon" + groupCount);
         game.addGroup(newGroup);
         for (j in stepText[i].steps) {
             var cur = stepText[i].steps[j];
             stepCount++;
-            var newStep = new Step(cur.id, cur.shortText, cur.longText, cur.feedback, "#step" + stepCount, "#icon" + stepCount, cur.logic || {});
+            var newStep = new Step(cur.id, helpText[cur.id].shortText, helpText[cur.id].longText, helpText[cur.id].feedback, "#step" + stepCount, "#icon" + stepCount, cur.logic || {}, cur.completeSettings || {});
             game.addStep(newStep);
             newGroup.addStep(newStep);
         }
@@ -583,6 +747,7 @@ function initEndOptionHover(id) {
 
 //-1 - no image 0 - first occurence, 1 - low, 2 - med, 3 - high
 function swapMag(n) {
+    // console.log(n)
     var path = 'img/cells/';
     var cell = "";
     var cell2 = "";
@@ -590,24 +755,18 @@ function swapMag(n) {
     var slideImg2 = "";
     // setup
     if (n == 0) {
-        slideImg = $('<div class="slideRect"><img id="slideContents"></div>');
+        //slideImg = $('<div class="slideRect"><img id="slideContents"></div>');
         slideImg2 = $('<div class="slideRect" id="slideRect2"><img id="slideContents2"></div>');
-        slideImg.appendTo('#slideView');
+        //slideImg.appendTo('#slideView');
         slideImg2.appendTo('#slideView2');
         return;
     }
     slideImg = $("#slideContents");
     slideImg2 = $("#slideContents2");
     if (n == 1) {
-        cell = path + 'eyepieceCellsLow-bg.png';
-    } else if (n == 2) {
-        cell = path + 'eyepieceCellsMedium.png';
-        cell2 = path + 'eyepieceCellsMedium.png';
-    } else if (n == 3) {
-        cell = path + 'eyepieceCellsHigh.png';
-        cell2 = path + 'eyepieceCellsHigh.png';
+        //cell = path + 'dummyCellImageCompressed.png';
+        //cell2 = path + 'dummyCellImageCompressed.png';
     }
-    //var eUpsidedown = path + 'e.png';
 
     slideImg.attr('src', cell);
     slideImg2.attr('src', cell2);
@@ -620,7 +779,7 @@ var formerState = $("body").html();
 function destroy() {
     //console.log(game);
     $("#steps").html("");
-    $("#microscope").html("");
+    //$("#microscope").html("");
     $("rotate").html("");
     $("body").html(formerState);
     swapMag(0);
@@ -629,18 +788,11 @@ function destroy() {
 
 
 // ====== Frame setup and microscope initialization. ====== //
-function startup(fun) {
 
-    $("#rotate").load('img/sideview.svg', function () {
-        $("#draggableDiaphragm").addClass("knob");
-    })
 
-    var slideBox = 'img/box.svg';
-    $('#slideBox').load(slideBox, function () {
+function loadMicroscope() {
+    var promise = $.Deferred();
 
-    });
-
-    // var draw = SVG('microscope');
     $('#microscope').load('img/microscope.svg', function (data) {
         ms.update();
         var filter = document.createElementNS("http://www.w3.org/2000/svg", "filter");
@@ -650,20 +802,26 @@ function startup(fun) {
         gaussianFilter.setAttribute("stdDeviation", "2");
         filter.appendChild(gaussianFilter);
         $('#microscope svg').prepend(filter)
+        $("#draggableDiaphragm").addClass("knob");
         swapMag(0);
         resizeWindow();
-        fun();
-        $("#endOption0").click(function () {
-            // Start Beginner Mode
-            newGame(true, false);
-        });
+
+        //fun()
+
+
         resizeWindow();
+        promise.resolve()
     });
+
+    return promise;
+
 }
 
-var currentMode = "Introduction"
-//Encapsulation
-$(function () {
+function addUIEventListeners() {
+    $("#endOption0").on("click", function () {
+        // Start Beginner Mode
+        newGame(true, false);
+    });
 
 
     $('body').on("click", function (evt) {
@@ -684,21 +842,79 @@ $(function () {
         switch (innerText) {
             case "Introduction":
                 destroy();
-                startup(loadIntro);
+                loadIntro();
                 break;
             case "Tutorial":
+            // window.location=".";
                 destroy();
-                startup(loadTutorial);
+                loadTutorial();
                 ms.setup();
                 break;
             case "Quizzes":
                 destroy();
-                startup(loadQuizzes);
+                loadQuizzes();
                 ms.setup();
                 break;
         }
         ms.update();
     });
-    startup(loadTutorial);
+
+
     $("#tutorial").trigger("click");
+
+}
+
+
+
+
+var currentMode = "Introduction"
+//Encapsulation
+$(function () {
+  var state = {
+    zoom: 1,
+    row: 1,
+    col: 1,
+    index: 1,
+    brightness: 0,
+    focus: 0
+  }
+  // console.log(state)
+
+
+$('.screen').on("mouseout",function(){
+
+//$('.screen *').off("mousedown");
+
+}).on('click',function(evt){
+
+// console.log(jQuery._data( evt.currentTarget, "events" ))
+
+
+
+})
+
+    helpText = {};
+
+    $.when(getData()).then(function (result) {
+        loadMicroscope().done(
+            function () {
+                // console.log("before logic")
+                slideZoomInstance = new slideZoom("#slideViewContainer");
+                slideZoomInstance.showSlide(state);
+
+                addUIEventListeners();
+            }
+        );
+
+        for (var i = 0; i < result.length; i++) {
+            helpText[result[i].key] = {
+                longText: result[i].longText,
+                shortText: result[i].shortText,
+                feedbackText: result[i].feedbackText
+            }
+        }
+        // console.log(helpText)
+
+    })
+
 });

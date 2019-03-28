@@ -7,20 +7,45 @@
 
 // ====== Start Trigger ======= //
 function setupEnableSwitch() {
-    textSetup("First, let's turn on the light switch.", "60%", "73%");
+    removeHighlightCopy();
+    var clonedComp;
+    //    $("#popupType").html("Light Switch");
+    //textSetup("Turn on the light to the brightest setting by clicking on the switch.", "60%", "60%");
     var id = "#switch";
-    var $el = $(id);
     var clonedComp = highlightComponent(id);
-    $el.click(function () {
-        if (setupLightSwitch.isActive()) {
+    setTimeout(function () {
+        clonedComp = highlightComponent(id);
+    }, 0);
+    //highlightComponent("#switch");
+    var $el = $(id);
+
+    $el.mousemove(function () {
+        if ($("#light_1_").css("fill") == 'rgb(232, 224, 152)') {
             removeHighlight(clonedComp);
             setupLightSwitch.complete();
+            $("#stageLight").show();
         }
     });
+
 }
 
-function setupEnableBlade(){
-    textSetup("Now pull on the caliper blade by clicking on it.", "64%", "45%");
+function setupEnableStage() {
+    //textSetup("Lower the stage all the way to the bottom by rotating the coarse focus knob.", "66%", "58%");
+    var id = "#knobsCoarse";
+    var $el = $(id);
+    var clonedComp = highlightComponent(id);
+    //$("#popupType").html("Stage");
+
+    $el.mousemove(function () {
+        if (ms.knobPosition == 32) {
+            removeHighlight(clonedComp);
+            setupStage.complete();
+        }
+    });
+
+}
+
+function setupEnableBlade() {
     var id = "#caliperBlade";
     var $el = $(id);
     var clonedComp = highlightComponent(id);
@@ -28,59 +53,61 @@ function setupEnableBlade(){
         if (setupCaliperBlade.isActive()) {
             removeHighlight(clonedComp);
             setupCaliperBlade.complete();
+            //$el.trigger("click");
         }
     });
 }
 
 function setupEnableSlide() {
-    textSetup("Now grab the slide below and put it against the caliper.", "64%", "45%");
     toggleVisibility("#slide");
-    
     var origSlideX = 210;
     var origSlideY = 70;
-    
+
     $("#slide").attr('transform', `translate(${origSlideX} ${origSlideY})`)
     var clonedSlider = highlightComponent("#slide");
     var clonedSliderBoo;
-      
+
     var offset = $("#slide").offset();
     var width = $("#slide").width();
     var height = $("#slide").height();
     var centerX = offset.left + (width / 2);
     var centerY = offset.top + (height / 2);
     var cloned = false;
-    
+
     // Set it so the sliderCopy disappears when the slider is grabbed
-    // and so the slide target is highlighted 
+    // and so the slide target is highlighted
     // clonedSliderBoo is the highlight of the slideTarget
-    $("#slide").mousedown('dragstart', function(){
+    $("#slide").mousedown('dragstart', function () {
         removeHighlight(clonedSlider);
-        if(!cloned){
-        clonedSliderBoo = highlightComponent("#slideTarget");
-        cloned = true;
+        if (!cloned) {
+            clonedSliderBoo = highlightComponent("#slideTarget");
+            cloned = true;
         }
     });
-   
-    registerDrag('slide', 'slideTarget', function() {
+
+    deregisterDrag('slide')
+
+    registerDrag('slide', 'slideTarget', function () {
         setupSlide.complete();
         $("#caliperBlade").trigger("click");
         removeHighlight(clonedSliderBoo);
     });
+
+    $("#slide").mousedown('dragstart', function () {});
 
     // this is used later in the resizing and gesture demos
     // window.dragMoveListener = dragMoveListener;
 }
 
 function setupCondenser() {
-    textSetup("Rotate the condenser knob all the way to the top.", "8%", "45%");
-    var id="#draggableDiaphragm";
+
+    var id = "#draggableDiaphragm";
     if (setupCondense.isActive()) {
         highlightComponent(id);
     }
 }
 
 function setupAdjustCaliper() {
-    textSetup("Move the caliper knob so the aperture light is directly on the specimen.", "62%", "60%");
     var idX = "#xCaliperKnob";
     var idY = "#yCaliperKnob";
 

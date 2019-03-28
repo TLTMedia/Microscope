@@ -1,0 +1,36 @@
+/*
+ #slide img { border: 1px solid black; }*/
+
+#slide td {
+/*    border: 1px solid black;*/
+    padding: 0;
+    margin: 0;
+}
+
+#slide {
+
+    position: absolute;
+    top: 280px;
+    left: 80px;
+}
+
+#window {
+
+    left: -300px;
+    top: 30px;
+
+    position: absolute;
+    background: url()
+}
+
+#window img {}
+
+#slide table {
+    position: absolute;
+    font-size: 0px;
+    border-spacing: 0;
+    border: 0px;
+    padding: 0;
+    margin: 0;
+    border-collapse: collapse;
+}

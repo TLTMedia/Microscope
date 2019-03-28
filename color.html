@@ -1,0 +1,18 @@
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+
+<script>
+    [r, g, b] = [0, 0, 0];
+    setInterval(function() {
+        r = Math.min(1, r + .01)
+        g = Math.min(1, r + .01)
+        b = Math.min(1, r + .01)
+        rr = r * 232;
+        gg = g * 224;
+        bb = b * 152;
+
+        console.log(rr)
+
+        $('body').css('background-color', `rgba(${rr}, ${gg}, ${bb}, 1)`);
+    }, 100);
+
+</script>

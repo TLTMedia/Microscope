@@ -1,0 +1,63 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+
+    <script src="js/slideZoomTest.js">
+
+
+    </script>
+
+    <link rel="stylesheet" href="css/slideZoom.css" />
+
+
+
+
+    <script>
+        var slideZoomInstance;
+
+
+        $(function() {
+            slideZoomInstance = new slideZoom("#slide")
+            var state = {
+                zoom: 0,
+                row: 0,
+                col: 0
+            }
+            $("input").on("input", function(evt) {
+                var whichRange = $(evt.target).attr("name")
+                var value = $(evt.target).val() / 100;
+                console.log(whichRange, value)
+                state[whichRange] = value;
+                console.log(state)
+                slideZoomInstance.showSlide(state)
+            });
+            slideZoomInstance.showSlide(state)
+            slideZoomInstance.showSlide(state)
+        });
+
+        console.log(slideZoom)
+
+    </script>
+
+
+</head>
+
+<body>
+
+    <input type=range value="0" name="col" />
+    <input type=range value="0" name="row" />
+    <input type=range value="0" name="zoom" />
+
+    <div id="slide">
+
+
+
+
+    </div>
+
+</body>
+
+</html>

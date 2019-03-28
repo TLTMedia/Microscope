@@ -11,8 +11,8 @@ W_REL = 1325;
 W_RAT = $(window).width() / W_REL;
 // Adjust the magic numbers on resize.
 
-function adjustMagic(){
-    for (var key in sm_bd){
+function adjustMagic() {
+    for (var key in sm_bd) {
         sm_bd[key] = sm_orig[key] * W_RAT;
     }
 }
@@ -20,7 +20,7 @@ function adjustMagic(){
 
 
 // Fix aspect ratio of the stage
-$(window).resize(function() {
+$(window).resize(function () {
     resizeWindow();
     ms.update();
 });
@@ -57,7 +57,7 @@ function resizeWindow() {
     }
 
     $("html").css({
-      fontSize: (stageWidth / 100) + "px"
+        fontSize: (stageWidth / 100) + "px"
     });
 
     // Set "screen" object width and height to stageWidth and stageHeight, and center screen
@@ -132,39 +132,37 @@ function resizeWindow() {
     });
 
     // Aspect ratio
-    var aspectR = 4/3;
-    var whRat = w/h;
-    if (whRat > aspectR){
-        $("#rotate").css({
-            'height': h*0.3 + "px",
-            'width': h*0.3 + "px"
-        });
+    var aspectR = 4 / 3;
+    var whRat = w / h;
+    if (whRat > aspectR) {
+        //        $("#rotate").css({
+        //            'height': h*0.3 + "px",
+        //            'width': h*0.3 + "px"
+        //        });
 
         $("#slideView, #slideView2").css({
-            'height': h*0.20 + "px",
-            'width': h*0.20 + "px"
+            'height': h * 0.20 + "px",
+            'width': h * 0.20 + "px"
         });
 
-        $("#rotate2 > svg").css({
-            "height": h*0.55 + "px",
-            "width": h*0.55 + "px"
-        });
-
-    }
-    else{
-        $("#rotate").css({
-            'height': w*0.2 + "px",
-            'width': w*0.2 + "px"
-        });
+        //        $("#rotate2 > svg").css({
+        //            "height": h*0.55 + "px",
+        //            "width": h*0.55 + "px"
+        //        });
+    } else {
+        //        $("#rotate").css({
+        //            'height': w*0.2 + "px",
+        //            'width': w*0.2 + "px"
+        //        });
 
         $("#slideView, #slideView2").css({
-            'height': w*0.20 + "px",
-            'width': w*0.20 + "px"
+            'height': w * 0.20 + "px",
+            'width': w * 0.20 + "px"
         });
 
-        $("#rotate2 > svg").css({
-            "height": w*0.55 + "px",
-            "width": w*0.55 + "px"
-        });
+        //        $("#rotate2 > svg").css({
+        //            "height": w*0.55 + "px",
+        //            "width": w*0.55 + "px"
+        //        });
     }
 }

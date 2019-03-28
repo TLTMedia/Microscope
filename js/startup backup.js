@@ -411,10 +411,11 @@ function loadTutorial() {
     //    console.log(game)
     /** Tutorial **/
     setupLightSwitch = game.getGroupStep(0, 0);
-    setupCaliperBlade = game.getGroupStep(0, 1);
-    setupSlide = game.getGroupStep(0, 2);
-    setupCondense = game.getGroupStep(0, 3);
-    setupCaliper = game.getGroupStep(0, 4);
+    setupStage = game.getGroupStep(0, 1);
+    setupCaliperBlade = game.getGroupStep(0, 2);
+    setupSlide = game.getGroupStep(0, 3);
+    setupCondense = game.getGroupStep(0, 4);
+    setupCaliper = game.getGroupStep(0, 5);
 
     // Low Magnification
     lowLenses = game.getGroupStep(1, 0);

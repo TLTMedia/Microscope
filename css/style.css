@@ -244,38 +244,7 @@
     overflow: hidden;
 }
 
-#slideView2 {
-    z-index: 0;
-}
 
-
-#slideView img,
-#slideView2 img {
-    border-radius: 50%;
-    border-color: black;
-    margin: 0 auto;
-    display: block;
-    pointer-events: none;
-    width: 100%;
-    height: 100%;
-}
-
-#slide {
-    z-index: 100;
-}
-
-#slideBox {
-    z-index: -1;
-    left: 5%;
-    top: 42%;
-    width: 10%;
-    position: absolute;
-}
-
-#slideBox svg {
-    position: relative;
-    width: 100%;
-}
 
 #switchTarget {
     width: 4%;
@@ -423,8 +392,8 @@
 
 
 #popupType {
-    padding: 5px;
-    font-size: 20px;
+    padding: .6rem;
+    font-size: 2rem;
 }
 
 .popupInstruct {
@@ -445,7 +414,7 @@
     min-height: 2%;
     max-width: 15%;
     min-width: 15%;
-    border-radius: 20px;
+    border-radius: 2rem;
     text-align: left;
     overflow-y: auto;
     pointer-events: none;
@@ -454,8 +423,9 @@
 
 #popupText {
     color: #000;
-    padding: 10px;
+    padding: 2rem;
     overflow: hidden;
+    font-size: 1.5rem;
 }
 
 #popupTextWrapper {}
@@ -525,10 +495,78 @@ button {
     display: inline-block;
 }
 
+.svhiew canvas{
+transform: scale(.25);
+}
+.sview{
+width:21%;
+height:28%;
+
+}
+
 .slideRect {
-    width: 100%;
-    background-color: rgba(220, 220, 220, 1);
+    width: 200%;
+    height: 200%; //background-color: rgba(255, 200, 128, 1);
     padding: 0 30%;
 }
 
-#slideContents {}
+#slideViewContainer {
+  z-index:1000;
+
+}
+
+#slideView, #slideView2 td {
+  /* border: 1px solid black; */
+  padding: 0;
+  margin: 0;
+}
+
+#slideView, #slideView2 {
+
+  position: absolute;
+  top: 15%;
+  left: 7%;
+}
+
+#slideView canvas, #slideView2 canvas {
+  display: none;
+}
+
+#slideView table, #slideView2 table {
+  position: absolute;
+  font-size: 0px;
+  border-spacing: 0;
+  border: 0px;
+  padding: 0;
+  margin: 0;
+  border-collapse: collapse;
+}
+
+#window {
+
+  left: 10%;
+  top: 8%;
+
+  position: absolute;
+}
+
+input {
+  width: 1200px;
+
+}
+
+#window img {}
+
+
+
+#slideBed {
+  position: absolute;
+  top: 25%;
+}
+
+#background {
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+}

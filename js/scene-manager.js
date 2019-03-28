@@ -26,9 +26,11 @@ function startStep(step) {
        Intro doesn't necessarily have flexible choices for the user to act on.The purpose of the introduction is to teach the user about the different
        parts of the microscope.
        */
+       $("#helpBox p").html(step.longText);
+       $("#popupType").html(step.shortText);
 
 
-    $("#helpBox p").text(step.longText);
+       $("#helpBox p").text(step.feedbackText);
 
     // Intro Game mode Scenes
     if (currentMode == "Introduction") {
@@ -46,11 +48,7 @@ function startStep(step) {
             isDebug = DEBUG(isDebug, currentMode);
         }
     } else if (currentMode == "Tutorial") {
-//        debugSetup();
-//        debugLow();
-//        debugMedMag();
-//        debugHighMag(); 
-        
+
         unbindComponentHover();
         /* setup
            act/adjust the microscope before the game proceeds onto the next step.
@@ -76,11 +74,24 @@ function startStep(step) {
     }
 }
 
+function keepButtonsOn(){
+  //$("body *").off();
+  // YOU MUST CALL .stopPropagation() on an EVENT.
+  // $("#endOption0").stopPropagation();
+  // $("#introduction").stopPropagation();
+  // $("#tutorial").stopPropagation();
+  // $("#quizzes").stopPropagation();
+}
+
 function endStep(step) {
     if (step.div == "#step0" && currentMode == "Introduction")
         loadMenu("introduction-end");
-    else if (step.div == "#step19") {
+    else if (step.div == "#step20") {
         popupOff();
         loadMenu("tutorial-end");
+
+        console.log("action executed")
     }
+    step.completeSettings();
+    ms.update();
 }

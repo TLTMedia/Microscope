@@ -15,13 +15,16 @@ function debugIntro() {
 
 function jumpToStep() {
 
-    var jumpStep = location.hash.split("#")[1]
+    var jumpStep = location.hash.split("#")[1] || "setupLightSwitch"
     //console.log(jumpStep);
-    console.log(game.getCurrentStep().id)
+
+    //console.log(game.getCurrentStep().id)
     // var currentStep= Game.getCurrentStep;
     while (game.getCurrentStep().id != jumpStep) {
         game.getCurrentStep().activate();
+        game.getCurrentStep().completeSettings();
         game.getCurrentStep().complete();
+
     }
     //}
     removeHighlightCopy();

@@ -23,14 +23,14 @@ function popupOn(text, props) {
 // Takes arg string, type, where type is type of popup to convert to.
 // As of now, there should be a unique popup box.
 function updatePopup(type, text) {
-    if (type == "Instruction") {
-        $(".popupInstruct").text("Instruction");
-        $(".popupInstruct").css("background-color", "rgba(114, 177, 191, 0.5)");
-        $("#popupText").text(text);
-    }
+
     if (type == "Warning") {
-        $(".popupInstruct").text("Warning");
+        $("#popupType").text("Warning");
         $(".popupInstruct").css("background-color", "rgba(191, 114, 126, 0.8)");
+        $("#popupText").text(text);
+    } else {
+        $(".popupInstruct").text(type);
+        $(".popupInstruct").css("background-color", "rgba(114, 177, 191, 0.5)");
         $("#popupText").text(text);
     }
 }

@@ -35,6 +35,18 @@ components = [
     "#lenses10White",
     "#lenses11",
     "#lenses12",
+    "#sideSlide1",
+    "#sideSlide2",
+    "#sideSlide3",
+    "#sideSlide4",
+    "#sideSlide5",
+    "#sideSlide6",
+    "#sideSlide7",
+    "#sideSlide8",
+    "#sideSlide9",
+    "#sideSlide10",
+    "#sideSlide11",
+    "#sideSlide12",
     "#stageLight",
     "#illuminationLight",
     "#slideBox",
@@ -44,7 +56,7 @@ components = [
 
 // State machine boundaries (DYNAMIC)
 sm_bd = {
-    "MAX_OCULAR": 15,
+    "MAX_OCULAR": 35,
     "MAX_KNOB": 20,
     "MIN_KNOB": -10,
     "MAX_DIAPHRAGM_LIGHT": 40,
@@ -71,7 +83,7 @@ sm_bd = {
 
 // State machine boundaries (STATIC)
 sm_orig = {
-    "MAX_OCULAR": 15,
+    "MAX_OCULAR": 35,
     "MAX_KNOB": 20,
     "MIN_KNOB": -10,
     "MAX_DIAPHRAGM_LIGHT": 40,

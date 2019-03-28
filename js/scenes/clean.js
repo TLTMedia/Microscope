@@ -7,7 +7,8 @@
 
 
 function cleanAdjustLenses() {
-    textSetup("Rotate the lenses to the lowest objective (4X) without the 100X objective passing the slide.", "15%", "35%");
+    //    textSetup("Rotate the lenses to the lowest objective (4X) without the 100X objective passing the slide.", "15%", "35%");
+    //$("#popupType").html("Objective");
     var id = "#lensesBasePath"
     if (cleanupLow.isActive()) {
         var clonedComp = highlightComponent(id);
@@ -24,10 +25,14 @@ function cleanAdjustLenses() {
 
 // Trigger for coarse knob.
 function cleanAdjustCoarse() {
-    textSetup("Move the stage to the bottom using the coarse knob.", "60%", "64%");
+    //$("#popupType").html("Coarse Knob");
+    $(document).unbind("click", handler);
+    //    textSetup("Move the stage to the bottom using the coarse knob.", "60%", "64%");
     var id = "#knobsCoarse"
+    highlightComponent("#knobsCoarse")
     if (cleanupCoarse.isActive()) {
         var clonedComp = highlightComponent(id);
+
         var handler = function () {
             //console.log(ms.knobPosition);
             subHandler(ms.knobPosition, 19, 21, cleanupCoarse, id, null);
@@ -37,26 +42,51 @@ function cleanAdjustCoarse() {
 }
 
 function cleanRemoveSlide() {
-    textSetup("Remove the slide and put it back in the case.", "64%", "45%");
-    //    toggleVisibility("#slide");
-    //    console.log("DONE");
+    cloned = false;
+    //$("#popupType").html("Slide");
+    //textSetup("Remove the slide and put it back in the slide box.", "64%", "45%");
+    deregisterDrag('slide');
+    //removeHighlightCopy();
 
-    registerDrag('slide', 'slideBox', function () {
-        console.log("DONE");
-        cleanupSlide.complete();
-        removeHighlightCopy();
-        //        toggleVisiblity("#slide");
+    highlightComponent("#slide");
+    //MAKE IT SO I CAN ONLY DRAG IF THE CALIPER METAL IS UNLOCKED
+    $("#slide").on("mousedown", function () {
+      $("#canvasLeft, #canvasRight").css("display", "none")
+        if (!cloned) {
+
+            console.log("YERR")
+            $("#slideContents, #slideContents2").hide();
+            clonedSliderBoxHighlight = highlightComponent("#slideBox");
+            removeHighlightId("#slideCopy");
+            removeHighlightId("#slideTargetCopy");
+            cloned = true;
+        }
     });
+
+    registerDrag('slide', 'slideBoxTarget', function () {
+        $("#slideBox").css("display", "none");
+        $("#slideBoxClosed").css("display", "inline");
+        $("#slide").css("display", "none");
+        cleanupSlide.complete();
+        removeHighlight(clonedSliderBoxHighlight);
+        removeHighlightId("#slideTargetCopy");
+        removeHighlightId("#slideCopy");
+    });
+
 }
 
 function cleanDisableSwitch() {
-    textSetup("Lastly, let's turn off the light switch.", "60%", "73%");
+    //$("#popupType").html("Light Switch");
+    //    textSetup("Lastly, let's turn off the light switch.", "60%", "73%");
     id = "#switch";
-    var clonedComp = highlightComponent(id);
-    $("#switch").click(function () {
-        if (cleanupLight.isActive()) {
-            removeHighlight(clonedComp);
+    highlightComponent("#switch");
+
+    $("#switch").mousemove(function () {
+        if ($("#light_1_").css("fill") == 'rgb(0, 0, 0)') {
+            removeHighlightId("#switchCopy");
             cleanupLight.complete();
+            $("#stageLight").hide();
         }
     });
+
 }
