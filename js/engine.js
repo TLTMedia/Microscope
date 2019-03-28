@@ -144,10 +144,11 @@ function Game(guided, manual) {
 }
 
 function Step(id, shortText, longText, feedbackText, div, iconDiv, logic, completeSettings) {
+    console.log("id",id, "shortText",shortText, "longText", longText, "fb", feedbackText, "div", div, iconDiv, logic, completeSettings);
     this.id = id;
     this.logic = logic || {};
     this.completeSettings = completeSettings || {};
-    this.sh = shortText;
+    this.shortText = shortText;
     this.longText = longText;
     this.feedbackText = feedbackText;
     this.div = div;

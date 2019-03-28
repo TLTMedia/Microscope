@@ -212,11 +212,12 @@ function loadTutorial() {
                     "longText": helpText["setupLightSwitch"].longText,
                     "feedbackText": helpText["setupLightSwitch"].feedbackText,
                     "logic": function () {
+                      console.log(this)
                         $("#light").addClass("elementOff");
                         toggleVisibility("#slide");
-                        $("#popupType").html(stepText[0].steps[0].shortText);
-                        textSetup(stepText[0].steps[0].feedbackText, "60%", "60%")
-                        $("#helpBox p").html(stepText[0].steps[0].longText);
+                        $("#popupType").html(this.shortText);
+                        textSetup(this.feedbackText, "60%", "60%")
+                        $("#helpBox p").html(this.longText);
                         setupEnableSwitch();
                         ms.enableLightSwitch();
                     },
@@ -697,7 +698,7 @@ function createGame(stepText) {
         for (j in stepText[i].steps) {
             var cur = stepText[i].steps[j];
             stepCount++;
-            var newStep = new Step(cur.id, helpText[cur.id].shortText, helpText[cur.id].longText, helpText[cur.id].feedback, "#step" + stepCount, "#icon" + stepCount, cur.logic || {}, cur.completeSettings || {});
+            var newStep = new Step(cur.id, helpText[cur.id].shortText, helpText[cur.id].longText, helpText[cur.id].feedbackText, "#step" + stepCount, "#icon" + stepCount, cur.logic || {}, cur.completeSettings || {});
             game.addStep(newStep);
             newGroup.addStep(newStep);
         }
